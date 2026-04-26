@@ -1,0 +1,1809 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>통증 없이 움직이는 즐거움, [센터이름] 재활센터</title>
+    <meta name="description" content="통증으로 운동을 두려워하는 30-60대 성인을 위한 전문 재활센터. 전문 의료진의 맞춤 치료와 운동 프로그램으로 통증 없는 일상을 찾아드립니다. 지금 무료 통증 분석을 예약하세요.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #0A3B66; /* 딥블루 */
+            --primary-light-color: #1A5A90; /* 딥블루 약간 밝게 */
+            --secondary-color: #D6F5E9; /* 연한 민트 */
+            --accent-color: #28a745; /* 성공/강조용 */
+            --text-color: #333;
+            --light-text-color: #666;
+            --white-color: #fff;
+            --light-gray: #f8f9fa;
+            --border-color: #e0e0e0;
+            --shadow-light: rgba(0, 0, 0, 0.08);
+            --shadow-medium: rgba(0, 0, 0, 0.12);
+            --radius-small: 8px;
+            --radius-medium: 12px;
+            --radius-large: 20px;
+            --spacing-xs: 8px;
+            --spacing-sm: 16px;
+            --spacing-md: 24px;
+            --spacing-lg: 48px;
+            --spacing-xl: 80px;
+        }
+
+        /* Basic Reset & Typography */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Noto Sans KR', sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: var(--white-color);
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            word-break: keep-all; /* 한글 깨짐 방지 */
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-weight: 700;
+            line-height: 1.3;
+            color: var(--primary-color);
+            margin-bottom: var(--spacing-sm);
+        }
+
+        h1 { font-size: 2.2em; }
+        h2 { font-size: 1.8em; }
+        h3 { font-size: 1.4em; }
+        h4 { font-size: 1.2em; }
+
+        p {
+            margin-bottom: var(--spacing-sm);
+            font-size: 0.95em;
+            color: var(--light-text-color);
+        }
+
+        a {
+            color: var(--primary-color);
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        strong {
+            font-weight: 700;
+            color: var(--primary-color);
+        }
+
+        em {
+            font-style: normal;
+            color: var(--primary-color);
+            font-weight: 500;
+        }
+
+        /* Utility Classes */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 var(--spacing-sm);
+        }
+
+        .section-padding {
+            padding: var(--spacing-lg) 0;
+        }
+
+        .text-center {
+            text-align: center;
+        }
+
+        .text-primary { color: var(--primary-color); }
+        .text-secondary { color: var(--secondary-color); }
+        .text-white { color: var(--white-color); }
+
+        .bg-primary { background-color: var(--primary-color); }
+        .bg-secondary { background-color: var(--secondary-color); }
+        .bg-light { background-color: var(--light-gray); }
+
+        .shadow-sm { box-shadow: 0 4px 12px var(--shadow-light); }
+        .shadow-md { box-shadow: 0 8px 24px var(--shadow-medium); }
+
+        .rounded-md { border-radius: var(--radius-medium); }
+        .rounded-lg { border-radius: var(--radius-large); }
+
+        .flex { display: flex; }
+        .flex-col { flex-direction: column; }
+        .flex-row { flex-direction: row; }
+        .items-center { align-items: center; }
+        .justify-center { justify-content: center; }
+        .justify-between { justify-content: space-between; }
+        .gap-md { gap: var(--spacing-md); }
+        .gap-sm { gap: var(--spacing-sm); }
+        .grid { display: grid; }
+
+        /* Buttons */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: var(--spacing-sm) var(--spacing-md);
+            border: none;
+            border-radius: var(--radius-small);
+            font-size: 1.05em;
+            font-weight: 700;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+            text-decoration: none;
+            white-space: nowrap;
+        }
+
+        .btn-primary {
+            background-color: var(--primary-color);
+            color: var(--white-color);
+            box-shadow: 0 4px 15px rgba(10, 59, 102, 0.3);
+        }
+
+        .btn-primary:hover {
+            background-color: var(--primary-light-color);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(10, 59, 102, 0.4);
+        }
+
+        .btn-secondary {
+            background-color: var(--secondary-color);
+            color: var(--primary-color);
+            box-shadow: 0 2px 8px rgba(214, 245, 233, 0.5);
+        }
+
+        .btn-secondary:hover {
+            background-color: #c9ebd8;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(214, 245, 233, 0.6);
+        }
+
+        .btn-outline {
+            background-color: transparent;
+            color: var(--primary-color);
+            border: 2px solid var(--primary-color);
+        }
+
+        .btn-outline:hover {
+            background-color: var(--primary-color);
+            color: var(--white-color);
+            transform: translateY(-2px);
+        }
+
+        /* Section Styling */
+        .section-header {
+            margin-bottom: var(--spacing-lg);
+            position: relative;
+        }
+
+        .section-header h2 {
+            font-size: 2em;
+            text-align: center;
+            color: var(--primary-color);
+            position: relative;
+            display: inline-block;
+            padding-bottom: 10px;
+        }
+
+        .section-header h2::after {
+            content: '';
+            position: absolute;
+            left: 50%;
+            bottom: 0;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 4px;
+            background-color: var(--secondary-color);
+            border-radius: 2px;
+        }
+
+        .section-header p {
+            max-width: 700px;
+            margin: var(--spacing-sm) auto 0;
+            text-align: center;
+            font-size: 1.05em;
+            color: var(--light-text-color);
+        }
+
+        /* Hero Section */
+        #hero {
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--primary-light-color) 100%);
+            color: var(--white-color);
+            padding: var(--spacing-lg) 0 var(--spacing-md);
+            position: relative;
+            overflow: hidden;
+        }
+
+        #hero .container {
+            position: relative;
+            z-index: 2;
+        }
+
+        #hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('data:image/svg+xml;utf8,<svg width="100" height="100" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><circle cx="50" cy="50" r="40" fill="%23FFFFFF" fill-opacity="0.05"/></svg>') repeat;
+            opacity: 0.1;
+            z-index: 1;
+        }
+
+        .hero-content {
+            display: flex;
+            flex-direction: column;
+            gap: var(--spacing-md);
+            align-items: center;
+            text-align: center;
+        }
+
+        .hero-text {
+            max-width: 600px;
+            margin-bottom: var(--spacing-md);
+        }
+
+        .hero-text h1 {
+            color: var(--white-color);
+            font-size: 2.5em;
+            margin-bottom: var(--spacing-sm);
+        }
+        /* A/B Test Headline Variations */
+        .hero-text h1.variation-1 { display: block; }
+        .hero-text h1.variation-2 { display: none; } /* Default hide */
+
+        .hero-text p {
+            font-size: 1.1em;
+            color: rgba(255, 255, 255, 0.9);
+            margin-bottom: var(--spacing-md);
+        }
+
+        .hero-icons {
+            display: flex;
+            justify-content: center;
+            gap: var(--spacing-md);
+            margin-bottom: var(--spacing-md);
+            flex-wrap: wrap;
+        }
+
+        .hero-icon-item {
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-xs);
+            color: var(--secondary-color);
+            font-size: 0.95em;
+            font-weight: 500;
+        }
+
+        .hero-icon-item svg {
+            width: 24px;
+            height: 24px;
+            fill: var(--secondary-color);
+        }
+
+        .hero-cta-card {
+            background-color: var(--white-color);
+            border-radius: var(--radius-large);
+            padding: var(--spacing-md);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
+            width: 100%;
+            max-width: 450px;
+            text-align: left;
+            position: relative;
+            overflow: hidden;
+            border: 2px solid var(--secondary-color);
+        }
+
+        .hero-cta-card::before {
+            content: 'PREMIUM ANALYSIS REPORT';
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            font-size: 0.7em;
+            font-weight: 700;
+            color: var(--primary-color);
+            opacity: 0.1;
+            transform: rotate(5deg);
+        }
+        .hero-cta-card::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 50px;
+            background: linear-gradient(to top, var(--secondary-color) 0%, transparent 100%);
+            opacity: 0.3;
+            pointer-events: none;
+        }
+
+
+        .hero-cta-card h3 {
+            color: var(--primary-color);
+            font-size: 1.5em;
+            margin-bottom: var(--spacing-sm);
+            text-align: center;
+        }
+
+        .hero-cta-card p.subtitle {
+            text-align: center;
+            color: var(--light-text-color);
+            font-size: 0.9em;
+            margin-bottom: var(--spacing-md);
+        }
+
+        .hero-cta-form .form-group {
+            margin-bottom: var(--spacing-sm);
+        }
+
+        .hero-cta-form label {
+            display: block;
+            margin-bottom: var(--spacing-xs);
+            font-size: 0.9em;
+            color: var(--text-color);
+            font-weight: 500;
+        }
+
+        .hero-cta-form input,
+        .hero-cta-form select {
+            width: 100%;
+            padding: var(--spacing-xs) var(--spacing-sm);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-small);
+            font-size: 1em;
+            color: var(--text-color);
+            transition: border-color 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .hero-cta-form input:focus,
+        .hero-cta-form select:focus {
+            outline: none;
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 3px rgba(10, 59, 102, 0.1);
+        }
+
+        .hero-cta-form .privacy-consent {
+            display: flex;
+            align-items: flex-start;
+            margin-top: var(--spacing-sm);
+            font-size: 0.8em;
+            color: var(--light-text-color);
+        }
+
+        .hero-cta-form .privacy-consent input {
+            width: auto;
+            margin-right: var(--spacing-xs);
+            margin-top: 2px;
+        }
+
+        .hero-cta-form .privacy-consent a {
+            color: var(--primary-color);
+            text-decoration: underline;
+        }
+
+        .hero-cta-form .btn-primary {
+            width: 100%;
+            margin-top: var(--spacing-md);
+            padding: var(--spacing-sm) var(--spacing-md);
+            font-size: 1.1em;
+            border-radius: var(--radius-medium);
+        }
+
+        /* Pain Check Section */
+        #pain-check {
+            background-color: var(--light-gray);
+            padding: var(--spacing-lg) 0;
+            text-align: center;
+        }
+
+        #pain-check .section-header h2 {
+            color: var(--primary-color);
+        }
+
+        .pain-check-options {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: var(--spacing-md);
+            margin-top: var(--spacing-lg);
+        }
+
+        .pain-option {
+            background-color: var(--white-color);
+            border-radius: var(--radius-large);
+            padding: var(--spacing-md);
+            box-shadow: 0 8px 20px var(--shadow-light);
+            width: 150px;
+            height: 150px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
+            border: 2px solid transparent;
+        }
+
+        .pain-option:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 25px var(--shadow-medium);
+            border-color: var(--primary-color);
+        }
+
+        .pain-option.selected {
+            background-color: var(--secondary-color);
+            border-color: var(--primary-color);
+            box-shadow: 0 12px 25px var(--shadow-medium);
+            transform: translateY(-5px);
+        }
+
+        .pain-option svg {
+            width: 50px;
+            height: 50px;
+            margin-bottom: var(--spacing-xs);
+            fill: var(--primary-color);
+            transition: fill 0.3s ease;
+        }
+
+        .pain-option.selected svg {
+            fill: var(--primary-color);
+        }
+
+        .pain-option span {
+            font-size: 1.1em;
+            font-weight: 500;
+            color: var(--primary-color);
+        }
+
+        .pain-check-cta {
+            margin-top: var(--spacing-lg);
+        }
+
+        /* Problem Empathy Section */
+        #empathy {
+            background: linear-gradient(to bottom, var(--white-color), var(--light-gray));
+            padding: var(--spacing-lg) 0;
+            text-align: center;
+        }
+
+        #empathy .section-header h2 {
+            font-size: 2em;
+            color: var(--primary-color);
+        }
+
+        .empathy-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: var(--spacing-md);
+            margin-top: var(--spacing-lg);
+        }
+
+        .empathy-item {
+            background-color: var(--white-color);
+            border-radius: var(--radius-medium);
+            padding: var(--spacing-md);
+            box-shadow: 0 5px 15px var(--shadow-light);
+            text-align: left;
+            border-left: 5px solid var(--primary-color);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .empathy-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px var(--shadow-medium);
+        }
+
+        .empathy-item h3 {
+            font-size: 1.3em;
+            color: var(--primary-color);
+            margin-bottom: var(--spacing-xs);
+        }
+
+        .empathy-item p {
+            font-size: 0.95em;
+            color: var(--light-text-color);
+        }
+
+        /* Services Section */
+        #services {
+            padding: var(--spacing-lg) 0;
+        }
+
+        .service-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: var(--spacing-md);
+            margin-top: var(--spacing-lg);
+        }
+
+        .service-card {
+            background-color: var(--white-color);
+            border-radius: var(--radius-large);
+            box-shadow: 0 8px 25px var(--shadow-light);
+            overflow: hidden;
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            position: relative;
+            padding-bottom: var(--spacing-md); /* Add padding for content */
+        }
+
+        .service-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 40px var(--shadow-medium);
+        }
+
+        .service-card-header {
+            background-color: var(--primary-color);
+            color: var(--white-color);
+            padding: var(--spacing-md) var(--spacing-sm);
+            border-top-left-radius: var(--radius-large);
+            border-top-right-radius: var(--radius-large);
+            position: relative;
+        }
+        .service-card-header::before {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%) rotate(45deg);
+            width: 30px;
+            height: 30px;
+            background-color: var(--primary-color);
+            z-index: 1;
+        }
+
+        .service-card-header h3 {
+            color: var(--white-color);
+            margin-bottom: 0;
+            font-size: 1.4em;
+            position: relative;
+            z-index: 2;
+        }
+
+        .service-card-content {
+            padding: var(--spacing-md);
+        }
+
+        .service-card-content p {
+            font-size: 0.95em;
+            color: var(--light-text-color);
+            margin-bottom: var(--spacing-sm);
+        }
+
+        .service-card-content ul {
+            list-style: none;
+            padding: 0;
+            margin: var(--spacing-sm) 0 0;
+            text-align: left;
+            display: inline-block; /* For centering list */
+        }
+
+        .service-card-content ul li {
+            position: relative;
+            padding-left: 25px;
+            margin-bottom: var(--spacing-xs);
+            font-size: 0.9em;
+            color: var(--light-text-color);
+        }
+
+        .service-card-content ul li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: var(--accent-color);
+            font-weight: 700;
+        }
+
+        /* Process Section */
+        #process {
+            background-color: var(--light-gray);
+            padding: var(--spacing-lg) 0;
+            text-align: center;
+        }
+
+        .process-steps {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: var(--spacing-lg);
+            margin-top: var(--spacing-lg);
+        }
+
+        .process-step {
+            background-color: var(--white-color);
+            border-radius: var(--radius-large);
+            padding: var(--spacing-md);
+            box-shadow: 0 8px 20px var(--shadow-light);
+            text-align: center;
+            position: relative;
+            width: 100%;
+            max-width: 300px;
+            border: 2px solid var(--secondary-color);
+        }
+
+        .process-step-number {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 45px;
+            height: 45px;
+            background-color: var(--primary-color);
+            color: var(--white-color);
+            border-radius: 50%;
+            font-size: 1.3em;
+            font-weight: 700;
+            margin-bottom: var(--spacing-sm);
+            border: 3px solid var(--secondary-color);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .process-step h3 {
+            color: var(--primary-color);
+            font-size: 1.3em;
+            margin-bottom: var(--spacing-xs);
+        }
+
+        .process-step p {
+            font-size: 0.9em;
+            color: var(--light-text-color);
+        }
+
+        .process-arrow {
+            width: 30px;
+            height: 30px;
+            background-color: var(--secondary-color);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary-color);
+            font-weight: 700;
+            font-size: 1.5em;
+            transform: rotate(90deg); /* For mobile */
+        }
+
+        /* Team Section */
+        #team {
+            padding: var(--spacing-lg) 0;
+        }
+
+        .team-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: var(--spacing-md);
+            margin-top: var(--spacing-lg);
+        }
+
+        .team-member-card {
+            background-color: var(--white-color);
+            border-radius: var(--radius-large);
+            box-shadow: 0 8px 20px var(--shadow-light);
+            overflow: hidden;
+            text-align: center;
+            padding: var(--spacing-md);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border-top: 5px solid var(--primary-color);
+        }
+
+        .team-member-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 30px var(--shadow-medium);
+        }
+
+        .team-member-card img {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-bottom: var(--spacing-sm);
+            border: 4px solid var(--secondary-color);
+            box-shadow: 0 0 0 4px var(--primary-color); /* Outer ring */
+        }
+
+        .team-member-card h3 {
+            font-size: 1.4em;
+            margin-bottom: var(--spacing-xs);
+            color: var(--primary-color);
+        }
+
+        .team-member-card .position {
+            font-size: 1em;
+            color: var(--primary-color);
+            font-weight: 500;
+            margin-bottom: var(--spacing-sm);
+            display: block;
+        }
+
+        .team-member-card ul {
+            list-style: none;
+            padding: 0;
+            margin-top: var(--spacing-sm);
+            text-align: left;
+            display: inline-block;
+        }
+
+        .team-member-card ul li {
+            position: relative;
+            padding-left: 25px;
+            margin-bottom: var(--spacing-xs);
+            font-size: 0.85em;
+            color: var(--light-text-color);
+        }
+
+        .team-member-card ul li::before {
+            content: '•';
+            position: absolute;
+            left: 0;
+            color: var(--accent-color);
+            font-weight: 700;
+        }
+
+        /* Reviews Section */
+        #reviews {
+            background-color: var(--light-gray);
+            padding: var(--spacing-lg) 0;
+        }
+
+        .review-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: var(--spacing-md);
+            margin-top: var(--spacing-lg);
+        }
+
+        .review-card {
+            background-color: var(--white-color);
+            border-radius: var(--radius-large);
+            box-shadow: 0 8px 20px var(--shadow-light);
+            padding: var(--spacing-md);
+            text-align: left;
+            position: relative;
+            border-left: 5px solid var(--secondary-color);
+        }
+        .review-card::before {
+            content: '“';
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            font-size: 4em;
+            color: var(--secondary-color);
+            opacity: 0.5;
+            line-height: 0.5;
+        }
+
+        .review-card .stars {
+            color: #FFD700; /* Gold color for stars */
+            font-size: 1.2em;
+            margin-bottom: var(--spacing-xs);
+        }
+
+        .review-card p.quote {
+            font-style: italic;
+            font-size: 1em;
+            color: var(--text-color);
+            margin-bottom: var(--spacing-sm);
+            padding-left: 30px;
+        }
+
+        .review-card .author {
+            font-weight: 700;
+            color: var(--primary-color);
+            font-size: 0.9em;
+            display: block;
+            text-align: right;
+        }
+
+        .review-card .details {
+            font-size: 0.8em;
+            color: var(--light-text-color);
+            text-align: right;
+        }
+
+        /* Trust Metrics Section */
+        #trust-metrics {
+            padding: var(--spacing-lg) 0;
+        }
+
+        .metrics-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: var(--spacing-md);
+            margin-top: var(--spacing-lg);
+            text-align: center;
+        }
+
+        .metric-item {
+            background-color: var(--primary-color);
+            color: var(--white-color);
+            padding: var(--spacing-md);
+            border-radius: var(--radius-medium);
+            box-shadow: 0 8px 20px var(--shadow-light);
+            position: relative;
+            overflow: hidden;
+            border: 2px solid var(--secondary-color);
+        }
+        .metric-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0.02) 100%);
+            z-index: 1;
+        }
+
+        .metric-item .number {
+            font-size: 2.5em;
+            font-weight: 700;
+            color: var(--secondary-color);
+            margin-bottom: var(--spacing-xs);
+            position: relative;
+            z-index: 2;
+        }
+
+        .metric-item .label {
+            font-size: 1em;
+            font-weight: 500;
+            color: rgba(255, 255, 255, 0.9);
+            position: relative;
+            z-index: 2;
+        }
+
+        /* FAQ Section */
+        #faq {
+            background-color: var(--light-gray);
+            padding: var(--spacing-lg) 0;
+        }
+
+        .accordion {
+            margin-top: var(--spacing-lg);
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .accordion-item {
+            background-color: var(--white-color);
+            border-radius: var(--radius-medium);
+            margin-bottom: var(--spacing-sm);
+            box-shadow: 0 4px 12px var(--shadow-light);
+            overflow: hidden;
+        }
+
+        .accordion-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: var(--spacing-md);
+            cursor: pointer;
+            font-weight: 700;
+            color: var(--primary-color);
+            font-size: 1.1em;
+            background-color: var(--white-color);
+            transition: background-color 0.3s ease;
+        }
+
+        .accordion-header:hover {
+            background-color: var(--light-gray);
+        }
+
+        .accordion-header.active {
+            background-color: var(--secondary-color);
+        }
+
+        .accordion-header .icon {
+            font-size: 1.5em;
+            transition: transform 0.3s ease;
+        }
+
+        .accordion-header.active .icon {
+            transform: rotate(45deg);
+        }
+
+        .accordion-content {
+            padding: 0 var(--spacing-md) var(--spacing-md);
+            font-size: 0.95em;
+            color: var(--light-text-color);
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease-out, padding 0.4s ease-out;
+        }
+
+        .accordion-content.open {
+            max-height: 200px; /* Adjust as needed */
+            transition: max-height 0.4s ease-in, padding 0.4s ease-in;
+        }
+
+        /* Final CTA Section */
+        #final-cta {
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--primary-light-color) 100%);
+            padding: var(--spacing-lg) 0;
+            text-align: center;
+            color: var(--white-color);
+        }
+
+        #final-cta h2 {
+            color: var(--white-color);
+            font-size: 2.2em;
+            margin-bottom: var(--spacing-sm);
+        }
+
+        #final-cta p {
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 1.1em;
+            margin-bottom: var(--spacing-lg);
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .final-cta-buttons {
+            display: flex;
+            flex-direction: column;
+            gap: var(--spacing-md);
+            align-items: center;
+        }
+
+        .final-cta-buttons .btn {
+            width: 100%;
+            max-width: 350px;
+            padding: var(--spacing-md);
+            font-size: 1.2em;
+            border-radius: var(--radius-large);
+        }
+
+        .final-cta-buttons .btn-secondary {
+            background-color: var(--secondary-color);
+            color: var(--primary-color);
+        }
+
+        .final-cta-buttons .btn-secondary:hover {
+            background-color: #c9ebd8;
+        }
+
+        .final-cta-buttons .btn-primary {
+            background-color: var(--white-color);
+            color: var(--primary-color);
+            box-shadow: 0 4px 15px rgba(255, 255, 255, 0.3);
+        }
+        .final-cta-buttons .btn-primary:hover {
+            background-color: var(--light-gray);
+            box-shadow: 0 6px 20px rgba(255, 255, 255, 0.4);
+        }
+
+        /* Map & Contact */
+        #contact-info {
+            padding: var(--spacing-lg) 0;
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: var(--spacing-lg);
+            margin-top: var(--spacing-lg);
+        }
+
+        .map-container {
+            border-radius: var(--radius-large);
+            overflow: hidden;
+            box-shadow: 0 8px 20px var(--shadow-light);
+            height: 300px;
+            width: 100%;
+            background-color: var(--light-gray); /* Placeholder */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--light-text-color);
+            font-size: 1.2em;
+        }
+
+        .map-container iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        .info-card {
+            background-color: var(--white-color);
+            border-radius: var(--radius-large);
+            padding: var(--spacing-md);
+            box-shadow: 0 8px 20px var(--shadow-light);
+            border: 1px solid var(--border-color);
+        }
+
+        .info-card h3 {
+            color: var(--primary-color);
+            margin-bottom: var(--spacing-sm);
+        }
+
+        .info-card ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .info-card ul li {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: var(--spacing-sm);
+            font-size: 0.95em;
+            color: var(--light-text-color);
+        }
+
+        .info-card ul li svg {
+            width: 20px;
+            height: 20px;
+            fill: var(--primary-color);
+            margin-right: var(--spacing-xs);
+            flex-shrink: 0;
+        }
+
+        /* Footer */
+        #footer {
+            background-color: var(--primary-color);
+            color: rgba(255, 255, 255, 0.8);
+            padding: var(--spacing-md) 0;
+            font-size: 0.85em;
+            text-align: center;
+        }
+
+        #footer .container {
+            display: flex;
+            flex-direction: column;
+            gap: var(--spacing-sm);
+        }
+
+        #footer .footer-logo {
+            font-size: 1.5em;
+            font-weight: 700;
+            color: var(--secondary-color);
+            margin-bottom: var(--spacing-sm);
+        }
+
+        #footer .footer-links a {
+            color: rgba(255, 255, 255, 0.8);
+            margin: 0 var(--spacing-xs);
+            transition: color 0.3s ease;
+        }
+
+        #footer .footer-links a:hover {
+            color: var(--white-color);
+            text-decoration: none;
+        }
+
+        #footer .social-icons {
+            margin-top: var(--spacing-sm);
+        }
+
+        #footer .social-icons a {
+            display: inline-block;
+            margin: 0 var(--spacing-xs);
+        }
+
+        #footer .social-icons svg {
+            width: 24px;
+            height: 24px;
+            fill: rgba(255, 255, 255, 0.7);
+            transition: fill 0.3s ease;
+        }
+
+        #footer .social-icons svg:hover {
+            fill: var(--white-color);
+        }
+
+        /* Responsive Design */
+        @media (min-width: 768px) {
+            h1 { font-size: 3em; }
+            h2 { font-size: 2.5em; }
+            h3 { font-size: 1.8em; }
+            p { font-size: 1em; }
+
+            .section-padding {
+                padding: var(--spacing-xl) 0;
+            }
+
+            .section-header h2 {
+                font-size: 2.8em;
+            }
+            .section-header p {
+                font-size: 1.1em;
+            }
+
+            /* Hero Desktop */
+            #hero {
+                padding: var(--spacing-xl) 0;
+            }
+            .hero-content {
+                flex-direction: row;
+                text-align: left;
+                align-items: flex-start;
+                justify-content: center;
+            }
+            .hero-text {
+                max-width: 50%;
+                margin-right: var(--spacing-lg);
+                margin-bottom: 0;
+            }
+            .hero-text h1 {
+                font-size: 3.5em;
+                line-height: 1.2;
+            }
+            .hero-text p {
+                font-size: 1.2em;
+            }
+            .hero-icons {
+                justify-content: flex-start;
+            }
+            .hero-cta-card {
+                max-width: 450px;
+                padding: var(--spacing-lg);
+            }
+            .hero-cta-card h3 {
+                font-size: 1.8em;
+            }
+            .hero-cta-form .form-row {
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                gap: var(--spacing-sm);
+                margin-bottom: var(--spacing-sm);
+            }
+            .hero-cta-form .form-group.full-width {
+                grid-column: span 2;
+            }
+
+            /* Pain Check Desktop */
+            .pain-check-options {
+                gap: var(--spacing-lg);
+            }
+            .pain-option {
+                width: 180px;
+                height: 180px;
+            }
+            .pain-option svg {
+                width: 60px;
+                height: 60px;
+            }
+
+            /* Empathy Desktop */
+            .empathy-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+
+            /* Services Desktop */
+            .service-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            /* Process Desktop */
+            .process-steps {
+                flex-direction: row;
+                justify-content: center;
+                gap: var(--spacing-md);
+            }
+            .process-arrow {
+                transform: rotate(0deg); /* Horizontal for desktop */
+            }
+
+            /* Team Desktop */
+            .team-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+
+            /* Reviews Desktop */
+            .review-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            /* Trust Metrics Desktop */
+            .metrics-grid {
+                grid-template-columns: repeat(4, 1fr);
+            }
+
+            /* Final CTA Desktop */
+            .final-cta-buttons {
+                flex-direction: row;
+                justify-content: center;
+            }
+            .final-cta-buttons .btn {
+                width: auto;
+                min-width: 250px;
+            }
+
+            /* Contact Info Desktop */
+            .contact-grid {
+                grid-template-columns: 1.5fr 1fr;
+            }
+
+            /* Footer Desktop */
+            #footer .container {
+                flex-direction: row;
+                justify-content: space-between;
+                align-items: center;
+            }
+            #footer .footer-logo {
+                margin-bottom: 0;
+            }
+            #footer .footer-links {
+                order: 2; /* Keep links central */
+            }
+            #footer .social-icons {
+                margin-top: 0;
+                order: 3;
+            }
+            #footer .copyright {
+                order: 4;
+            }
+        }
+
+        @media (min-width: 1024px) {
+            .service-grid {
+                grid-template-columns: repeat(4, 1fr);
+            }
+            .team-grid {
+                grid-template-columns: repeat(4, 1fr);
+            }
+            .review-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+            .process-step {
+                max-width: none;
+            }
+        }
+        /* Hidden elements for illustration */
+        .hidden-desktop {
+            display: block;
+        }
+        .hidden-mobile {
+            display: none;
+        }
+        @media (min-width: 768px) {
+            .hidden-desktop {
+                display: none;
+            }
+            .hidden-mobile {
+                display: block;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header id="hero">
+        <div class="container hero-content">
+            <div class="hero-text">
+                <h1 class="variation-1">통증 없는 움직임, <br><em>새로운 일상</em>을 선물합니다</h1>
+                <h1 class="variation-2" style="display: none;">3060 통증 전문, <br><em>맞춤 재활</em>로 건강을 되찾으세요</h1>
+                <p>허리, 무릎, 어깨 통증으로 운동을 망설이시나요? 전문 의료진의 검증된 재활 치료와 맞춤 운동 프로그램으로 통증의 원인을 해결하고 활기찬 일상을 되찾으세요.</p>
+                <div class="hero-icons">
+                    <div class="hero-icon-item">
+                        <svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z"/>
+                        </svg>
+                        <span>전문의 진료</span>
+                    </div>
+                    <div class="hero-icon-item">
+                        <svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/>
+                        </svg>
+                        <span>맞춤 운동</span>
+                    </div>
+                    <div class="hero-icon-item">
+                        <svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/>
+                        </svg>
+                        <span>검증된 치료</span>
+                    </div>
+                </div>
+            </div>
+            <div class="hero-cta-card shadow-md">
+                <h3>무료 통증 분석 예약</h3>
+                <p class="subtitle">지금 바로 통증의 원인을 파악하고, <br>전문적인 맞춤 솔루션을 경험하세요.</p>
+                <form class="hero-cta-form">
+                    <div class="form-group">
+                        <label for="hero-name">이름</label>
+                        <input type="text" id="hero-name" name="name" placeholder="이름을 입력해주세요" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="hero-phone">연락처</label>
+                        <input type="tel" id="hero-phone" name="phone" placeholder="010-XXXX-XXXX" required>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="hero-pain-area">통증 부위</label>
+                            <select id="hero-pain-area" name="pain_area" required>
+                                <option value="">선택</option>
+                                <option value="허리">허리</option>
+                                <option value="무릎">무릎</option>
+                                <option value="어깨">어깨</option>
+                                <option value="목">목</option>
+                                <option value="기타">기타</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="hero-preferred-time">희망 시간</label>
+                            <select id="hero-preferred-time" name="preferred_time" required>
+                                <option value="">선택</option>
+                                <option value="오전">오전 (09:00-12:00)</option>
+                                <option value="오후">오후 (13:00-18:00)</option>
+                                <option value="저녁">저녁 (18:00-21:00)</option>
+                                <option value="상관없음">상관없음</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="privacy-consent">
+                        <input type="checkbox" id="hero-privacy-agree" name="privacy_agree" required>
+                        <label for="hero-privacy-agree">개인정보 수집 및 이용에 동의합니다. (<a href="#privacy-policy" target="_blank">자세히 보기</a>)</label>
+                    </div>
+                    <button type="submit" class="btn btn-primary">무료 통증 분석 예약하기</button>
+                </form>
+            </div>
+        </div>
+    </header>
+
+    <section id="pain-check" class="section-padding">
+        <div class="container">
+            <div class="section-header">
+                <h2>지금 내 통증을 <em>3초 진단</em>해보세요</h2>
+                <p>내 몸의 신호를 무시하지 마세요. 간단한 선택으로 주요 통증 부위를 체크하고, 통증 관리의 첫걸음을 시작하세요.</p>
+            </div>
+            <div class="pain-check-options">
+                <div class="pain-option" data-pain="허리">
+                    <svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm-1-13h2v6h-2zm0 8h2v2h-2z"/>
+                    </svg>
+                    <span>허리 통증</span>
+                </div>
+                <div class="pain-option" data-pain="무릎">
+                    <svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 15h2v-6h-2v6zm0-8h2V7h-2v2z"/>
+                    </svg>
+                    <span>무릎 통증</span>
+                </div>
+                <div class="pain-option" data-pain="어깨">
+                    <svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z"/>
+                    </svg>
+                    <span>어깨 통증</span>
+                </div>
+                <div class="pain-option" data-pain="목/기타">
+                    <svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 15h2v-6h-2v6zm0-8h2V7h-2v2z"/>
+                    </svg>
+                    <span>목/기타 통증</span>
+                </div>
+            </div>
+            <div class="pain-check-cta">
+                <a href="#hero" class="btn btn-primary btn-lg">선택한 부위 무료 통증 분석 예약하기</a>
+            </div>
+        </div>
+    </section>
+
+    <section id="empathy" class="section-padding">
+        <div class="container">
+            <div class="section-header">
+                <h2><em>통증</em>, 더 이상 미루지 마세요!</h2>
+                <p>통증은 당신의 일상을 멈추게 합니다. 저희는 당신의 어려움을 깊이 공감하고, 함께 해결해 나갈 준비가 되어 있습니다.</p>
+            </div>
+            <div class="empathy-grid">
+                <div class="empathy-item">
+                    <h3>"운동하고 싶은데, 통증 때문에 두려워요"</h3>
+                    <p>좋아하는 운동이나 활동을 통증 때문에 포기하고 계신가요? 통증의 악순환을 끊고 다시 활기찬 움직임을 되찾아 드립니다.</p>
+                </div>
+                <div class="empathy-item">
+                    <h3>"이젠 만성 통증에 익숙해졌어요..."</h3>
+                    <p>오랜 통증에 지쳐 포기하셨나요? 만성 통증도 원인을 찾고 꾸준히 관리하면 충분히 개선될 수 있습니다. 저희가 곁에서 돕겠습니다.</p>
+                </div>
+                <div class="empathy-item">
+                    <h3>"수술 후 재활, 어디서 해야 할지 막막해요"</h3>
+                    <p>수술 후 제대로 된 재활은 회복에 결정적인 영향을 미칩니다. 체계적인 재활 프로그램으로 안전하고 효과적인 회복을 지원합니다.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="services" class="section-padding bg-light">
+        <div class="container">
+            <div class="section-header">
+                <h2><span class="text-primary">[센터이름]</span>의 <em>전문 재활 서비스</em></h2>
+                <p>전문 의료진이 검증한 체계적인 프로그램으로 당신의 통증을 해결하고 건강한 삶을 되찾아 드립니다.</p>
+            </div>
+            <div class="service-grid">
+                <div class="service-card shadow-sm">
+                    <div class="service-card-header">
+                        <h3>정밀 물리치료</h3>
+                    </div>
+                    <div class="service-card-content">
+                        <p>통증의 근본 원인을 찾아 해결하는 맞춤 치료</p>
+                        <ul>
+                            <li>전문 물리치료사의 1:1 집중 치료</li>
+                            <li>다양한 치료 장비를 활용한 효과 증대</li>
+                            <li>염증 완화 및 통증 경감</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="service-card shadow-sm">
+                    <div class="service-card-header">
+                        <h3>숙련된 도수치료</h3>
+                    </div>
+                    <div class="service-card-content">
+                        <p>수기로 틀어진 신체 균형을 바로잡는 치료</p>
+                        <ul>
+                            <li>개인의 상태에 맞는 섬세한 수기 치료</li>
+                            <li>자세 교정 및 근골격계 불균형 해소</li>
+                            <li>관절 가동성 회복 및 통증 감소</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="service-card shadow-sm">
+                    <div class="service-card-header">
+                        <h3>맞춤 운동 재활</h3>
+                    </div>
+                    <div class="service-card-content">
+                        <p>재발 방지와 근력 강화를 위한 운동 프로그램</p>
+                        <ul>
+                            <li>개인별 운동 능력 및 목표에 따른 설계</li>
+                            <li>코어 강화 및 자세 안정화 운동</li>
+                            <li>일상생활 복귀를 위한 기능 회복</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="service-card shadow-sm">
+                    <div class="service-card-header">
+                        <h3>첨단 장비 &amp; 운동 처방</h3>
+                    </div>
+                    <div class="service-card-content">
+                        <p>과학적인 분석과 최적화된 운동 솔루션</p>
+                        <ul>
+                            <li>정확한 진단을 위한 첨단 검사 장비</li>
+                            <li>개별 상태에 맞는 운동 처방</li>
+                            <li>집에서도 가능한 홈트레이닝 가이드</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="process" class="section-padding">
+        <div class="container">
+            <div class="section-header">
+                <h2><span class="text-primary">통증 해결</span>을 위한 <em>[센터이름]의 4단계 프로세스</em></h2>
+                <p>체계적인 단계를 통해 통증의 원인을 정확히 파악하고, 효과적인 재활 치료로 건강한 변화를 이끌어냅니다.</p>
+            </div>
+            <div class="process-steps">
+                <div class="process-step">
+                    <div class="process-step-number">1</div>
+                    <h3>무료 통증 분석 예약</h3>
+                    <p>간편한 온라인/전화 예약으로 통증의 첫 단추를 끼웁니다.</p>
+                </div>
+                <div class="process-arrow hidden-desktop">↓</div>
+                <div class="process-arrow hidden-mobile">→</div>
+                <div class="process-step">
+                    <div class="process-step-number">2</div>
+                    <h3>정밀 초기 평가 및 진단</h3>
+                    <p>전문 의료진이 정밀 검사를 통해 통증의 원인을 정확히 분석합니다.</p>
+                </div>
+                <div class="process-arrow hidden-desktop">↓</div>
+                <div class="process-arrow hidden-mobile">→</div>
+                <div class="process-step">
+                    <div class="process-step-number">3</div>
+                    <h3>1:1 맞춤 치료 및 운동</h3>
+                    <p>개개인에게 최적화된 물리치료, 도수치료, 운동 재활을 진행합니다.</p>
+                </div>
+                <div class="process-arrow hidden-desktop">↓</div>
+                <div class="process-arrow hidden-mobile">→</div>
+                <div class="process-step">
+                    <div class="process-step-number">4</div>
+                    <h3>지속적인 관리 및 사후 케어</h3>
+                    <p>치료 후에도 꾸준한 관리와 운동 가이드로 재발을 방지합니다.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="team" class="section-padding bg-light">
+        <div class="container">
+            <div class="section-header">
+                <h2><em>전문 의료진</em>을 소개합니다</h2>
+                <p>오랜 경험과 전문성을 갖춘 의료진이 당신의 건강한 회복을 위해 최선을 다합니다.</p>
+            </div>
+            <div class="team-grid">
+                <div class="team-member-card shadow-sm">
+                    <img src="data:image/svg+xml;charset=UTF-8,%3Csvg width='120' height='120' viewBox='0 0 120 120' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='60' cy='60' r='60' fill='%23D6F5E9'/%3E%3Cpath d='M60 60C76.5685 60 90 46.5685 90 30C90 13.4315 76.5685 0 60 0C43.4315 0 30 13.4315 30 30C30 46.5685 43.4315 60 60 60ZM60 67.5C39.0147 67.5 22.5 84.0147 22.5 105H97.5C97.5 84.0147 80.9853 67.5 60 67.5Z' fill='%230A3B66'/%3E%3C/svg%3E" alt="의료진 사진">
+                    <h3>김철수 원장</h3>
+                    <span class="position">재활의학과 전문의</span>
+                    <ul>
+                        <li>대한재활의학회 정회원</li>
+                        <li>前 [대학병원] 재활의학과 교수</li>
+                        <li>[센터이름] 대표 원장</li>
+                    </ul>
+                </div>
+                <div class="team-member-card shadow-sm">
+                    <img src="data:image/svg+xml;charset=UTF-8,%3Csvg width='120' height='120' viewBox='0 0 120 120' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='60' cy='60' r='60' fill='%23D6F5E9'/%3E%3Cpath d='M60 60C76.5685 60 90 46.5685 90 30C90 13.4315 76.5685 0 60 0C43.4315 0 30 13.4315 30 30C30 46.5685 43.4315 60 60 60ZM60 67.5C39.0147 67.5 22.5 84.0147 22.5 105H97.5C97.5 84.0147 80.9853 67.5 60 67.5Z' fill='%230A3B66'/%3E%3C/svg%3E" alt="의료진 사진">
+                    <h3>이지영 팀장</h3>
+                    <span class="position">수석 물리치료사</span>
+                    <ul>
+                        <li>물리치료사 면허 보유</li>
+                        <li>도수치료 전문 과정 수료</li>
+                        <li>10년 이상 임상 경력</li>
+                    </ul>
+                </div>
+                <div class="team-member-card shadow-sm">
+                    <img src="data:image/svg+xml;charset=UTF-8,%3Csvg width='120' height='120' viewBox='0 0 120 120' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='60' cy='60' r='60' fill='%23D6F5E9'/%3E%3Cpath d='M60 60C76.5685 60 90 46.5685 90 30C90 13.4315 76.5685 0 60 0C43.4315 0 30 13.4315 30 30C30 46.5685 43.4315 60 60 60ZM60 67.5C39.0147 67.5 22.5 84.0147 22.5 105H97.5C97.5 84.0147 80.9853 67.5 60 67.5Z' fill='%230A3B66'/%3E%3C/svg%3E" alt="의료진 사진">
+                    <h3>박민준 실장</h3>
+                    <span class="position">운동재활 전문가</span>
+                    <ul>
+                        <li>건강운동관리사 자격 보유</li>
+                        <li>스포츠 재활 코칭 전문</li>
+                        <li>개인별 맞춤 운동 설계</li>
+                    </ul>
+                </div>
+                <div class="team-member-card shadow-sm hidden-mobile">
+                    <img src="data:image/svg+xml;charset=UTF-8,%3Csvg width='120' height='120' viewBox='0 0 120 120' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='60' cy='60' r='60' fill='%23D6F5E9'/%3E%3Cpath d='M60 60C76.5685 60 90 46.5685 90 30C90 13.4315 76.5685 0 60 0C43.4315 0 30 13.4315 30 30C30 46.5685 43.4315 60 60 60ZM60 67.5C39.0147 67.5 22.5 84.0147 22.5 105H97.5C97.5 84.0147 80.9853 67.5 60 67.5Z' fill='%230A3B66'/%3E%3C/svg%3E" alt="의료진 사진">
+                    <h3>최유진 치료사</h3>
+                    <span class="position">여성 재활 전문 물리치료사</span>
+                    <ul>
+                        <li>산전·산후 재활 전문</li>
+                        <li>필라테스 강사 자격</li>
+                        <li>섬세한 여성 맞춤 케어</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="reviews" class="section-padding">
+        <div class="container">
+            <div class="section-header">
+                <h2><em>환자분들의 생생한 후기</em></h2>
+                <p>통증을 이겨내고 새로운 삶을 시작하신 분들의 진심 어린 이야기를 들어보세요.</p>
+            </div>
+            <div class="review-grid">
+                <div class="review-card shadow-sm">
+                    <div class="stars">★★★★★</div>
+                    <p class="quote">"오랜 허리 통증으로 걷는 것조차 힘들었는데, 여기 오고 나서 통증이 사라지고 다시 골프를 칠 수 있게 됐어요. 정말 감사합니다!"</p>
+                    <span class="author">김**님 (50대, 허리 통증)</span>
+                    <span class="details">치료 기간: 3개월 / 결과: 통증 90% 감소</span>
+                </div>
+                <div class="review-card shadow-sm">
+                    <div class="stars">★★★★★</div>
+                    <p class="quote">"무릎 수술 후 재활이 가장 걱정이었는데, 꼼꼼한 관리 덕분에 빠르게 회복할 수 있었습니다. 이제 계단 오르내리는 것도 편안해요."</p>
+                    <span class="author">이**님 (60대, 무릎 수술 후 재활)</span>
+                    <span class="details">치료 기간: 6개월 / 결과: 관절 기능 회복 및 통증 없음</span>
+                </div>
+                <div class="review-card shadow-sm">
+                    <div class="stars">★★★★★</div>
+                    <p class="quote">"어깨 통증 때문에 밤에 잠도 못 잤는데, 도수치료와 운동을 병행하면서 통증이 많이 줄었어요. 이제 팔도 자유롭게 움직일 수 있습니다."</p>
+                    <span class="author">박**님 (40대, 만성 어깨 통증)</span>
+                    <span class="details">치료 기간: 2개월 / 결과: 통증 70% 감소, 가동 범위 증가</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="trust-metrics" class="section-padding bg-primary">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="text-white"><span class="text-secondary">숫자로 증명하는</span> <em>[센터이름]의 신뢰</em></h2>
+                <p class="text-white">수많은 환자분들이 [센터이름]을 선택하고 건강한 삶을 되찾았습니다.</p>
+            </div>
+            <div class="metrics-grid">
+                <div class="metric-item">
+                    <div class="number">92%</div>
+                    <div class="label">치료 만족도</div>
+                </div>
+                <div class="metric-item">
+                    <div class="number">75%</div>
+                    <div class="label">통증 재발률 감소</div>
+                </div>
+                <div class="metric-item">
+                    <div class="number">2000+</div>
+                    <div class="label">누적 치료 케이스</div>
+                </div>
+                <div class="metric-item">
+                    <div class="number">12년</div>
+                    <div class="label">재활 전문 경력</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="faq" class="section-padding">
+        <div class="container">
+            <div class="section-header">
+                <h2><em>자주 묻는 질문</em> (FAQ)</h2>
+                <p>궁금한 점이 있으시면 언제든지 문의해주세요. 저희가 친절하게 안내해 드리겠습니다.</p>
+            </div>
+            <div class="accordion">
+                <div class="accordion-item">
+                    <div class="accordion-header">
+                        통증이 있는데 운동해도 괜찮을까요?
+                        <span class="icon">+</span>
+                    </div>
+                    <div class="accordion-content">
+                        <p>통증이 있는 상태에서의 무분별한 운동은 오히려 증상을 악화시킬 수 있습니다. 저희 센터에서는 정밀 진단을 통해 통증의 원인을 파악하고, 개인의 상태에 맞는 안전하고 효과적인 운동 처방을 제공합니다. 통증이 있다면 반드시 전문가와 상담 후 운동을 시작하는 것이 중요합니다.</p>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <div class="accordion-header">
+                        예약은 어떻게 하나요?
+                        <span class="icon">+</span>
+                    </div>
+                    <div class="accordion-content">
+                        <p>온라인 예약 폼(페이지 상단 또는 하단)을 통해 간편하게 예약하시거나, 대표 전화 <strong>000-0000-0000</strong>으로 전화 주시면 친절하게 예약 도와드리겠습니다. 카카오톡 상담도 가능합니다.</p>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <div class="accordion-header">
+                        치료 비용 및 보험 적용은 어떻게 되나요?
+                        <span class="icon">+</span>
+                    </div>
+                    <div class="accordion-content">
+                        <p>치료 비용은 개인의 증상과 치료 프로그램에 따라 달라질 수 있습니다. 실비 보험 적용 여부는 가입하신 보험 상품에 따라 다르므로, 방문 시 보험 서류를 지참하시면 자세히 안내해 드립니다. 전화 문의 주시면 대략적인 상담이 가능합니다.</p>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <div class="accordion-header">
+                        주차는 가능한가요?
+                        <span class="icon">+</span>
+                    </div>
+                    <div class="accordion-content">
+                        <p>네, 센터 건물 내 지하 주차장을 이용하실 수 있습니다. 자세한 내용은 방문 시 안내 데스크에 문의해주세요.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="final-cta" class="section-padding">
+        <div class="container">
+            <h2>통증 없는 <em>새로운 삶</em>, <br>지금 바로 시작하세요!</h2>
+            <p>더 이상 통증으로 망설이지 마세요. [센터이름]이 당신의 건강한 움직임을 되찾아 드립니다.</p>
+            <div class="final-cta-buttons">
+                <a href="#hero" class="btn btn-secondary">무료 통증 분석 예약하기</a>
+                <a href="tel:000-0000-0000" class="btn btn-primary">전화 상담 (000-0000-0000)</a>
+                <!-- Optional: KakaoTalk/Line Link -->
+                <!-- <a href="YOUR_KAKAO_LINK" class="btn btn-secondary">카카오톡 상담</a> -->
+            </div>
+        </div>
+    </section>
+
+    <section id="contact-info" class="section-padding bg-light">
+        <div class="container">
+            <div class="section-header">
+                <h2><em>오시는 길</em></h2>
+                <p>[센터이름]은 언제나 당신의 방문을 환영합니다.</p>
+            </div>
+            <div class="contact-grid">
+                <div class="map-container shadow-md">
+                    <!-- Replace with actual Kakao Map or Naver Map embed code -->
+                    <iframe src="https://map.kakao.com/?q=서울시 강남구 테헤란로 123 재활센터" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+                </div>
+                <div class="info-card shadow-md">
+                    <h3>[센터이름] 연락처 및 오시는 길</h3>
+                    <ul>
+                        <li>
+                            <svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
+                            </svg>
+                            <span>서울시 강남구 테헤란로 123 [건물명] 층</span>
+                        </li>
+                        <li>
+                            <svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.32.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02L6.62 10.79z"/>
+                            </svg>
+                            <span><a href="tel:000-0000-0000">000-0000-0000</a></span>
+                        </li>
+                        <li>
+                            <svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M12 2c-5.52 0-10 4.48-10 10s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm.9 15.5H11.1v-6h1.8v6zm0-8H11.1V7h1.8v2.5z"/>
+                            </svg>
+                            <span>
+                                <strong>평일:</strong> 09:00 - 18:00 (점심시간 13:00 - 14:00)<br>
+                                <strong>토요일:</strong> 09:00 - 13:00 (점심시간 없음)<br>
+                                <strong>일요일/공휴일:</strong> 휴무
+                            </span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer id="footer">
+        <div class="container">
+            <div class="footer-logo">[센터이름]</div>
+            <div class="footer-links">
+                <a href="#privacy-policy">개인정보처리방침</a> |
+                <a href="#terms-of-service">이용약관</a>
+            </div>
+            <div class="social-icons">
+                <a href="https://www.instagram.com/" target="_blank" aria-label="Instagram">
+                    <svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M7.8 2h8.4C19.4 2 22 4.6 22 7.8v8.4c0 3.2-2.6 5.8-5.8 5.8H7.8C4.6 22 2 19.4 2 16.2V7.8C2 4.6 4.6 2 7.8 2zm-.2 2A2.003 2.003 0 004 7.8v8.4c0 1.1.9 2 2 2h8.4a2.003 2.003 0 002-2V7.8c0-1.1-.9-2-2-2H7.6zm9.6.2c.7 0 1.3.6 1.3 1.3s-.6 1.3-1.3 1.3-1.3-.6-1.3-1.3.6-1.3 1.3-1.3zM12 9c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3zm0 2c.55 0 1 .45 1 1s-.45 1-1 1-1-.45-1-1 .45-1 1-1z"/>
+                    </svg>
+                </a>
+                <a href="https://www.facebook.com/" target="_blank" aria-label="Facebook">
+                    <svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M12 2.04C6.5 2.04 2 6.53 2 12.04c0 4.97 3.61 9.12 8.34 9.94v-7.04H7.28V12.04h3.06V9.44c0-3.02 1.83-4.7 4.54-4.7 1.3 0 2.41.23 2.73.33v2.82h-1.68c-1.32 0-1.58.63-1.58 1.55v2.02h3.15l-.51 3.03h-2.64v7.04C18.39 21.16 22 17.01 22 12.04c0-5.51-4.5-10-10-10z"/>
+                    </svg>
+                </a>
+                <a href="https://pf.kakao.com/_YOUR_CHANNEL_ID" target="_blank" aria-label="Kakao Talk">
+                    <svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M12 2C6.48 2 2 6.13 2 11.2c0 3.18 1.93 5.92 4.83 7.5l-1.02 2.87c-.15.42.02.88.4.99.38.1.79-.1.94-.52l1.3-3.64c.29.04.59.06.9.06 5.52 0 10-4.13 10-9.2C22 6.13 17.52 2 12 2zm1.6 11.6h-3.2c-.44 0-.8-.36-.8-.8s.36-.8.8-.8h3.2c.44 0 .8.36.8.8s-.36.8-.8.8zm0-2.4h-3.2c-.44 0-.8-.36-.8-.8s.36-.8.8-.8h3.2c.44 0 .8.36.8.8s-.36.8-.8.8z"/>
+                    </svg>
+                </a>
+            </div>
+            <p class="copyright">© 2023 [센터이름]. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // A/B Test for headlines
+        const heroHeadlines = document.querySelectorAll('.hero-text h1');
+        const randomChoice = Math.random() < 0.5 ? 0 : 1; // 50% chance for each
+        heroHeadlines[randomChoice].style.display = 'block';
+        heroHeadlines[1 - randomChoice].style.display = 'none';
+
+        // Pain Check selection
+        document.querySelectorAll('.pain-option').forEach(option => {
+            option.addEventListener('click', function() {
+                document.querySelectorAll('.pain-option').forEach(opt => opt.classList.remove('selected'));
+                this.classList.add('selected');
+                // Optionally, pre-fill hero form with selected pain area
+                document.getElementById('hero-pain-area').value = this.dataset.pain;
+            });
+        });
+
+        // Accordion functionality for FAQ
+        document.querySelectorAll('.accordion-header').forEach(header => {
+            header.addEventListener('click', function() {
+                const content = this.nextElementSibling;
+                const icon = this.querySelector('.icon');
+
+                // Close all other open accordions
+                document.querySelectorAll('.accordion-header.active').forEach(activeHeader => {
+                    if (activeHeader !== this) {
+                        activeHeader.classList.remove('active');
+                        activeHeader.nextElementSibling.classList.remove('open');
+                        activeHeader.nextElementSibling.style.maxHeight = null;
+                        activeHeader.querySelector('.icon').textContent = '+';
+                    }
+                });
+
+                // Toggle current accordion
+                this.classList.toggle('active');
+                content.classList.toggle('open');
+                if (content.classList.contains('open')) {
+                    content.style.maxHeight = content.scrollHeight + "px";
+                    icon.textContent = 'x';
+                } else {
+                    content.style.maxHeight = null;
+                    icon.textContent = '+';
+                }
+            });
+        });
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+</body>
+</html>
