@@ -1,0 +1,1223 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Freshify Brunch House - 성수동 건강 감성 브런치 카페</title>
+    <meta name="description" content="성수동 Freshify Brunch House에서 건강하고 감성적인 브런치를 경험하세요. 신선한 재료, 아름다운 공간, 완벽한 맛으로 당신의 하루를 특별하게 만듭니다.">
+    <meta name="keywords" content="성수 브런치, 성수 브런치 카페, Freshify Brunch House, 성수 맛집, 건강 브런치, 감성 브런치">
+    <style>
+        /* Base Styles & Typography */
+        @import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css');
+        :root {
+            --color-primary: #86A873; /* Sage Green */
+            --color-secondary: #F7F0E8; /* Cream */
+            --color-accent: #B08E6F; /* Warm Beige */
+            --color-text-dark: #333333;
+            --color-text-light: #666666;
+            --color-white: #FFFFFF;
+            --color-soft-white: #FBF8F4;
+            --color-brown-point: #5A4B4B;
+            --color-shadow: rgba(0, 0, 0, 0.08);
+            --max-width: 1180px;
+            --spacing-xl: 120px;
+            --spacing-lg: 80px;
+            --spacing-md: 48px;
+            --spacing-sm: 24px;
+            --border-radius-lg: 16px;
+            --border-radius-md: 10px;
+            --border-radius-sm: 8px;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Pretendard', 'Noto Sans KR', sans-serif;
+            color: var(--color-text-dark);
+            line-height: 1.6;
+            background-color: var(--color-soft-white);
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        button {
+            cursor: pointer;
+            border: none;
+            background: none;
+            font-family: 'Pretendard', 'Noto Sans KR', sans-serif;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            line-height: 1.3;
+            font-weight: 700;
+        }
+
+        h1 { font-size: 2.8rem; }
+        h2 { font-size: 2.2rem; }
+        h3 { font-size: 1.8rem; }
+        h4 { font-size: 1.4rem; }
+        p { font-size: 1rem; }
+
+        @media (max-width: 768px) {
+            h1 { font-size: 2.2rem; }
+            h2 { font-size: 1.8rem; }
+            h3 { font-size: 1.5rem; }
+            h4 { font-size: 1.2rem; }
+            p { font-size: 0.95rem; }
+            :root {
+                --spacing-xl: 80px;
+                --spacing-lg: 60px;
+                --spacing-md: 32px;
+                --spacing-sm: 16px;
+            }
+        }
+
+        /* Utility Classes */
+        .container {
+            max-width: var(--max-width);
+            margin: 0 auto;
+            padding: 0 var(--spacing-sm);
+        }
+
+        .text-center { text-align: center; }
+        .text-left { text-align: left; }
+        .text-right { text-align: right; }
+
+        .section-padding {
+            padding: var(--spacing-xl) 0;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 16px 32px;
+            border-radius: var(--border-radius-md);
+            font-size: 1.05rem;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            white-space: nowrap;
+        }
+
+        .btn-primary {
+            background-color: var(--color-primary);
+            color: var(--color-white);
+            box-shadow: 0 4px 12px var(--color-shadow);
+        }
+        .btn-primary:hover {
+            background-color: #729661; /* Slightly darker sage */
+            transform: translateY(-2px);
+            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.12);
+        }
+
+        .btn-secondary {
+            background-color: var(--color-white);
+            color: var(--color-primary);
+            border: 1px solid var(--color-primary);
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+        }
+        .btn-secondary:hover {
+            background-color: var(--color-primary);
+            color: var(--color-white);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Image Placeholder Styling */
+        .img-placeholder {
+            width: 100%;
+            height: 0;
+            padding-bottom: 75%; /* 4:3 aspect ratio */
+            background: linear-gradient(135deg, var(--color-secondary) 0%, var(--color-accent) 100%);
+            border-radius: var(--border-radius-lg);
+            overflow: hidden;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.1rem;
+            color: rgba(0,0,0,0.3);
+            text-align: center;
+            box-shadow: 0 8px 24px var(--color-shadow);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .img-placeholder img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: var(--border-radius-lg);
+            opacity: 0; /* Hidden, but occupies space */
+        }
+        .img-placeholder.square {
+            padding-bottom: 100%; /* 1:1 aspect ratio */
+        }
+        .img-placeholder.wide {
+            padding-bottom: 56.25%; /* 16:9 aspect ratio */
+        }
+        .img-placeholder.tall {
+            padding-bottom: 133.33%; /* 3:4 aspect ratio */
+        }
+        .img-placeholder:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 30px rgba(0,0,0,0.15);
+        }
+        .img-placeholder::before {
+            content: attr(data-label);
+            position: absolute;
+            z-index: 1;
+            font-style: italic;
+            font-weight: 500;
+        }
+
+        /* Header */
+        .header {
+            position: sticky;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background-color: var(--color-white);
+            padding: var(--spacing-sm) 0;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+            z-index: 1000;
+        }
+        .header .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--color-brown-point);
+            letter-spacing: -0.5px;
+        }
+        .nav-menu ul {
+            display: flex;
+            list-style: none;
+        }
+        .nav-menu ul li {
+            margin-left: var(--spacing-md);
+        }
+        .nav-menu ul li a {
+            font-weight: 500;
+            color: var(--color-text-light);
+            transition: color 0.3s ease;
+        }
+        .nav-menu ul li a:hover {
+            color: var(--color-primary);
+        }
+        @media (max-width: 768px) {
+            .nav-menu {
+                display: none; /* Hide navigation on mobile for simplicity */
+            }
+            .header .container {
+                justify-content: center;
+            }
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(180deg, var(--color-soft-white) 0%, var(--color-secondary) 100%);
+            padding: var(--spacing-xl) 0;
+            position: relative;
+            overflow: hidden;
+        }
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            color: var(--color-text-dark);
+            max-width: 800px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .hero-content h1 {
+            font-size: 3.5rem;
+            margin-bottom: var(--spacing-sm);
+            color: var(--color-brown-point);
+            line-height: 1.2;
+        }
+        .hero-content p {
+            font-size: 1.3rem;
+            font-weight: 400;
+            color: var(--color-text-light);
+            margin-bottom: var(--spacing-md);
+            max-width: 600px;
+        }
+        .hero-cta-group {
+            display: flex;
+            gap: var(--spacing-sm);
+            margin-top: var(--spacing-md);
+        }
+        .hero-visual {
+            margin-top: var(--spacing-lg);
+            width: 90%;
+            max-width: 900px;
+            margin-left: auto;
+            margin-right: auto;
+            border-radius: var(--border-radius-lg);
+            box-shadow: 0 16px 48px var(--color-shadow);
+        }
+        .hero-visual .img-placeholder {
+            padding-bottom: 50%; /* 2:1 aspect ratio for wide hero image */
+            box-shadow: none; /* Shadow handled by parent */
+            border-radius: var(--border-radius-lg);
+        }
+        .hero-visual .img-placeholder:hover {
+            transform: none; /* No hover transform for hero visual */
+            box-shadow: none;
+        }
+
+        @media (max-width: 768px) {
+            .hero-content h1 {
+                font-size: 2.5rem;
+            }
+            .hero-content p {
+                font-size: 1.1rem;
+            }
+            .hero-cta-group {
+                flex-direction: column;
+                width: 100%;
+                max-width: 300px;
+            }
+            .btn {
+                width: 100%;
+            }
+            .hero-visual {
+                margin-top: var(--spacing-md);
+                width: 100%;
+            }
+            .hero-visual .img-placeholder {
+                padding-bottom: 65%; /* Adjust aspect ratio for mobile hero */
+            }
+        }
+
+        /* Brand Strengths Section */
+        .strengths-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: var(--spacing-md);
+            margin-top: var(--spacing-lg);
+        }
+        .strength-card {
+            background-color: var(--color-white);
+            padding: var(--spacing-md);
+            border-radius: var(--border-radius-lg);
+            box-shadow: 0 4px 16px var(--color-shadow);
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .strength-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+        }
+        .strength-icon {
+            width: 60px;
+            height: 60px;
+            margin: 0 auto var(--spacing-sm);
+            background-color: var(--color-secondary);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            color: var(--color-primary);
+        }
+        .strength-card h3 {
+            color: var(--color-brown-point);
+            margin-bottom: var(--spacing-sm);
+        }
+        .strength-card p {
+            color: var(--color-text-light);
+            font-size: 0.95rem;
+        }
+
+        /* Menu Section (Best Brunch Picks) */
+        .menu-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: var(--spacing-md);
+            margin-top: var(--spacing-lg);
+        }
+        .menu-card {
+            background-color: var(--color-white);
+            border-radius: var(--border-radius-lg);
+            box-shadow: 0 6px 20px var(--color-shadow);
+            overflow: hidden;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .menu-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 10px 28px rgba(0, 0, 0, 0.15);
+        }
+        .menu-card .img-placeholder {
+            border-radius: 0; /* No border-radius on image in card */
+            padding-bottom: 70%; /* Aspect ratio for menu items */
+            box-shadow: none;
+        }
+        .menu-card .img-placeholder:hover {
+            transform: none;
+            box-shadow: none;
+        }
+        .menu-card-content {
+            padding: var(--spacing-sm) var(--spacing-md) var(--spacing-md);
+        }
+        .menu-card h4 {
+            color: var(--color-brown-point);
+            margin-bottom: 8px;
+            font-weight: 600;
+        }
+        .menu-card .price {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--color-primary);
+            margin-bottom: var(--spacing-sm);
+        }
+        .menu-card p {
+            color: var(--color-text-light);
+            font-size: 0.9rem;
+            line-height: 1.5;
+        }
+        .menu-cta-group {
+            display: flex;
+            justify-content: center;
+            gap: var(--spacing-sm);
+            margin-top: var(--spacing-lg);
+        }
+        @media (max-width: 768px) {
+            .menu-cta-group {
+                flex-direction: column;
+                align-items: center;
+            }
+            .menu-cta-group .btn {
+                width: 100%;
+                max-width: 280px;
+            }
+        }
+
+        /* Signature Menu Highlight */
+        .signature-menu {
+            background-color: var(--color-secondary);
+            padding: var(--spacing-xl) 0;
+        }
+        .signature-layout {
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-lg);
+        }
+        .signature-image {
+            flex: 1;
+        }
+        .signature-image .img-placeholder {
+            padding-bottom: 80%; /* Adjusted aspect ratio for signature dish */
+        }
+        .signature-content {
+            flex: 1;
+            padding: var(--spacing-md);
+            background-color: var(--color-white);
+            border-radius: var(--border-radius-lg);
+            box-shadow: 0 8px 24px var(--color-shadow);
+        }
+        .signature-content h2 {
+            color: var(--color-brown-point);
+            margin-bottom: var(--spacing-sm);
+        }
+        .signature-content h3 {
+            color: var(--color-primary);
+            margin-bottom: var(--spacing-sm);
+            font-size: 1.6rem;
+        }
+        .signature-content p {
+            color: var(--color-text-light);
+            margin-bottom: var(--spacing-md);
+            line-height: 1.7;
+        }
+        @media (max-width: 992px) {
+            .signature-layout {
+                flex-direction: column;
+            }
+            .signature-content {
+                margin-top: var(--spacing-md);
+            }
+        }
+
+        /* Space Story */
+        .space-story-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: var(--spacing-md);
+            margin-top: var(--spacing-lg);
+            align-items: center;
+        }
+        .space-story-grid .text-content {
+            padding: var(--spacing-md);
+            background-color: var(--color-white);
+            border-radius: var(--border-radius-lg);
+            box-shadow: 0 6px 20px var(--color-shadow);
+            order: 1; /* Default order */
+        }
+        .space-story-grid .img-placeholder {
+            box-shadow: 0 6px 20px var(--color-shadow);
+            order: 2; /* Default order */
+        }
+        .space-story-grid .img-placeholder.wide {
+            padding-bottom: 60%; /* Slightly wider for aesthetic */
+        }
+        .space-story-grid .img-placeholder.tall {
+            padding-bottom: 120%; /* Taller for a different visual */
+        }
+        .space-story-grid .text-content h3 {
+            color: var(--color-brown-point);
+            margin-bottom: var(--spacing-sm);
+        }
+        .space-story-grid .text-content p {
+            color: var(--color-text-light);
+            line-height: 1.7;
+            margin-bottom: var(--spacing-md);
+        }
+        .space-cta {
+            margin-top: var(--spacing-lg);
+            text-align: center;
+        }
+        @media (max-width: 768px) {
+            .space-story-grid {
+                grid-template-columns: 1fr;
+            }
+            .space-story-grid .text-content,
+            .space-story-grid .img-placeholder {
+                order: unset; /* Remove specific order on mobile */
+            }
+        }
+
+        /* Reviews Section */
+        .reviews-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: var(--spacing-md);
+            margin-top: var(--spacing-lg);
+        }
+        .review-card {
+            background-color: var(--color-white);
+            padding: var(--spacing-md);
+            border-radius: var(--border-radius-lg);
+            box-shadow: 0 4px 16px var(--color-shadow);
+            display: flex;
+            flex-direction: column;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .review-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+        }
+        .review-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: var(--spacing-sm);
+        }
+        .reviewer-avatar {
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            background-color: var(--color-secondary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: var(--spacing-sm);
+            font-size: 1.2rem;
+            color: var(--color-primary);
+            font-weight: 500;
+            overflow: hidden;
+            flex-shrink: 0;
+        }
+        .reviewer-info strong {
+            display: block;
+            font-weight: 600;
+            color: var(--color-brown-point);
+            margin-bottom: 4px;
+        }
+        .star-rating {
+            color: #FFD700; /* Gold */
+            font-size: 1.1rem;
+        }
+        .review-text {
+            color: var(--color-text-light);
+            font-size: 0.95rem;
+            line-height: 1.6;
+            flex-grow: 1;
+        }
+
+        /* Instagram Gallery */
+        .instagram-gallery {
+            background-color: var(--color-soft-white);
+        }
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 12px;
+            margin-top: var(--spacing-lg);
+        }
+        .gallery-item {
+            width: 100%;
+            padding-bottom: 100%; /* Square aspect ratio for Instagram */
+            position: relative;
+            overflow: hidden;
+            border-radius: var(--border-radius-md);
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .gallery-item:hover {
+            transform: scale(1.03);
+            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
+        }
+        .gallery-item .img-placeholder {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            padding-bottom: 0; /* Override default padding-bottom */
+            border-radius: var(--border-radius-md);
+            box-shadow: none;
+        }
+        .gallery-item .img-placeholder:hover {
+            transform: none;
+            box-shadow: none;
+        }
+        .instagram-cta {
+            margin-top: var(--spacing-lg);
+            text-align: center;
+        }
+        @media (max-width: 768px) {
+            .gallery-grid {
+                grid-template-columns: repeat(3, 1fr);
+                gap: 8px;
+            }
+        }
+
+        /* FAQ Section */
+        .faq-list {
+            max-width: 800px;
+            margin: var(--spacing-lg) auto 0;
+        }
+        .faq-item {
+            background-color: var(--color-white);
+            border-radius: var(--border-radius-lg);
+            margin-bottom: 12px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+            overflow: hidden;
+        }
+        .faq-question {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: var(--spacing-sm) var(--spacing-md);
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--color-brown-point);
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        .faq-question:hover {
+            background-color: var(--color-soft-white);
+        }
+        .faq-question::after {
+            content: '+';
+            font-size: 1.5rem;
+            line-height: 1;
+            margin-left: var(--spacing-sm);
+            transition: transform 0.3s ease;
+        }
+        .faq-question.active::after {
+            content: '-';
+            transform: rotate(0deg);
+        }
+        .faq-answer {
+            padding: 0 var(--spacing-md) var(--spacing-sm);
+            color: var(--color-text-light);
+            font-size: 0.95rem;
+            line-height: 1.7;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease-out, padding 0.4s ease-out;
+            will-change: max-height;
+        }
+        .faq-question.active + .faq-answer {
+            max-height: 200px; /* Adjust as needed */
+            padding: var(--spacing-sm) var(--spacing-md) var(--spacing-md);
+        }
+
+        /* Final CTA Section */
+        .final-cta {
+            background-color: var(--color-primary);
+            color: var(--color-white);
+            text-align: center;
+            padding: var(--spacing-xl) 0;
+        }
+        .final-cta h2 {
+            color: var(--color-white);
+            margin-bottom: var(--spacing-md);
+            font-size: 2.5rem;
+        }
+        .final-cta-info {
+            display: flex;
+            justify-content: center;
+            gap: var(--spacing-lg);
+            margin-bottom: var(--spacing-lg);
+            flex-wrap: wrap;
+        }
+        .info-block {
+            text-align: left;
+            padding: var(--spacing-md);
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: var(--border-radius-lg);
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+            flex: 1;
+            min-width: 280px;
+            max-width: 400px;
+        }
+        .info-block h3 {
+            color: var(--color-white);
+            margin-bottom: var(--spacing-sm);
+            font-size: 1.4rem;
+        }
+        .info-block p {
+            font-size: 1.05rem;
+            line-height: 1.8;
+            margin-bottom: 8px;
+        }
+        .info-block a {
+            color: var(--color-white);
+            text-decoration: underline;
+            transition: opacity 0.3s ease;
+        }
+        .info-block a:hover {
+            opacity: 0.8;
+        }
+        .map-placeholder {
+            width: 100%;
+            max-width: 600px;
+            margin: var(--spacing-md) auto;
+            border-radius: var(--border-radius-lg);
+            overflow: hidden;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+        }
+        .map-placeholder .img-placeholder {
+            padding-bottom: 60%; /* Map aspect ratio */
+            background: linear-gradient(135deg, #A8C697 0%, #729661 100%);
+            box-shadow: none;
+        }
+        .map-placeholder .img-placeholder::before {
+            content: '지도 플레이스홀더';
+            color: rgba(255,255,255,0.6);
+        }
+        .final-cta-buttons {
+            display: flex;
+            justify-content: center;
+            gap: var(--spacing-sm);
+            margin-top: var(--spacing-lg);
+        }
+        .final-cta-buttons .btn-secondary {
+            background-color: var(--color-white);
+            color: var(--color-primary);
+            border-color: var(--color-white);
+        }
+        .final-cta-buttons .btn-secondary:hover {
+            background-color: var(--color-primary);
+            color: var(--color-white);
+            border-color: var(--color-white);
+        }
+        @media (max-width: 768px) {
+            .final-cta h2 {
+                font-size: 2rem;
+            }
+            .final-cta-info {
+                flex-direction: column;
+                gap: var(--spacing-md);
+            }
+            .final-cta-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+            .final-cta-buttons .btn {
+                width: 100%;
+                max-width: 300px;
+            }
+        }
+
+        /* Footer */
+        .footer {
+            background-color: var(--color-brown-point);
+            color: var(--color-white);
+            padding: var(--spacing-md) 0;
+            text-align: center;
+            font-size: 0.9rem;
+        }
+        .footer .logo {
+            color: var(--color-white);
+            margin-bottom: 10px;
+            display: block;
+        }
+        .footer p {
+            opacity: 0.8;
+            line-height: 1.8;
+        }
+        .footer-links {
+            margin-top: 10px;
+        }
+        .footer-links a {
+            color: var(--color-white);
+            margin: 0 10px;
+            opacity: 0.8;
+            transition: opacity 0.3s ease;
+        }
+        .footer-links a:hover {
+            opacity: 1;
+        }
+
+        /* Mobile Sticky CTA */
+        .mobile-sticky-cta {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background-color: var(--color-white);
+            padding: 12px var(--spacing-sm);
+            box-shadow: 0 -4px 16px rgba(0, 0, 0, 0.1);
+            z-index: 100;
+            display: none; /* Hidden by default */
+            justify-content: center;
+        }
+        .mobile-sticky-cta .btn {
+            width: 100%;
+            max-width: 400px;
+            padding: 14px 24px;
+            font-size: 1rem;
+        }
+        @media (max-width: 768px) {
+            .mobile-sticky-cta {
+                display: flex; /* Show on mobile */
+            }
+            body {
+                padding-bottom: 70px; /* Space for sticky CTA */
+            }
+        }
+
+    </style>
+</head>
+<body>
+    <!-- Header Section -->
+    <header class="header">
+        <div class="container">
+            <a href="#" class="logo">Freshify Brunch House</a>
+            <nav class="nav-menu">
+                <ul>
+                    <li><a href="#brand-story">브랜드</a></li>
+                    <li><a href="#menu">메뉴</a></li>
+                    <li><a href="#space">공간</a></li>
+                    <li><a href="#reviews">리뷰</a></li>
+                    <li><a href="#gallery">갤러리</a></li>
+                    <li><a href="#faq">FAQ</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container hero-content">
+            <h1>예쁜데 가볍고, 감성적인데 실제로 맛있는 브런치</h1>
+            <p>바쁜 일상 속, 몸에 부담 없이 기분 좋은 한 끼를 선물하세요.<br>Freshify Brunch House에서 신선함과 감성을 동시에 경험합니다.</p>
+            <div class="hero-cta-group">
+                <a href="#menu" class="btn btn-primary">지금 메뉴 보기</a>
+                <a href="#" class="btn btn-secondary">브런치 추천 받기</a>
+            </div>
+        </div>
+        <div class="hero-visual container">
+            <!-- Replace with real brunch table scene photo -->
+            <div class="img-placeholder" data-label="햇살이 비치는 통창 옆, 신선한 브런치 플레이팅">
+                <img src="data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=" alt="햇살이 비치는 통창 옆, 신선하고 다채로운 브런치 플레이팅">
+            </div>
+        </div>
+    </section>
+
+    <!-- Brand Strengths Section -->
+    <section id="brand-story" class="section-padding">
+        <div class="container text-center">
+            <h2>Freshify Brunch House가 특별한 이유</h2>
+            <p class="p-large" style="margin-top: 16px; color: var(--color-text-light);">건강한 재료와 감성적인 공간 경험을 한 번에 제안하는 성수 브런치 카페</p>
+            <div class="strengths-grid">
+                <div class="strength-card">
+                    <div class="strength-icon">🌱</div>
+                    <h3>매일 아침, 신선한 재료</h3>
+                    <p>엄선된 제철 식재료로 만드는 건강하고 맛있는 브런치. 속 편안한 한 끼를 선사합니다.</p>
+                </div>
+                <div class="strength-card">
+                    <div class="strength-icon">🥗</div>
+                    <h3>속 편안한 가벼움</h3>
+                    <p>부담 없이 즐길 수 있는 라이트하지만 든든한 메뉴. 예쁜데 가볍습니다.</p>
+                </div>
+                <div class="strength-card">
+                    <div class="strength-icon">✨</div>
+                    <h3>성수동 감성 공간</h3>
+                    <p>오래 머물고 싶은 편안하고 따뜻한 인테리어. 감성적인데 실제로 편안합니다.</p>
+                </div>
+                <div class="strength-card">
+                    <div class="strength-icon">🍽️</div>
+                    <h3>눈과 입이 즐거운 맛</h3>
+                    <p>비주얼과 맛 모두 완벽한 특별한 레시피. 감성적인데 실제로 맛있습니다.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Best Brunch Picks Section -->
+    <section id="menu" class="section-padding" style="background-color: var(--color-secondary);">
+        <div class="container text-center">
+            <h2>Freshify의 Best Brunch Picks</h2>
+            <p class="p-large" style="margin-top: 16px; color: var(--color-text-light);">건강하고 맛있는 Freshify의 시그니처 메뉴들을 만나보세요.</p>
+            <div class="menu-grid">
+                <div class="menu-card">
+                    <!-- Replace with real Avocado Open Toast photo -->
+                    <div class="img-placeholder" data-label="아보카도 오픈토스트">
+                        <img src="data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=" alt="아보카도 오픈토스트">
+                    </div>
+                    <div class="menu-card-content">
+                        <h4>아보카도 오픈토스트</h4>
+                        <p class="price">13,500원</p>
+                        <p>신선한 아보카도와 상큼한 드레싱의 조화</p>
+                    </div>
+                </div>
+                <div class="menu-card">
+                    <!-- Replace with real Ricotta Green Salad photo -->
+                    <div class="img-placeholder" data-label="리코타 그린 샐러드">
+                        <img src="data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=" alt="리코타 그린 샐러드">
+                    </div>
+                    <div class="menu-card-content">
+                        <h4>리코타 그린 샐러드</h4>
+                        <p class="price">12,800원</p>
+                        <p>고소한 리코타 치즈와 신선한 채소의 샐러드</p>
+                    </div>
+                </div>
+                <div class="menu-card">
+                    <!-- Replace with real French Toast Plate photo -->
+                    <div class="img-placeholder" data-label="프렌치토스트 플레이트">
+                        <img src="data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=" alt="프렌치토스트 플레이트">
+                    </div>
+                    <div class="menu-card-content">
+                        <h4>프렌치토스트 플레이트</h4>
+                        <p class="price">14,500원</p>
+                        <p>부드러운 프렌치토스트와 곁들임의 완벽한 조화</p>
+                    </div>
+                </div>
+                <div class="menu-card">
+                    <!-- Replace with real Poached Egg Mushroom Toast photo -->
+                    <div class="img-placeholder" data-label="수란 머쉬룸 토스트">
+                        <img src="data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=" alt="수란 머쉬룸 토스트">
+                    </div>
+                    <div class="menu-card-content">
+                        <h4>수란 머쉬룸 토스트</h4>
+                        <p class="price">13,900원</p>
+                        <p>촉촉한 수란과 향긋한 버섯의 풍미</p>
+                    </div>
+                </div>
+                <div class="menu-card">
+                    <!-- Replace with real Yogurt Granola Bowl photo -->
+                    <div class="img-placeholder" data-label="요거트 그래놀라 볼">
+                        <img src="data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=" alt="요거트 그래놀라 볼">
+                    </div>
+                    <div class="menu-card-content">
+                        <h4>요거트 그래놀라 볼</h4>
+                        <p class="price">9,800원</p>
+                        <p>신선한 요거트와 고소한 그래놀라, 제철 과일</p>
+                    </div>
+                </div>
+                <div class="menu-card">
+                    <!-- Replace with real Seasonal Fruit Sand photo -->
+                    <div class="img-placeholder" data-label="시즌 과일 샌드">
+                        <img src="data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=" alt="시즌 과일 샌드">
+                    </div>
+                    <div class="menu-card-content">
+                        <h4>시즌 과일 샌드</h4>
+                        <p class="price">11,500원</p>
+                        <p>제철 과일이 가득한 상큼한 샌드위치</p>
+                    </div>
+                </div>
+            </div>
+            <div class="menu-cta-group">
+                <a href="#" class="btn btn-primary">오늘 인기 메뉴 확인</a>
+                <a href="#" class="btn btn-secondary">시즌 메뉴 보기</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Signature Menu Highlight Section -->
+    <section class="signature-menu">
+        <div class="container">
+            <h2 class="text-center">Freshify Brunch House만의 특별한 시그니처 브런치</h2>
+            <p class="text-center p-large" style="margin-top: 16px; color: var(--color-text-light);">놓치지 마세요! Freshify의 자부심이 담긴 메뉴입니다.</p>
+            <div class="signature-layout" style="margin-top: var(--spacing-lg);">
+                <div class="signature-image">
+                    <!-- Replace with real close-up signature menu photo -->
+                    <div class="img-placeholder tall" data-label="시그니처 메뉴 클로즈업">
+                        <img src="data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=" alt="Freshify 시그니처 메뉴">
+                    </div>
+                </div>
+                <div class="signature-content">
+                    <h3>Freshify 시그니처 플레이트</h3>
+                    <p>신선한 제철 과일, 수제 리코타 치즈, 부드러운 스크램블 에그, 그리고 갓 구운 통밀빵의 완벽한 조화. 몸에 좋은 재료들로 가득 채워져, 한 끼 식사로도 충분한 만족감을 선사합니다. 눈과 입이 모두 즐거운 Freshify의 대표 메뉴입니다.</p>
+                    <p style="font-size: 0.9rem; color: var(--color-text-dark); font-weight: 500;">#건강한재료 #성수맛집 #인생브런치 #시그니처메뉴</p>
+                    <a href="#menu" class="btn btn-primary" style="margin-top: var(--spacing-md);">더 많은 메뉴 보기</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Space Story Section -->
+    <section id="space" class="section-padding">
+        <div class="container text-center">
+            <h2>일상 속 작은 휴식처, Freshify Brunch House</h2>
+            <p class="p-large" style="margin-top: 16px; color: var(--color-text-light);">따뜻한 햇살이 머무는 공간에서 여유를 만끽하세요.</p>
+            <div class="space-story-grid">
+                <div class="text-content">
+                    <h3>성수동의 감성을 담은 공간</h3>
+                    <p>Freshify Brunch House는 바쁜 도시 속에서 잠시 멈춰 서서 자신을 돌볼 수 있는 아늑한 공간입니다. 크림, 세이지 그린, 웜 베이지 톤의 인테리어는 편안하고 따뜻한 분위기를 선사하며, 곳곳의 식물들이 생기를 더합니다.</p>
+                    <p>친구와의 즐거운 대화, 연인과의 로맨틱한 데이트, 혹은 혼자만의 조용한 사색 시간까지. 어떤 목적이든 Freshify는 당신의 소중한 순간을 더욱 특별하게 만들어 줄 것입니다.</p>
+                </div>
+                <!-- Replace with real cafe interior photo 1 -->
+                <div class="img-placeholder wide" data-label="카페 내부 전경">
+                    <img src="data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=" alt="Freshify Brunch House 내부 전경">
+                </div>
+                <!-- Replace with real cafe interior photo 2 (e.g., window seat) -->
+                <div class="img-placeholder tall" data-label="햇살 가득한 창가 자리">
+                    <img src="data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=" alt="Freshify Brunch House 창가 자리">
+                </div>
+                <div class="text-content">
+                    <h3>오래 머물고 싶은 편안함</h3>
+                    <p>저희는 단순히 음식을 파는 공간을 넘어, 고객분들이 진정으로 편안함을 느끼고 재충전할 수 있는 장소가 되기를 바랍니다. 안락한 의자와 적절한 조명, 그리고 은은하게 퍼지는 향기까지, 모든 요소가 당신의 완벽한 휴식을 위해 세심하게 기획되었습니다.</p>
+                    <p>Freshify Brunch House에서 몸과 마음이 모두 건강해지는 경험을 누려보세요.</p>
+                </div>
+            </div>
+            <div class="space-cta">
+                <a href="#gallery" class="btn btn-secondary">매장 분위기 더 둘러보기</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Reviews Section -->
+    <section id="reviews" class="section-padding" style="background-color: var(--color-soft-white);">
+        <div class="container text-center">
+            <h2>진심이 담긴 고객 후기</h2>
+            <p class="p-large" style="margin-top: 16px; color: var(--color-text-light);">Freshify Brunch House의 이야기를 고객님의 목소리로 들어보세요.</p>
+            <div class="reviews-grid">
+                <div class="review-card">
+                    <div class="review-header">
+                        <div class="reviewer-avatar">😋</div>
+                        <div class="reviewer-info">
+                            <strong>김*은님</strong>
+                            <div class="star-rating">★★★★★</div>
+                        </div>
+                    </div>
+                    <p class="review-text">"성수동 브런치 맛집 찾다가 발견했는데 정말 최고예요! 분위기도 너무 좋고, 메뉴 하나하나 신선함이 느껴져서 먹으면서도 건강해지는 기분이었어요. 특히 아보카도 토스트는 꼭 드셔보세요!"</p>
+                </div>
+                <div class="review-card">
+                    <div class="review-header">
+                        <div class="reviewer-avatar">🌸</div>
+                        <div class="reviewer-info">
+                            <strong>이*진님</strong>
+                            <div class="star-rating">★★★★★</div>
+                        </div>
+                    </div>
+                    <p class="review-text">"친구랑 브런치 데이트 왔는데 공간이 너무 예뻐서 사진 오조오억장 찍었어요! 메뉴도 비주얼만큼이나 맛있어서 감탄했어요. 다음엔 다른 메뉴도 도전해보려구요. 재방문 의사 100%입니다!"</p>
+                </div>
+                <div class="review-card">
+                    <div class="review-header">
+                        <div class="reviewer-avatar">✨</div>
+                        <div class="reviewer-info">
+                            <strong>박*희님</strong>
+                            <div class="star-rating">★★★★★</div>
+                        </div>
+                    </div>
+                    <p class="review-text">"평소 브런치가 부담스러웠는데 Freshify는 정말 가볍고 속이 편안했어요. 재료도 신선하고 플레이팅도 예술이라 대접받는 느낌이었습니다. 성수 브런치 카페 중 단연 최고라고 생각해요."</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Instagram Gallery Section -->
+    <section id="gallery" class="instagram-gallery section-padding">
+        <div class="container text-center">
+            <h2>Freshify Brunch House의 감성적인 순간들</h2>
+            <p class="p-large" style="margin-top: 16px; color: var(--color-text-light);">인스타그램에서 만나는 Freshify의 최신 소식과 아름다운 모습들을 확인하세요.</p>
+            <div class="gallery-grid">
+                <div class="gallery-item">
+                    <!-- Replace with real Instagram-style photo -->
+                    <div class="img-placeholder square" data-label="인스타 감성 샷 1">
+                        <img src="data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=" alt="Freshify 인스타그램 갤러리 이미지 1">
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <!-- Replace with real Instagram-style photo -->
+                    <div class="img-placeholder square" data-label="인스타 감성 샷 2">
+                        <img src="data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=" alt="Freshify 인스타그램 갤러리 이미지 2">
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <!-- Replace with real Instagram-style photo -->
+                    <div class="img-placeholder square" data-label="인스타 감성 샷 3">
+                        <img src="data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=" alt="Freshify 인스타그램 갤러리 이미지 3">
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <!-- Replace with real Instagram-style photo -->
+                    <div class="img-placeholder square" data-label="인스타 감성 샷 4">
+                        <img src="data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=" alt="Freshify 인스타그램 갤러리 이미지 4">
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <!-- Replace with real Instagram-style photo -->
+                    <div class="img-placeholder square" data-label="인스타 감성 샷 5">
+                        <img src="data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=" alt="Freshify 인스타그램 갤러리 이미지 5">
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <!-- Replace with real Instagram-style photo -->
+                    <div class="img-placeholder square" data-label="인스타 감성 샷 6">
+                        <img src="data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=" alt="Freshify 인스타그램 갤러리 이미지 6">
+                    </div>
+                </div>
+            </div>
+            <div class="instagram-cta">
+                <a href="https://www.instagram.com/freshify_brunchhouse" target="_blank" class="btn btn-secondary">인스타그램 바로가기</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section id="faq" class="section-padding">
+        <div class="container text-center">
+            <h2>자주 묻는 질문을 확인하세요</h2>
+            <p class="p-large" style="margin-top: 16px; color: var(--color-text-light);">Freshify Brunch House 방문 전 궁금한 점을 해결해 드립니다.</p>
+            <div class="faq-list">
+                <div class="faq-item">
+                    <div class="faq-question">영업시간은 어떻게 되나요?</div>
+                    <div class="faq-answer">
+                        <p>저희 Freshify Brunch House는 매일 오전 9시부터 오후 6시까지 운영합니다. (라스트 오더 오후 5시)</p>
+                        <p>정기 휴무일은 매주 월요일입니다.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">주차가 가능한가요?</div>
+                    <div class="faq-answer">
+                        <p>매장 건물 지하에 유료 주차장을 이용하실 수 있으며, 브런치 이용 시 1시간 무료 주차를 지원합니다. (매장 이용 금액 3만원 이상 시)</p>
+                        <p>자세한 내용은 방문 시 직원에게 문의해 주세요.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">예약이 가능한가요?</div>
+                    <div class="faq-answer">
+                        <p>네, 평일 오전 9시부터 11시까지는 전화 예약을 통해 이용 가능합니다. 주말 및 공휴일은 예약 없이 현장 방문만 가능합니다.</p>
+                        <p>단체 예약(5인 이상)은 별도 문의 부탁드립니다.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">포장(테이크아웃)도 되나요?</div>
+                    <div class="faq-answer">
+                        <p>네, 모든 메뉴 포장 가능합니다. 신선하고 맛있는 브런치를 집에서도 즐겨보세요!</p>
+                        <p>포장 주문은 매장 방문 또는 전화로 가능합니다.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Final Call to Action Section -->
+    <section class="final-cta section-padding">
+        <div class="container">
+            <h2>오늘, Freshify Brunch House에서<br>당신의 하루를 특별하게 만들어보세요!</h2>
+            <div class="final-cta-info">
+                <div class="info-block">
+                    <h3>매장 정보</h3>
+                    <p><strong>주소:</strong> 서울 성동구 성수이로 78, 1층 Freshify Brunch House</p>
+                    <p><strong>영업시간:</strong> 매일 09:00 - 18:00 (월요일 휴무)</p>
+                    <p><strong>전화:</strong> <a href="tel:02-1234-5678">02-1234-5678</a></p>
+                    <p><strong>이메일:</strong> <a href="mailto:freshify@example.com">freshify@example.com</a></p>
+                </div>
+                <div class="map-placeholder">
+                    <!-- Replace with real map image or embedded map -->
+                    <div class="img-placeholder wide" data-label="매장 위치 지도">
+                        <img src="data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=" alt="Freshify Brunch House 위치 지도">
+                    </div>
+                </div>
+            </div>
+            <div class="final-cta-buttons">
+                <a href="#menu" class="btn btn-primary">지금 메뉴 보기</a>
+                <a href="#" class="btn btn-secondary">매장 찾아오기</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer Section -->
+    <footer class="footer">
+        <div class="container">
+            <a href="#" class="logo">Freshify Brunch House</a>
+            <p>서울 성동구 성수이로 78, 1층 Freshify Brunch House</p>
+            <p>대표: 김프레쉬 | 사업자등록번호: 123-45-67890</p>
+            <p>Copyright &copy; 2023 Freshify Brunch House. All rights reserved.</p>
+            <div class="footer-links">
+                <a href="#">이용약관</a> | <a href="#">개인정보처리방침</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Mobile Sticky CTA (visible only on mobile) -->
+    <div class="mobile-sticky-cta">
+        <a href="#menu" class="btn btn-primary">지금 메뉴 보기</a>
+    </div>
+
+    <script>
+        // FAQ Accordion functionality
+        document.addEventListener('DOMContentLoaded', () => {
+            const faqQuestions = document.querySelectorAll('.faq-question');
+
+            faqQuestions.forEach(question => {
+                question.addEventListener('click', () => {
+                    const isActive = question.classList.contains('active');
+
+                    // Close all active questions
+                    faqQuestions.forEach(q => {
+                        q.classList.remove('active');
+                        q.nextElementSibling.style.maxHeight = null;
+                        q.nextElementSibling.style.padding = '0 var(--spacing-md) var(--spacing-sm)';
+                    });
+
+                    // If the clicked question was not active, open it
+                    if (!isActive) {
+                        question.classList.add('active');
+                        const answer = question.nextElementSibling;
+                        answer.style.maxHeight = answer.scrollHeight + 'px';
+                        answer.style.padding = 'var(--spacing-sm) var(--spacing-md) var(--spacing-md)';
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
