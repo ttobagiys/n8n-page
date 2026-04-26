@@ -1,0 +1,1855 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Freshify Brunch House - 성수동 건강하고 감성적인 브런치 카페</title>
+    <meta name="description" content="성수동 Freshify Brunch House에서 가볍고 만족스러운 브런치를 즐겨보세요. 신선한 재료와 예쁜 감성 공간으로 직장인, 프리랜서 여성들에게 완벽한 휴식을 선사합니다. 지금 메뉴를 확인해보세요!">
+    <meta name="keywords" content="성수 브런치 카페, 성수 브런치 추천, 성수 카페 분위기, Freshify 브런치, 아보카도 오픈토스트 성수, 리코타 샐러드 성수, 성수 데이트 카페, 가벼운 브런치 성수">
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='%23A3B18A' d='M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z'/%3E%3C/svg%3E">
+    <style>
+        /* 폰트 임포트 (외부 라이브러리 사용 금지이므로, 시스템 폰트 스택 사용) */
+        @font-face {
+            font-family: 'Pretendard';
+            src: local('Pretendard-Regular'), local('Pretendard Regular');
+            font-weight: 400;
+            font-display: swap;
+        }
+        @font-face {
+            font-family: 'Pretendard';
+            src: local('Pretendard-Medium'), local('Pretendard Medium');
+            font-weight: 500;
+            font-display: swap;
+        }
+        @font-face {
+            font-family: 'Pretendard';
+            src: local('Pretendard-SemiBold'), local('Pretendard SemiBold');
+            font-weight: 600;
+            font-display: swap;
+        }
+        @font-face {
+            font-family: 'Pretendard';
+            src: local('Pretendard-Bold'), local('Pretendard Bold');
+            font-weight: 700;
+            font-display: swap;
+        }
+
+        :root {
+            --color-soft-white: #FDFDFD;
+            --color-cream: #FDF9F3;
+            --color-warm-beige: #EBE0D0;
+            --color-sage-green: #A3B18A;
+            --color-dark-sage: #808B71;
+            --color-light-brown: #C9B8A7;
+            --color-text-dark: #333333;
+            --color-text-light: #555555;
+            --color-border-light: #E0E0E0;
+            --color-shadow-light: rgba(0, 0, 0, 0.05);
+            --color-shadow-medium: rgba(0, 0, 0, 0.1);
+
+            --font-family-primary: 'Pretendard', 'Noto Sans KR', sans-serif;
+            --max-width-desktop: 1200px;
+            --section-padding-mobile: 40px 20px;
+            --section-padding-desktop: 80px 40px;
+        }
+
+        /* Reset & Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: var(--font-family-primary);
+            color: var(--color-text-dark);
+            background-color: var(--color-soft-white);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        a {
+            color: var(--color-sage-green);
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-weight: 600;
+            line-height: 1.3;
+            color: var(--color-dark-sage);
+        }
+
+        h1 { font-size: 2.5rem; }
+        h2 { font-size: 2rem; }
+        h3 { font-size: 1.5rem; }
+        p { font-size: 1rem; }
+
+        @media (min-width: 768px) {
+            h1 { font-size: 3.5rem; }
+            h2 { font-size: 2.5rem; }
+            h3 { font-size: 1.8rem; }
+            p { font-size: 1.1rem; }
+        }
+
+        /* Utility Classes */
+        .container {
+            max-width: var(--max-width-desktop);
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 40px;
+            color: var(--color-dark-sage);
+            font-size: 2rem;
+        }
+
+        .button {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 14px 28px;
+            border-radius: 8px;
+            font-weight: 500;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-align: center;
+            white-space: nowrap;
+        }
+
+        .button.primary {
+            background-color: var(--color-sage-green);
+            color: var(--color-soft-white);
+            border: 1px solid var(--color-sage-green);
+        }
+
+        .button.primary:hover {
+            background-color: var(--color-dark-sage);
+            border-color: var(--color-dark-sage);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 10px var(--color-shadow-medium);
+        }
+
+        .button.secondary {
+            background-color: transparent;
+            color: var(--color-sage-green);
+            border: 1px solid var(--color-sage-green);
+        }
+
+        .button.secondary:hover {
+            background-color: var(--color-sage-green);
+            color: var(--color-soft-white);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 10px var(--color-shadow-light);
+        }
+
+        .button.ghost {
+            background-color: transparent;
+            color: var(--color-text-light);
+            border: none;
+            padding: 8px 15px;
+            font-size: 0.9rem;
+        }
+
+        .button.ghost:hover {
+            color: var(--color-sage-green);
+            background-color: rgba(163, 177, 138, 0.1);
+        }
+
+        .image-placeholder {
+            background-color: var(--color-warm-beige); /* Default placeholder color */
+            border-radius: 12px;
+            width: 100%;
+            height: 200px; /* Default height, can be overridden */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--color-text-light);
+            font-size: 0.9rem;
+            text-align: center;
+            overflow: hidden;
+            position: relative;
+        }
+        .image-placeholder::after {
+            content: 'Image Placeholder';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            opacity: 0.7;
+        }
+
+        .svg-graphic-element {
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: 1;
+        }
+        .svg-graphic-element path {
+            fill: var(--color-sage-green);
+            opacity: 0.1;
+        }
+
+        /* Fixed Mobile CTA Bar */
+        .mobile-fixed-cta-bar {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            background-color: var(--color-soft-white);
+            padding: 15px 20px;
+            box-shadow: 0 -2px 10px var(--color-shadow-medium);
+            display: flex;
+            justify-content: space-around;
+            gap: 10px;
+            border-top-left-radius: 15px;
+            border-top-right-radius: 15px;
+            transform: translateY(0);
+            transition: transform 0.3s ease-in-out;
+        }
+        .mobile-fixed-cta-bar.hidden {
+            transform: translateY(100%);
+        }
+        .mobile-fixed-cta-bar .button {
+            flex-grow: 1;
+            padding: 12px 10px;
+            font-size: 0.9rem;
+            border-radius: 6px;
+        }
+        @media (min-width: 768px) {
+            .mobile-fixed-cta-bar {
+                display: none;
+            }
+        }
+
+        /* Header / Hero Section */
+        .hero {
+            background-color: var(--color-soft-white);
+            padding: var(--section-padding-mobile);
+            min-height: 80vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-content {
+            z-index: 2;
+            max-width: 500px;
+            margin-bottom: 40px;
+        }
+
+        .hero-content h1 {
+            color: var(--color-dark-sage);
+            margin-bottom: 15px;
+            font-size: 2.2rem;
+        }
+
+        .hero-content p {
+            color: var(--color-text-light);
+            margin-bottom: 30px;
+            font-size: 1.1rem;
+        }
+
+        .hero-cta-group {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .hero-visual {
+            position: relative;
+            width: 100%;
+            max-width: 400px;
+            height: 300px;
+            background-color: var(--color-cream);
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px var(--color-shadow-medium);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-top: 40px;
+        }
+
+        .hero-visual .svg-graphic-element {
+            width: 80%;
+            height: 80%;
+            opacity: 0.3;
+        }
+
+        .hero-menu-card-preview {
+            position: absolute;
+            bottom: -20px; /* Slightly off-bottom */
+            right: -20px; /* Slightly off-right */
+            width: 180px;
+            height: 150px;
+            background-color: var(--color-soft-white);
+            border-radius: 10px;
+            box-shadow: 0 8px 20px var(--color-shadow-medium);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 15px;
+            text-align: center;
+            font-size: 0.9rem;
+            color: var(--color-text-dark);
+            z-index: 3;
+            transform: rotate(5deg);
+        }
+        .hero-menu-card-preview strong {
+            font-weight: 600;
+            color: var(--color-dark-sage);
+            margin-bottom: 5px;
+        }
+        .hero-menu-card-preview span {
+            color: var(--color-sage-green);
+            font-weight: 500;
+            margin-top: 5px;
+        }
+        .hero-menu-card-preview .menu-item-visual {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background-color: var(--color-light-brown);
+            margin-bottom: 10px;
+            box-shadow: inset 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        @media (min-width: 768px) {
+            .hero {
+                flex-direction: row;
+                text-align: left;
+                padding: var(--section-padding-desktop);
+                min-height: 90vh;
+            }
+
+            .hero-content {
+                flex: 1;
+                max-width: none;
+                margin-bottom: 0;
+                padding-right: 40px;
+            }
+
+            .hero-content h1 {
+                font-size: 3.5rem;
+            }
+
+            .hero-content p {
+                font-size: 1.2rem;
+            }
+
+            .hero-cta-group {
+                flex-direction: row;
+                gap: 20px;
+            }
+
+            .hero-visual {
+                flex: 1;
+                max-width: 600px;
+                height: 450px;
+                margin-top: 0;
+            }
+            .hero-menu-card-preview {
+                width: 220px;
+                height: 180px;
+                bottom: -30px;
+                right: -30px;
+                transform: rotate(7deg);
+            }
+            .hero-menu-card-preview .menu-item-visual {
+                width: 70px;
+                height: 70px;
+            }
+        }
+
+        /* Brand Strengths Section */
+        .brand-strengths {
+            padding: var(--section-padding-mobile);
+            background-color: var(--color-cream);
+        }
+
+        .strength-grid {
+            display: grid;
+            gap: 30px;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        }
+
+        .strength-card {
+            background-color: var(--color-soft-white);
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 5px 15px var(--color-shadow-light);
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+
+        .strength-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px var(--color-shadow-medium);
+        }
+
+        .strength-card .icon-wrapper {
+            width: 60px;
+            height: 60px;
+            margin: 0 auto 20px;
+            background-color: rgba(163, 177, 138, 0.15); /* Light sage tint */
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .strength-card .icon-wrapper svg {
+            width: 30px;
+            height: 30px;
+            fill: var(--color-sage-green);
+        }
+
+        .strength-card h3 {
+            color: var(--color-dark-sage);
+            margin-bottom: 10px;
+            font-size: 1.25rem;
+        }
+
+        .strength-card p {
+            color: var(--color-text-light);
+            font-size: 0.95rem;
+            margin-bottom: 15px;
+        }
+
+        .strength-card .button.ghost {
+            font-size: 0.9rem;
+        }
+
+        @media (min-width: 768px) {
+            .brand-strengths {
+                padding: var(--section-padding-desktop);
+            }
+            .strength-grid {
+                grid-template-columns: repeat(4, 1fr);
+            }
+        }
+
+        /* Best Brunch Picks Section */
+        .best-brunch-picks {
+            padding: var(--section-padding-mobile);
+            background-color: var(--color-soft-white);
+        }
+
+        .menu-slider-wrapper {
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
+            scroll-snap-type: x mandatory;
+            padding-bottom: 20px;
+        }
+
+        .menu-slider {
+            display: flex;
+            gap: 20px;
+            padding-bottom: 10px; /* For scrollbar */
+        }
+
+        .menu-card {
+            flex: 0 0 280px; /* Fixed width for mobile cards */
+            scroll-snap-align: start;
+            background-color: var(--color-cream);
+            border-radius: 12px;
+            box-shadow: 0 5px 15px var(--color-shadow-light);
+            overflow: hidden;
+            padding: 20px;
+            text-align: left;
+            transition: transform 0.3s ease;
+        }
+        .menu-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px var(--color-shadow-medium);
+        }
+
+        .menu-card .menu-item-visual {
+            width: 100%;
+            height: 180px;
+            background-color: var(--color-warm-beige); /* Specific visual for menu item */
+            border-radius: 8px;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.8rem;
+            color: var(--color-text-light);
+            box-shadow: inset 0 2px 5px rgba(0,0,0,0.1);
+        }
+        .menu-card .menu-item-visual.avocado { background-color: #DDEEE5; } /* Light green */
+        .menu-card .menu-item-visual.ricotta { background-color: #F8F4EC; } /* Off-white */
+        .menu-card .menu-item-visual.french-toast { background-color: #F7E9D7; } /* Light orange-beige */
+        .menu-card .menu-item-visual.mushroom { background-color: #E6E0D4; } /* Grey-beige */
+        .menu-card .menu-item-visual.yogurt { background-color: #FBF2E8; } /* Very light cream */
+        .menu-card .menu-item-visual.sandwich { background-color: #E5F0E6; } /* Pale green */
+
+
+        .menu-card h3 {
+            color: var(--color-dark-sage);
+            font-size: 1.2rem;
+            margin-bottom: 8px;
+        }
+
+        .menu-card .tags {
+            display: flex;
+            gap: 8px;
+            margin-bottom: 10px;
+        }
+
+        .menu-card .tag {
+            background-color: var(--color-sage-green);
+            color: var(--color-soft-white);
+            padding: 4px 10px;
+            border-radius: 5px;
+            font-size: 0.75rem;
+            font-weight: 500;
+        }
+        .menu-card .tag.light {
+            background-color: var(--color-light-brown);
+        }
+        .menu-card .tag.popular {
+            background-color: var(--color-dark-sage);
+        }
+
+        .menu-card p {
+            font-size: 0.9rem;
+            color: var(--color-text-light);
+            margin-bottom: 10px;
+            min-height: 40px; /* Ensure consistent height for description */
+        }
+
+        .menu-card .price {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--color-sage-green);
+            display: block;
+            margin-top: auto; /* Push price to bottom */
+        }
+
+        .best-brunch-picks .micro-cta {
+            text-align: center;
+            margin-top: 30px;
+        }
+
+        @media (min-width: 768px) {
+            .best-brunch-picks {
+                padding: var(--section-padding-desktop);
+            }
+            .menu-slider-wrapper {
+                overflow-x: hidden;
+            }
+            .menu-slider {
+                display: grid;
+                grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+                gap: 30px;
+                padding-bottom: 0;
+            }
+            .menu-card {
+                flex: auto; /* Allow cards to grow */
+                padding: 25px;
+            }
+            .menu-card .menu-item-visual {
+                height: 200px;
+            }
+            .menu-card p {
+                min-height: 50px;
+            }
+        }
+
+        /* Signature Menu Highlight Section */
+        .signature-highlight {
+            padding: var(--section-padding-mobile);
+            background-color: var(--color-cream);
+        }
+
+        .signature-grid {
+            display: grid;
+            gap: 40px;
+            grid-template-columns: 1fr;
+        }
+
+        .signature-panel {
+            background-color: var(--color-soft-white);
+            border-radius: 15px;
+            box-shadow: 0 8px 25px var(--color-shadow-medium);
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .signature-visual {
+            position: relative;
+            width: 100%;
+            height: 250px;
+            background-color: var(--color-warm-beige);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+        .signature-visual .ingredient-layer-svg {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            opacity: 0.4;
+        }
+        .signature-visual .ingredient-layer-svg path {
+            fill: currentColor; /* Example fill */
+        }
+        .signature-visual.avocado-open-toast .ingredient-layer-svg path { fill: #9CC69C; } /* Greenish */
+        .signature-visual.french-toast-plate .ingredient-layer-svg path { fill: #E0C7A6; } /* Orangish */
+
+
+        .signature-content {
+            padding: 30px;
+            text-align: center;
+        }
+
+        .signature-content h3 {
+            font-size: 1.8rem;
+            color: var(--color-dark-sage);
+            margin-bottom: 15px;
+        }
+
+        .signature-content p {
+            color: var(--color-text-light);
+            margin-bottom: 20px;
+        }
+
+        .signature-details ul {
+            list-style: none;
+            margin-bottom: 20px;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            max-width: 300px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .signature-details ul li {
+            background-color: var(--color-cream);
+            padding: 10px 15px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            font-size: 0.95rem;
+            color: var(--color-text-dark);
+            box-shadow: 0 2px 5px var(--color-shadow-light);
+        }
+        .signature-details ul li::before {
+            content: '✓';
+            color: var(--color-sage-green);
+            font-weight: bold;
+            margin-right: 10px;
+        }
+
+        .signature-content .price {
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: var(--color-sage-green);
+            margin-bottom: 25px;
+            display: block;
+        }
+        .signature-content .button {
+            width: 100%;
+            max-width: 250px;
+        }
+
+        @media (min-width: 768px) {
+            .signature-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .signature-panel {
+                flex-direction: row;
+                text-align: left;
+            }
+            .signature-panel:nth-child(even) {
+                flex-direction: row-reverse;
+            }
+            .signature-visual {
+                flex: 1;
+                height: auto;
+                min-height: 400px;
+            }
+            .signature-content {
+                flex: 1;
+                padding: 40px;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: flex-start;
+            }
+            .signature-content h3 {
+                font-size: 2rem;
+            }
+            .signature-details ul {
+                text-align: left;
+                margin-left: 0;
+            }
+            .signature-content .button {
+                width: auto;
+            }
+        }
+
+        /* Space Story Section */
+        .space-story {
+            padding: var(--section-padding-mobile);
+            background-color: var(--color-soft-white);
+        }
+
+        .space-story-block {
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+            margin-bottom: 60px;
+        }
+        .space-story-block:last-of-type {
+            margin-bottom: 0;
+        }
+
+        .space-story-text {
+            flex: 1;
+        }
+
+        .space-story-text h3 {
+            color: var(--color-dark-sage);
+            margin-bottom: 15px;
+            font-size: 1.6rem;
+        }
+
+        .space-story-text p {
+            color: var(--color-text-light);
+            margin-bottom: 20px;
+        }
+
+        .space-story-image {
+            flex: 1;
+            height: 280px;
+            background-color: var(--color-warm-beige);
+            border-radius: 12px;
+            box-shadow: 0 5px 15px var(--color-shadow-light);
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+        .space-story-image::after {
+            content: '공간 이미지';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: var(--color-text-light);
+            opacity: 0.8;
+            font-size: 1rem;
+        }
+
+        .space-story .button {
+            margin-top: 30px;
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+            max-width: 250px;
+        }
+
+        @media (min-width: 768px) {
+            .space-story {
+                padding: var(--section-padding-desktop);
+            }
+            .space-story-block {
+                flex-direction: row;
+                align-items: center;
+                gap: 60px;
+                margin-bottom: 80px;
+            }
+            .space-story-block:nth-child(even) {
+                flex-direction: row-reverse;
+            }
+            .space-story-image {
+                height: 400px;
+            }
+            .space-story-text h3 {
+                font-size: 2rem;
+            }
+        }
+
+        /* Customer Reviews Section */
+        .customer-reviews {
+            padding: var(--section-padding-mobile);
+            background-color: var(--color-cream);
+        }
+
+        .review-slider-wrapper {
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
+            scroll-snap-type: x mandatory;
+            padding-bottom: 20px;
+        }
+
+        .review-slider {
+            display: flex;
+            gap: 20px;
+            padding-bottom: 10px; /* For scrollbar */
+        }
+
+        .review-card {
+            flex: 0 0 280px; /* Fixed width for mobile cards */
+            scroll-snap-align: start;
+            background-color: var(--color-soft-white);
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 5px 15px var(--color-shadow-light);
+            text-align: left;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            min-height: 200px;
+            transition: transform 0.3s ease;
+        }
+        .review-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px var(--color-shadow-medium);
+        }
+
+        .review-card p {
+            font-size: 1rem;
+            color: var(--color-text-dark);
+            margin-bottom: 15px;
+            font-style: italic;
+        }
+
+        .review-card .reviewer-info {
+            font-size: 0.9rem;
+            font-weight: 500;
+            color: var(--color-sage-green);
+        }
+
+        .customer-reviews .button {
+            margin-top: 30px;
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+            max-width: 200px;
+        }
+
+        @media (min-width: 768px) {
+            .customer-reviews {
+                padding: var(--section-padding-desktop);
+            }
+            .review-slider-wrapper {
+                overflow-x: hidden;
+            }
+            .review-slider {
+                display: grid;
+                grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+                gap: 30px;
+                padding-bottom: 0;
+            }
+            .review-card {
+                flex: auto;
+                min-height: 220px;
+            }
+        }
+
+        /* Instagram Gallery Section */
+        .instagram-gallery {
+            padding: var(--section-padding-mobile);
+            background-color: var(--color-soft-white);
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+        }
+
+        .gallery-item {
+            position: relative;
+            padding-bottom: 100%; /* 1:1 Aspect Ratio */
+            background-color: var(--color-warm-beige);
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 3px 10px var(--color-shadow-light);
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+        .gallery-item:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px var(--color-shadow-medium);
+        }
+        .gallery-item::after {
+            content: '인스타 사진';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: var(--color-text-light);
+            opacity: 0.8;
+            font-size: 0.9rem;
+        }
+
+        .instagram-actions {
+            text-align: center;
+            margin-top: 40px;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        @media (min-width: 768px) {
+            .instagram-gallery {
+                padding: var(--section-padding-desktop);
+            }
+            .gallery-grid {
+                grid-template-columns: repeat(3, 1fr);
+                gap: 25px;
+            }
+            .instagram-actions {
+                flex-direction: row;
+                justify-content: center;
+                gap: 20px;
+            }
+        }
+
+        /* FAQ Section */
+        .faq {
+            padding: var(--section-padding-mobile);
+            background-color: var(--color-cream);
+        }
+
+        .accordion-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .accordion-item {
+            background-color: var(--color-soft-white);
+            border-radius: 10px;
+            margin-bottom: 15px;
+            box-shadow: 0 2px 8px var(--color-shadow-light);
+            overflow: hidden;
+        }
+
+        .accordion-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 18px 25px;
+            cursor: pointer;
+            font-weight: 500;
+            color: var(--color-dark-sage);
+            font-size: 1.1rem;
+            transition: background-color 0.3s ease;
+        }
+        .accordion-header:hover {
+            background-color: rgba(163, 177, 138, 0.05); /* Very light sage */
+        }
+
+        .accordion-header .icon {
+            font-size: 1.5rem;
+            transition: transform 0.3s ease;
+            color: var(--color-sage-green);
+        }
+        .accordion-item.active .accordion-header .icon {
+            transform: rotate(180deg);
+        }
+
+        .accordion-content {
+            padding: 0 25px;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease-out, padding 0.4s ease-out;
+            color: var(--color-text-light);
+            font-size: 0.95rem;
+            line-height: 1.5;
+        }
+        .accordion-item.active .accordion-content {
+            max-height: 200px; /* Adjust as needed for content */
+            padding: 15px 25px 25px;
+        }
+
+        .faq .button {
+            margin-top: 40px;
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+            max-width: 200px;
+        }
+
+        @media (min-width: 768px) {
+            .faq {
+                padding: var(--section-padding-desktop);
+            }
+            .accordion-header {
+                padding: 20px 30px;
+                font-size: 1.2rem;
+            }
+            .accordion-item.active .accordion-content {
+                padding: 20px 30px 30px;
+            }
+        }
+
+        /* Final CTA / Location Section */
+        .final-cta-location {
+            padding: var(--section-padding-mobile);
+            background-color: var(--color-soft-white);
+            text-align: center;
+        }
+
+        .location-info {
+            max-width: 700px;
+            margin: 0 auto 40px;
+        }
+
+        .location-info p {
+            margin-bottom: 10px;
+            color: var(--color-text-light);
+        }
+        .location-info p strong {
+            color: var(--color-text-dark);
+        }
+
+        .map-placeholder {
+            width: 100%;
+            height: 250px;
+            background-color: var(--color-warm-beige);
+            border-radius: 12px;
+            margin: 30px auto;
+            box-shadow: 0 5px 15px var(--color-shadow-light);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1rem;
+            color: var(--color-text-light);
+            position: relative;
+        }
+        .map-placeholder::after {
+            content: '지도 (카카오맵/네이버 연동 예정)';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            opacity: 0.8;
+        }
+
+        .final-cta-buttons {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            max-width: 300px;
+            margin: 0 auto 40px;
+        }
+
+        .final-cta-buttons .button {
+            width: 100%;
+        }
+
+        @media (min-width: 768px) {
+            .final-cta-location {
+                padding: var(--section-padding-desktop);
+            }
+            .map-placeholder {
+                height: 350px;
+            }
+            .final-cta-buttons {
+                flex-direction: row;
+                max-width: 700px;
+            }
+        }
+
+        /* Footer */
+        .footer {
+            background-color: var(--color-dark-sage);
+            color: var(--color-cream);
+            padding: 40px 20px;
+            text-align: center;
+            font-size: 0.9rem;
+        }
+
+        .footer .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--color-soft-white);
+            margin-bottom: 20px;
+            display: block;
+        }
+
+        .footer-links {
+            margin-bottom: 25px;
+        }
+        .footer-links a {
+            color: var(--color-cream);
+            margin: 0 10px;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        .footer-links a:hover {
+            color: var(--color-soft-white);
+            text-decoration: underline;
+        }
+
+        .social-links {
+            margin-bottom: 25px;
+        }
+        .social-links a {
+            display: inline-block;
+            margin: 0 10px;
+            color: var(--color-cream);
+            transition: transform 0.3s ease;
+        }
+        .social-links a:hover {
+            transform: translateY(-3px);
+            color: var(--color-soft-white);
+        }
+        .social-links svg {
+            width: 24px;
+            height: 24px;
+            fill: currentColor;
+        }
+
+        .newsletter-signup {
+            margin-bottom: 25px;
+            max-width: 400px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .newsletter-signup p {
+            margin-bottom: 15px;
+            color: var(--color-warm-beige);
+        }
+        .newsletter-signup form {
+            display: flex;
+            gap: 10px;
+            justify-content: center;
+        }
+        .newsletter-signup input[type="email"] {
+            padding: 10px 15px;
+            border-radius: 6px;
+            border: 1px solid var(--color-warm-beige);
+            background-color: rgba(255, 255, 255, 0.1);
+            color: var(--color-soft-white);
+            font-size: 0.9rem;
+            flex-grow: 1;
+            max-width: 250px;
+        }
+        .newsletter-signup input[type="email"]::placeholder {
+            color: rgba(255, 255, 255, 0.7);
+        }
+        .newsletter-signup button {
+            background-color: var(--color-sage-green);
+            color: var(--color-soft-white);
+            border: none;
+            padding: 10px 20px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            transition: background-color 0.3s ease;
+        }
+        .newsletter-signup button:hover {
+            background-color: var(--color-dark-sage);
+        }
+
+        .copyright {
+            color: var(--color-warm-beige);
+        }
+
+        @media (min-width: 768px) {
+            .footer {
+                padding: 60px 40px;
+            }
+        }
+
+
+        /* Recommendation Modal */
+        .recommendation-modal {
+            display: none; /* Hidden by default */
+            position: fixed;
+            z-index: 1001;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0, 0, 0, 0.6);
+            backdrop-filter: blur(5px);
+            -webkit-backdrop-filter: blur(5px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s ease, visibility 0.3s ease;
+        }
+        .recommendation-modal.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .recommendation-modal-content {
+            background-color: var(--color-soft-white);
+            margin: auto;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px var(--color-shadow-medium);
+            max-width: 450px;
+            width: 90%;
+            text-align: center;
+            position: relative;
+            transform: translateY(20px);
+            transition: transform 0.3s ease;
+        }
+        .recommendation-modal.active .recommendation-modal-content {
+            transform: translateY(0);
+        }
+
+        .recommendation-modal-content h3 {
+            color: var(--color-dark-sage);
+            margin-bottom: 25px;
+            font-size: 1.8rem;
+        }
+
+        .recommendation-modal-content p {
+            color: var(--color-text-light);
+            margin-bottom: 20px;
+        }
+
+        .recommendation-options {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            margin-bottom: 25px;
+        }
+        .recommendation-options button {
+            width: 100%;
+            padding: 12px 20px;
+            border-radius: 8px;
+            background-color: var(--color-cream);
+            border: 1px solid var(--color-warm-beige);
+            color: var(--color-text-dark);
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+        .recommendation-options button:hover {
+            background-color: var(--color-warm-beige);
+            border-color: var(--color-sage-green);
+        }
+        .recommendation-options button.selected {
+            background-color: var(--color-sage-green);
+            color: var(--color-soft-white);
+            border-color: var(--color-dark-sage);
+        }
+
+        .recommendation-result {
+            margin-top: 30px;
+            padding: 20px;
+            background-color: var(--color-cream);
+            border-radius: 10px;
+            border: 1px solid var(--color-warm-beige);
+            display: none;
+        }
+        .recommendation-result.active {
+            display: block;
+        }
+
+        .recommendation-result h4 {
+            color: var(--color-sage-green);
+            margin-bottom: 10px;
+            font-size: 1.5rem;
+        }
+        .recommendation-result p {
+            font-size: 1rem;
+            color: var(--color-text-dark);
+            margin-bottom: 15px;
+        }
+        .recommendation-result .menu-item-visual {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background-color: var(--color-light-brown);
+            margin: 0 auto 15px;
+            box-shadow: inset 0 2px 5px rgba(0,0,0,0.1);
+        }
+        .recommendation-result .button {
+            margin-top: 15px;
+        }
+
+        .close-button {
+            position: absolute;
+            top: 15px;
+            right: 20px;
+            background: none;
+            border: none;
+            font-size: 2rem;
+            color: var(--color-text-light);
+            cursor: pointer;
+            line-height: 1;
+        }
+        .close-button:hover {
+            color: var(--color-dark-sage);
+        }
+
+        /* Scrollbar styles */
+        ::-webkit-scrollbar {
+            height: 8px;
+            width: 8px;
+            background: var(--color-cream);
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: var(--color-light-brown);
+            border-radius: 10px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: var(--color-sage-green);
+        }
+
+    </style>
+</head>
+<body>
+
+    <header class="hero" id="hero">
+        <div class="hero-content container">
+            <h1>성수동 브런치, <br>Freshify Brunch House</h1>
+            <p>바쁜 일상 속, 몸과 마음에 활력을 불어넣는 건강하고 감성적인 브런치 경험을 선사합니다.</p>
+            <div class="hero-cta-group">
+                <a href="#best-brunch-picks" class="button primary">지금 메뉴 보기</a>
+                <button class="button secondary" onclick="openRecommendationModal()">브런치 추천 받기</button>
+            </div>
+        </div>
+        <div class="hero-visual">
+            <svg class="svg-graphic-element" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+                <path d="M100 0C130.4 0 160.7 12.8 179.7 35.8C198.7 58.8 196.4 89.2 181.8 116.2C167.2 143.2 140.3 166.8 112 179.7C83.7 192.6 54 194.8 31 181.8C8 168.8 -4.7 139.7 1.5 110.6C7.7 81.5 29.5 52.4 55.4 30.6C81.3 8.8 100 -0.1 100 0Z" transform="translate(0, 0)"></path>
+            </svg>
+            <div class="hero-menu-card-preview">
+                <div class="menu-item-visual avocado"></div>
+                <strong>아보카도 오픈토스트</strong>
+                <span>13,500원</span>
+            </div>
+        </div>
+    </header>
+
+    <section class="brand-strengths" id="strengths">
+        <div class="container">
+            <h2 class="section-title">Freshify Brunch House의 특별함</h2>
+            <div class="strength-grid">
+                <div class="strength-card">
+                    <div class="icon-wrapper">
+                        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 15H9v-6h2v6zm0-8H9V7h2v2zm7 0h-2V7h2v2zm-4 0h-2V7h2v2z" fill="currentColor"/>
+                        </svg>
+                    </div>
+                    <h3>가볍고 영양 가득한 레시피</h3>
+                    <p>몸에 부담은 적고 만족감은 높은 Freshify만의 시그니처 레시피로 매일 활기찬 하루를 시작하세요.</p>
+                    <a href="#best-brunch-picks" class="button ghost">메뉴 살펴보기 &gt;</a>
+                </div>
+                <div class="strength-card">
+                    <div class="icon-wrapper">
+                        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5S10.62 6.5 12 6.5s2.5 1.12 2.5 2.5S13.38 11.5 12 11.5z" fill="currentColor"/>
+                        </svg>
+                    </div>
+                    <h3>매일 아침, 신선한 로컬 재료</h3>
+                    <p>제철 과일과 엄선된 신선한 채소, 무첨가 식재료로 만드는 믿을 수 있는 브런치를 만나보세요.</p>
+                    <a href="#signature-highlight" class="button ghost">재료 스토리 &gt;</a>
+                </div>
+                <div class="strength-card">
+                    <div class="icon-wrapper">
+                        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 15H9v-6h2v6zm0-8H9V7h2v2zm7 0h-2V7h2v2zm-4 0h-2V7h2v2z" fill="currentColor"/>
+                        </svg>
+                    </div>
+                    <h3>5분 만에 고르는 오늘의 브런치</h3>
+                    <p>고민은 이제 그만! 간편한 추천 시스템으로 당신의 취향에 딱 맞는 메뉴를 제안해 드립니다.</p>
+                    <button class="button ghost" onclick="openRecommendationModal()">추천 받기 &gt;</button>
+                </div>
+                <div class="strength-card">
+                    <div class="icon-wrapper">
+                        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 15H9v-6h2v6zm0-8H9V7h2v2zm7 0h-2V7h2v2zm-4 0h-2V7h2v2z" fill="currentColor"/>
+                        </svg>
+                    </div>
+                    <h3>성수동의 편안하고 감성적인 공간</h3>
+                    <p>여유로운 브런치부터 작업, 소셜 타임까지. 당신의 하루를 특별하게 만들어 줄 아늑한 공간입니다.</p>
+                    <a href="#space-story" class="button ghost">공간 둘러보기 &gt;</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="best-brunch-picks" id="best-brunch-picks">
+        <div class="container">
+            <h2 class="section-title">Freshify의 Best Brunch Picks</h2>
+            <p class="text-center" style="margin-bottom: 30px; color: var(--color-text-light);">고민될 땐, 많은 분들이 선택한 Freshify의 시그니처 메뉴들을 먼저 만나보세요.</p>
+            <div class="menu-slider-wrapper">
+                <div class="menu-slider">
+                    <div class="menu-card">
+                        <div class="menu-item-visual avocado">아보카도 오픈토스트</div>
+                        <div class="tags">
+                            <span class="tag popular">인기</span>
+                            <span class="tag light">가벼움</span>
+                        </div>
+                        <h3>아보카도 오픈토스트</h3>
+                        <p>신선한 아보카도와 상큼한 토마토 살사, 수란이 어우러진 건강 브런치.</p>
+                        <span class="price">13,500원</span>
+                    </div>
+                    <div class="menu-card">
+                        <div class="menu-item-visual ricotta">리코타 그린 샐러드</div>
+                        <div class="tags">
+                            <span class="tag popular">인기</span>
+                            <span class="tag light">가벼움</span>
+                        </div>
+                        <h3>리코타 그린 샐러드</h3>
+                        <p>수제 리코타 치즈와 제철 채소가 풍성한 상큼한 샐러드.</p>
+                        <span class="price">12,800원</span>
+                    </div>
+                    <div class="menu-card">
+                        <div class="menu-item-visual french-toast">프렌치토스트 플레이트</div>
+                        <div class="tags">
+                            <span class="tag popular">인기</span>
+                        </div>
+                        <h3>프렌치토스트 플레이트</h3>
+                        <p>부드러운 프렌치토스트와 신선한 과일, 베이컨의 조화.</p>
+                        <span class="price">14,500원</span>
+                    </div>
+                    <div class="menu-card">
+                        <div class="menu-item-visual mushroom">수란 머쉬룸 토스트</div>
+                        <div class="tags">
+                            <span class="tag light">든든함</span>
+                        </div>
+                        <h3>수란 머쉬룸 토스트</h3>
+                        <p>버터에 볶은 향긋한 버섯과 수란이 올라간 고소한 토스트.</p>
+                        <span class="price">13,900원</span>
+                    </div>
+                    <div class="menu-card">
+                        <div class="menu-item-visual yogurt">요거트 그래놀라 볼</div>
+                        <div class="tags">
+                            <span class="tag light">가벼움</span>
+                        </div>
+                        <h3>요거트 그래놀라 볼</h3>
+                        <p>수제 요거트와 바삭한 그래놀라, 제철 과일의 상큼한 만남.</p>
+                        <span class="price">9,800원</span>
+                    </div>
+                    <div class="menu-card">
+                        <div class="menu-item-visual sandwich">시즌 과일 샌드</div>
+                        <div class="tags">
+                            <span class="tag light">시즌 한정</span>
+                        </div>
+                        <h3>시즌 과일 샌드</h3>
+                        <p>제철 과일의 달콤함이 가득한, 보기에도 예쁜 프리미엄 샌드.</p>
+                        <span class="price">11,500원</span>
+                    </div>
+                </div>
+            </div>
+            <div class="micro-cta">
+                <a href="#" class="button ghost">오늘의 시즌 메뉴 확인 &gt;</a>
+            </div>
+        </div>
+    </section>
+
+    <section class="signature-highlight" id="signature-highlight">
+        <div class="container">
+            <h2 class="section-title">보이는 만큼 맛있는 한 접시 — 시그니처 메뉴 하이라이트</h2>
+            <p class="text-center" style="margin-bottom: 50px; color: var(--color-text-light);">재료와 손맛으로 답합니다. Freshify의 자랑, 시그니처 메뉴를 더 깊이 들여다보세요.</p>
+            <div class="signature-grid">
+                <div class="signature-panel">
+                    <div class="signature-visual avocado-open-toast">
+                        <svg class="ingredient-layer-svg" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M100 0C130.4 0 160.7 12.8 179.7 35.8C198.7 58.8 196.4 89.2 181.8 116.2C167.2 143.2 140.3 166.8 112 179.7C83.7 192.6 54 194.8 31 181.8C8 168.8 -4.7 139.7 1.5 110.6C7.7 81.5 29.5 52.4 55.4 30.6C81.3 8.8 100 -0.1 100 0Z" transform="translate(0, 0)"></path>
+                            <circle cx="150" cy="50" r="30" fill="currentColor" opacity="0.3"></circle>
+                            <rect x="20" y="120" width="40" height="40" rx="10" fill="currentColor" opacity="0.2"></rect>
+                        </svg>
+                        <span style="z-index: 2; color: var(--color-dark-sage); font-weight: 600;">아보카도</span>
+                    </div>
+                    <div class="signature-content">
+                        <h3>아보카도 오픈토스트</h3>
+                        <p>크리미한 아보카도와 상큼한 토마토 살사가 입안 가득 퍼지는 건강하고 아름다운 브런치.</p>
+                        <div class="signature-details">
+                            <ul>
+                                <li><strong>신선한 아보카도:</strong> 매일 아침 엄선된 최상급 아보카도</li>
+                                <li><strong>수제 토마토 살사:</strong> 제철 토마토로 직접 만든 신선한 살사</li>
+                                <li><strong>유기농 통밀빵:</strong> 고소하고 든든한 유기농 통밀 사워도우</li>
+                            </ul>
+                        </div>
+                        <span class="price">13,500원</span>
+                        <a href="#final-cta-location" class="button primary">이 메뉴로 주문하기 (매장용)</a>
+                    </div>
+                </div>
+
+                <div class="signature-panel">
+                    <div class="signature-visual french-toast-plate">
+                        <svg class="ingredient-layer-svg" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M100 0C130.4 0 160.7 12.8 179.7 35.8C198.7 58.8 196.4 89.2 181.8 116.2C167.2 143.2 140.3 166.8 112 179.7C83.7 192.6 54 194.8 31 181.8C8 168.8 -4.7 139.7 1.5 110.6C7.7 81.5 29.5 52.4 55.4 30.6C81.3 8.8 100 -0.1 100 0Z" transform="translate(0, 0)"></path>
+                            <circle cx="50" cy="150" r="25" fill="currentColor" opacity="0.3"></circle>
+                            <polygon points="120,30 180,70 140,130 80,90" fill="currentColor" opacity="0.2"></polygon>
+                        </svg>
+                        <span style="z-index: 2; color: var(--color-dark-sage); font-weight: 600;">프렌치 토스트</span>
+                    </div>
+                    <div class="signature-content">
+                        <h3>프렌치토스트 플레이트</h3>
+                        <p>부드러운 식감과 달콤한 풍미가 일품인 프렌치토스트와 신선한 제철 과일의 완벽한 조화.</p>
+                        <div class="signature-details">
+                            <ul>
+                                <li><strong>숙성 브리오슈:</strong> 황금빛으로 구워낸 부드러운 브리오슈</li>
+                                <li><strong>신선한 제철 과일:</strong> 계절마다 바뀌는 가장 신선한 과일 토핑</li>
+                                <li><strong>메이플 시럽 &amp; 버터:</strong> 풍미를 더하는 프리미엄 메이플 시럽</li>
+                            </ul>
+                        </div>
+                        <span class="price">14,500원</span>
+                        <a href="#final-cta-location" class="button primary">이 메뉴로 주문하기 (매장용)</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="space-story" id="space-story">
+        <div class="container">
+            <h2 class="section-title">성수동 Freshify, 당신의 감성 아지트</h2>
+            <p class="text-center" style="margin-bottom: 50px; color: var(--color-text-light);">여유로운 브런치부터 작업, 소셜 타임까지. Freshify는 당신의 하루를 특별하게 만들어 줄 아늑한 공간입니다.</p>
+
+            <div class="space-story-block">
+                <div class="space-story-text">
+                    <h3>창가 좌석에서 즐기는 여유</h3>
+                    <p>따스한 햇살이 스며드는 창가 좌석은 혼자만의 시간을 가지거나, 친구와 소소한 대화를 나누기에 완벽합니다. 성수동의 활기 속에서 잠시 멈춰, 온전한 휴식을 경험해보세요.</p>
+                    <p>노트북을 사용할 수 있는 콘센트와 쾌적한 와이파이가 제공되어 작업 효율도 높여줍니다.</p>
+                </div>
+                <div class="space-story-image" style="background-color: #F8F4EC;"></div>
+            </div>
+
+            <div class="space-story-block">
+                <div class="space-story-image" style="background-color: #E5F0E6;"></div>
+                <div class="space-story-text">
+                    <h3>모두를 위한 편안한 공간</h3>
+                    <p>다양한 크기의 테이블과 안락한 바 좌석은 모든 방문객에게 최적의 경험을 제공합니다. 넓은 간격으로 배치된 좌석은 프라이빗한 대화를 가능하게 하며, 잔잔한 배경 음악은 편안함을 더합니다.</p>
+                    <p>단체 방문 시에는 미리 예약하시면 더욱 편리하게 이용하실 수 있습니다.</p>
+                </div>
+            </div>
+            <a href="#instagram-gallery" class="button secondary">매장 분위기 둘러보기 &gt;</a>
+        </div>
+    </section>
+
+    <section class="customer-reviews" id="reviews">
+        <div class="container">
+            <h2 class="section-title">고객 리뷰 — Freshify를 사랑하는 이유</h2>
+            <p class="text-center" style="margin-bottom: 50px; color: var(--color-text-light);">실제 고객님들의 솔직한 이야기로 Freshify의 진심을 확인해보세요.</p>
+            <div class="review-slider-wrapper">
+                <div class="review-slider">
+                    <div class="review-card">
+                        <p>"성수동에서 이렇게 건강하고 맛있는 브런치는 처음이에요! 비주얼도 예쁘고, 먹고 나서도 속이 편안해서 자주 올 것 같아요."</p>
+                        <span class="reviewer-info">— 김*희님 (직장인, 성수동)</span>
+                    </div>
+                    <div class="review-card">
+                        <p>"작업하기 좋은 카페를 찾다가 발견했는데, 분위기도 차분하고 메뉴도 다 맛있어서 감동했어요. 다음엔 친구들이랑 같이 와야겠어요."</p>
+                        <span class="reviewer-info">— 이*림님 (프리랜서, 송파구)</span>
+                    </div>
+                    <div class="review-card">
+                        <p>"아보카도 토스트에 푹 빠졌습니다! 신선한 재료가 느껴지는 맛과 예쁜 플레이팅 덕분에 기분 전환 제대로 했어요. 인스타 업로드 각!"</p>
+                        <span class="reviewer-info">— 박*영님 (마케터, 강남구)</span>
+                    </div>
+                    <div class="review-card">
+                        <p>"메뉴 고민할 필요 없이 추천 시스템으로 바로 골랐는데, 제 취향에 딱 맞았어요! 서비스도 친절하고 공간도 너무 예뻐요."</p>
+                        <span class="reviewer-info">— 최*은님 (디자이너, 용산구)</span>
+                    </div>
+                    <div class="review-card">
+                        <p>"친구들과 브런치 모임으로 방문했어요. 메뉴 하나하나 정성이 느껴지고, 공간도 따뜻해서 행복한 시간 보냈습니다."</p>
+                        <span class="reviewer-info">— 정*연님 (자영업, 성동구)</span>
+                    </div>
+                </div>
+            </div>
+            <a href="https://www.instagram.com/freshify_brunch/" target="_blank" class="button secondary">더 많은 리뷰 보기 (인스타그램) &gt;</a>
+        </div>
+    </section>
+
+    <section class="instagram-gallery" id="gallery">
+        <div class="container">
+            <h2 class="section-title">#FreshifyBrunch — 인스타 감성 갤러리</h2>
+            <p class="text-center" style="margin-bottom: 50px; color: var(--color-text-light);">Freshify에서의 아름다운 순간들을 공유해주세요! #FreshifyBrunch 태그와 함께 당신의 스토리를 들려주세요.</p>
+            <div class="gallery-grid">
+                <div class="gallery-item" style="background-color: #F7E9D7;"></div>
+                <div class="gallery-item" style="background-color: #DDEEE5;"></div>
+                <div class="gallery-item" style="background-color: #F8F4EC;"></div>
+                <div class="gallery-item" style="background-color: #E6E0D4;"></div>
+                <div class="gallery-item" style="background-color: #FBF2E8;"></div>
+                <div class="gallery-item" style="background-color: #E5F0E6;"></div>
+            </div>
+            <div class="instagram-actions">
+                <a href="https://www.instagram.com/freshify_brunch/" target="_blank" class="button primary">인스타에서 더 보기</a>
+                <a href="https://www.instagram.com/freshify_brunch/" target="_blank" class="button secondary">Freshify 팔로우하기</a>
+            </div>
+        </div>
+    </section>
+
+    <section class="faq" id="faq">
+        <div class="container">
+            <h2 class="section-title">자주 묻는 질문</h2>
+            <div class="accordion-container">
+                <div class="accordion-item">
+                    <div class="accordion-header">
+                        브레이크 타임이 있나요?
+                        <span class="icon">▼</span>
+                    </div>
+                    <div class="accordion-content">
+                        <p>저희 Freshify Brunch House는 별도의 브레이크 타임 없이 운영됩니다. 다만, 재료 준비 시간이나 내부 사정으로 인해 일시적으로 운영이 중단될 수 있으니, 방문 전 인스타그램 공지 또는 전화 문의를 통해 확인해주시면 더욱 편리하게 이용하실 수 있습니다.</p>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <div class="accordion-header">
+                        예약은 어떻게 하나요?
+                        <span class="icon">▼</span>
+                    </div>
+                    <div class="accordion-content">
+                        <p>네, 예약이 가능합니다. 전화(02-1234-5678) 또는 카카오톡 채널 'Freshify Brunch House'를 통해 문의 및 예약하실 수 있습니다. 특히 주말이나 피크 타임 방문 시에는 미리 예약하시면 대기 없이 이용하실 수 있습니다.</p>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <div class="accordion-header">
+                        알레르기 정보 및 비건 메뉴가 있나요?
+                        <span class="icon">▼</span>
+                    </div>
+                    <div class="accordion-content">
+                        <p>메뉴판에 주요 알레르기 유발 성분(예: 글루텐, 유제품, 견과류)이 표기되어 있습니다. 비건 메뉴는 현재 '리코타 그린 샐러드 (리코타 치즈 제외)'와 같이 일부 메뉴에서 재료 조절이 가능합니다. 자세한 사항은 직원에게 문의해주시면 친절하게 안내해 드리겠습니다.</p>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <div class="accordion-header">
+                        반려동물 동반이 가능한가요?
+                        <span class="icon">▼</span>
+                    </div>
+                    <div class="accordion-content">
+                        <p>죄송합니다. 위생상의 이유로 실내 반려동물 동반은 어렵습니다. 다만, 야외 테라스 좌석(운영 시)에서는 캐리어에 동반하는 소형견에 한해 가능합니다. (자세한 규정은 매장 문의)</p>
+                    </div>
+                </div>
+            </div>
+            <a href="tel:0212345678" class="button secondary">추가 문의 (전화/카카오톡)</a>
+        </div>
+    </section>
+
+    <section class="final-cta-location" id="location">
+        <div class="container">
+            <h2 class="section-title">Freshify Brunch House, <br>성수동에서 만나요!</h2>
+            <div class="location-info">
+                <p><strong>주소:</strong> 서울 성동구 성수이로 7길 17, 1층 Freshify Brunch House</p>
+                <p><strong>운영 시간:</strong> 매일 10:00 - 21:00 (라스트 오더 20:00)</p>
+                <p><strong>전화:</strong> <a href="tel:0212345678">02-1234-5678</a></p>
+                <p><strong>주차:</strong> 건물 내 주차 불가, 인근 공영주차장 이용 (안내 필요 시 문의)</p>
+            </div>
+            <a href="https://kko.to/your_kakaomap_link" target="_blank" class="map-placeholder">
+                카카오맵 / 네이버 지도 보기
+            </a>
+            <div class="final-cta-buttons">
+                <a href="#best-brunch-picks" class="button primary">지금 메뉴 보기</a>
+                <button class="button secondary" onclick="openRecommendationModal()">브런치 추천 받기</button>
+                <a href="tel:0212345678" class="button secondary">전화 걸기</a>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <span class="logo">Freshify Brunch House</span>
+            <div class="footer-links">
+                <a href="#hero">처음으로</a>
+                <a href="#best-brunch-picks">메뉴</a>
+                <a href="#space-story">공간</a>
+                <a href="#reviews">리뷰</a>
+                <a href="#faq">FAQ</a>
+            </div>
+            <div class="social-links">
+                <a href="https://www.instagram.com/freshify_brunch/" target="_blank" aria-label="Freshify Instagram">
+                    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M7.8 2h8.4C19.4 2 22 4.6 22 7.8v8.4c0 3.2-2.6 5.8-5.8 5.8H7.8C4.6 22 2 19.4 2 16.2V7.8C2 4.6 4.6 2 7.8 2zm-.2 2A2.4 2.4 0 004 7.6v8.8A2.4 2.4 0 006.6 20h8.8a2.4 2.4 0 002.6-2.6V7.6A2.4 2.4 0 0015.4 4zM12 7.5c-2.5 0-4.5 2-4.5 4.5S9.5 16.5 12 16.5s4.5-2 4.5-4.5-2-4.5-4.5-4.5zm0 2.5c1.1 0 2 0.9 2 2s-0.9 2-2 2-2-0.9-2-2 0.9-2 2-2zm4.4-4.2c0.7 0 1.2-0.5 1.2-1.2s-0.5-1.2-1.2-1.2-1.2 0.5-1.2 1.2 0.5 1.2 1.2 1.2z"/>
+                    </svg>
+                </a>
+                <a href="https://pf.kakao.com/_your_channel_id" target="_blank" aria-label="Freshify KakaoTalk Channel">
+                    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z" fill="currentColor"/>
+                    </svg>
+                </a>
+            </div>
+            <div class="newsletter-signup">
+                <p>Freshify의 최신 소식과 특별 할인 정보를 받아보세요!</p>
+                <form onsubmit="alert('뉴스레터 구독 신청이 완료되었습니다!'); return false;">
+                    <input type="email" placeholder="이메일 주소를 입력해주세요" required>
+                    <button type="submit">구독하기</button>
+                </form>
+            </div>
+            <p class="copyright">&copy; 2024 Freshify Brunch House. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Mobile Fixed CTA Bar -->
+    <div class="mobile-fixed-cta-bar" id="mobileCtaBar">
+        <a href="#best-brunch-picks" class="button primary">메뉴 보기</a>
+        <button class="button secondary" onclick="openRecommendationModal()">추천 받기</button>
+        <a href="tel:0212345678" class="button secondary">전화</a>
+    </div>
+
+    <!-- Recommendation Modal -->
+    <div id="recommendationModal" class="recommendation-modal">
+        <div class="recommendation-modal-content">
+            <button class="close-button" onclick="closeRecommendationModal()">&times;</button>
+            <h3>어떤 브런치를 찾으시나요?</h3>
+            <p>간단한 질문에 답하고 Freshify가 추천하는 메뉴를 만나보세요.</p>
+
+            <div id="question1" class="recommendation-step">
+                <p><strong>Q1. 지금 어떤 기분인가요?</strong></p>
+                <div class="recommendation-options">
+                    <button data-value="light" onclick="selectOption(1, this)">가볍고 상쾌한 시작</button>
+                    <button data-value="hearty" onclick="selectOption(1, this)">든든하고 만족스러운 한 끼</button>
+                </div>
+            </div>
+
+            <div id="question2" class="recommendation-step" style="display: none;">
+                <p><strong>Q2. 어떤 재료를 선호하시나요?</strong></p>
+                <div class="recommendation-options">
+                    <button data-value="fruit" onclick="selectOption(2, this)">신선한 과일과 요거트</button>
+                    <button data-value="bread" onclick="selectOption(2, this)">고소한 빵과 야채</button>
+                </div>
+            </div>
+
+            <div id="recommendationResult" class="recommendation-result">
+                <h4>Freshify의 추천 메뉴!</h4>
+                <div class="menu-item-visual" id="recommendedMenuVisual"></div>
+                <h4 id="recommendedMenuName"></h4>
+                <p id="recommendedMenuDesc"></p>
+                <a href="#best-brunch-picks" class="button primary" onclick="closeRecommendationModal()">메뉴 자세히 보기</a>
+            </div>
+        </div>
+    </div>
+
+
+    <script>
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Accordion functionality
+        document.querySelectorAll('.accordion-header').forEach(header => {
+            header.addEventListener('click', () => {
+                const item = header.closest('.accordion-item');
+                item.classList.toggle('active');
+            });
+        });
+
+        // Mobile fixed CTA bar show/hide on scroll
+        let lastScrollY = window.scrollY;
+        const mobileCtaBar = document.getElementById('mobileCtaBar');
+        if (mobileCtaBar) {
+            window.addEventListener('scroll', () => {
+                if (window.innerWidth < 768) { // Only for mobile
+                    if (window.scrollY > lastScrollY && window.scrollY > 100) { // Scrolling down
+                        mobileCtaBar.classList.add('hidden');
+                    } else { // Scrolling up or near top
+                        mobileCtaBar.classList.remove('hidden');
+                    }
+                    lastScrollY = window.scrollY;
+                }
+            });
+        }
+
+        // Recommendation Modal Logic
+        const recommendationModal = document.getElementById('recommendationModal');
+        let answers = {};
+        const recommendationData = {
+            light_fruit: { name: '요거트 그래놀라 볼', desc: '상큼한 요거트와 바삭한 그래놀라로 가벼운 하루를 시작하세요.', visualClass: 'yogurt' },
+            light_bread: { name: '아보카도 오픈토스트', desc: '신선한 아보카도와 토마토 살사, 건강한 통밀빵의 조화.', visualClass: 'avocado' },
+            hearty_fruit: { name: '시즌 과일 샌드', desc: '제철 과일의 달콤함과 부드러운 빵으로 든든하게 즐겨보세요.', visualClass: 'sandwich' },
+            hearty_bread: { name: '프렌치토스트 플레이트', desc: '촉촉한 프렌치토스트와 베이컨, 과일로 풍성한 브런치.', visualClass: 'french-toast' }
+        };
+
+        function openRecommendationModal() {
+            recommendationModal.style.display = 'flex'; /* Make it visible */
+            setTimeout(() => recommendationModal.classList.add('active'), 10); // Trigger transition
+
+            // Reset state
+            answers = {};
+            document.getElementById('question1').style.display = 'block';
+            document.getElementById('question2').style.display = 'none';
+            document.getElementById('recommendationResult').classList.remove('active');
+            document.querySelectorAll('.recommendation-options button').forEach(btn => btn.classList.remove('selected'));
+        }
+
+        function closeRecommendationModal() {
+            recommendationModal.classList.remove('active');
+            setTimeout(() => recommendationModal.style.display = 'none', 300); // Hide after transition
+        }
+
+        function selectOption(questionNum, button) {
+            // Remove 'selected' from other buttons in the same question
+            Array.from(button.parentNode.children).forEach(btn => btn.classList.remove('selected'));
+            button.classList.add('selected');
+
+            answers['q' + questionNum] = button.dataset.value;
+
+            if (questionNum === 1) {
+                document.getElementById('question1').style.display = 'none';
+                document.getElementById('question2').style.display = 'block';
+            } else if (questionNum === 2) {
+                displayRecommendation();
+            }
+        }
+
+        function displayRecommendation() {
+            const key = answers.q1 + '_' + answers.q2;
+            const recommendation = recommendationData[key];
+
+            if (recommendation) {
+                document.getElementById('recommendedMenuName').textContent = recommendation.name;
+                document.getElementById('recommendedMenuDesc').textContent = recommendation.desc;
+                const visual = document.getElementById('recommendedMenuVisual');
+                visual.className = 'menu-item-visual ' + recommendation.visualClass; // Apply specific visual class
+                visual.textContent = recommendation.name; // Placeholder text
+                document.getElementById('question2').style.display = 'none';
+                document.getElementById('recommendationResult').classList.add('active');
+            } else {
+                // Fallback if no specific recommendation for the combination
+                document.getElementById('recommendedMenuName').textContent = '오늘의 추천 메뉴';
+                document.getElementById('recommendedMenuDesc').textContent = '다양한 Freshify 메뉴를 탐색해보세요!';
+                const visual = document.getElementById('recommendedMenuVisual');
+                visual.className = 'menu-item-visual'; // Default visual
+                visual.textContent = 'Freshify'; // Default placeholder
+                document.getElementById('question2').style.display = 'none';
+                document.getElementById('recommendationResult').classList.add('active');
+            }
+        }
+
+        // Close modal when clicking outside content
+        recommendationModal.addEventListener('click', (event) => {
+            if (event.target === recommendationModal) {
+                closeRecommendationModal();
+            }
+        });
+
+    </script>
+</body>
+</html>
