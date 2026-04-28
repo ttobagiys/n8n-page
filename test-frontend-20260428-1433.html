@@ -1,0 +1,2052 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>긴급 형사사건 법률 상담 - 지금 즉시 법적 보호를 시작하세요</title>
+    <meta name="description" content="체포·조사 통보를 받으셨나요? 긴급 형사사건 전문 변호사가 즉시 법적 보호를 시작하고 차분하게 안내해 드립니다.">
+    <style>
+        /* Base Styles & Variables */
+        :root {
+            --color-primary: #0A1931; /* Deep Navy */
+            --color-accent: #DAA520; /* Goldenrod */
+            --color-accent-light: #F0D992; /* Lighter Goldenrod */
+            --color-text-dark: #333333;
+            --color-text-light: #FFFFFF;
+            --color-background-light: #F8F8F8;
+            --color-background-medium: #ECECEC;
+            --color-border-light: #E0E0E0;
+            --color-error: #D32F2F;
+
+            --font-family-base: 'Pretendard', 'Noto Sans KR', system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+            
+            --spacing-xs: 0.5rem;
+            --spacing-sm: 1rem;
+            --spacing-md: 1.5rem;
+            --spacing-lg: 2.5rem;
+            --spacing-xl: 4rem;
+            --spacing-xxl: 6rem;
+
+            --border-radius-sm: 0.5rem;
+            --border-radius-md: 0.75rem;
+            --border-radius-lg: 1rem;
+
+            --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.08);
+            --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.1);
+            --shadow-lg: 0 8px 24px rgba(0, 0, 0, 0.15);
+        }
+
+        /* Basic Reset */
+        *, *::before, *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: var(--font-family-base);
+            color: var(--color-text-dark);
+            line-height: 1.6;
+            background-color: var(--color-white);
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            font-size: 16px; /* Base font size for desktop */
+        }
+
+        /* Responsive Font Sizes */
+        @media (max-width: 768px) {
+            body {
+                font-size: 15px;
+            }
+        }
+        @media (max-width: 480px) {
+            body {
+                font-size: 14px;
+            }
+        }
+
+        /* Container */
+        .container {
+            max-width: 1120px;
+            margin: 0 auto;
+            padding: 0 var(--spacing-md);
+        }
+
+        /* Section Styling */
+        .section-padded {
+            padding: var(--spacing-xl) 0;
+        }
+        .bg-light {
+            background-color: var(--color-background-light);
+        }
+
+        .section-headline {
+            font-size: 2.2rem;
+            font-weight: 700;
+            text-align: center;
+            margin-bottom: var(--spacing-sm);
+            line-height: 1.3;
+            color: var(--color-primary);
+        }
+        .section-subcopy {
+            font-size: 1.1rem;
+            text-align: center;
+            color: #666;
+            margin-bottom: var(--spacing-lg);
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        @media (max-width: 768px) {
+            .section-headline {
+                font-size: 1.8rem;
+            }
+            .section-subcopy {
+                font-size: 1rem;
+            }
+            .section-padded {
+                padding: var(--spacing-lg) 0;
+            }
+        }
+        @media (max-width: 480px) {
+            .section-headline {
+                font-size: 1.5rem;
+            }
+            .section-subcopy {
+                font-size: 0.95rem;
+            }
+        }
+
+        /* Buttons */
+        .button {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: var(--spacing-sm) var(--spacing-lg);
+            border-radius: var(--border-radius-sm);
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            border: none;
+            font-size: 1rem;
+            white-space: nowrap;
+        }
+
+        .primary-cta {
+            background-color: var(--color-accent);
+            color: var(--color-text-light);
+            box-shadow: var(--shadow-md);
+        }
+        .primary-cta:hover, .primary-cta:focus {
+            background-color: #C2911C; /* Slightly darker gold */
+            box-shadow: var(--shadow-lg);
+            transform: translateY(-2px);
+            outline: none;
+        }
+
+        .secondary-cta {
+            background-color: var(--color-white);
+            color: var(--color-primary);
+            border: 1px solid var(--color-primary);
+            box-shadow: var(--shadow-sm);
+        }
+        .secondary-cta:hover, .secondary-cta:focus {
+            background-color: var(--color-background-light);
+            box-shadow: var(--shadow-md);
+            transform: translateY(-1px);
+            outline: none;
+        }
+
+        .button.large {
+            padding: var(--spacing-md) var(--spacing-xl);
+            font-size: 1.15rem;
+            border-radius: var(--border-radius-md);
+        }
+        .button.small {
+            padding: 0.6rem var(--spacing-md);
+            font-size: 0.9rem;
+        }
+        .button.full-width {
+            width: 100%;
+        }
+        .button.large-icon {
+            padding: var(--spacing-md);
+            font-size: 1.2rem;
+            gap: var(--spacing-sm);
+            border-radius: var(--border-radius-md);
+        }
+        .button.large-icon .icon-phone-outline, .button.large-icon .icon-kakao, .button.large-icon .icon-message-outline {
+            font-size: 1.5rem;
+        }
+
+        /* Microcopy */
+        .microcopy {
+            font-size: 0.85rem;
+            color: #888;
+            margin-top: var(--spacing-xs);
+            text-align: center;
+        }
+        .microcopy.left {
+            text-align: left;
+        }
+
+        /* Image Placeholders */
+        .image-frame {
+            width: 100%;
+            padding-top: 75%; /* 4:3 Aspect Ratio */
+            position: relative;
+            background: linear-gradient(135deg, var(--color-background-medium) 0%, var(--color-background-light) 100%);
+            border-radius: var(--border-radius-lg);
+            box-shadow: var(--shadow-md);
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #A0A0A0;
+            font-size: 1rem;
+            text-align: center;
+            font-style: italic;
+        }
+        .image-frame .image-placeholder-text {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 1;
+            max-width: 90%;
+            line-height: 1.4;
+        }
+        .image-frame::before {
+            content: '📸'; /* Camera icon */
+            position: absolute;
+            top: 30%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 3rem;
+            color: #C0C0C0;
+            opacity: 0.6;
+        }
+        .attorney-photo-frame {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            padding-top: 0; /* Override default aspect-ratio padding */
+            position: relative;
+            background: linear-gradient(45deg, var(--color-accent-light) 0%, var(--color-accent) 100%);
+            box-shadow: var(--shadow-md);
+            overflow: hidden;
+            flex-shrink: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--color-primary);
+            font-size: 0.9rem;
+            text-align: center;
+        }
+        .attorney-photo-frame .image-placeholder-text {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 1;
+            max-width: 80%;
+        }
+        .attorney-photo-frame::before {
+            content: '👨‍⚖️'; /* Judge icon */
+            position: absolute;
+            top: 30%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 3.5rem;
+            color: var(--color-primary);
+            opacity: 0.7;
+        }
+        @media (max-width: 768px) {
+            .attorney-photo-frame {
+                width: 150px;
+                height: 150px;
+            }
+        }
+        @media (max-width: 480px) {
+            .attorney-photo-frame {
+                width: 120px;
+                height: 120px;
+            }
+        }
+
+        /* Iconography (CSS-based) */
+        .icon-phone-outline::before { content: '📞'; }
+        .icon-message-outline::before { content: '💬'; }
+        .icon-kakao::before { content: '💬'; /* KakaoTalk specific icon could be made with more complex CSS shapes or SVG */
+            font-family: Arial, sans-serif; /* Fallback for a chat bubble */
+        }
+        .icon-briefcase::before { content: '💼'; }
+        .icon-car::before { content: '🚗'; }
+        .icon-document::before { content: '📄'; }
+        .icon-shield::before { content: '🛡️'; }
+        .icon-chat::before { content: '🗣️'; }
+        .icon-law::before { content: '⚖️'; }
+        .icon-phone::before { content: '📱'; }
+        .icon-magnifier::before { content: '🔍'; }
+        .icon-alert::before { content: '🚨'; }
+        .icon-handshake::before { content: '🤝'; }
+        .icon-contract::before { content: '✍️'; }
+
+        /* Custom KakaoTalk button styling */
+        .kakao-cta {
+            background-color: #FEE500; /* KakaoTalk yellow */
+            color: #3C1E1E; /* Dark brown for text */
+            box-shadow: var(--shadow-md);
+        }
+        .kakao-cta:hover, .kakao-cta:focus {
+            background-color: #E6D200; /* Slightly darker yellow */
+            box-shadow: var(--shadow-lg);
+            transform: translateY(-2px);
+            outline: none;
+        }
+
+        /* Header (Placeholder, not strictly needed for this design) */
+        .header {
+            position: relative; /* For z-index stacking with sticky CTA */
+            z-index: 100;
+        }
+
+        /* Hero Section */
+        .hero {
+            background-color: var(--color-primary);
+            color: var(--color-text-light);
+            padding: var(--spacing-xl) 0 var(--spacing-xxl) 0;
+            position: relative;
+            overflow: hidden;
+            min-height: 80vh; /* Ensure it's tall enough */
+            display: flex;
+            align-items: center;
+        }
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at top right, rgba(218, 165, 32, 0.1) 0%, transparent 50%);
+            z-index: 0;
+        }
+
+        .hero-content {
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-xl);
+            position: relative;
+            z-index: 1;
+        }
+        .hero-text {
+            flex: 1;
+            padding-right: var(--spacing-lg);
+            text-align: left;
+        }
+        .hero-label {
+            display: inline-block;
+            background-color: var(--color-accent);
+            color: var(--color-text-light);
+            padding: 0.4rem 1rem;
+            border-radius: var(--border-radius-sm);
+            font-weight: 700;
+            font-size: 0.9rem;
+            margin-bottom: var(--spacing-sm);
+        }
+        .hero h1 {
+            font-size: 3.2rem;
+            font-weight: 800;
+            line-height: 1.25;
+            margin-bottom: var(--spacing-md);
+            color: var(--color-text-light);
+        }
+        .hero p {
+            font-size: 1.3rem;
+            line-height: 1.5;
+            margin-bottom: var(--spacing-lg);
+            color: rgba(255, 255, 255, 0.9);
+        }
+        .hero-ctas {
+            display: flex;
+            gap: var(--spacing-md);
+            flex-wrap: wrap;
+        }
+        .hero-visual {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-width: 300px;
+        }
+        .hero-visual .image-frame {
+            max-width: 500px;
+            box-shadow: var(--shadow-lg);
+        }
+
+        @media (max-width: 992px) {
+            .hero-content {
+                flex-direction: column;
+                text-align: center;
+                gap: var(--spacing-lg);
+            }
+            .hero-text {
+                padding-right: 0;
+                text-align: center;
+            }
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            .hero p {
+                font-size: 1.15rem;
+            }
+            .hero-ctas {
+                justify-content: center;
+            }
+            .hero-visual {
+                padding-top: var(--spacing-lg);
+            }
+            .hero {
+                min-height: auto;
+                padding: var(--spacing-lg) 0;
+            }
+        }
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+            .hero p {
+                font-size: 1rem;
+            }
+            .hero-label {
+                font-size: 0.8rem;
+            }
+            .hero .button {
+                font-size: 0.95rem;
+                padding: var(--spacing-sm) var(--spacing-md);
+            }
+            .hero-ctas {
+                flex-direction: column;
+                gap: var(--spacing-sm);
+            }
+            .hero-ctas .button {
+                width: 100%;
+            }
+        }
+        @media (max-width: 480px) {
+            .hero h1 {
+                font-size: 1.7rem;
+            }
+            .hero p {
+                font-size: 0.95rem;
+            }
+        }
+
+        /* Problem & Solution Section */
+        .problem-solution-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: var(--spacing-xl);
+            align-items: flex-start;
+        }
+        .problem-card, .solution-card {
+            background-color: var(--color-white);
+            padding: var(--spacing-lg);
+            border-radius: var(--border-radius-lg);
+            box-shadow: var(--shadow-md);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .problem-card h2, .solution-card h2 {
+            font-size: 1.6rem;
+            font-weight: 700;
+            margin-bottom: var(--spacing-sm);
+            line-height: 1.4;
+        }
+        .problem-card h2 { color: var(--color-error); }
+        .solution-card h2 { color: var(--color-primary); }
+        .problem-card p, .solution-card p {
+            font-size: 1rem;
+            color: #555;
+            line-height: 1.6;
+        }
+        .problem-card:hover, .solution-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        @media (max-width: 992px) {
+            .problem-solution-grid {
+                grid-template-columns: 1fr;
+                gap: var(--spacing-lg);
+            }
+        }
+        @media (max-width: 480px) {
+            .problem-card, .solution-card {
+                padding: var(--spacing-md);
+            }
+            .problem-card h2, .solution-card h2 {
+                font-size: 1.3rem;
+            }
+            .problem-card p, .solution-card p {
+                font-size: 0.95rem;
+            }
+        }
+
+        /* Quick Check Section */
+        .quick-check-questions {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: var(--spacing-lg);
+            margin-bottom: var(--spacing-lg);
+        }
+        .quick-check-card {
+            background-color: var(--color-white);
+            padding: var(--spacing-lg);
+            border-radius: var(--border-radius-lg);
+            box-shadow: var(--shadow-md);
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-between;
+            min-height: 180px;
+        }
+        .quick-check-card h3 {
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: var(--spacing-md);
+            color: var(--color-primary);
+        }
+        .quick-check-card .options {
+            display: flex;
+            gap: var(--spacing-sm);
+            width: 100%;
+            justify-content: center;
+        }
+        .quick-check-card .option-button {
+            flex: 1;
+            padding: var(--spacing-sm);
+            border-radius: var(--border-radius-sm);
+            border: 1px solid var(--color-border-light);
+            background-color: var(--color-background-light);
+            cursor: pointer;
+            font-weight: 500;
+            transition: all 0.2s ease;
+            font-size: 0.95rem;
+        }
+        .quick-check-card .option-button:hover {
+            background-color: var(--color-background-medium);
+            border-color: var(--color-primary);
+        }
+        .quick-check-card .option-button.selected {
+            background-color: var(--color-accent);
+            color: var(--color-text-light);
+            border-color: var(--color-accent);
+            box-shadow: var(--shadow-sm);
+        }
+        .quick-check-card .option-button:focus {
+            outline: 2px solid var(--color-accent-light);
+            outline-offset: 2px;
+        }
+
+        .quick-check-result {
+            background-color: var(--color-primary);
+            color: var(--color-text-light);
+            padding: var(--spacing-xl);
+            border-radius: var(--border-radius-lg);
+            text-align: center;
+            box-shadow: var(--shadow-lg);
+            margin-top: var(--spacing-lg);
+        }
+        .quick-check-result h3 {
+            font-size: 1.8rem;
+            margin-bottom: var(--spacing-md);
+            font-weight: 700;
+        }
+        .quick-check-result p {
+            font-size: 1.1rem;
+            margin-bottom: var(--spacing-lg);
+            line-height: 1.5;
+        }
+        .quick-check-result .result-ctas {
+            display: flex;
+            gap: var(--spacing-md);
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        @media (max-width: 480px) {
+            .quick-check-card {
+                padding: var(--spacing-md);
+                min-height: 150px;
+            }
+            .quick-check-card h3 {
+                font-size: 1.1rem;
+                margin-bottom: var(--spacing-sm);
+            }
+            .quick-check-card .option-button {
+                font-size: 0.85rem;
+                padding: 0.6rem;
+            }
+            .quick-check-result {
+                padding: var(--spacing-lg);
+            }
+            .quick-check-result h3 {
+                font-size: 1.4rem;
+            }
+            .quick-check-result p {
+                font-size: 0.95rem;
+            }
+            .quick-check-result .result-ctas {
+                flex-direction: column;
+            }
+        }
+
+        /* Accordion */
+        .accordion-container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        .accordion-item {
+            background-color: var(--color-white);
+            border-radius: var(--border-radius-md);
+            margin-bottom: var(--spacing-sm);
+            box-shadow: var(--shadow-sm);
+            overflow: hidden;
+        }
+        .accordion-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: var(--spacing-md) var(--spacing-lg);
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 1.1rem;
+            color: var(--color-primary);
+            transition: background-color 0.2s ease;
+        }
+        .accordion-header:hover, .accordion-header:focus {
+            background-color: var(--color-background-light);
+            outline: none;
+        }
+        .accordion-header.active {
+            background-color: var(--color-background-light);
+        }
+        .accordion-header .arrow {
+            font-size: 1.2rem;
+            transition: transform 0.3s ease;
+        }
+        .accordion-header.active .arrow {
+            transform: rotate(180deg);
+        }
+        .accordion-content {
+            padding: 0 var(--spacing-lg);
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease-out, padding 0.4s ease-out;
+            color: #555;
+            line-height: 1.6;
+            font-size: 0.95rem;
+        }
+        .accordion-content p {
+            padding-bottom: var(--spacing-md);
+        }
+        .accordion-content.active {
+            max-height: 200px; /* Arbitrary large enough value */
+            padding-top: var(--spacing-xs);
+        }
+        @media (max-width: 480px) {
+            .accordion-header {
+                padding: var(--spacing-sm) var(--spacing-md);
+                font-size: 1rem;
+            }
+            .accordion-content {
+                padding: 0 var(--spacing-md);
+                font-size: 0.9rem;
+            }
+            .accordion-content.active {
+                max-height: 300px; /* Allow more for mobile */
+            }
+        }
+
+        /* Checklist Section */
+        .checklist-content {
+            display: flex;
+            gap: var(--spacing-xl);
+            align-items: flex-start;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        .checklist-items {
+            flex: 2;
+            list-style: none;
+            counter-reset: checklist-counter;
+        }
+        .checklist-items li {
+            background-color: var(--color-white);
+            padding: var(--spacing-md) var(--spacing-lg);
+            margin-bottom: var(--spacing-sm);
+            border-radius: var(--border-radius-md);
+            box-shadow: var(--shadow-sm);
+            display: flex;
+            align-items: center;
+            font-size: 1.1rem;
+            font-weight: 500;
+            color: var(--color-text-dark);
+            border-left: 5px solid var(--color-accent);
+        }
+        .checklist-items li span {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--color-accent);
+            margin-right: var(--spacing-md);
+            min-width: 2rem;
+            text-align: center;
+        }
+        .checklist-download {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background-color: var(--color-white);
+            padding: var(--spacing-lg);
+            border-radius: var(--border-radius-lg);
+            box-shadow: var(--shadow-md);
+            text-align: center;
+            min-width: 250px;
+        }
+        .pdf-icon {
+            width: 80px;
+            height: 80px;
+            background-color: var(--color-error);
+            border-radius: var(--border-radius-md);
+            margin-bottom: var(--spacing-sm);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.5rem;
+            color: var(--color-text-light);
+            font-weight: 700;
+            position: relative;
+            box-shadow: var(--shadow-sm);
+        }
+        .pdf-icon::before {
+            content: 'PDF';
+        }
+        .pdf-icon::after {
+            content: '⬇️';
+            position: absolute;
+            bottom: -15px;
+            right: -15px;
+            font-size: 1.8rem;
+        }
+        .checklist-download .microcopy {
+            margin-bottom: var(--spacing-md);
+            font-size: 0.9rem;
+            color: #666;
+        }
+        .checklist-download .download-button {
+            width: 100%;
+        }
+
+        @media (max-width: 992px) {
+            .checklist-content {
+                flex-direction: column;
+                align-items: center;
+                gap: var(--spacing-lg);
+            }
+            .checklist-items {
+                width: 100%;
+            }
+            .checklist-download {
+                width: 70%;
+                max-width: 350px;
+            }
+        }
+        @media (max-width: 480px) {
+            .checklist-items li {
+                font-size: 1rem;
+                padding: var(--spacing-sm) var(--spacing-md);
+            }
+            .checklist-items li span {
+                font-size: 1.1rem;
+                margin-right: var(--spacing-sm);
+                min-width: 1.5rem;
+            }
+            .checklist-download {
+                width: 100%;
+                padding: var(--spacing-md);
+            }
+            .pdf-icon {
+                width: 70px;
+                height: 70px;
+                font-size: 2rem;
+            }
+            .pdf-icon::after {
+                bottom: -10px;
+                right: -10px;
+                font-size: 1.5rem;
+            }
+        }
+
+        /* Services Section */
+        .service-cards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: var(--spacing-lg);
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        .service-card {
+            background-color: var(--color-white);
+            padding: var(--spacing-lg);
+            border-radius: var(--border-radius-lg);
+            box-shadow: var(--shadow-md);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .service-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
+        }
+        .service-icon {
+            font-size: 2.5rem;
+            color: var(--color-accent);
+            margin-bottom: var(--spacing-sm);
+            padding: var(--spacing-xs);
+            border-radius: 50%;
+            background-color: rgba(218, 165, 32, 0.1);
+            width: 60px;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 0 0 5px rgba(218, 165, 32, 0.05); /* Subtle ring */
+        }
+        .service-card h3 {
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: var(--spacing-xs);
+            color: var(--color-primary);
+        }
+        .service-card p {
+            font-size: 0.95rem;
+            color: #666;
+            line-height: 1.5;
+        }
+
+        @media (max-width: 480px) {
+            .service-card {
+                padding: var(--spacing-md);
+            }
+            .service-icon {
+                font-size: 2rem;
+                width: 50px;
+                height: 50px;
+            }
+            .service-card h3 {
+                font-size: 1.15rem;
+            }
+            .service-card p {
+                font-size: 0.9rem;
+            }
+        }
+
+        /* Attorney Intro Section */
+        .attorney-profile {
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-xl);
+            background-color: var(--color-white);
+            padding: var(--spacing-xl);
+            border-radius: var(--border-radius-lg);
+            box-shadow: var(--shadow-md);
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        .attorney-details {
+            flex: 1;
+        }
+        .attorney-details h3 {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--color-primary);
+            margin-bottom: var(--spacing-xs);
+        }
+        .attorney-title {
+            font-size: 1.1rem;
+            font-weight: 500;
+            color: var(--color-accent);
+            margin-bottom: var(--spacing-sm);
+        }
+        .attorney-specialty {
+            font-size: 1rem;
+            color: #555;
+            margin-bottom: var(--spacing-sm);
+        }
+        .attorney-experience {
+            font-size: 0.95rem;
+            color: #666;
+            line-height: 1.6;
+            margin-bottom: var(--spacing-lg);
+        }
+        .attorney-contact {
+            display: flex;
+            gap: var(--spacing-md);
+            flex-wrap: wrap;
+        }
+
+        @media (max-width: 768px) {
+            .attorney-profile {
+                flex-direction: column;
+                text-align: center;
+                gap: var(--spacing-lg);
+                padding: var(--spacing-lg);
+            }
+            .attorney-photo-frame {
+                margin-bottom: var(--spacing-sm);
+            }
+            .attorney-details h3 {
+                font-size: 1.5rem;
+            }
+            .attorney-title {
+                font-size: 1rem;
+            }
+            .attorney-specialty, .attorney-experience {
+                font-size: 0.9rem;
+            }
+            .attorney-contact {
+                justify-content: center;
+            }
+        }
+        @media (max-width: 480px) {
+            .attorney-profile {
+                padding: var(--spacing-md);
+            }
+            .attorney-details h3 {
+                font-size: 1.3rem;
+            }
+            .attorney-title {
+                font-size: 0.9rem;
+            }
+            .attorney-specialty, .attorney-experience {
+                font-size: 0.85rem;
+            }
+        }
+
+        /* Process Section */
+        .process-timeline {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            position: relative;
+            padding: var(--spacing-lg) 0;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        .process-timeline::before {
+            content: '';
+            position: absolute;
+            top: 50px; /* Adjust to align with icon circles */
+            left: 0;
+            right: 0;
+            height: 2px;
+            background-color: var(--color-border-light);
+            z-index: 0;
+        }
+        .process-step {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            position: relative;
+            z-index: 1;
+            padding: 0 var(--spacing-sm);
+        }
+        .step-icon {
+            font-size: 2rem;
+            color: var(--color-primary);
+            background-color: var(--color-white);
+            border: 3px solid var(--color-accent);
+            border-radius: 50%;
+            width: 70px;
+            height: 70px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: var(--spacing-sm);
+            box-shadow: var(--shadow-sm);
+            flex-shrink: 0;
+        }
+        .step-content h4 {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--color-primary);
+            margin-bottom: var(--spacing-xs);
+        }
+        .step-content p {
+            font-size: 0.9rem;
+            color: #666;
+            line-height: 1.4;
+        }
+
+        @media (max-width: 768px) {
+            .process-timeline {
+                flex-direction: column;
+                align-items: flex-start;
+                padding-left: var(--spacing-lg);
+            }
+            .process-timeline::before {
+                top: 0;
+                left: 35px; /* Align with step icons */
+                width: 2px;
+                height: 100%;
+                background-color: var(--color-border-light);
+            }
+            .process-step {
+                flex-direction: row;
+                text-align: left;
+                padding: var(--spacing-sm) 0;
+                gap: var(--spacing-md);
+            }
+            .step-icon {
+                width: 60px;
+                height: 60px;
+                font-size: 1.8rem;
+                margin-bottom: 0;
+            }
+            .step-content h4 {
+                font-size: 1rem;
+            }
+            .step-content p {
+                font-size: 0.85rem;
+            }
+        }
+        @media (max-width: 480px) {
+            .process-timeline {
+                padding-left: var(--spacing-md);
+            }
+            .process-timeline::before {
+                left: 30px;
+            }
+            .step-icon {
+                width: 50px;
+                height: 50px;
+                font-size: 1.5rem;
+            }
+        }
+
+        /* Fees Section */
+        .fee-options {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: var(--spacing-lg);
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        .fee-card {
+            background-color: var(--color-white);
+            padding: var(--spacing-lg);
+            border-radius: var(--border-radius-lg);
+            box-shadow: var(--shadow-md);
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .fee-card h3 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--color-primary);
+            margin-bottom: var(--spacing-sm);
+        }
+        .fee-card p {
+            font-size: 1rem;
+            color: #555;
+            line-height: 1.5;
+            margin-bottom: var(--spacing-md);
+            flex-grow: 1; /* Push fee-note to bottom */
+        }
+        .fee-card .fee-note {
+            font-size: 1.1rem;
+            color: var(--color-accent);
+            font-weight: 700;
+        }
+        @media (max-width: 480px) {
+            .fee-card {
+                padding: var(--spacing-md);
+            }
+            .fee-card h3 {
+                font-size: 1.3rem;
+            }
+            .fee-card p {
+                font-size: 0.9rem;
+            }
+            .fee-card .fee-note {
+                font-size: 1rem;
+            }
+        }
+
+        /* CTA Bottom Section */
+        .cta-section {
+            background: linear-gradient(90deg, var(--color-primary) 0%, #1A2E4E 100%);
+            color: var(--color-text-light);
+            padding: var(--spacing-xxl) 0;
+            text-align: center;
+        }
+        .cta-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        .cta-headline {
+            font-size: 2.5rem;
+            font-weight: 700;
+            line-height: 1.3;
+            margin-bottom: var(--spacing-md);
+        }
+        .cta-subcopy {
+            font-size: 1.2rem;
+            margin-bottom: var(--spacing-xl);
+            color: rgba(255, 255, 255, 0.9);
+        }
+        @media (max-width: 768px) {
+            .cta-section {
+                padding: var(--spacing-lg) 0;
+            }
+            .cta-headline {
+                font-size: 2rem;
+            }
+            .cta-subcopy {
+                font-size: 1rem;
+                margin-bottom: var(--spacing-lg);
+            }
+        }
+        @media (max-width: 480px) {
+            .cta-headline {
+                font-size: 1.6rem;
+            }
+            .cta-subcopy {
+                font-size: 0.95rem;
+            }
+            .cta-section .button.large {
+                font-size: 1rem;
+                padding: var(--spacing-md) var(--spacing-lg);
+            }
+        }
+
+        /* Contact Form Section */
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: var(--spacing-xl);
+            align-items: flex-start;
+        }
+        .contact-info {
+            padding-top: var(--spacing-md);
+        }
+        .contact-info h2 {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--color-primary);
+            margin-bottom: var(--spacing-sm);
+        }
+        .contact-info .subcopy {
+            font-size: 1.1rem;
+            color: #666;
+            line-height: 1.5;
+            margin-bottom: var(--spacing-lg);
+        }
+        .contact-buttons {
+            display: flex;
+            flex-direction: column;
+            gap: var(--spacing-md);
+            margin-bottom: var(--spacing-lg);
+        }
+        .contact-form-wrapper {
+            background-color: var(--color-white);
+            padding: var(--spacing-xl);
+            border-radius: var(--border-radius-lg);
+            box-shadow: var(--shadow-lg);
+        }
+        .form-card h3 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--color-primary);
+            margin-bottom: var(--spacing-lg);
+            text-align: center;
+        }
+        .form-group {
+            margin-bottom: var(--spacing-md);
+        }
+        .form-group label {
+            display: block;
+            font-weight: 500;
+            margin-bottom: var(--spacing-xs);
+            color: var(--color-text-dark);
+        }
+        .form-group input[type="text"],
+        .form-group input[type="tel"],
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: var(--spacing-sm) var(--spacing-md);
+            border: 1px solid var(--color-border-light);
+            border-radius: var(--border-radius-sm);
+            font-family: var(--font-family-base);
+            font-size: 1rem;
+            color: var(--color-text-dark);
+            transition: border-color 0.2s ease, box-shadow 0.2s ease;
+        }
+        .form-group input[type="text"]:focus,
+        .form-group input[type="tel"]:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            border-color: var(--color-accent);
+            box-shadow: 0 0 0 3px rgba(218, 165, 32, 0.2);
+            outline: none;
+        }
+        .form-group textarea {
+            resize: vertical;
+            min-height: 100px;
+        }
+        .form-group .required {
+            color: var(--color-error);
+            margin-left: 0.2rem;
+        }
+        .checkbox-group {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: var(--spacing-lg);
+        }
+        .checkbox-group input[type="checkbox"] {
+            margin-top: 0.25rem;
+            margin-right: var(--spacing-sm);
+            flex-shrink: 0;
+            width: 1.1em;
+            height: 1.1em;
+            accent-color: var(--color-accent);
+        }
+        .checkbox-group label {
+            margin-bottom: 0;
+            font-size: 0.95rem;
+            line-height: 1.4;
+        }
+        .contact-form-wrapper .microcopy {
+            margin-top: var(--spacing-md);
+            text-align: left;
+            font-size: 0.8rem;
+        }
+
+        @media (max-width: 992px) {
+            .contact-grid {
+                grid-template-columns: 1fr;
+                gap: var(--spacing-lg);
+            }
+            .contact-info {
+                text-align: center;
+                padding-top: 0;
+            }
+            .contact-buttons {
+                flex-direction: row;
+                justify-content: center;
+                flex-wrap: wrap;
+            }
+            .contact-buttons .button {
+                flex: 1;
+                min-width: 250px;
+            }
+            .contact-form-wrapper {
+                padding: var(--spacing-lg);
+            }
+        }
+        @media (max-width: 480px) {
+            .contact-info h2 {
+                font-size: 1.7rem;
+            }
+            .contact-info .subcopy {
+                font-size: 0.95rem;
+            }
+            .contact-form-wrapper {
+                padding: var(--spacing-md);
+            }
+            .form-card h3 {
+                font-size: 1.3rem;
+            }
+            .form-group label, .checkbox-group label {
+                font-size: 0.9rem;
+            }
+            .form-group input, .form-group select, .form-group textarea {
+                font-size: 0.9rem;
+                padding: 0.6rem var(--spacing-sm);
+            }
+        }
+
+        /* Footer */
+        .footer {
+            background-color: var(--color-primary);
+            color: var(--color-text-light);
+            padding: var(--spacing-xl) 0 var(--spacing-md) 0;
+            font-size: 0.9rem;
+        }
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: var(--spacing-lg);
+            margin-bottom: var(--spacing-lg);
+        }
+        .footer h4 {
+            font-size: 1rem;
+            font-weight: 600;
+            margin-bottom: var(--spacing-md);
+            color: var(--color-accent-light);
+        }
+        .footer p, .footer a {
+            color: rgba(255, 255, 255, 0.7);
+            text-decoration: none;
+            line-height: 1.8;
+            transition: color 0.2s ease;
+        }
+        .footer a:hover, .footer a:focus {
+            color: var(--color-accent);
+            outline: none;
+        }
+        .footer ul {
+            list-style: none;
+        }
+        .footer-brand .logo-placeholder {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--color-text-light);
+            margin-bottom: var(--spacing-xs);
+        }
+        .footer-brand .microcopy {
+            text-align: left;
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 0.8rem;
+        }
+        .social-icons {
+            display: flex;
+            gap: var(--spacing-sm);
+        }
+        .social-icons a {
+            font-size: 1.5rem;
+            color: rgba(255, 255, 255, 0.7);
+        }
+        .social-icons a:hover {
+            color: var(--color-accent);
+        }
+        .footer-bottom {
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding-top: var(--spacing-md);
+            text-align: center;
+            font-size: 0.8rem;
+            color: rgba(255, 255, 255, 0.5);
+        }
+
+        @media (max-width: 768px) {
+            .footer-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+            .footer-brand .microcopy {
+                text-align: center;
+            }
+            .social-icons {
+                justify-content: center;
+            }
+        }
+        @media (max-width: 480px) {
+            .footer {
+                padding: var(--spacing-lg) 0 var(--spacing-sm) 0;
+            }
+            .footer h4 {
+                margin-bottom: var(--spacing-sm);
+            }
+            .footer p, .footer a {
+                line-height: 1.6;
+            }
+            .footer-bottom {
+                padding-top: var(--spacing-sm);
+            }
+        }
+
+        /* Mobile Sticky CTA */
+        .mobile-sticky-cta {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background-color: var(--color-white);
+            box-shadow: 0 -4px 12px rgba(0, 0, 0, 0.1);
+            display: flex;
+            padding: var(--spacing-sm);
+            gap: var(--spacing-sm);
+            z-index: 1000;
+            justify-content: space-between;
+        }
+        .mobile-sticky-cta .button {
+            flex: 1;
+            padding: var(--spacing-sm) var(--spacing-xs);
+            font-size: 0.95rem;
+            border-radius: var(--border-radius-sm);
+            gap: var(--spacing-xs);
+        }
+        .mobile-sticky-cta .button span:first-child { /* Icon */
+            font-size: 1.1rem;
+        }
+
+        @media (min-width: 769px) {
+            .mobile-sticky-cta {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <main>
+        <!-- 1. 히어로 — 긴급 상황 인식과 즉시 행동 유도 -->
+        <section id="hero" class="hero">
+            <div class="container hero-content">
+                <div class="hero-text">
+                    <span class="hero-label">긴급</span>
+                    <h1>체포·조사 통보를 받으셨나요? 지금 즉시 법적 보호를 시작하세요</h1>
+                    <p>전화 한 통으로 초기 대응을 안내하고, 당장 해야 할 행동까지 차분하게 도와드립니다. 지금 바로 연락하세요.</p>
+                    <div class="hero-ctas">
+                        <a href="tel:000-0000-0000" class="button primary-cta large" aria-label="긴급 상담 요청 전화하기">긴급 상담 요청</a>
+                        <a href="#quick-check" class="button secondary-cta large" aria-label="1분 긴급 체크 시작하기">1분 긴급 체크</a>
+                    </div>
+                </div>
+                <div class="hero-visual">
+                    <!-- Premium replacement-ready image frame for attorney or office -->
+                    <div class="image-frame">
+                        <span class="image-placeholder-text">변호사 초상 또는 사무실 전경 이미지</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Pain & Solution Section -->
+        <section id="problem-solution" class="section-padded bg-light">
+            <div class="container problem-solution-grid">
+                <div class="problem-card">
+                    <h2>지금 느끼는 불안과 혼란을 이해합니다.</h2>
+                    <p>갑작스러운 체포·소환 통보, 현장에서 무엇을 해야 할지 몰라 당황하실 겁니다. 가족과 지인에게 연락하는 방법, 현장에서 증거를 지키는 방법, 조사에 응해야 하는지 머뭇거리는 불안—지금 느끼는 불안과 혼란을 이해합니다.</p>
+                </div>
+                <div class="solution-card">
+                    <h2>긴급 상황에 특화된 형사전담 팀이 함께합니다.</h2>
+                    <p>저희는 긴급 상황에 특화된 형사전담 팀입니다. 전화로 즉시 초기 대응을 안내하고, 현장에서 지켜야 할 행동을 알려드리며 필요 시 변호사 출동과 접견을 지원합니다. 복잡한 법적 절차는 저희가 정리해 드리고, 고객님은 우선 안전과 권리 보호에 집중하시면 됩니다.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 2. 1분 긴급 체크 — 빠른 셀프 진단 -->
+        <section id="quick-check" class="section-padded">
+            <div class="container">
+                <h2 class="section-headline">1분 긴급 체크 — 빠른 셀프 진단</h2>
+                <p class="section-subcopy">세 가지 질문으로 지금 해야 할 다음 행동을 안내합니다.</p>
+                <div class="quick-check-questions" id="quick-check-questions">
+                    <!-- Questions will be loaded here by JavaScript -->
+                </div>
+                <div id="quick-check-result" class="quick-check-result" style="display: none;">
+                    <h3>다음 행동 안내</h3>
+                    <p id="result-text"></p>
+                    <div class="result-ctas">
+                        <a href="tel:000-0000-0000" class="button primary-cta large" aria-label="긴급 상담 전화하기">긴급 상담 전화</a>
+                        <a href="#contact-form" class="button secondary-cta large" aria-label="온라인 문의 양식 작성하기">온라인 문의</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 3. 사건 유형별 안내 — 케이스 별 핵심 포인트 -->
+        <section id="case-types" class="section-padded bg-light">
+            <div class="container">
+                <h2 class="section-headline">사건 유형별 안내 — 케이스 별 핵심 포인트</h2>
+                <p class="section-subcopy">체포·구속·압수수색·범죄수사 등 상황별 짧은 설명과 권장 대응.</p>
+                <div class="accordion-container" id="case-type-accordion">
+                    <div class="accordion-item">
+                        <div class="accordion-header" role="button" aria-expanded="false" tabindex="0">
+                            <span>체포 (Arrest)</span>
+                            <span class="arrow">▼</span>
+                        </div>
+                        <div class="accordion-content">
+                            <p>갑작스러운 체포는 당황스러울 수 있습니다. 변호사 선임 요청 및 진술 거부권 행사가 중요하며, 불필요한 진술은 피해야 합니다.</p>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <div class="accordion-header" role="button" aria-expanded="false" tabindex="0">
+                            <span>구속 (Detention)</span>
+                            <span class="arrow">▼</span>
+                        </div>
+                        <div class="accordion-content">
+                            <p>구속은 신체의 자유를 제한하는 강력한 조치입니다. 구속영장 청구 단계부터 적극적인 방어가 필수적이며, 변호인의 조력을 받을 권리가 있습니다.</p>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <div class="accordion-header" role="button" aria-expanded="false" tabindex="0">
+                            <span>압수수색 (Search and Seizure)</span>
+                            <span class="arrow">▼</span>
+                        </div>
+                        <div class="accordion-content">
+                            <p>압수수색은 증거 확보를 위한 강제수사입니다. 적법한 절차 준수 여부를 확인하고, 불필요한 정보 제공을 삼가야 합니다. 변호인 동석 하에 진행하는 것이 좋습니다.</p>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <div class="accordion-header" role="button" aria-expanded="false" tabindex="0">
+                            <span>범죄수사 (Criminal Investigation)</span>
+                            <span class="arrow">▼</span>
+                        </div>
+                        <div class="accordion-content">
+                            <p>경찰, 검찰의 수사 단계에서부터 변호사와 동행하여 불리한 진술을 방지하고 증거를 효과적으로 제시해야 합니다. 초기 대응이 사건의 방향을 결정합니다.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 4. 지금 당장 해야 할 5가지 — 즉시 실행 체크리스트 -->
+        <section id="checklist" class="section-padded">
+            <div class="container">
+                <h2 class="section-headline">지금 당장 해야 할 5가지 — 즉시 실행 체크리스트</h2>
+                <p class="section-subcopy">현장에서 바로 실행 가능한 행동 5가지와 다운로드 가능한 PDF.</p>
+                <div class="checklist-content">
+                    <ol class="checklist-items">
+                        <li><span>1.</span> 변호사 선임 요청 의사를 분명히 밝히세요.</li>
+                        <li><span>2.</span> 진술 거부권 및 묵비권을 행사하세요.</li>
+                        <li><span>3.</span> 가족 및 지인에게 연락해 줄 것을 요청하세요.</li>
+                        <li><span>4.</span> 현장 증거 훼손 방지 및 보전 노력을 하세요.</li>
+                        <li><span>5.</span> 불필요한 서명이나 동의를 거부하세요.</li>
+                    </ol>
+                    <div class="checklist-download">
+                        <div class="pdf-icon"></div>
+                        <p class="microcopy">PDF 체크리스트는 즉시 다운로드 가능합니다.</p>
+                        <a href="#" class="button primary-cta download-button" aria-label="5가지 행동지침 PDF 다운로드">5가지 행동지침 다운로드</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 5. 서비스 설명 — 우리가 제공하는 구체적 지원 -->
+        <section id="services" class="section-padded bg-light">
+            <div class="container">
+                <h2 class="section-headline">서비스 설명 — 우리가 제공하는 구체적 지원</h2>
+                <p class="section-subcopy">초기 접견, 현장 출동, 증거보전 지원 등 역할과 기대 효과.</p>
+                <div class="service-cards-grid">
+                    <div class="service-card">
+                        <div class="service-icon icon-briefcase"></div>
+                        <h3>초기 접견 지원</h3>
+                        <p>수사 초기 단계부터 변호사가 신속히 접견하여 상황을 파악하고 법적 조언을 제공합니다.</p>
+                    </div>
+                    <div class="service-card">
+                        <div class="service-icon icon-car"></div>
+                        <h3>현장 출동</h3>
+                        <p>긴급 상황 발생 시 변호사가 현장에 출동하여 즉각적인 법적 대응을 돕습니다.</p>
+                    </div>
+                    <div class="service-card">
+                        <div class="service-icon icon-document"></div>
+                        <h3>증거 보전 지원</h3>
+                        <p>사건 관련 증거 자료를 신속하고 정확하게 확보하고 보전하도록 안내합니다.</p>
+                    </div>
+                    <div class="service-card">
+                        <div class="service-icon icon-shield"></div>
+                        <h3>권리 보호 대변</h3>
+                        <p>피의자 또는 피해자의 정당한 권리를 보호하고 수사 과정에서의 불이익을 최소화합니다.</p>
+                    </div>
+                    <div class="service-card">
+                        <div class="service-icon icon-chat"></div>
+                        <h3>심리적 안정 지원</h3>
+                        <p>혼란스러운 상황에서 의뢰인이 심리적 안정을 찾고 이성적으로 대응할 수 있도록 돕습니다.</p>
+                    </div>
+                    <div class="service-card">
+                        <div class="service-icon icon-law"></div>
+                        <h3>체계적인 법률 조언</h3>
+                        <p>사건 진행 단계별로 필요한 법률 자문과 전략을 체계적으로 제공합니다.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 6. 변호사 소개 — 신뢰 가능한 담당자 정보 -->
+        <section id="attorney-intro" class="section-padded">
+            <div class="container">
+                <h2 class="section-headline">변호사 소개 — 신뢰 가능한 담당자 정보</h2>
+                <p class="section-subcopy">담당 변호사 프로필, 담당 분야, 직접 연락 수단.</p>
+                <div class="attorney-profile">
+                    <div class="attorney-photo-frame">
+                        <!-- Premium replacement-ready image frame for attorney portrait -->
+                        <span class="image-placeholder-text">담당 변호사 초상 이미지</span>
+                    </div>
+                    <div class="attorney-details">
+                        <h3>김민준 변호사</h3>
+                        <p class="attorney-title">형사전담팀 리드 변호사</p>
+                        <p class="attorney-specialty"><strong>전문 분야:</strong> 긴급 체포, 구속 영장, 압수수색, 경제 범죄, 성범죄</p>
+                        <p class="attorney-experience">형사사건을 다룬 전담팀이 처음부터 끝까지 함께합니다. 상담은 비밀보장되며, 절차와 비용은 사전에 명확히 안내해 드립니다. 각 변호사는 사건 관련 전문성을 바탕으로 책임감 있게 대응합니다. 다수의 긴급 형사사건을 성공적으로 해결하며 의뢰인의 권익을 최우선으로 보호해왔습니다. 신속하고 정확한 판단으로 최적의 솔루션을 제공합니다.</p>
+                        <div class="attorney-contact">
+                            <a href="tel:000-0000-0000" class="button primary-cta small" aria-label="김민준 변호사에게 전화하기">직접 전화</a>
+                            <a href="https://pf.kakao.com/_xxxxxx" target="_blank" class="button secondary-cta small" aria-label="김민준 변호사에게 카카오톡 메시지 보내기">카카오톡 문의</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 7. 상담 프로세스 — 단계별 진행 흐름 -->
+        <section id="process" class="section-padded bg-light">
+            <div class="container">
+                <h2 class="section-headline">상담 프로세스 — 단계별 진행 흐름</h2>
+                <p class="section-subcopy">긴급 연락부터 정식 수임까지의 명확한 절차.</p>
+                <div class="process-timeline">
+                    <div class="process-step">
+                        <div class="step-icon icon-phone"></div>
+                        <div class="step-content">
+                            <h4>1. 긴급 연락</h4>
+                            <p>전화 또는 카카오톡으로 즉시 상황 접수</p>
+                        </div>
+                    </div>
+                    <div class="process-step">
+                        <div class="step-icon icon-magnifier"></div>
+                        <div class="step-content">
+                            <h4>2. 초기 상황 파악</h4>
+                            <p>현재 상태(체포/소환/통보 등)와 위험요인 확인</p>
+                        </div>
+                    </div>
+                    <div class="process-step">
+                        <div class="step-icon icon-alert"></div>
+                        <div class="step-content">
+                            <h4>3. 즉시 조치 안내</h4>
+                            <p>현장에서 할 일과 하지 말아야 할 일 안내</p>
+                        </div>
+                    </div>
+                    <div class="process-step">
+                        <div class="step-icon icon-handshake"></div>
+                        <div class="step-content">
+                            <h4>4. 필요 시 변호사 출동/접견</h4>
+                            <p>현장 접견 또는 법원 출석 지원</p>
+                        </div>
+                    </div>
+                    <div class="process-step">
+                        <div class="step-icon icon-contract"></div>
+                        <div class="step-content">
+                            <h4>5. 정식 상담 및 수임</h4>
+                            <p>사건 분석 후 다음 단계·비용 안내</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 8. 비용 안내 & 상담 옵션 — 투명한 상담 선택지 -->
+        <section id="fees" class="section-padded">
+            <div class="container">
+                <h2 class="section-headline">비용 안내 & 상담 옵션 — 투명한 상담 선택지</h2>
+                <p class="section-subcopy">상담 형태별 안내와 비용 설명(상담 후 상세 안내).</p>
+                <div class="fee-options">
+                    <div class="fee-card">
+                        <h3>전화 상담</h3>
+                        <p>긴급 상황 시 가장 빠른 상담 방식입니다. 초기 대응 및 간략한 법률 조언을 제공합니다.</p>
+                        <p class="fee-note"><strong>비용:</strong> 상담 후 상세 안내</p>
+                    </div>
+                    <div class="fee-card">
+                        <h3>대면 상담</h3>
+                        <p>사무실 방문을 통한 심층 상담입니다. 사건 자료 검토 및 구체적인 전략 수립에 적합합니다.</p>
+                        <p class="fee-note"><strong>비용:</strong> 상담 후 상세 안내</p>
+                    </div>
+                    <div class="fee-card">
+                        <h3>현장 출동 상담</h3>
+                        <p>체포 현장, 경찰서 등 긴급하게 변호사의 도움이 필요한 경우 현장에 출동합니다.</p>
+                        <p class="fee-note"><strong>비용:</strong> 상담 후 상세 안내</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 9. 자주 묻는 질문 — 빠른 궁금증 해소 -->
+        <section id="faq" class="section-padded bg-light">
+            <div class="container">
+                <h2 class="section-headline">자주 묻는 질문 — 빠른 궁금증 해소</h2>
+                <p class="section-subcopy">긴급 상황에서 자주 묻는 질문과 간결한 답변.</p>
+                <div class="accordion-container" id="faq-accordion">
+                    <div class="accordion-item">
+                        <div class="accordion-header" role="button" aria-expanded="false" tabindex="0">
+                            <span>Q: 지금 바로 전화해도 되나요?</span>
+                            <span class="arrow">▼</span>
+                        </div>
+                        <div class="accordion-content">
+                            <p>A: 네. 전화 또는 카카오톡으로 긴급 문의 주시면 우선 상황을 파악하고 즉시 대응 방법을 안내합니다.</p>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <div class="accordion-header" role="button" aria-expanded="false" tabindex="0">
+                            <span>Q: 수임 전 상담비용은 어떻게 되나요?</span>
+                            <span class="arrow">▼</span>
+                        </div>
+                        <div class="accordion-content">
+                            <p>A: 상담 방식(전화/대면/현장)에 따라 달라집니다. 상담 후 비용과 진행 방식을 투명하게 안내드립니다.</p>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <div class="accordion-header" role="button" aria-expanded="false" tabindex="0">
+                            <span>Q: 가족이나 지인이 대신 연락해도 되나요?</span>
+                            <span class="arrow">▼</span>
+                        </div>
+                        <div class="accordion-content">
+                            <p>A: 가능합니다. 가족 정보와 사건 관련 기본 정보를 알려주시면 신속히 대응하겠습니다.</p>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <div class="accordion-header" role="button" aria-expanded="false" tabindex="0">
+                            <span>Q: 경찰 조사 중인데 어떻게 해야 하나요?</span>
+                            <span class="arrow">▼</span>
+                        </div>
+                        <div class="accordion-content">
+                            <p>A: 조사 중에는 변호사 연락을 요청하시고, 변호사와 상의 없이 불필요한 진술을 자제하는 것이 일반적입니다. 구체적 상황에 맞춰 즉시 안내드립니다.</p>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <div class="accordion-header" role="button" aria-expanded="false" tabindex="0">
+                            <span>Q: 구속될 가능성이 있으면 어떻게 하나요?</span>
+                            <span class="arrow">▼</span>
+                        </div>
+                        <div class="accordion-content">
+                            <p>A: 가능한 방어 전략과 접견·구속영장 관련 대응을 신속히 준비해 드립니다. 자세한 내용은 상황 확인 후 안내드립니다.</p>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <div class="accordion-header" role="button" aria-expanded="false" tabindex="0">
+                            <span>Q: 휴대전화 압수·영장집행을 당하면?</span>
+                            <span class="arrow">▼</span>
+                        </div>
+                        <div class="accordion-content">
+                            <p>A: 현장 대응 및 이후 증거보전·자료복구 가능성에 대해 단계별로 안내해 드립니다.</p>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <div class="accordion-header" role="button" aria-expanded="false" tabindex="0">
+                            <span>Q: 얼마나 빨리 연락받을 수 있나요?</span>
+                            <span class="arrow">▼</span>
+                        </div>
+                        <div class="accordion-content">
+                            <p>A: 접수 즉시 우선 연락을 드리며, 상황에 따라 신속한 출동이나 접견을 조정합니다.</p>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <div class="accordion-header" role="button" aria-expanded="false" tabindex="0">
+                            <span>Q: 상담 내용은 외부에 공개되나요?</span>
+                            <span class="arrow">▼</span>
+                        </div>
+                        <div class="accordion-content">
+                            <p>A: 아닙니다. 상담 내용은 비밀보장되며, 개인정보는 상담 목적 외 사용하지 않습니다.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA Section -->
+        <section id="cta-bottom" class="cta-section">
+            <div class="container">
+                <div class="cta-content">
+                    <h2 class="cta-headline">지체하면 불리해질 수 있습니다. 지금 바로 전문가와 연결되어 초기 대응을 시작하세요.</h2>
+                    <p class="cta-subcopy">전화 한 통으로 첫 대응이 달라집니다.</p>
+                    <a href="tel:000-0000-0000" class="button primary-cta large" aria-label="지금 바로 긴급 상담 전화하기">긴급 상담 요청</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- 10. 실제 문의 — 간단 긴급 문의 폼과 직접 통화 버튼 -->
+        <section id="contact-form" class="section-padded">
+            <div class="container contact-grid">
+                <div class="contact-info">
+                    <h2>지금 바로 긴급 문의하세요</h2>
+                    <p class="subcopy">최소한의 정보만 입력해 주시면 신속히 연락드립니다.</p>
+                    <div class="contact-buttons">
+                        <a href="tel:000-0000-0000" class="button primary-cta large-icon" aria-label="전화로 긴급 상담하기">
+                            <span class="icon-phone-outline"></span>
+                            <span>000-0000-0000</span>
+                        </a>
+                        <a href="https://pf.kakao.com/_xxxxxx" target="_blank" class="button kakao-cta large-icon" aria-label="카카오톡으로 긴급 상담하기">
+                            <span class="icon-kakao"></span>
+                            <span>카카오톡 상담</span>
+                        </a>
+                    </div>
+                    <p class="microcopy left">전화 클릭 시 즉시 연결됩니다. 상담 내용은 비밀보장됩니다.</p>
+                </div>
+                <div class="contact-form-wrapper">
+                    <form id="emergency-contact-form" class="form-card">
+                        <h3>긴급 문의하기</h3>
+                        <div class="form-group">
+                            <label for="name">이름 <span class="required">*</span></label>
+                            <input type="text" id="name" name="name" required placeholder="이름을 입력해주세요">
+                        </div>
+                        <div class="form-group">
+                            <label for="phone">연락처 <span class="required">*</span></label>
+                            <input type="tel" id="phone" name="phone" required placeholder="010-1234-5678">
+                        </div>
+                        <div class="form-group">
+                            <label for="case-type">사건 유형 (선택)</label>
+                            <select id="case-type" name="case-type">
+                                <option value="">선택해주세요</option>
+                                <option value="체포">체포</option>
+                                <option value="구속">구속</option>
+                                <option value="압수수색">압수수색</option>
+                                <option value="소환">소환</option>
+                                <option value="기타">기타</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="current-status">현재 상태 <span class="required">*</span></label>
+                            <select id="current-status" name="current-status" required>
+                                <option value="">선택해주세요</option>
+                                <option value="현장">현장</option>
+                                <option value="통보">통보</option>
+                                <option value="조사중">조사중</option>
+                                <option value="기타">기타</option>
+                            </select>
+                        </div>
+                        <div class="form-group full-width">
+                            <label for="situation">간단 상황 기재 (선택)</label>
+                            <textarea id="situation" name="situation" rows="5" maxlength="300" placeholder="현재 상황을 간단히 설명해주세요 (최대 300자)"></textarea>
+                        </div>
+                        <div class="form-group checkbox-group full-width">
+                            <input type="checkbox" id="privacy-agree" name="privacy-agree" required>
+                            <label for="privacy-agree">상담 목적의 개인정보 수집·이용에 동의합니다.<span class="required">*</span></label>
+                        </div>
+                        <button type="submit" class="button primary-cta full-width" aria-label="긴급 문의 양식 제출">긴급 문의 보내기</button>
+                        <p class="microcopy left">상담 요청은 사건 대응 우선순위에 따라 처리됩니다. 개인정보는 상담 목적 외 사용하지 않습니다.</p>
+                    </form>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- 11. 법적 고지·개인정보 처리 및 위치 정보 / 12. 푸터 — 연락처 및 법적 고지 -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <div class="logo-placeholder">긴급법률</div>
+                    <p class="microcopy">긴급 형사사건 법률 상담</p>
+                </div>
+                <div class="footer-contact">
+                    <h4>연락처</h4>
+                    <p>전화: <a href="tel:000-0000-0000" aria-label="푸터 전화번호">000-0000-0000</a></p>
+                    <p>운영 시간: 평일 09:00 - 18:00 (긴급 상담 24시간)</p>
+                    <p>주소: 서울특별시 강남구 테헤란로 123 (가상 주소)</p>
+                </div>
+                <div class="footer-links">
+                    <h4>법적 고지</h4>
+                    <ul>
+                        <li><a href="#" aria-label="이용 약관">이용 약관</a></li>
+                        <li><a href="#" aria-label="개인정보처리방침">개인정보처리방침</a></li>
+                        <li><a href="#" aria-label="오시는 길">오시는 길</a></li>
+                    </ul>
+                </div>
+                <div class="footer-social">
+                    <h4>소셜 미디어</h4>
+                    <div class="social-icons">
+                        <a href="https://pf.kakao.com/_xxxxxx" target="_blank" aria-label="카카오톡 채널"><span class="icon-kakao"></span></a>
+                        <!-- Additional social icons can be added here -->
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2023 긴급 형사사건 법률사무소. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Mobile Sticky CTA -->
+    <div class="mobile-sticky-cta">
+        <a href="tel:000-0000-0000" class="button primary-cta" aria-label="모바일 하단 긴급 상담 전화하기">
+            <span class="icon-phone-outline"></span>
+            <span>긴급 상담 전화</span>
+        </a>
+        <a href="#contact-form" class="button secondary-cta" aria-label="모바일 하단 온라인 문의하기">
+            <span class="icon-message-outline"></span>
+            <span>온라인 문의</span>
+        </a>
+    </div>
+
+    <script>
+        // Accordion functionality
+        function setupAccordion(containerId) {
+            const accordionContainer = document.getElementById(containerId);
+            if (!accordionContainer) return;
+
+            accordionContainer.addEventListener('click', (event) => {
+                const header = event.target.closest('.accordion-header');
+                if (header) {
+                    const item = header.closest('.accordion-item');
+                    const content = item.querySelector('.accordion-content');
+                    const isActive = header.classList.contains('active');
+
+                    // Close all other active accordions in the same container
+                    accordionContainer.querySelectorAll('.accordion-header.active').forEach(activeHeader => {
+                        if (activeHeader !== header) {
+                            activeHeader.classList.remove('active');
+                            activeHeader.setAttribute('aria-expanded', 'false');
+                            activeHeader.nextElementSibling.classList.remove('active');
+                            activeHeader.nextElementSibling.style.maxHeight = '0';
+                        }
+                    });
+
+                    // Toggle current accordion
+                    if (isActive) {
+                        header.classList.remove('active');
+                        header.setAttribute('aria-expanded', 'false');
+                        content.classList.remove('active');
+                        content.style.maxHeight = '0';
+                    } else {
+                        header.classList.add('active');
+                        header.setAttribute('aria-expanded', 'true');
+                        content.classList.add('active');
+                        content.style.maxHeight = content.scrollHeight + 'px'; // Set max-height for smooth transition
+                    }
+                }
+            });
+
+            // Handle keyboard navigation for accessibility
+            accordionContainer.querySelectorAll('.accordion-header').forEach(header => {
+                header.addEventListener('keydown', (event) => {
+                    if (event.key === 'Enter' || event.key === ' ') {
+                        event.preventDefault();
+                        header.click();
+                    }
+                });
+            });
+        }
+
+        setupAccordion('case-type-accordion');
+        setupAccordion('faq-accordion');
+
+
+        // Quick Check functionality
+        const quickCheckQuestions = [
+            {
+                id: 1,
+                question: "현재 체포 또는 연행된 상태이신가요?",
+                yesAction: "critical",
+                noAction: "next"
+            },
+            {
+                id: 2,
+                question: "경찰/검찰로부터 출석 통보를 받으셨거나 조사가 예정되어 있나요?",
+                yesAction: "urgent",
+                noAction: "next"
+            },
+            {
+                id: 3,
+                question: "법률 자문이 필요한 형사사건에 연루되었거나 관련 정보를 찾고 계신가요?",
+                yesAction: "consult",
+                noAction: "mild"
+            }
+        ];
+
+        let answers = {};
+        const quickCheckContainer = document.getElementById('quick-check-questions');
+        const quickCheckResult = document.getElementById('quick-check-result');
+        const resultText = document.getElementById('result-text');
+
+        function renderQuickCheckQuestions() {
+            quickCheckContainer.innerHTML = '';
+            quickCheckQuestions.forEach(q => {
+                const card = document.createElement('div');
+                card.className = 'quick-check-card';
+                card.innerHTML = `
+                    <h3>${q.question}</h3>
+                    <div class="options">
+                        <button type="button" class="option-button" data-question-id="${q.id}" data-answer="yes" aria-pressed="${answers[q.id] === 'yes' ? 'true' : 'false'}">예</button>
+                        <button type="button" class="option-button" data-question-id="${q.id}" data-answer="no" aria-pressed="${answers[q.id] === 'no' ? 'true' : 'false'}">아니오</button>
+                    </div>
+                `;
+                quickCheckContainer.appendChild(card);
+            });
+            updateQuickCheckUI();
+        }
+
+        function handleQuickCheckAnswer(event) {
+            const button = event.target.closest('.option-button');
+            if (!button) return;
+
+            const questionId = parseInt(button.dataset.questionId);
+            const answer = button.dataset.answer;
+
+            answers[questionId] = answer;
+
+            // Update button active states
+            const options = button.closest('.options');
+            options.querySelectorAll('.option-button').forEach(btn => {
+                btn.classList.remove('selected');
+                btn.setAttribute('aria-pressed', 'false');
+            });
+            button.classList.add('selected');
+            button.setAttribute('aria-pressed', 'true');
+
+            updateQuickCheckResult();
+        }
+
+        function updateQuickCheckResult() {
+            let criticalCount = 0;
+            let urgentCount = 0;
+            let consultCount = 0;
+
+            if (Object.keys(answers).length !== quickCheckQuestions.length) {
+                quickCheckResult.style.display = 'none';
+                return;
+            }
+
+            quickCheckQuestions.forEach(q => {
+                const answer = answers[q.id];
+                if (answer === 'yes') {
+                    if (q.yesAction === 'critical') criticalCount++;
+                    if (q.yesAction === 'urgent') urgentCount++;
+                    if (q.yesAction === 'consult') consultCount++;
+                } else { // answer === 'no'
+                    if (q.noAction === 'critical') criticalCount++; // Should not happen with current logic but for future flexibility
+                    if (q.noAction === 'urgent') urgentCount++;
+                    if (q.noAction === 'consult') consultCount++;
+                }
+            });
+
+            let message = "";
+            if (criticalCount > 0) {
+                message = "현재 상황은 매우 긴급한 법적 조치가 필요합니다. 지금 바로 전화하여 전문가의 도움을 받으세요.";
+            } else if (urgentCount > 0) {
+                message = "빠른 상황 파악과 초기 대응이 중요합니다. 전화 또는 온라인 문의를 통해 상담을 시작하세요.";
+            } else if (consultCount > 0) {
+                message = "법률 자문이 필요한 상황으로 보입니다. 전문가와 상담하여 정확한 법적 조언을 받아보시는 것을 권장합니다.";
+            } else {
+                message = "아직 직접적인 위험은 낮아 보이지만, 혹시 모를 상황을 대비하여 상담을 받아보시는 것을 권장합니다.";
+            }
+
+            resultText.textContent = message;
+            quickCheckResult.style.display = 'block';
+            quickCheckResult.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        }
+
+        quickCheckContainer.addEventListener('click', handleQuickCheckAnswer);
+        renderQuickCheckQuestions(); // Initial render
+
+        // Form submission handling
+        const emergencyContactForm = document.getElementById('emergency-contact-form');
+        if (emergencyContactForm) {
+            emergencyContactForm.addEventListener('submit', (event) => {
+                event.preventDefault();
+                alert('긴급 문의가 성공적으로 접수되었습니다. 최대한 신속하게 연락드리겠습니다.');
+                emergencyContactForm.reset(); // Clear form fields
+            });
+        }
+    </script>
+</body>
+</html>
