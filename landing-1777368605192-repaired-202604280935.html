@@ -1,0 +1,1247 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>학습 상담 안내 - 우리 아이 학습 방향 상담</title>
+    <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.8/dist/web/static/pretendard.css" />
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        :root {
+            --color-primary: #D4A017;
+            --color-primary-dark: #B8860B;
+            --color-navy: #1e3a5f;
+            --color-navy-light: #2c5282;
+            --color-text: #2d3748;
+            --color-text-light: #4a5568;
+            --color-bg: #ffffff;
+            --color-bg-light: #f7fafc;
+            --color-border: #e2e8f0;
+            --spacing-xs: 0.5rem;
+            --spacing-sm: 1rem;
+            --spacing-md: 1.5rem;
+            --spacing-lg: 2rem;
+            --spacing-xl: 3rem;
+            --spacing-2xl: 4rem;
+            --spacing-3xl: 6rem;
+        }
+        
+        body {
+            font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, system-ui, Roboto, sans-serif;
+            color: var(--color-text);
+            line-height: 1.7;
+            background: var(--color-bg);
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 var(--spacing-md);
+        }
+        
+        .section {
+            padding: var(--spacing-3xl) 0;
+        }
+        
+        .section-sm {
+            padding: var(--spacing-2xl) 0;
+        }
+        
+        .section-header {
+            text-align: center;
+            margin-bottom: var(--spacing-2xl);
+        }
+        
+        .section-label {
+            display: inline-block;
+            font-size: 0.875rem;
+            font-weight: 600;
+            color: var(--color-primary);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: var(--spacing-sm);
+        }
+        
+        .section-title {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--color-navy);
+            margin-bottom: var(--spacing-sm);
+            line-height: 1.3;
+        }
+        
+        .section-subtitle {
+            font-size: 1.125rem;
+            color: var(--color-text-light);
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        /* Header */
+        header {
+            background: var(--color-bg);
+            border-bottom: 1px solid var(--color-border);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+        }
+        
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: var(--spacing-md) var(--spacing-md);
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .logo {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--color-navy);
+        }
+        
+        .header-cta {
+            background: var(--color-primary);
+            color: white;
+            padding: 0.625rem 1.25rem;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.9375rem;
+            transition: background 0.3s;
+        }
+        
+        .header-cta:hover {
+            background: var(--color-primary-dark);
+        }
+        
+        /* Hero */
+        .hero {
+            background: linear-gradient(135deg, #f7fafc 0%, #edf2f7 100%);
+            padding: var(--spacing-3xl) 0;
+        }
+        
+        .hero-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: var(--spacing-xl);
+            align-items: center;
+        }
+        
+        .hero-text h1 {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: var(--color-navy);
+            line-height: 1.2;
+            margin-bottom: var(--spacing-md);
+        }
+        
+        .hero-text p {
+            font-size: 1.125rem;
+            color: var(--color-text-light);
+            margin-bottom: var(--spacing-lg);
+            line-height: 1.7;
+        }
+        
+        .hero-cta-group {
+            display: flex;
+            gap: var(--spacing-sm);
+            flex-wrap: wrap;
+        }
+        
+        .btn-primary {
+            background: var(--color-primary);
+            color: white;
+            padding: 1rem 2rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.0625rem;
+            transition: all 0.3s;
+            border: 2px solid var(--color-primary);
+            display: inline-block;
+        }
+        
+        .btn-primary:hover {
+            background: var(--color-primary-dark);
+            border-color: var(--color-primary-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(212, 160, 23, 0.3);
+        }
+        
+        .btn-secondary {
+            background: white;
+            color: var(--color-navy);
+            padding: 1rem 2rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.0625rem;
+            transition: all 0.3s;
+            border: 2px solid var(--color-navy);
+            display: inline-block;
+        }
+        
+        .btn-secondary:hover {
+            background: var(--color-navy);
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(30, 58, 95, 0.2);
+        }
+        
+        .hero-visual {
+            background: white;
+            border-radius: 12px;
+            padding: var(--spacing-lg);
+            box-shadow: 0 10px 40px rgba(0,0,0,0.08);
+            aspect-ratio: 16/9;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            border: 2px solid var(--color-border);
+        }
+        
+        .hero-visual-label {
+            font-size: 0.875rem;
+            font-weight: 600;
+            color: var(--color-primary);
+            margin-bottom: var(--spacing-sm);
+        }
+        
+        .hero-visual-title {
+            font-size: 1.125rem;
+            font-weight: 700;
+            color: var(--color-navy);
+            margin-bottom: var(--spacing-xs);
+        }
+        
+        .hero-visual-desc {
+            font-size: 0.9375rem;
+            color: var(--color-text-light);
+            line-height: 1.6;
+        }
+        
+        /* Problem Section */
+        .problem-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: var(--spacing-lg);
+        }
+        
+        .problem-card {
+            background: white;
+            border: 2px solid var(--color-border);
+            border-radius: 12px;
+            padding: var(--spacing-lg);
+            transition: all 0.3s;
+        }
+        
+        .problem-card:hover {
+            border-color: var(--color-primary);
+            box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+            transform: translateY(-4px);
+        }
+        
+        .problem-card h3 {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--color-navy);
+            margin-bottom: var(--spacing-sm);
+        }
+        
+        .problem-card p {
+            color: var(--color-text-light);
+            line-height: 1.7;
+        }
+        
+        /* Solution Section */
+        .solution {
+            background: var(--color-bg-light);
+        }
+        
+        .solution-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: var(--spacing-lg);
+        }
+        
+        .solution-card {
+            background: white;
+            border-radius: 12px;
+            padding: var(--spacing-lg);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+            text-align: center;
+        }
+        
+        .solution-number {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 48px;
+            height: 48px;
+            background: var(--color-primary);
+            color: white;
+            border-radius: 50%;
+            font-size: 1.25rem;
+            font-weight: 700;
+            margin-bottom: var(--spacing-md);
+        }
+        
+        .solution-card h3 {
+            font-size: 1.125rem;
+            font-weight: 700;
+            color: var(--color-navy);
+            margin-bottom: var(--spacing-sm);
+        }
+        
+        .solution-card p {
+            color: var(--color-text-light);
+            line-height: 1.7;
+        }
+        
+        /* Service Section */
+        .service-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: var(--spacing-lg);
+        }
+        
+        .service-card {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+            transition: all 0.3s;
+        }
+        
+        .service-card:hover {
+            box-shadow: 0 8px 32px rgba(0,0,0,0.12);
+            transform: translateY(-4px);
+        }
+        
+        .service-image {
+            aspect-ratio: 16/9;
+            background: linear-gradient(135deg, #edf2f7 0%, #e2e8f0 100%);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: var(--spacing-md);
+            text-align: center;
+            border-bottom: 2px solid var(--color-border);
+        }
+        
+        .service-image-label {
+            font-size: 0.8125rem;
+            color: var(--color-primary);
+            font-weight: 600;
+            margin-bottom: var(--spacing-xs);
+        }
+        
+        .service-image-text {
+            font-size: 0.875rem;
+            color: var(--color-text-light);
+        }
+        
+        .service-content {
+            padding: var(--spacing-lg);
+        }
+        
+        .service-content h3 {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--color-navy);
+            margin-bottom: var(--spacing-sm);
+        }
+        
+        .service-content p {
+            color: var(--color-text-light);
+            line-height: 1.7;
+        }
+        
+        /* Process Section */
+        .process {
+            background: var(--color-navy);
+            color: white;
+        }
+        
+        .process .section-title {
+            color: white;
+        }
+        
+        .process .section-subtitle {
+            color: rgba(255,255,255,0.85);
+        }
+        
+        .process-timeline {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: var(--spacing-md);
+            position: relative;
+        }
+        
+        .process-step {
+            background: rgba(255,255,255,0.1);
+            border: 2px solid rgba(255,255,255,0.2);
+            border-radius: 12px;
+            padding: var(--spacing-lg);
+            text-align: center;
+            position: relative;
+        }
+        
+        .process-step-number {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 56px;
+            height: 56px;
+            background: var(--color-primary);
+            color: white;
+            border-radius: 50%;
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: var(--spacing-md);
+        }
+        
+        .process-step h3 {
+            font-size: 1.125rem;
+            font-weight: 700;
+            margin-bottom: var(--spacing-sm);
+        }
+        
+        .process-step p {
+            color: rgba(255,255,255,0.85);
+            line-height: 1.7;
+            font-size: 0.9375rem;
+        }
+        
+        /* Report Section */
+        .report {
+            background: var(--color-bg-light);
+        }
+        
+        .report-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: var(--spacing-xl);
+            align-items: center;
+        }
+        
+        .report-visual {
+            background: white;
+            border-radius: 12px;
+            padding: var(--spacing-xl);
+            box-shadow: 0 8px 32px rgba(0,0,0,0.08);
+            aspect-ratio: 4/3;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            border: 2px solid var(--color-border);
+        }
+        
+        .report-visual-icon {
+            font-size: 3rem;
+            margin-bottom: var(--spacing-md);
+        }
+        
+        .report-visual-label {
+            font-size: 0.875rem;
+            font-weight: 600;
+            color: var(--color-primary);
+            margin-bottom: var(--spacing-sm);
+        }
+        
+        .report-visual-title {
+            font-size: 1.125rem;
+            font-weight: 700;
+            color: var(--color-navy);
+            margin-bottom: var(--spacing-xs);
+        }
+        
+        .report-visual-desc {
+            font-size: 0.9375rem;
+            color: var(--color-text-light);
+            line-height: 1.6;
+        }
+        
+        .report-content h3 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--color-navy);
+            margin-bottom: var(--spacing-md);
+        }
+        
+        .report-content p {
+            color: var(--color-text-light);
+            line-height: 1.8;
+            margin-bottom: var(--spacing-md);
+        }
+        
+        .report-list {
+            list-style: none;
+        }
+        
+        .report-list li {
+            padding: var(--spacing-sm) 0;
+            padding-left: var(--spacing-lg);
+            position: relative;
+            color: var(--color-text-light);
+        }
+        
+        .report-list li:before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: var(--color-primary);
+            font-weight: 700;
+        }
+        
+        /* Teachers Section */
+        .teachers-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: var(--spacing-lg);
+        }
+        
+        .teacher-card {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+            text-align: center;
+        }
+        
+        .teacher-photo {
+            aspect-ratio: 1/1;
+            background: linear-gradient(135deg, #edf2f7 0%, #e2e8f0 100%);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: var(--spacing-lg);
+            border-bottom: 2px solid var(--color-border);
+        }
+        
+        .teacher-photo-icon {
+            font-size: 3rem;
+            margin-bottom: var(--spacing-sm);
+        }
+        
+        .teacher-photo-label {
+            font-size: 0.8125rem;
+            color: var(--color-primary);
+            font-weight: 600;
+            margin-bottom: var(--spacing-xs);
+        }
+        
+        .teacher-photo-text {
+            font-size: 0.875rem;
+            color: var(--color-text-light);
+        }
+        
+        .teacher-info {
+            padding: var(--spacing-lg);
+        }
+        
+        .teacher-info h3 {
+            font-size: 1.125rem;
+            font-weight: 700;
+            color: var(--color-navy);
+            margin-bottom: var(--spacing-xs);
+        }
+        
+        .teacher-role {
+            color: var(--color-primary);
+            font-weight: 600;
+            font-size: 0.9375rem;
+            margin-bottom: var(--spacing-sm);
+        }
+        
+        .teacher-info p {
+            color: var(--color-text-light);
+            font-size: 0.9375rem;
+            line-height: 1.6;
+        }
+        
+        /* FAQ Section */
+        .faq-list {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .faq-item {
+            background: white;
+            border: 2px solid var(--color-border);
+            border-radius: 12px;
+            margin-bottom: var(--spacing-md);
+            overflow: hidden;
+        }
+        
+        .faq-question {
+            width: 100%;
+            text-align: left;
+            padding: var(--spacing-lg);
+            background: white;
+            border: none;
+            font-size: 1.0625rem;
+            font-weight: 600;
+            color: var(--color-navy);
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: background 0.3s;
+        }
+        
+        .faq-question:hover {
+            background: var(--color-bg-light);
+        }
+        
+        .faq-icon {
+            font-size: 1.25rem;
+            color: var(--color-primary);
+            transition: transform 0.3s;
+        }
+        
+        .faq-item.active .faq-icon {
+            transform: rotate(180deg);
+        }
+        
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+        }
+        
+        .faq-answer-content {
+            padding: 0 var(--spacing-lg) var(--spacing-lg) var(--spacing-lg);
+            color: var(--color-text-light);
+            line-height: 1.8;
+        }
+        
+        .faq-item.active .faq-answer {
+            max-height: 500px;
+        }
+        
+        /* CTA Section */
+        .cta-section {
+            background: linear-gradient(135deg, var(--color-navy) 0%, var(--color-navy-light) 100%);
+            color: white;
+        }
+        
+        .cta-section .section-title {
+            color: white;
+        }
+        
+        .cta-section .section-subtitle {
+            color: rgba(255,255,255,0.9);
+        }
+        
+        .cta-form-container {
+            max-width: 600px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 12px;
+            padding: var(--spacing-xl);
+            box-shadow: 0 20px 60px rgba(0,0,0,0.2);
+        }
+        
+        .form-group {
+            margin-bottom: var(--spacing-md);
+        }
+        
+        .form-label {
+            display: block;
+            font-weight: 600;
+            color: var(--color-navy);
+            margin-bottom: var(--spacing-xs);
+            font-size: 0.9375rem;
+        }
+        
+        .form-input,
+        .form-textarea {
+            width: 100%;
+            padding: 0.875rem;
+            border: 2px solid var(--color-border);
+            border-radius: 8px;
+            font-size: 1rem;
+            font-family: inherit;
+            transition: border-color 0.3s;
+        }
+        
+        .form-input:focus,
+        .form-textarea:focus {
+            outline: none;
+            border-color: var(--color-primary);
+        }
+        
+        .form-textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+        
+        .form-checkbox-group {
+            display: flex;
+            align-items: flex-start;
+            gap: var(--spacing-xs);
+        }
+        
+        .form-checkbox {
+            margin-top: 0.25rem;
+        }
+        
+        .form-checkbox-label {
+            font-size: 0.875rem;
+            color: var(--color-text-light);
+            line-height: 1.6;
+        }
+        
+        .form-submit {
+            width: 100%;
+            background: var(--color-primary);
+            color: white;
+            padding: 1rem;
+            border: none;
+            border-radius: 8px;
+            font-size: 1.0625rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .form-submit:hover {
+            background: var(--color-primary-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(212, 160, 23, 0.3);
+        }
+        
+        .form-success {
+            display: none;
+            background: #d4edda;
+            color: #155724;
+            padding: var(--spacing-md);
+            border-radius: 8px;
+            margin-top: var(--spacing-md);
+            text-align: center;
+            font-weight: 600;
+        }
+        
+        .form-success.show {
+            display: block;
+        }
+        
+        /* Footer */
+        footer {
+            background: var(--color-navy);
+            color: rgba(255,255,255,0.8);
+            padding: var(--spacing-xl) 0 var(--spacing-lg) 0;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: var(--spacing-xl);
+            margin-bottom: var(--spacing-lg);
+        }
+        
+        .footer-brand {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: white;
+            margin-bottom: var(--spacing-sm);
+        }
+        
+        .footer-text {
+            line-height: 1.8;
+            font-size: 0.9375rem;
+        }
+        
+        .footer-links h4 {
+            color: white;
+            font-weight: 600;
+            margin-bottom: var(--spacing-sm);
+        }
+        
+        .footer-links ul {
+            list-style: none;
+        }
+        
+        .footer-links li {
+            margin-bottom: var(--spacing-xs);
+        }
+        
+        .footer-links a {
+            color: rgba(255,255,255,0.8);
+            text-decoration: none;
+            transition: color 0.3s;
+            font-size: 0.9375rem;
+        }
+        
+        .footer-links a:hover {
+            color: var(--color-primary);
+        }
+        
+        .footer-bottom {
+            text-align: center;
+            padding-top: var(--spacing-lg);
+            border-top: 1px solid rgba(255,255,255,0.1);
+            font-size: 0.875rem;
+        }
+        
+        /* Mobile Sticky CTA */
+        .mobile-cta {
+            display: none;
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: white;
+            padding: var(--spacing-sm) var(--spacing-md);
+            box-shadow: 0 -4px 12px rgba(0,0,0,0.1);
+            z-index: 99;
+        }
+        
+        .mobile-cta .btn-primary {
+            width: 100%;
+            text-align: center;
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .section {
+                padding: var(--spacing-2xl) 0;
+            }
+            
+            .section-title {
+                font-size: 1.5rem;
+            }
+            
+            .section-subtitle {
+                font-size: 1rem;
+            }
+            
+            .hero {
+                padding: var(--spacing-2xl) 0;
+            }
+            
+            .hero-content {
+                grid-template-columns: 1fr;
+                gap: var(--spacing-lg);
+            }
+            
+            .hero-text h1 {
+                font-size: 1.75rem;
+            }
+            
+            .hero-text p {
+                font-size: 1rem;
+            }
+            
+            .hero-cta-group {
+                flex-direction: column;
+            }
+            
+            .btn-primary,
+            .btn-secondary {
+                width: 100%;
+                text-align: center;
+            }
+            
+            .problem-grid,
+            .service-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .solution-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .process-timeline {
+                grid-template-columns: 1fr;
+            }
+            
+            .report-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .teachers-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .footer-content {
+                grid-template-columns: 1fr;
+            }
+            
+            .mobile-cta {
+                display: block;
+            }
+            
+            .header-cta {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-container">
+            <div class="logo">학습 상담 안내</div>
+            <a href="#cta" class="header-cta">상담 신청</a>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-text">
+                    <h1>우리 아이 학습 방향, 어디서부터 시작해야 할지 막막하신가요?</h1>
+                    <p>현재 상황을 먼저 확인한 뒤, 어떤 기준으로 상담과 진단이 진행되는지 차근차근 안내해드립니다. 부담 없이 문의하실 수 있도록 흐름을 분명하게 정리했습니다.</p>
+                    <div class="hero-cta-group">
+                        <a href="#cta" class="btn-primary">상담 신청하기</a>
+                        <a href="#service" class="btn-secondary">진단 안내 보기</a>
+                    </div>
+                </div>
+                <div class="hero-visual">
+                    <div class="hero-visual-label">추천 이미지</div>
+                    <div class="hero-visual-title">실제 수업 또는 상담 장면</div>
+                    <div class="hero-visual-desc">16:9 비율의 실제 교실 수업, 학부모 상담, 교사 설명 장면 중 하나로 교체. 인물 상호작용이 보이는 컷 권장. 고해상도 가로형 원본 사용.</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-label">공감</div>
+                <h2 class="section-title">상담을 고민할 때 가장 많이 남는 걱정</h2>
+                <p class="section-subtitle">처음 문의하기 전에는 절차, 결과, 비용보다도 '우리 아이에게 맞는지'가 가장 큰 고민이 됩니다.</p>
+            </div>
+            <div class="problem-grid">
+                <div class="problem-card">
+                    <h3>막연한 불안</h3>
+                    <p>어떤 기준으로 대응해야 할지 몰라 걱정이 반복됩니다.</p>
+                </div>
+                <div class="problem-card">
+                    <h3>정보 부족</h3>
+                    <p>과정과 기대 결과가 명확하지 않아 다음 단계가 보이지 않습니다.</p>
+                </div>
+                <div class="problem-card">
+                    <h3>적합성 확인 어려움</h3>
+                    <p>우리 아이에게 어떤 수업이 맞는지 판단하기 어렵습니다.</p>
+                </div>
+                <div class="problem-card">
+                    <h3>상담 전 망설임</h3>
+                    <p>연락하기 전 절차와 부담에 대한 걱정이 남습니다.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section solution">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-label">원칙</div>
+                <h2 class="section-title">상담에서 먼저 확인하는 세 가지</h2>
+                <p class="section-subtitle">상담 기준이 분명해야 다음 단계도 덜 막막하게 느껴집니다. 확인 항목과 진행 순서를 먼저 보여드립니다.</p>
+            </div>
+            <div class="solution-grid">
+                <div class="solution-card">
+                    <div class="solution-number">1</div>
+                    <h3>기준이 분명한 안내</h3>
+                    <p>진단 기준과 상담 기준을 먼저 제시해 기대값을 맞춥니다.</p>
+                </div>
+                <div class="solution-card">
+                    <div class="solution-number">2</div>
+                    <h3>실제 흐름 중심 구성</h3>
+                    <p>상담→진단→수업→피드백으로 이어지는 실제 과정을 보여드립니다.</p>
+                </div>
+                <div class="solution-card">
+                    <div class="solution-number">3</div>
+                    <h3>불안 완화형 정보 배치</h3>
+                    <p>학부모가 가장 궁금해하는 정보를 우선 배치해 부담을 줄입니다.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section" id="service">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-label">프로그램</div>
+                <h2 class="section-title">대상과 목적에 따라 나뉘는 안내</h2>
+                <p class="section-subtitle">현재 상태에 맞춰 어떤 프로그램이 적절한지 먼저 분류해 드리면 선택이 훨씬 수월해집니다.</p>
+            </div>
+            <div class="service-grid">
+                <div class="service-card">
+                    <div class="service-image">
+                        <div class="service-image-label">추천 이미지</div>
+                        <div class="service-image-text">기초 단계 교실 장면 (16:9)</div>
+                    </div>
+                    <div class="service-content">
+                        <h3>기초 단계 프로그램</h3>
+                        <p>학습에 처음 적응하는 학생을 위한 기본 구조와 적응 안내</p>
+                    </div>
+                </div>
+                <div class="service-card">
+                    <div class="service-image">
+                        <div class="service-image-label">추천 이미지</div>
+                        <div class="service-image-text">진단 상담 장면 (16:9)</div>
+                    </div>
+                    <div class="service-content">
+                        <h3>맞춤 진단 프로그램</h3>
+                        <p>현재 상태를 파악해 필요한 방향과 우선순위를 제안하는 상담형 구성</p>
+                    </div>
+                </div>
+                <div class="service-card">
+                    <div class="service-image">
+                        <div class="service-image-label">추천 이미지</div>
+                        <div class="service-image-text">심화 수업 장면 (16:9)</div>
+                    </div>
+                    <div class="service-content">
+                        <h3>심화 확장 프로그램</h3>
+                        <p>기초를 바탕으로 다음 단계를 연결해 안정적으로 확장합니다</p>
+                    </div>
+                </div>
+                <div class="service-card">
+                    <div class="service-image">
+                        <div class="service-image-label">추천 이미지</div>
+                        <div class="service-image-text">소규모 지원 장면 (16:9)</div>
+                    </div>
+                    <div class="service-content">
+                        <h3>보완 지원 프로그램</h3>
+                        <p>특정 약점을 보완하기 위한 소규모 집중형 지원</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section process">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-label">진행 흐름</div>
+                <h2 class="section-title">상담부터 피드백까지의 흐름</h2>
+                <p class="section-subtitle">처음 문의한 뒤 어떤 순서로 진행되는지 알 수 있으면, 상담을 결정하는 부담이 줄어듭니다.</p>
+            </div>
+            <div class="process-timeline">
+                <div class="process-step">
+                    <div class="process-step-number">01</div>
+                    <h3>초기 확인</h3>
+                    <p>상담 전 현재 학습 상황과 필요를 간단히 파악합니다.</p>
+                </div>
+                <div class="process-step">
+                    <div class="process-step-number">02</div>
+                    <h3>진단 안내</h3>
+                    <p>진단 결과를 바탕으로 적합한 방향과 우선순위를 제시합니다.</p>
+                </div>
+                <div class="process-step">
+                    <div class="process-step-number">03</div>
+                    <h3>수업/지원 진행</h3>
+                    <p>합의된 계획에 따라 수업 또는 맞춤 지원을 시작합니다.</p>
+                </div>
+                <div class="process-step">
+                    <div class="process-step-number">04</div>
+                    <h3>피드백 조정</h3>
+                    <p>진행 후 결과를 검토해 필요에 따라 내용을 조정합니다.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section report">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-label">결과물</div>
+                <h2 class="section-title">어떤 자료를 받게 되는지 미리 확인하세요</h2>
+                <p class="section-subtitle">상담 결과가 어떤 형태로 정리되는지 보면, 진행 이후를 더 쉽게 예상할 수 있습니다.</p>
+            </div>
+            <div class="report-container">
+                <div class="report-visual">
+                    <div class="report-visual-icon">📄</div>
+                    <div class="report-visual-label">추천 이미지</div>
+                    <div class="report-visual-title">리포트 또는 피드백 문서 미리보기</div>
+                    <div class="report-visual-desc">4:3 비율의 PDF 미리보기 또는 리포트 스캔. 세부 내용은 흐리게 처리해 형태 중심으로 제시.</div>
+                </div>
+                <div class="report-content">
+                    <h3>상담 후 제공되는 자료의 형식</h3>
+                    <p>상담과 진단이 끝난 뒤 어떤 형태로 결과를 받게 되는지 미리 확인하면, 진행 이후의 과정을 더 쉽게 예상할 수 있습니다.</p>
+                    <ul class="report-list">
+                        <li>현재 상태 요약과 진단 결과 정리</li>
+                        <li>추천 방향과 우선순위 제안</li>
+                        <li>단계별 진행 계획 안내</li>
+                        <li>필요 시 추가 지원 항목 안내</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-label">FAQ</div>
+                <h2 class="section-title">상담 전 자주 묻는 질문</h2>
+                <p class="section-subtitle">문의 전에 많이 확인하는 내용만 먼저 정리해, 연락하기 전 궁금증을 줄입니다.</p>
+            </div>
+            <div class="faq-list">
+                <div class="faq-item">
+                    <button class="faq-question" onclick="toggleFaq(this)">
+                        <span>상담은 어떤 순서로 진행되나요?</span>
+                        <span class="faq-icon">▼</span>
+                    </button>
+                    <div class="faq-answer">
+                        <div class="faq-answer-content">
+                            접수 후 현재 상황을 간단히 확인하고, 필요에 따라 진단과 안내를 거쳐 적합한 방향을 제안합니다.
+                        </div>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-question" onclick="toggleFaq(this)">
+                        <span>초기 상담은 바로 신청할 수 있나요?</span>
+                        <span class="faq-icon">▼</span>
+                    </button>
+                    <div class="faq-answer">
+                        <div class="faq-answer-content">
+                            네. 신청서를 남겨주시면 확인 후 가능한 일정과 진행 방법을 안내해드립니다.
+                        </div>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-question" onclick="toggleFaq(this)">
+                        <span>온라인 상담도 가능한가요?</span>
+                        <span class="faq-icon">▼</span>
+                    </button>
+                    <div class="faq-answer">
+                        <div class="faq-answer-content">
+                            운영 방식에 따라 전화나 화상 상담이 가능할 수 있습니다. 가능한 방식은 접수 후 안내드립니다.
+                        </div>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-question" onclick="toggleFaq(this)">
+                        <span>상담 시간은 어느 정도 예상하면 될까요?</span>
+                        <span class="faq-icon">▼</span>
+                    </button>
+                    <div class="faq-answer">
+                        <div class="faq-answer-content">
+                            상담 내용과 진단 여부에 따라 다르지만, 기본 안내만 진행하는 경우와 자세한 진단이 포함되는 경우의 소요 시간이 다를 수 있습니다.
+                        </div>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-question" onclick="toggleFaq(this)">
+                        <span>상담 신청 후 개인정보는 어떻게 관리되나요?</span>
+                        <span class="faq-icon">▼</span>
+                    </button>
+                    <div class="faq-answer">
+                        <div class="faq-answer-content">
+                            제출하신 정보는 상담 안내와 진행 목적에 한해 사용되며, 관련 법령과 내부 기준에 따라 관리됩니다.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section cta-section" id="cta">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-label">신청</div>
+                <h2 class="section-title">상담이 필요하시면 먼저 남겨주세요</h2>
+                <p class="section-subtitle">간단한 정보만 입력하시면 접수 후 일정과 진행 방법을 안내해드립니다.</p>
+            </div>
+            <div class="cta-form-container">
+                <form id="ctaForm" onsubmit="handleSubmit(event)">
+                    <div class="form-group">
+                        <label class="form-label" for="name">이름 *</label>
+                        <input type="text" id="name" class="form-input" required>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label" for="contact">연락처 *</label>
+                        <input type="tel" id="contact" class="form-input" required>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label" for="message">상담 희망 내용 *</label>
+                        <textarea id="message" class="form-textarea" required></textarea>
+                    </div>
+                    <div class="form-group">
+                        <div class="form-checkbox-group">
+                            <input type="checkbox" id="privacy" class="form-checkbox" required>
+                            <label class="form-checkbox-label" for="privacy">개인정보 수집 및 이용에 동의합니다. 제출하신 정보는 상담 안내 목적에 한해 사용됩니다.</label>
+                        </div>
+                    </div>
+                    <button type="submit" class="form-submit">신청 내용 보내기</button>
+                    <div class="form-success" id="formSuccess">
+                        상담 신청이 접수되었습니다. 확인 후 연락드리겠습니다.
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div>
+                    <div class="footer-brand">학습 상담 안내</div>
+                    <p class="footer-text">현재 상황을 먼저 확인한 뒤, 어떤 기준으로 상담과 진단이 진행되는지 차근차근 안내해드립니다.</p>
+                </div>
+                <div class="footer-links">
+                    <h4>바로가기</h4>
+                    <ul>
+                        <li><a href="#service">프로그램 안내</a></li>
+                        <li><a href="#cta">상담 신청</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 학습 상담 안내. 본 페이지는 클라이언트 초안 미리보기입니다.</p>
+            </div>
+        </div>
+    </footer>
+
+    <div class="mobile-cta">
+        <a href="#cta" class="btn-primary">상담 신청하기</a>
+    </div>
+
+    <script>
+        function toggleFaq(button) {
+            const faqItem = button.parentElement;
+            const isActive = faqItem.classList.contains('active');
+            
+            document.querySelectorAll('.faq-item').forEach(item => {
+                item.classList.remove('active');
+            });
+            
+            if (!isActive) {
+                faqItem.classList.add('active');
+            }
+        }
+
+        function handleSubmit(event) {
+            event.preventDefault();
+            const form = document.getElementById('ctaForm');
+            const successMessage = document.getElementById('formSuccess');
+            
+            successMessage.classList.add('show');
+            form.reset();
+            
+            setTimeout(() => {
+                successMessage.classList.remove('show');
+            }, 5000);
+        }
+    </script>
+</body>
+</html>
