@@ -1,0 +1,1970 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>웹AI 파트너 - 웹사이트 제작 & AI 자동화 구축</title>
+    <meta name="description" content="웹사이트 제작과 AI 자동화 구축을 결합해 브랜드 홍보와 상담 전환을 자연스럽게 연결하는 B2B 서비스 랜딩페이지. 데이터 기반 마케팅, 웹 개발 + AI, 맞춤형 웹사이트.">
+    <link rel="canonical" href="https://www.webai-partner.com/web-ai-partner">
+    <style>
+        /* Basic Reset & Base Styles */
+        :root {
+            --brand-deep-blue: #0D3B66;
+            --accent-teal: #17A2A8;
+            --accent-orange: #FF8A00;
+            --bg-light-gray: #F5F7FA;
+            --text-dark: #2C3E50;
+            --text-light: #ECF0F1;
+            --text-gray: #7F8C8D;
+            --border-light: #E6E9EE;
+            --shadow-subtle: rgba(13, 59, 102, 0.08);
+            --radius-default: 8px;
+            --radius-large: 12px;
+            --spacing-xs: 8px;
+            --spacing-sm: 16px;
+            --spacing-md: 24px;
+            --spacing-lg: 40px;
+            --spacing-xl: 72px;
+            --spacing-xxl: 120px;
+        }
+
+        *, *::before, *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+            line-height: 1.6;
+            color: var(--text-dark);
+            background-color: #fff;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        a {
+            color: var(--accent-teal);
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        /* Utility Classes */
+        .container {
+            max-width: 1180px;
+            margin: 0 auto;
+            padding: 0 var(--spacing-md);
+        }
+
+        .section-padding {
+            padding: var(--spacing-xl) 0;
+        }
+        @media (max-width: 767px) {
+            .section-padding {
+                padding: var(--spacing-lg) 0;
+            }
+        }
+
+        .text-center { text-align: center; }
+        .text-left { text-align: left; }
+        .text-right { text-align: right; }
+
+        /* Typography */
+        h1, h2, h3, h4, h5, h6 {
+            line-height: 1.2;
+            margin-bottom: var(--spacing-sm);
+            font-weight: 700;
+        }
+
+        h1 {
+            font-size: clamp(38px, 6vw, 72px);
+            color: var(--text-light);
+        }
+
+        h2 {
+            font-size: clamp(28px, 4vw, 46px);
+            margin-bottom: var(--spacing-lg);
+        }
+
+        h3 {
+            font-size: clamp(20px, 2.5vw, 28px);
+            margin-bottom: var(--spacing-md);
+        }
+        
+        .card-title {
+            font-size: clamp(18px, 2vw, 22px);
+            font-weight: 600;
+        }
+
+        p {
+            font-size: clamp(15px, 1.8vw, 17px);
+            margin-bottom: var(--spacing-sm);
+        }
+
+        .text-small {
+            font-size: clamp(12px, 1.5vw, 14px);
+            color: var(--text-gray);
+        }
+
+        /* Buttons */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: var(--spacing-sm) var(--spacing-md);
+            border-radius: var(--radius-default);
+            font-size: clamp(15px, 1.8vw, 17px);
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+            text-decoration: none;
+            line-height: 1;
+        }
+
+        .btn-primary {
+            background-color: var(--accent-orange);
+            color: #fff;
+        }
+
+        .btn-primary:hover {
+            background-color: #e67e00;
+            box-shadow: 0 4px 12px var(--shadow-subtle);
+        }
+
+        .btn-secondary {
+            background-color: transparent;
+            color: var(--accent-teal);
+            border-color: var(--accent-teal);
+        }
+
+        .btn-secondary:hover {
+            background-color: var(--accent-teal);
+            color: #fff;
+            box-shadow: 0 4px 12px var(--shadow-subtle);
+        }
+
+        .btn-text {
+            background: none;
+            border: none;
+            color: var(--accent-teal);
+            padding: var(--spacing-xs) 0;
+            font-weight: 500;
+        }
+
+        .btn-text:hover {
+            text-decoration: underline;
+        }
+
+        /* Header */
+        .header {
+            background-color: var(--brand-deep-blue);
+            color: var(--text-light);
+            padding: var(--spacing-sm) var(--spacing-md);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1180px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--text-light);
+            text-decoration: none;
+        }
+
+        .nav-menu {
+            display: flex;
+            gap: var(--spacing-md);
+        }
+
+        .nav-menu a {
+            color: var(--text-light);
+            font-weight: 500;
+            padding: var(--spacing-xs) 0;
+            transition: color 0.3s ease;
+        }
+
+        .nav-menu a:hover {
+            color: var(--accent-teal);
+            text-decoration: none;
+        }
+
+        .hamburger {
+            display: none;
+            font-size: 24px;
+            cursor: pointer;
+            color: var(--text-light);
+            background: none;
+            border: none;
+        }
+
+        @media (max-width: 767px) {
+            .nav-menu {
+                display: none;
+                flex-direction: column;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background-color: var(--brand-deep-blue);
+                padding: var(--spacing-md);
+                box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+            }
+            .nav-menu.active {
+                display: flex;
+            }
+            .nav-menu a {
+                padding: var(--spacing-sm) 0;
+                border-bottom: 1px solid rgba(255,255,255,0.1);
+            }
+            .nav-menu a:last-child {
+                border-bottom: none;
+            }
+            .hamburger {
+                display: block;
+            }
+            .header-cta {
+                display: none; /* Hide header CTA on mobile, use sticky bottom bar */
+            }
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, var(--brand-deep-blue) 0%, #082A4A 100%);
+            color: var(--text-light);
+            padding: var(--spacing-xxl) 0;
+            position: relative;
+            overflow: hidden;
+        }
+        @media (max-width: 767px) {
+            .hero {
+                padding: var(--spacing-lg) 0;
+            }
+        }
+
+        .hero-content {
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-xl);
+            position: relative;
+            z-index: 1;
+        }
+        @media (max-width: 1023px) {
+            .hero-content {
+                flex-direction: column;
+                text-align: center;
+            }
+        }
+
+        .hero-text {
+            flex: 1;
+            max-width: 55%;
+        }
+        @media (max-width: 1023px) {
+            .hero-text {
+                max-width: 100%;
+            }
+        }
+
+        .hero-label {
+            display: inline-block;
+            background-color: var(--accent-teal);
+            color: #fff;
+            padding: var(--spacing-xs) var(--spacing-sm);
+            border-radius: 999px;
+            font-size: 14px;
+            font-weight: 500;
+            margin-bottom: var(--spacing-sm);
+        }
+
+        .hero-actions {
+            display: flex;
+            gap: var(--spacing-md);
+            margin-top: var(--spacing-md);
+            flex-wrap: wrap;
+            justify-content: flex-start;
+        }
+        @media (max-width: 1023px) {
+            .hero-actions {
+                justify-content: center;
+            }
+        }
+
+        .hero-trust-strip {
+            margin-top: var(--spacing-md);
+            font-size: 14px;
+            color: rgba(255,255,255,0.7);
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-sm);
+            flex-wrap: wrap;
+        }
+        .hero-trust-strip span::before {
+            content: "• ";
+            color: var(--accent-teal);
+        }
+        .hero-trust-strip span:first-child::before {
+            content: "";
+        }
+
+        .hero-visual {
+            flex: 1;
+            max-width: 45%;
+            position: relative;
+            min-height: 300px; /* Placeholder height */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        @media (max-width: 1023px) {
+            .hero-visual {
+                max-width: 80%;
+                min-height: 250px;
+                margin-top: var(--spacing-lg);
+            }
+        }
+        @media (max-width: 767px) {
+            .hero-visual {
+                max-width: 100%;
+                min-height: 200px;
+            }
+        }
+
+        /* Hero Mockup - CSS based */
+        .device-mockup {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .desktop-frame, .mobile-frame {
+            background-color: #333;
+            border-radius: var(--radius-large);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            position: absolute;
+            overflow: hidden;
+        }
+
+        .desktop-frame {
+            width: 90%;
+            height: 70%;
+            padding: 10px;
+            background-color: #222;
+            border: 2px solid #555;
+            z-index: 2;
+            transform: translateY(-10px) translateX(0px);
+        }
+        .desktop-screen {
+            background-color: #fff; /* Placeholder screen */
+            width: 100%;
+            height: 100%;
+            border-radius: var(--radius-default);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            font-size: 14px;
+            color: var(--text-dark);
+            text-align: center;
+            padding: var(--spacing-sm);
+        }
+        .desktop-screen h4 { margin-bottom: var(--spacing-xs); font-size: 16px; }
+        .desktop-screen .kpi-card-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: var(--spacing-xs);
+            margin-top: var(--spacing-sm);
+            width: 90%;
+        }
+        .desktop-screen .kpi-card {
+            background-color: var(--bg-light-gray);
+            border-radius: var(--radius-default);
+            padding: var(--spacing-sm);
+            text-align: left;
+            box-shadow: 0 2px 8px var(--shadow-subtle);
+        }
+        .desktop-screen .kpi-card .value {
+            font-size: 20px;
+            font-weight: 700;
+            color: var(--brand-deep-blue);
+            margin-bottom: 4px;
+        }
+        .desktop-screen .kpi-card .label {
+            font-size: 12px;
+            color: var(--text-gray);
+        }
+        .desktop-screen .kpi-card .sparkline {
+            height: 10px;
+            background: linear-gradient(to right, var(--accent-teal), var(--accent-orange));
+            margin-top: 4px;
+            border-radius: 2px;
+        }
+
+        .mobile-frame {
+            width: 200px;
+            height: 400px;
+            padding: 8px;
+            background-color: #222;
+            border: 2px solid #555;
+            z-index: 3;
+            transform: translateY(30px) translateX(100px);
+        }
+        .mobile-screen {
+            background-color: #fff; /* Placeholder screen */
+            width: 100%;
+            height: 100%;
+            border-radius: var(--radius-default);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            font-size: 12px;
+            color: var(--text-dark);
+            text-align: center;
+            padding: var(--spacing-sm);
+        }
+        .mobile-screen h5 { margin-bottom: var(--spacing-xs); font-size: 14px; }
+        .mobile-screen .kpi-card {
+            background-color: var(--bg-light-gray);
+            border-radius: var(--radius-default);
+            padding: var(--spacing-xs);
+            margin-bottom: var(--spacing-xs);
+            box-shadow: 0 1px 4px var(--shadow-subtle);
+        }
+        .mobile-screen .kpi-card .value {
+            font-size: 16px;
+            font-weight: 700;
+            color: var(--brand-deep-blue);
+        }
+        .mobile-screen .kpi-card .label {
+            font-size: 10px;
+            color: var(--text-gray);
+        }
+
+        @media (max-width: 1023px) {
+            .desktop-frame {
+                width: 70%;
+                height: 60%;
+                transform: translateY(-20px) translateX(0);
+            }
+            .mobile-frame {
+                width: 150px;
+                height: 300px;
+                transform: translateY(20px) translateX(60px);
+            }
+        }
+        @media (max-width: 767px) {
+            .desktop-frame {
+                width: 80%;
+                height: 50%;
+                transform: translateY(-10px) translateX(0);
+            }
+            .mobile-frame {
+                width: 120px;
+                height: 240px;
+                transform: translateY(15px) translateX(40px);
+            }
+            .desktop-screen .kpi-card-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Problem Section */
+        .problem-section {
+            background-color: #fff;
+            text-align: center;
+        }
+
+        .problem-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: var(--spacing-md);
+            margin-top: var(--spacing-lg);
+        }
+
+        .problem-card {
+            background-color: #fff;
+            border-radius: var(--radius-large);
+            padding: var(--spacing-lg);
+            box-shadow: 0 4px 15px var(--shadow-subtle);
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+
+        .problem-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .problem-card .icon {
+            font-size: 48px;
+            color: var(--accent-teal);
+            margin-bottom: var(--spacing-sm);
+        }
+        /* Simple SVG-like icons with CSS */
+        .icon-chart::before { content: "📊"; }
+        .icon-time::before { content: "⏰"; }
+        .icon-growth::before { content: "📈"; }
+
+        /* Services Section */
+        .services-section {
+            background-color: var(--bg-light-gray);
+            text-align: center;
+        }
+
+        .service-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: var(--spacing-md);
+            margin-top: var(--spacing-lg);
+        }
+
+        .service-card {
+            background-color: #fff;
+            border-radius: var(--radius-large);
+            padding: var(--spacing-lg);
+            box-shadow: 0 4px 15px var(--shadow-subtle);
+            text-align: left;
+            display: flex;
+            flex-direction: column;
+            transition: transform 0.3s ease;
+        }
+        .service-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .service-card .icon {
+            font-size: 40px;
+            color: var(--brand-deep-blue);
+            margin-bottom: var(--spacing-sm);
+        }
+        /* Simple SVG-like icons with CSS */
+        .icon-web::before { content: "💻"; }
+        .icon-ai::before { content: "🤖"; }
+        .icon-data::before { content: "📊"; }
+
+        .service-card ul {
+            list-style: none;
+            padding-left: 0;
+            margin-bottom: var(--spacing-sm);
+            flex-grow: 1;
+        }
+
+        .service-card ul li {
+            position: relative;
+            padding-left: 20px;
+            margin-bottom: var(--spacing-xs);
+            font-size: 15px;
+        }
+
+        .service-card ul li::before {
+            content: "✓";
+            color: var(--accent-teal);
+            position: absolute;
+            left: 0;
+            font-weight: 700;
+        }
+
+        .service-card .duration {
+            display: block;
+            margin-top: var(--spacing-sm);
+            margin-bottom: var(--spacing-md);
+            font-size: 14px;
+            color: var(--text-gray);
+            font-weight: 500;
+        }
+        .service-card .duration strong {
+            color: var(--brand-deep-blue);
+        }
+
+        /* Data Utilization Section */
+        .data-section {
+            background-color: #fff;
+            text-align: center;
+        }
+        .data-section .container {
+            max-width: 100%; /* Full width for data visuals */
+            padding: 0;
+        }
+        .data-section .section-header {
+            max-width: 1180px;
+            margin: 0 auto;
+            padding: 0 var(--spacing-md);
+            margin-bottom: var(--spacing-lg);
+        }
+
+        .dashboard-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: var(--spacing-md);
+            padding: 0 var(--spacing-md);
+            margin-bottom: var(--spacing-xl);
+        }
+        .dashboard-card {
+            background-color: var(--bg-light-gray);
+            border-radius: var(--radius-large);
+            padding: var(--spacing-lg);
+            box-shadow: 0 4px 15px var(--shadow-subtle);
+            text-align: left;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            min-height: 180px;
+        }
+        .dashboard-card .kpi-value {
+            font-size: 32px;
+            font-weight: 700;
+            color: var(--brand-deep-blue);
+            margin-bottom: var(--spacing-xs);
+        }
+        .dashboard-card .kpi-label {
+            font-size: 15px;
+            color: var(--text-gray);
+            margin-bottom: var(--spacing-sm);
+        }
+        .dashboard-card .chart-placeholder {
+            height: 60px;
+            background: linear-gradient(to right, var(--accent-teal) 0%, var(--brand-deep-blue) 50%, var(--accent-orange) 100%);
+            border-radius: var(--radius-default);
+            opacity: 0.8;
+        }
+        .dashboard-card:nth-child(even) .chart-placeholder {
+            background: linear-gradient(to right, var(--accent-orange) 0%, var(--accent-teal) 100%);
+        }
+
+        .before-after-slider {
+            position: relative;
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            border-radius: var(--radius-large);
+            overflow: hidden;
+            box-shadow: 0 8px 25px var(--shadow-subtle);
+            aspect-ratio: 16 / 9; /* Maintain aspect ratio */
+        }
+
+        .before-after-slider .image-container {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            font-weight: 700;
+            color: #fff;
+            text-shadow: 0 2px 5px rgba(0,0,0,0.5);
+        }
+
+        .before-after-slider .image-before {
+            background-color: #FF8A00; /* Placeholder color */
+            background-image: linear-gradient(45deg, #FF8A00 25%, #FFB366 25%, #FFB366 50%, #FF8A00 50%, #FF8A00 75%, #FFB366 75%);
+            background-size: 40px 40px;
+            width: 100%;
+            z-index: 1;
+        }
+
+        .before-after-slider .image-after {
+            background-color: var(--brand-deep-blue); /* Placeholder color */
+            background-image: linear-gradient(45deg, var(--brand-deep-blue) 25%, #306B9E 25%, #306B9E 50%, var(--brand-deep-blue) 50%, var(--brand-deep-blue) 75%, #306B9E 75%);
+            background-size: 40px 40px;
+            width: 50%; /* Initial split */
+            z-index: 2;
+            resize: horizontal; /* For desktop drag */
+            overflow: hidden;
+            cursor: ew-resize;
+            left: 0;
+        }
+
+        .before-after-slider .image-label {
+            position: absolute;
+            padding: var(--spacing-sm) var(--spacing-md);
+            background-color: rgba(0,0,0,0.6);
+            border-radius: var(--radius-default);
+            font-size: 16px;
+            font-weight: 600;
+        }
+        .before-after-slider .label-before { left: var(--spacing-md); top: var(--spacing-md); }
+        .before-after-slider .label-after { right: var(--spacing-md); top: var(--spacing-md); }
+
+        .before-after-slider .divider {
+            position: absolute;
+            top: 0;
+            left: 50%;
+            width: 4px;
+            height: 100%;
+            background-color: #fff;
+            z-index: 3;
+            transform: translateX(-50%);
+            pointer-events: none; /* Allow resizing through */
+        }
+
+        /* Mobile specific for Before/After */
+        .before-after-tabs {
+            display: none; /* Hidden on desktop */
+            width: 100%;
+            max-width: 1200px;
+            margin: var(--spacing-md) auto 0;
+            padding: 0 var(--spacing-md);
+        }
+        .before-after-tabs .tab-buttons {
+            display: flex;
+            justify-content: center;
+            gap: var(--spacing-sm);
+            margin-bottom: var(--spacing-md);
+        }
+        .before-after-tabs .tab-button {
+            background-color: var(--bg-light-gray);
+            color: var(--text-dark);
+            padding: var(--spacing-sm) var(--spacing-md);
+            border-radius: var(--radius-default);
+            border: 1px solid var(--border-light);
+            cursor: pointer;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+        .before-after-tabs .tab-button.active {
+            background-color: var(--accent-teal);
+            color: #fff;
+            border-color: var(--accent-teal);
+        }
+        .before-after-tabs .tab-content {
+            background-color: var(--bg-light-gray);
+            border-radius: var(--radius-large);
+            padding: var(--spacing-lg);
+            box-shadow: 0 4px 15px var(--shadow-subtle);
+            min-height: 200px;
+            display: none;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            font-size: 16px;
+            font-weight: 600;
+            color: var(--brand-deep-blue);
+        }
+        .before-after-tabs .tab-content.active {
+            display: flex;
+        }
+        .before-after-tabs .tab-content p {
+            font-size: 15px;
+            color: var(--text-dark);
+            margin-top: var(--spacing-sm);
+        }
+
+        @media (max-width: 767px) {
+            .before-after-slider { display: none; }
+            .before-after-tabs { display: block; }
+        }
+
+        /* Process Section */
+        .process-section {
+            background-color: var(--brand-deep-blue);
+            color: var(--text-light);
+            text-align: center;
+        }
+
+        .process-timeline {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            position: relative;
+            padding: var(--spacing-xl) 0;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        .process-timeline::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background-color: rgba(255,255,255,0.3);
+            transform: translateY(-50%);
+            z-index: 0;
+        }
+
+        .process-step {
+            position: relative;
+            width: 150px; /* Adjust width based on number of steps */
+            text-align: center;
+            z-index: 1;
+        }
+
+        .process-step .node {
+            width: 40px;
+            height: 40px;
+            background-color: var(--accent-teal);
+            border: 3px solid var(--text-light);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            color: var(--text-light);
+            margin: 0 auto var(--spacing-sm);
+            transition: background-color 0.3s ease, transform 0.3s ease;
+        }
+        .process-step .node:hover {
+            background-color: var(--accent-orange);
+            transform: scale(1.1);
+        }
+
+        .process-step .title {
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: var(--spacing-xs);
+        }
+        .process-step .detail, .process-step .period {
+            font-size: 14px;
+            color: rgba(255,255,255,0.8);
+        }
+        .process-step .period {
+            font-weight: 500;
+            color: var(--accent-orange);
+            margin-top: 4px;
+        }
+
+        @media (max-width: 767px) {
+            .process-timeline {
+                flex-direction: column;
+                align-items: flex-start;
+                padding: var(--spacing-lg) 0;
+                margin-left: var(--spacing-md);
+            }
+            .process-timeline::before {
+                top: 0;
+                left: 20px;
+                width: 2px;
+                height: 100%;
+                transform: none;
+            }
+            .process-step {
+                width: 100%;
+                text-align: left;
+                margin-bottom: var(--spacing-lg);
+                padding-left: 40px;
+            }
+            .process-step .node {
+                position: absolute;
+                left: -20px;
+                top: 0;
+                margin: 0;
+            }
+        }
+
+        /* Trust Section */
+        .trust-section {
+            background-color: #fff;
+            text-align: center;
+        }
+
+        .logo-strip {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: var(--spacing-lg);
+            margin-bottom: var(--spacing-xl);
+        }
+        .logo-placeholder {
+            width: 120px;
+            height: 60px;
+            background-color: var(--bg-light-gray);
+            border-radius: var(--radius-default);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-gray);
+            font-size: 14px;
+            font-weight: 500;
+            opacity: 0.7;
+            transition: opacity 0.3s ease;
+        }
+        .logo-placeholder:hover {
+            opacity: 1;
+        }
+
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: var(--spacing-md);
+            margin-top: var(--spacing-lg);
+        }
+
+        .testimonial-card {
+            background-color: var(--bg-light-gray);
+            border-radius: var(--radius-large);
+            padding: var(--spacing-lg);
+            box-shadow: 0 4px 15px var(--shadow-subtle);
+            text-align: left;
+            transition: transform 0.3s ease;
+        }
+        .testimonial-card:hover {
+            transform: translateY(-5px);
+        }
+        .testimonial-card .quote {
+            font-size: 16px;
+            font-style: italic;
+            margin-bottom: var(--spacing-sm);
+            color: var(--text-dark);
+        }
+        .testimonial-card .author-info {
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-sm);
+            margin-top: var(--spacing-md);
+        }
+        .testimonial-card .author-avatar {
+            width: 48px;
+            height: 48px;
+            background-color: var(--accent-teal);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            font-weight: 600;
+            font-size: 18px;
+        }
+        .testimonial-card .author-name {
+            font-weight: 600;
+            font-size: 16px;
+        }
+        .testimonial-card .author-title {
+            font-size: 14px;
+            color: var(--text-gray);
+        }
+
+        .security-info {
+            background-color: var(--bg-light-gray);
+            border-radius: var(--radius-large);
+            padding: var(--spacing-lg);
+            margin-top: var(--spacing-xl);
+            text-align: left;
+            box-shadow: 0 4px 15px var(--shadow-subtle);
+        }
+        .security-info h3 {
+            color: var(--brand-deep-blue);
+            margin-bottom: var(--spacing-md);
+        }
+        .security-info ul {
+            list-style: none;
+            padding-left: 0;
+            display: flex;
+            flex-wrap: wrap;
+            gap: var(--spacing-md);
+        }
+        .security-info ul li {
+            position: relative;
+            padding-left: 28px;
+            font-size: 15px;
+            width: calc(50% - var(--spacing-md) / 2);
+        }
+        .security-info ul li::before {
+            content: "🔒"; /* Security icon */
+            position: absolute;
+            left: 0;
+            color: var(--accent-teal);
+            font-size: 18px;
+            top: -2px;
+        }
+        @media (max-width: 767px) {
+            .security-info ul li {
+                width: 100%;
+            }
+        }
+
+        /* FAQ Section */
+        .faq-section {
+            background-color: var(--bg-light-gray);
+        }
+
+        .accordion {
+            margin-top: var(--spacing-lg);
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .accordion-item {
+            background-color: #fff;
+            border-radius: var(--radius-default);
+            margin-bottom: var(--spacing-sm);
+            box-shadow: 0 2px 8px var(--shadow-subtle);
+            overflow: hidden;
+        }
+
+        .accordion-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: var(--spacing-md);
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 17px;
+            color: var(--brand-deep-blue);
+            transition: background-color 0.3s ease;
+        }
+
+        .accordion-header:hover, .accordion-header:focus {
+            background-color: var(--bg-light-gray);
+            outline: none;
+        }
+        .accordion-header:focus-visible {
+            outline: 2px solid var(--accent-teal);
+            outline-offset: 2px;
+        }
+
+        .accordion-header .icon {
+            font-size: 24px;
+            transition: transform 0.3s ease;
+        }
+
+        .accordion-item.active .accordion-header .icon {
+            transform: rotate(180deg);
+        }
+
+        .accordion-content {
+            padding: 0 var(--spacing-md);
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease-out, padding 0.4s ease-out;
+            color: var(--text-dark);
+            font-size: 15px;
+        }
+
+        .accordion-item.active .accordion-content {
+            max-height: 200px; /* Adjust based on content */
+            padding-bottom: var(--spacing-md);
+        }
+
+        /* Contact Section */
+        .contact-section {
+            background-color: var(--brand-deep-blue);
+            color: var(--text-light);
+            text-align: center;
+        }
+
+        .contact-content {
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .contact-content p {
+            color: rgba(255,255,255,0.8);
+            margin-bottom: var(--spacing-lg);
+        }
+
+        .contact-form-trigger {
+            display: flex;
+            justify-content: center;
+            gap: var(--spacing-md);
+            flex-wrap: wrap;
+        }
+
+        /* Modal Form */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 2000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0,0,0,0.6);
+            align-items: center;
+            justify-content: center;
+            padding: var(--spacing-md);
+        }
+
+        .modal-content {
+            background-color: #fff;
+            margin: auto;
+            padding: var(--spacing-lg);
+            border-radius: var(--radius-large);
+            width: 100%;
+            max-width: 500px;
+            box-shadow: 0 8px 30px rgba(0,0,0,0.2);
+            position: relative;
+            animation: fadeIn 0.3s ease-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .modal-close {
+            color: var(--text-gray);
+            position: absolute;
+            top: var(--spacing-sm);
+            right: var(--spacing-sm);
+            font-size: 28px;
+            font-weight: bold;
+            cursor: pointer;
+            background: none;
+            border: none;
+            line-height: 1;
+        }
+
+        .modal-close:hover,
+        .modal-close:focus {
+            color: var(--text-dark);
+            text-decoration: none;
+            outline: none;
+        }
+
+        .modal-content h3 {
+            color: var(--brand-deep-blue);
+            margin-bottom: var(--spacing-sm);
+        }
+        .modal-content .helper-text {
+            font-size: 14px;
+            color: var(--text-gray);
+            margin-bottom: var(--spacing-md);
+        }
+
+        .form-group {
+            margin-bottom: var(--spacing-sm);
+            text-align: left;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: var(--spacing-xs);
+            font-weight: 500;
+            font-size: 15px;
+            color: var(--text-dark);
+        }
+
+        .form-group input[type="text"],
+        .form-group input[type="email"],
+        .form-group input[type="tel"],
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: var(--spacing-sm);
+            border: 1px solid var(--border-light);
+            border-radius: var(--radius-default);
+            font-size: 15px;
+            color: var(--text-dark);
+            transition: border-color 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            border-color: var(--accent-teal);
+            box-shadow: 0 0 0 2px rgba(23, 162, 168, 0.2);
+            outline: none;
+        }
+
+        .form-group textarea {
+            min-height: 100px;
+            resize: vertical;
+        }
+
+        .form-submit-btn {
+            width: 100%;
+            margin-top: var(--spacing-md);
+            padding: var(--spacing-sm) var(--spacing-md);
+            font-size: 17px;
+        }
+
+        .privacy-link {
+            display: block;
+            margin-top: var(--spacing-sm);
+            font-size: 12px;
+            color: var(--text-gray);
+        }
+        .privacy-link a {
+            color: var(--text-gray);
+            text-decoration: underline;
+        }
+
+        /* Footer */
+        .footer {
+            background-color: #2C3E50;
+            color: rgba(255,255,255,0.7);
+            padding: var(--spacing-lg) 0;
+            font-size: 14px;
+        }
+
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            flex-wrap: wrap;
+            gap: var(--spacing-md);
+        }
+
+        .footer-logo-col, .footer-links-col {
+            flex: 1;
+            min-width: 200px;
+        }
+        .footer-logo-col .logo {
+            margin-bottom: var(--spacing-sm);
+        }
+        .footer-logo-col p {
+            font-size: 14px;
+            color: rgba(255,255,255,0.7);
+        }
+
+        .footer-links-col h4 {
+            color: #fff;
+            margin-bottom: var(--spacing-sm);
+            font-size: 16px;
+        }
+        .footer-links-col ul {
+            list-style: none;
+            padding: 0;
+        }
+        .footer-links-col ul li {
+            margin-bottom: var(--spacing-xs);
+        }
+        .footer-links-col ul li a {
+            color: rgba(255,255,255,0.7);
+        }
+        .footer-links-col ul li a:hover {
+            color: #fff;
+            text-decoration: underline;
+        }
+
+        .footer-bottom {
+            margin-top: var(--spacing-lg);
+            padding-top: var(--spacing-md);
+            border-top: 1px solid rgba(255,255,255,0.1);
+            text-align: center;
+            font-size: 13px;
+            color: rgba(255,255,255,0.6);
+        }
+
+        /* Chat Widget */
+        .chat-widget-btn {
+            position: fixed;
+            bottom: var(--spacing-md);
+            right: var(--spacing-md);
+            width: 60px;
+            height: 60px;
+            background-color: var(--accent-teal);
+            color: #fff;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 28px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            cursor: pointer;
+            z-index: 1500;
+            border: none;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+        }
+        .chat-widget-btn:hover {
+            background-color: #138a8f;
+            transform: scale(1.05);
+        }
+        .chat-widget-btn:focus-visible {
+            outline: 2px solid var(--accent-orange);
+            outline-offset: 2px;
+        }
+
+        /* Sticky Mobile CTA Bar */
+        .mobile-sticky-cta {
+            display: none;
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background-color: var(--accent-orange);
+            padding: var(--spacing-sm) var(--spacing-md);
+            box-shadow: 0 -2px 10px rgba(0,0,0,0.1);
+            z-index: 1000;
+        }
+        .mobile-sticky-cta .btn-primary {
+            width: 100%;
+            padding: var(--spacing-sm);
+            font-size: 16px;
+        }
+        @media (max-width: 767px) {
+            .mobile-sticky-cta {
+                display: block;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <header class="header">
+        <div class="header-content">
+            <a href="#" class="logo">웹AI 파트너</a>
+            <nav class="nav-menu" id="navMenu">
+                <a href="#problem">문제 인식</a>
+                <a href="#services">핵심 서비스</a>
+                <a href="#data-cases">데이터 활용</a>
+                <a href="#process">프로세스</a>
+                <a href="#trust">신뢰 요소</a>
+                <a href="#faq">FAQ</a>
+            </nav>
+            <button class="btn btn-primary header-cta" onclick="openModal('contactModal')" aria-label="무료 상담 신청">무료 상담 신청</button>
+            <button class="hamburger" id="hamburger" aria-label="메뉴 열기">☰</button>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container hero-content">
+            <div class="hero-text">
+                <span class="hero-label">웹 + AI 자동화</span>
+                <h1>웹사이트가 고객·데이터로 연결되지 않나요?</h1>
+                <p>웹AI 파트너는 맞춤형 웹 제작과 AI 기반 자동화를 결합해 방문자를 분류·전환 가능한 데이터로 바꾸고, 간단한 상담 절차로 맞춤 견적까지 연결합니다.</p>
+                <div class="hero-actions">
+                    <button class="btn btn-primary" onclick="openModal('contactModal')" aria-label="무료 상담 신청">무료 상담 신청</button>
+                    <a href="#data-cases" class="btn btn-secondary" aria-label="사례 보기">사례 보기</a>
+                </div>
+                <div class="hero-trust-strip">
+                    <span>보통 2영업일 내 회신</span>
+                    <span>개인정보 암호화</span>
+                    <span>간단 사전질문으로 맞춤 견적</span>
+                </div>
+            </div>
+            <div class="hero-visual">
+                <div class="device-mockup">
+                    <!-- Placeholder for Desktop Mockup -->
+                    <div class="desktop-frame">
+                        <div class="desktop-screen">
+                            <h4>웹사이트 대시보드 (예시)</h4>
+                            <p class="text-small">실시간 방문자 및 전환 데이터</p>
+                            <div class="kpi-card-grid">
+                                <div class="kpi-card">
+                                    <div class="value">12.5%</div>
+                                    <div class="label">전환율</div>
+                                    <div class="sparkline"></div>
+                                </div>
+                                <div class="kpi-card">
+                                    <div class="value">2,500</div>
+                                    <div class="label">월간 방문자</div>
+                                    <div class="sparkline"></div>
+                                </div>
+                                <div class="kpi-card">
+                                    <div class="value">3.2분</div>
+                                    <div class="label">평균 체류</div>
+                                    <div class="sparkline"></div>
+                                </div>
+                            </div>
+                            <!-- Real image/dashboard screenshot should replace this content -->
+                        </div>
+                    </div>
+                    <!-- Placeholder for Mobile Mockup -->
+                    <div class="mobile-frame">
+                        <div class="mobile-screen">
+                            <h5>모바일 리포트</h5>
+                            <div class="kpi-card">
+                                <div class="value">12.5%</div>
+                                <div class="label">전환율</div>
+                            </div>
+                            <div class="kpi-card">
+                                <div class="value">2,500</div>
+                                <div class="label">방문자</div>
+                            </div>
+                            <!-- Real image/mobile screenshot should replace this content -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Problem Recognition Section -->
+    <section id="problem" class="problem-section section-padding">
+        <div class="container">
+            <h2 class="text-center">지금 이런 어려움이 있으신가요?</h2>
+            <div class="problem-grid">
+                <div class="problem-card">
+                    <div class="icon icon-chart" aria-hidden="true"></div>
+                    <h3 class="card-title">데이터 부재로 의사결정 어려움</h3>
+                    <p>방문자의 행동·유입 채널별 성과를 비교할 데이터가 없습니다.</p>
+                </div>
+                <div class="problem-card">
+                    <div class="icon icon-time" aria-hidden="true"></div>
+                    <h3 class="card-title">반복 업무로 영업 리소스 소진</h3>
+                    <p>상담 분류·사전 답변 등 반복 절차에 인력이 과도하게 소요됩니다.</p>
+                </div>
+                <div class="problem-card">
+                    <div class="icon icon-growth" aria-hidden="true"></div>
+                    <h3 class="card-title">제작 후 지원 끊겨 개선 중단</h3>
+                    <p>런칭 이후 분석·개선 루프가 없어 성장 기회를 놓칩니다.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Core Services Section -->
+    <section id="services" class="services-section section-padding">
+        <div class="container">
+            <h2 class="text-center">제공 서비스 — 웹 제작, AI 자동화, 데이터 파이프라인</h2>
+            <p class="text-center">웹AI 파트너는 웹 제작·AI 자동화·데이터 파이프라인을 통합해 방문자를 정량화 가능한 데이터로 전환하고, 자동화된 상담 흐름으로 우선 리드를 분류해 실제 상담·견적 전환까지 이어지도록 합니다.</p>
+            <div class="service-grid">
+                <div class="service-card">
+                    <div class="icon icon-web" aria-hidden="true"></div>
+                    <h3 class="card-title">웹사이트 제작</h3>
+                    <ul>
+                        <li>반응형 웹(데스크톱·모바일) & CMS 연동</li>
+                        <li>유입·전환 이벤트 설계 및 태깅</li>
+                        <li>SEO 최적화 기본 적용</li>
+                    </ul>
+                    <span class="duration"><strong>예상 기간:</strong> 3–6주 (규모에 따라 변동)</span>
+                    <button class="btn btn-text" onclick="openModal('contactModal')" aria-label="웹사이트 제작 견적 문의">견적 문의 →</button>
+                </div>
+                <div class="service-card">
+                    <div class="icon icon-ai" aria-hidden="true"></div>
+                    <h3 class="card-title">AI 자동화 구축</h3>
+                    <ul>
+                        <li>상담 분류·자동응답 템플릿</li>
+                        <li>리드 우선순위 분류 워크플로우</li>
+                        <li>AI 챗봇 연동 및 학습 지원</li>
+                    </ul>
+                    <span class="duration"><strong>예상 기간:</strong> 2–5주 (범위에 따라)</span>
+                    <button class="btn btn-text" onclick="openModal('contactModal')" aria-label="AI 자동화 상담">자동화 상담 →</button>
+                </div>
+                <div class="service-card">
+                    <div class="icon icon-data" aria-hidden="true"></div>
+                    <h3 class="card-title">데이터 파이프라인</h3>
+                    <ul>
+                        <li>대시보드·스냅샷 (월간 리포트)</li>
+                        <li>A/B 테스트·유입 채널 비교 설정</li>
+                        <li>데이터 기반 개선 제안</li>
+                    </ul>
+                    <span class="duration"><strong>예상 기간:</strong> 2–4주 (통합 범위에 따라)</span>
+                    <button class="btn btn-text" onclick="openModal('contactModal')" aria-label="데이터 상담">데이터 상담 →</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Data Utilization Cases Section -->
+    <section id="data-cases" class="data-section section-padding">
+        <div class="section-header">
+            <h2 class="text-center">실무 예시 — 대시보드와 전/후 비교로 확인하는 의사결정 인사이트</h2>
+            <p class="text-center">웹사이트를 데이터 엔진으로 전환 — 어떤 채널이 실제 고객을 데려오는지 바로 확인하세요.</p>
+        </div>
+        <div class="container">
+            <div class="dashboard-grid">
+                <div class="dashboard-card">
+                    <div class="kpi-value">50%</div>
+                    <div class="kpi-label">상담 응답 시간 단축</div>
+                    <div class="chart-placeholder"></div>
+                    <p class="text-small">AI 자동 분류 도입으로 리드 응대 효율 증대 (예시)</p>
+                </div>
+                <div class="dashboard-card">
+                    <div class="kpi-value">25%</div>
+                    <div class="kpi-label">고우선순위 리드 증가</div>
+                    <div class="chart-placeholder"></div>
+                    <p class="text-small">데이터 기반 선별로 영업 집중도 향상 (예시)</p>
+                </div>
+                <div class="dashboard-card">
+                    <div class="kpi-value">15%</div>
+                    <div class="kpi-label">특정 채널 전환율 상승</div>
+                    <div class="chart-placeholder"></div>
+                    <p class="text-small">A/B 테스트를 통한 마케팅 최적화 (예시)</p>
+                </div>
+                <div class="dashboard-card">
+                    <div class="kpi-value">월간 리포트</div>
+                    <div class="kpi-label">데이터 기반 개선 제안</div>
+                    <div class="chart-placeholder"></div>
+                    <p class="text-small">단발성 제작이 아닌, 함께 성장하는 운영 파트너 (예시)</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="before-after-slider">
+            <div class="image-container image-before" aria-hidden="true">
+                <span class="image-label label-before">Before: 수동 상담 체계</span>
+            </div>
+            <div class="image-container image-after" aria-hidden="true">
+                <span class="image-label label-after">After: AI 자동 분류 & 데이터 리포트</span>
+            </div>
+            <div class="divider" aria-hidden="true"></div>
+            <!-- Real images for before/after comparison should replace these background-colors -->
+            <!-- Example: background-image: url('path/to/before-image.webp'); -->
+        </div>
+
+        <div class="before-after-tabs">
+            <div class="tab-buttons">
+                <button class="tab-button active" data-tab="before">Before: 수동 상담 체계</button>
+                <button class="tab-button" data-tab="after">After: AI 자동 분류 & 데이터 리포트</button>
+            </div>
+            <div class="tab-content active" data-tab-content="before">
+                수동 상담 체계: 어떤 채널이 실제 고객을 데려오는지 알 수 없어 마케팅 방향을 정하기 어렵고, 단순 문의 분류와 응답에 영업 시간이 낭비됩니다.
+                <p class="text-small">구체적 수치 대신 변화의 방향과 운영 상의 이점을 중심으로 설명합니다.</p>
+            </div>
+            <div class="tab-content" data-tab-content="after">
+                AI 자동 분류 & 데이터 리포트: AI 자동 분류 도입 시 상담 응답 흐름이 사전 필터링되어 영업팀의 우선순위가 명확해지고, 월간 리포트로 어떤 채널이 실질 고객을 가져오는지 비교할 수 있습니다.
+                <p class="text-small">구체적 수치 대신 변화의 방향과 운영 상의 이점을 중심으로 설명합니다.</p>
+            </div>
+        </div>
+        <div class="text-center" style="margin-top: var(--spacing-xl);">
+            <button class="btn btn-secondary" onclick="openModal('contactModal')" aria-label="유사 업체 상담">유사 업체 상담</button>
+        </div>
+    </section>
+
+    <!-- Process Section -->
+    <section id="process" class="process-section section-padding">
+        <div class="container">
+            <h2 class="text-center">구현 과정 (예상 일정)</h2>
+            <div class="process-timeline">
+                <div class="process-step">
+                    <div class="node">1</div>
+                    <div class="title">진단</div>
+                    <div class="detail">비즈니스 목표·현행 환경 분석</div>
+                    <div class="period">1–2주</div>
+                </div>
+                <div class="process-step">
+                    <div class="node">2</div>
+                    <div class="title">설계</div>
+                    <div class="detail">정보구조·데이터 모델·자동화 흐름 설계</div>
+                    <div class="period">1–2주</div>
+                </div>
+                <div class="process-step">
+                    <div class="node">3</div>
+                    <div class="title">구축</div>
+                    <div class="detail">프론트엔드·백엔드·AI 연동 개발</div>
+                    <div class="period">3–6주</div>
+                </div>
+                <div class="process-step">
+                    <div class="node">4</div>
+                    <div class="title">테스트</div>
+                    <div class="detail">QA·A/B 테스트·추적 검증</div>
+                    <div class="period">1–2주</div>
+                </div>
+                <div class="process-step">
+                    <div class="node">5</div>
+                    <div class="title">배포</div>
+                    <div class="detail">실서비스 배포 및 초기 모니터링</div>
+                    <div class="period">1주</div>
+                </div>
+                <div class="process-step">
+                    <div class="node">6</div>
+                    <div class="title">운영</div>
+                    <div class="detail">월간 리포트·개선 제안·유지보수</div>
+                    <div class="period">월간/계약별</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Trust Section -->
+    <section id="trust" class="trust-section section-padding">
+        <div class="container">
+            <h2 class="text-center">검증 가능한 신뢰</h2>
+            <p class="text-center">투명한 작업 범위와 단계별 산출물, 계약서 기반의 데이터 소유·보안 규정, 동의 받은 고객사 사례와 기술 스택 명시로 신뢰를 구축합니다.</p>
+            
+            <div class="logo-strip">
+                <!-- Placeholder for client logos -->
+                <div class="logo-placeholder">Client A</div>
+                <div class="logo-placeholder">Client B</div>
+                <div class="logo-placeholder">Client C</div>
+                <div class="logo-placeholder">Client D</div>
+                <div class="logo-placeholder">Client E</div>
+                <div class="logo-placeholder">Client F</div>
+            </div>
+
+            <div class="testimonials-grid">
+                <div class="testimonial-card">
+                    <p class="quote">"웹사이트가 단순 안내 페이지를 넘어 실제 영업 도구가 되었습니다. 데이터 덕분에 마케팅 방향이 명확해졌어요."</p>
+                    <div class="author-info">
+                        <div class="author-avatar">김</div>
+                        <div>
+                            <div class="author-name">김O민 대표</div>
+                            <div class="author-title">IT 스타트업</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <p class="quote">"AI 자동화 덕분에 반복적인 상담 업무가 크게 줄고, 영업팀은 중요한 리드에 집중할 수 있게 되었습니다."</p>
+                    <div class="author-info">
+                        <div class="author-avatar">박</div>
+                        <div>
+                            <div class="author-name">박O현 마케팅 팀장</div>
+                            <div class="author-title">교육 서비스 기업</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <p class="quote">"지속적인 데이터 리포트와 개선 제안으로 웹사이트가 계속 성장하는 것을 체감합니다. 진정한 파트너입니다."</p>
+                    <div class="author-info">
+                        <div class="author-avatar">이</div>
+                        <div>
+                            <div class="author-name">이O진 기획 이사</div>
+                            <div class="author-title">B2B 솔루션 기업</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="security-info">
+                <h3>데이터 보안 및 개인정보 처리 안내</h3>
+                <ul>
+                    <li>데이터 보안: 암호화 전송·저장, 접근권한 관리, 정기 백업 정책 적용</li>
+                    <li>기술 스택: 사용/연동 기술명 명확 표기 (예: React, Node, Python, GPT-API)</li>
+                    <li>운영 약속: 월간 리포트와 개선 제안으로 지속 협업</li>
+                    <li>데이터 소유권: 계약서 기반 고객 데이터 소유권 보장</li>
+                    <li>개인정보 처리방침: <a href="#" aria-label="개인정보 처리방침 보기">상세 보기</a></li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section id="faq" class="faq-section section-padding">
+        <div class="container">
+            <h2 class="text-center">자주 묻는 질문</h2>
+            <div class="accordion">
+                <div class="accordion-item">
+                    <button class="accordion-header" aria-expanded="false" aria-controls="faq-content-1">
+                        비용은 어떻게 산정되나요?
+                        <span class="icon">▼</span>
+                    </button>
+                    <div id="faq-content-1" class="accordion-content">
+                        <p>프로젝트 범위(기능, 디자인, 자동화 범위)에 따라 산정됩니다. 간단한 사전질문으로 예상 범위를 제시해 드립니다.</p>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <button class="accordion-header" aria-expanded="false" aria-controls="faq-content-2">
+                        구현 기간은 어느 정도인가요?
+                        <span class="icon">▼</span>
+                    </button>
+                    <div id="faq-content-2" class="accordion-content">
+                        <p>규모에 따라 다르지만 일반적으로 6–12주 내외의 워크플로우를 권장합니다. '구현 프로세스' 영역의 예상 기간 표기를 참고하세요.</p>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <button class="accordion-header" aria-expanded="false" aria-controls="faq-content-3">
+                        데이터 소유권과 보안은 어떻게 되나요?
+                        <span class="icon">▼</span>
+                    </button>
+                    <div id="faq-content-3" class="accordion-content">
+                        <p>고객 데이터는 계약서와 개인정보처리방침에 따라 소유권이 보장되며, 전송·저장은 암호화로 처리합니다.</p>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <button class="accordion-header" aria-expanded="false" aria-controls="faq-content-4">
+                        도입 후 운영은 어떻게 되나요?
+                        <span class="icon">▼</span>
+                    </button>
+                    <div id="faq-content-4" class="accordion-content">
+                        <p>월간 리포트와 개선 제안을 포함한 운영 옵션을 제공하며, 필요 시 유지보수 계약을 통해 지원합니다.</p>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <button class="accordion-header" aria-expanded="false" aria-controls="faq-content-5">
+                        외부 AI 서비스(예: GPT API)를 사용하나요?
+                        <span class="icon">▼</span>
+                    </button>
+                    <div id="faq-content-5" class="accordion-content">
+                        <p>사용 기술과 연동 방식을 프로젝트 시작 시 명확히 안내하며, 외부 연동 시 데이터 흐름과 보안 방안을 사전 고지합니다.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact-section section-padding">
+        <div class="container contact-content">
+            <h2>지금 바로 무료 상담으로 시작하세요</h2>
+            <p>간단한 사전질문으로 맞춤 견적을 드립니다. 캘린더 예약 또는 빠른 문의 모두 가능합니다.</p>
+            <div class="contact-form-trigger">
+                <button class="btn btn-primary" onclick="openModal('contactModal')" aria-label="무료 상담 신청">무료 상담 신청</button>
+                <a href="https://calendar.google.com/calendar/u/0/appointments/s/YOUR_CALENDAR_ID" target="_blank" class="btn btn-secondary" aria-label="일정 바로 잡기 (구글 캘린더 연동)">일정 바로 잡기</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container footer-content">
+            <div class="footer-logo-col">
+                <a href="#" class="logo">웹AI 파트너</a>
+                <p>웹사이트 제작 및 AI 자동화 구축 서비스</p>
+                <p>문의: contact@webai-partner.com</p>
+                <p>전화: 070-1234-5678</p>
+            </div>
+            <div class="footer-links-col">
+                <h4>빠른 링크</h4>
+                <ul>
+                    <li><a href="#problem">문제 인식</a></li>
+                    <li><a href="#services">핵심 서비스</a></li>
+                    <li><a href="#data-cases">데이터 활용</a></li>
+                    <li><a href="#process">프로세스</a></li>
+                </ul>
+            </div>
+            <div class="footer-links-col">
+                <h4>법률 정보</h4>
+                <ul>
+                    <li><a href="#">이용 약관</a></li>
+                    <li><a href="#">개인정보 처리방침</a></li>
+                    <li><a href="#">사업자 정보</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2023 웹AI 파트너. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Modal for Contact Form -->
+    <div id="contactModal" class="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+        <div class="modal-content">
+            <button class="modal-close" onclick="closeModal('contactModal')" aria-label="닫기">×</button>
+            <h3 id="modalTitle">맞춤 견적 요청</h3>
+            <p class="helper-text">간단한 정보로 빠른 사전검토를 도와드립니다. 제출 후 보통 2영업일 내 회신합니다.</p>
+            <form id="contactForm">
+                <div class="form-group">
+                    <label for="company">회사명 (필수)</label>
+                    <input type="text" id="company" name="company" placeholder="회사명을 입력해주세요" required>
+                </div>
+                <div class="form-group">
+                    <label for="contact_name">담당자 이름 (필수)</label>
+                    <input type="text" id="contact_name" name="contact_name" placeholder="이름을 입력해주세요" required>
+                </div>
+                <div class="form-group">
+                    <label for="contact_email">연락처 또는 이메일 (필수)</label>
+                    <input type="email" id="contact_email" name="contact_email" placeholder="이메일 또는 전화번호를 입력해주세요" required>
+                </div>
+                <div class="form-group">
+                    <label for="budget">예상 예산 (선택)</label>
+                    <select id="budget" name="budget">
+                        <option value="">선택해주세요</option>
+                        <option value="~500만">~500만 원</option>
+                        <option value="500만~1500만">500만~1500만 원</option>
+                        <option value="1500만~3000만">1500만~3000만 원</option>
+                        <option value="맞춤형">3000만 원 이상 / 맞춤형</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="deadline">프로젝트 기한 (선택)</label>
+                    <select id="deadline" name="deadline">
+                        <option value="">선택해주세요</option>
+                        <option value="1개월 이내">1개월 이내</option>
+                        <option value="1-3개월">1–3개월</option>
+                        <option value="3개월 이상">3개월 이상</option>
+                        <option value="미정">미정</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="requirements">요청사항 (간단)</label>
+                    <textarea id="requirements" name="requirements" placeholder="주요 목표나 필요한 기능을 간단히 입력하세요 (예: 상담 자동화, 대시보드)"></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary form-submit-btn">견적 요청하기</button>
+                <p class="privacy-link">제출하신 정보는 견적용으로만 사용하며 <a href="#">개인정보 처리방침</a>에 따라 암호화되어 안전하게 처리됩니다.</p>
+            </form>
+        </div>
+    </div>
+
+    <!-- Chat Widget Button -->
+    <button class="chat-widget-btn" aria-label="채팅 상담">💬</button>
+
+    <!-- Mobile Sticky CTA Bar -->
+    <div class="mobile-sticky-cta">
+        <button class="btn btn-primary" onclick="openModal('contactModal')" aria-label="무료 상담 신청">무료 상담 신청</button>
+    </div>
+
+    <script>
+        // Hamburger Menu Toggle
+        document.getElementById('hamburger').addEventListener('click', function() {
+            document.getElementById('navMenu').classList.toggle('active');
+        });
+
+        // Modal functionality
+        function openModal(modalId) {
+            const modal = document.getElementById(modalId);
+            if (modal) {
+                modal.style.display = 'flex';
+                modal.setAttribute('aria-hidden', 'false');
+                document.body.style.overflow = 'hidden'; // Prevent scrolling background
+                const firstFocusableElement = modal.querySelector('input, select, textarea, button:not(.modal-close)');
+                if (firstFocusableElement) {
+                    firstFocusableElement.focus();
+                }
+            }
+        }
+
+        function closeModal(modalId) {
+            const modal = document.getElementById(modalId);
+            if (modal) {
+                modal.style.display = 'none';
+                modal.setAttribute('aria-hidden', 'true');
+                document.body.style.overflow = ''; // Restore scrolling
+            }
+        }
+
+        // Close modal on outside click
+        window.addEventListener('click', function(event) {
+            const contactModal = document.getElementById('contactModal');
+            if (event.target === contactModal) {
+                closeModal('contactModal');
+            }
+        });
+
+        // Close modal on Escape key
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'Escape') {
+                const openModalElement = document.querySelector('.modal[aria-hidden="false"]');
+                if (openModalElement) {
+                    closeModal(openModalElement.id);
+                }
+            }
+        });
+
+        // Form submission (placeholder)
+        document.getElementById('contactForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            alert('문의가 성공적으로 접수되었습니다. 2영업일 내 회신드리겠습니다.');
+            closeModal('contactModal');
+            this.reset();
+        });
+
+        // Accordion functionality
+        document.querySelectorAll('.accordion-header').forEach(header => {
+            header.addEventListener('click', () => {
+                const item = header.closest('.accordion-item');
+                const content = item.querySelector('.accordion-content');
+                const isActive = item.classList.contains('active');
+
+                // Close all other active accordions
+                document.querySelectorAll('.accordion-item.active').forEach(activeItem => {
+                    if (activeItem !== item) {
+                        activeItem.classList.remove('active');
+                        activeItem.querySelector('.accordion-content').style.maxHeight = '0';
+                        activeItem.querySelector('.accordion-header').setAttribute('aria-expanded', 'false');
+                    }
+                });
+
+                // Toggle current accordion
+                if (isActive) {
+                    item.classList.remove('active');
+                    content.style.maxHeight = '0';
+                    header.setAttribute('aria-expanded', 'false');
+                } else {
+                    item.classList.add('active');
+                    content.style.maxHeight = content.scrollHeight + 'px';
+                    header.setAttribute('aria-expanded', 'true');
+                }
+            });
+        });
+
+        // Before/After Slider (Desktop)
+        const beforeAfterSlider = document.querySelector('.before-after-slider');
+        const imageAfter = beforeAfterSlider ? beforeAfterSlider.querySelector('.image-after') : null;
+        const divider = beforeAfterSlider ? beforeAfterSlider.querySelector('.divider') : null;
+
+        if (imageAfter && divider) {
+            let isDragging = false;
+
+            const startDragging = (e) => {
+                if (window.matchMedia("(min-width: 768px)").matches) {
+                    isDragging = true;
+                    document.body.style.cursor = 'ew-resize';
+                }
+            };
+
+            const stopDragging = () => {
+                isDragging = false;
+                document.body.style.cursor = 'default';
+            };
+
+            const onDragging = (e) => {
+                if (!isDragging) return;
+                let clientX = e.clientX;
+                if (e.touches) {
+                    clientX = e.touches[0].clientX;
+                }
+
+                const rect = beforeAfterSlider.getBoundingClientRect();
+                let x = clientX - rect.left;
+                let width = rect.width;
+
+                if (x < 0) x = 0;
+                if (x > width) x = width;
+
+                imageAfter.style.width = x + 'px';
+                divider.style.left = x + 'px';
+            };
+
+            divider.addEventListener('mousedown', startDragging);
+            beforeAfterSlider.addEventListener('mousemove', onDragging);
+            beforeAfterSlider.addEventListener('mouseup', stopDragging);
+            beforeAfterSlider.addEventListener('mouseleave', stopDragging);
+
+            // Touch events for potential tablet support
+            divider.addEventListener('touchstart', startDragging);
+            beforeAfterSlider.addEventListener('touchmove', onDragging);
+            beforeAfterSlider.addEventListener('touchend', stopDragging);
+        }
+
+        // Before/After Tabs (Mobile)
+        document.querySelectorAll('.before-after-tabs .tab-button').forEach(button => {
+            button.addEventListener('click', () => {
+                const tabId = button.dataset.tab;
+
+                // Deactivate all buttons and content
+                document.querySelectorAll('.before-after-tabs .tab-button').forEach(btn => btn.classList.remove('active'));
+                document.querySelectorAll('.before-after-tabs .tab-content').forEach(content => content.classList.remove('active'));
+
+                // Activate clicked button and corresponding content
+                button.classList.add('active');
+                document.querySelector(`.before-after-tabs .tab-content[data-tab-content="${tabId}"]`).classList.add('active');
+            });
+        });
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('.nav-menu a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.getElementById('navMenu').classList.remove('active'); // Close mobile menu
+
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    const headerOffset = document.querySelector('.header').offsetHeight; // Account for sticky header
+                    const elementPosition = targetElement.getBoundingClientRect().top + window.pageYOffset;
+                    const offsetPosition = elementPosition - headerOffset;
+
+                    window.scrollTo({
+                        top: offsetPosition,
+                        behavior: "smooth"
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
