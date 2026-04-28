@@ -1,0 +1,1907 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>옆에서 웹·AI: 웹사이트 제작부터 AI 자동화 구축까지, 실무형 성장 파트너</title>
+    <meta name="description" content="옆에서 웹·AI는 웹 제작부터 데이터 기반 AI 자동화, 마케팅 연동까지 한 팀이 책임져 비즈니스 성장을 돕는 솔루션을 제공합니다. 지금 상담하세요.">
+    <link rel="canonical" href="https://www.yeopseo-web-ai.com/index.html">
+    <style>
+        /* CSS Variables - Design Tokens */
+        :root {
+            --color-primary-dark: #1A2B47; /* Deep Blue/Navy */
+            --color-primary-light: #F8F9FA; /* Bright Gray */
+            --color-primary-white: #FFFFFF; /* White */
+            --color-secondary-tech: #00BFA5; /* Tech Green/청록 */
+            --color-accent-orange: #FF7043; /* Warm Orange/Coral */
+            --color-text-dark: #212529; /* Dark text */
+            --color-text-light: #6C757D; /* Light gray text */
+            --color-border: #E9ECEF; /* Light border */
+
+            --font-family-system: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+            --font-size-base: 1rem; /* 16px */
+            --line-height-base: 1.6;
+
+            --spacing-xs: 0.5rem;   /* 8px */
+            --spacing-sm: 1rem;     /* 16px */
+            --spacing-md: 1.5rem;   /* 24px */
+            --spacing-lg: 2rem;     /* 32px */
+            --spacing-xl: 3rem;     /* 48px */
+            --spacing-xxl: 4rem;    /* 64px */
+            --spacing-xxxl: 6rem;   /* 96px */
+            --spacing-xxxxl: 8rem;  /* 128px */
+
+            --border-radius-sm: 4px;
+            --border-radius-md: 8px;
+            --border-radius-lg: 12px;
+
+            --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.08);
+            --shadow-md: 0 4px 10px rgba(0, 0, 0, 0.1);
+            --shadow-lg: 0 8px 20px rgba(0, 0, 0, 0.15);
+
+            --max-width-content: 1180px;
+        }
+
+        /* Base Styles */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: var(--font-family-system);
+            font-size: var(--font-size-base);
+            line-height: var(--line-height-base);
+            color: var(--color-text-dark);
+            background-color: var(--color-primary-white);
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        a {
+            color: var(--color-accent-orange);
+            text-decoration: none;
+            transition: color 0.2s ease;
+        }
+
+        a:hover {
+            color: var(--color-primary-dark);
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            line-height: 1.3;
+            font-weight: 700;
+            margin-bottom: var(--spacing-md);
+        }
+
+        h1 { font-size: clamp(2.5rem, 6vw, 4.5rem); } /* 40px to 72px */
+        h2 { font-size: clamp(2rem, 5vw, 3.5rem); }   /* 32px to 56px */
+        h3 { font-size: clamp(1.75rem, 4vw, 2.5rem); } /* 28px to 40px */
+        h4 { font-size: clamp(1.5rem, 3vw, 2rem); }   /* 24px to 32px */
+        p { margin-bottom: var(--spacing-sm); }
+
+        .container {
+            max-width: var(--max-width-content);
+            margin: 0 auto;
+            padding: 0 var(--spacing-md);
+        }
+
+        /* Buttons */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: var(--spacing-sm) var(--spacing-lg);
+            border-radius: var(--border-radius-md);
+            font-size: var(--font-size-base);
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            text-align: center;
+            white-space: nowrap;
+            border: 2px solid transparent;
+        }
+
+        .btn-primary {
+            background-color: var(--color-accent-orange);
+            color: var(--color-primary-white);
+            border-color: var(--color-accent-orange);
+        }
+
+        .btn-primary:hover {
+            background-color: #e6663d; /* Darken accent */
+            border-color: #e6663d;
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-sm);
+        }
+
+        .btn-secondary {
+            background-color: transparent;
+            color: var(--color-primary-dark);
+            border-color: var(--color-primary-dark);
+        }
+
+        .btn-secondary:hover {
+            background-color: var(--color-primary-dark);
+            color: var(--color-primary-white);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-sm);
+        }
+        
+        .btn-outline {
+            background-color: transparent;
+            color: var(--color-primary-white);
+            border-color: var(--color-primary-white);
+        }
+        
+        .btn-outline:hover {
+            background-color: var(--color-primary-white);
+            color: var(--color-primary-dark);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-sm);
+        }
+
+        .btn-text {
+            background: none;
+            border: none;
+            color: var(--color-primary-dark);
+            padding: var(--spacing-xs) var(--spacing-sm);
+            font-weight: 500;
+        }
+        .btn-text:hover {
+            color: var(--color-accent-orange);
+            text-decoration: underline;
+        }
+
+        /* Section Styling */
+        section {
+            padding: var(--spacing-xxxl) 0;
+            position: relative;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: var(--spacing-xxl);
+        }
+
+        .section-header h2 {
+            margin-bottom: var(--spacing-md);
+            color: var(--color-text-dark);
+        }
+        
+        .section-header p {
+            font-size: 1.15rem;
+            color: var(--color-text-light);
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .bg-white { background-color: var(--color-primary-white); }
+        .bg-light-gray { background-color: var(--color-primary-light); }
+        .bg-dark-blue { background-color: var(--color-primary-dark); color: var(--color-primary-white); }
+        .bg-dark-blue h2, .bg-dark-blue h3, .bg-dark-blue h4 { color: var(--color-primary-white); }
+        .bg-dark-blue p, .bg-dark-blue .card-text { color: rgba(255, 255, 255, 0.8); }
+
+        /* Card Component */
+        .card {
+            background-color: var(--color-primary-white);
+            border-radius: var(--border-radius-md);
+            box-shadow: var(--shadow-sm);
+            padding: var(--spacing-xl);
+            transition: all 0.2s ease;
+            display: flex;
+            flex-direction: column;
+            border: 1px solid var(--color-border);
+        }
+        .card:hover {
+            box-shadow: var(--shadow-md);
+            transform: translateY(-3px);
+        }
+        .card-icon {
+            font-size: 2.5rem;
+            color: var(--color-secondary-tech);
+            margin-bottom: var(--spacing-md);
+            display: block;
+            text-align: center;
+        }
+        .card-title {
+            font-size: 1.35rem;
+            font-weight: 600;
+            margin-bottom: var(--spacing-sm);
+            text-align: center;
+        }
+        .card-text {
+            font-size: 1rem;
+            color: var(--color-text-light);
+            flex-grow: 1;
+        }
+        .card-footer {
+            margin-top: var(--spacing-md);
+            text-align: center;
+        }
+        .card-footer a {
+            color: var(--color-secondary-tech);
+            font-weight: 500;
+        }
+
+        /* Header (Sticky Navigation) */
+        .header {
+            position: sticky;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background-color: var(--color-primary-white);
+            padding: var(--spacing-md) 0;
+            box-shadow: var(--shadow-sm);
+            z-index: 1000;
+        }
+        .header .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--color-primary-dark);
+        }
+        .logo span {
+            color: var(--color-secondary-tech);
+        }
+        .header-nav {
+            display: none; /* Hidden on mobile */
+        }
+        .header-nav ul {
+            list-style: none;
+            display: flex;
+            gap: var(--spacing-lg);
+        }
+        .header-nav a {
+            color: var(--color-text-dark);
+            font-weight: 500;
+            padding: var(--spacing-xs) 0;
+            position: relative;
+        }
+        .header-nav a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--color-accent-orange);
+            transition: width 0.3s ease;
+        }
+        .header-nav a:hover::after {
+            width: 100%;
+        }
+
+        /* Hero Section */
+        #hero {
+            padding: var(--spacing-xxxxl) 0;
+            background-color: var(--color-primary-white);
+            text-align: left;
+            overflow: hidden;
+            position: relative;
+        }
+        #hero .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: var(--spacing-xxl);
+        }
+        .hero-content {
+            flex: 1;
+            max-width: 600px;
+            text-align: center;
+        }
+        .hero-label {
+            font-size: 1.15rem;
+            font-weight: 600;
+            color: var(--color-secondary-tech);
+            margin-bottom: var(--spacing-sm);
+            display: block;
+        }
+        .hero-headline {
+            color: var(--color-primary-dark);
+            margin-bottom: var(--spacing-md);
+        }
+        .hero-subcopy {
+            font-size: 1.25rem;
+            color: var(--color-text-light);
+            margin-bottom: var(--spacing-xl);
+            line-height: 1.5;
+        }
+        .hero-cta-group {
+            display: flex;
+            flex-direction: column;
+            gap: var(--spacing-md);
+            margin-bottom: var(--spacing-md);
+        }
+        .hero-cta-group .btn {
+            width: 100%;
+        }
+        .hero-trust-info {
+            font-size: 0.9rem;
+            color: var(--color-text-light);
+            margin-top: var(--spacing-sm);
+        }
+        .hero-visual {
+            flex: 1;
+            min-width: 300px;
+            position: relative;
+            max-width: 700px;
+            width: 100%;
+            height: 400px; /* Placeholder height */
+            background-color: var(--color-primary-light);
+            border-radius: var(--border-radius-lg);
+            box-shadow: var(--shadow-lg);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+        .hero-visual-inner {
+            width: 90%;
+            height: 85%;
+            background: linear-gradient(135deg, var(--color-primary-dark) 0%, #3a4d6b 100%);
+            border-radius: var(--border-radius-md);
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 1.1rem;
+            padding: var(--spacing-md);
+            text-align: center;
+            border: 2px solid rgba(255, 255, 255, 0.2);
+        }
+        .hero-visual-inner::before {
+            content: '📊'; /* Dashboard icon */
+            font-size: 3rem;
+            margin-bottom: var(--spacing-sm);
+            display: block;
+        }
+        .hero-visual-inner span {
+            display: block;
+            font-weight: 600;
+            margin-bottom: var(--spacing-xs);
+        }
+        .hero-visual-inner small {
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+        .hero-badge-row {
+            margin-top: var(--spacing-xl);
+            text-align: center;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: var(--spacing-lg);
+            font-size: 0.9rem;
+            color: var(--color-text-light);
+            opacity: 0.8;
+        }
+        .hero-badge-row span {
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-xs);
+        }
+        .hero-badge-row span::before {
+            content: '✓';
+            color: var(--color-secondary-tech);
+            font-weight: 700;
+        }
+
+        /* Problem Section */
+        #problem .grid {
+            display: grid;
+            gap: var(--spacing-xl);
+            grid-template-columns: 1fr;
+        }
+        #problem .card {
+            background-color: var(--color-primary-white);
+            text-align: center;
+        }
+        #problem .card-icon {
+            font-size: 3.5rem;
+            color: var(--color-primary-dark);
+        }
+        #problem .card-title {
+            font-size: 1.5rem;
+            margin-bottom: var(--spacing-sm);
+        }
+        #problem .card-text {
+            color: var(--color-text-dark);
+            font-size: 1.1rem;
+            line-height: 1.5;
+        }
+
+        /* What We Do Section */
+        #what-we-do .grid {
+            display: grid;
+            gap: var(--spacing-xl);
+            grid-template-columns: 1fr;
+        }
+        #what-we-do .card-icon {
+            color: var(--color-accent-orange);
+            font-size: 3rem;
+        }
+        #what-we-do .card-title {
+            color: var(--color-primary-dark);
+            text-align: left;
+        }
+        #what-we-do .card-text {
+            text-align: left;
+        }
+        #what-we-do .card-footer {
+            text-align: left;
+        }
+        #what-we-do .intro-text {
+            text-align: center;
+            font-size: 1.25rem;
+            color: var(--color-text-dark);
+            margin-bottom: var(--spacing-xxl);
+            font-weight: 500;
+        }
+
+        /* Process Section */
+        #process {
+            text-align: center;
+        }
+        .process-timeline {
+            display: flex;
+            flex-direction: column; /* Default to vertical on mobile */
+            gap: var(--spacing-xxl);
+            position: relative;
+            padding: var(--spacing-lg) 0;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        .process-timeline::before {
+            content: '';
+            position: absolute;
+            left: 18px; /* For vertical line */
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background-color: rgba(255, 255, 255, 0.3);
+            z-index: 1;
+        }
+        .process-step {
+            display: flex;
+            align-items: flex-start;
+            text-align: left;
+            position: relative;
+            z-index: 2;
+        }
+        .process-step-marker {
+            width: 40px;
+            height: 40px;
+            min-width: 40px;
+            border-radius: 50%;
+            background-color: var(--color-secondary-tech);
+            color: var(--color-primary-white);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            margin-right: var(--spacing-md);
+            box-shadow: var(--shadow-sm);
+            border: 2px solid var(--color-primary-white);
+        }
+        .process-step-content {
+            background-color: rgba(255, 255, 255, 0.1);
+            padding: var(--spacing-md);
+            border-radius: var(--border-radius-md);
+            flex-grow: 1;
+            box-shadow: var(--shadow-sm);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        .process-step-title {
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: var(--spacing-xs);
+            color: var(--color-primary-white);
+        }
+        .process-step-desc {
+            font-size: 1rem;
+            color: rgba(255, 255, 255, 0.8);
+        }
+        .process-note {
+            margin-top: var(--spacing-xl);
+            font-size: 0.9rem;
+            opacity: 0.7;
+        }
+
+        /* Core Services Section */
+        #services .grid {
+            display: grid;
+            gap: var(--spacing-xl);
+            grid-template-columns: 1fr;
+        }
+        #services .card-icon {
+            font-size: 3rem;
+            color: var(--color-secondary-tech);
+        }
+        #services .card-title {
+            color: var(--color-primary-dark);
+            margin-bottom: var(--spacing-xs);
+        }
+        #services .card-text {
+            margin-bottom: var(--spacing-md);
+        }
+        #services .service-features {
+            list-style: none;
+            padding-left: 0;
+            margin-bottom: var(--spacing-md);
+        }
+        #services .service-features li {
+            position: relative;
+            padding-left: var(--spacing-lg);
+            margin-bottom: var(--spacing-xs);
+            color: var(--color-text-dark);
+        }
+        #services .service-features li::before {
+            content: '✔';
+            position: absolute;
+            left: 0;
+            color: var(--color-secondary-tech);
+            font-weight: 700;
+        }
+
+        /* Case Studies/Portfolio Section */
+        #portfolio .grid {
+            display: grid;
+            gap: var(--spacing-xl);
+            grid-template-columns: 1fr;
+        }
+        #portfolio .case-card {
+            background-color: var(--color-primary-white);
+            border-radius: var(--border-radius-md);
+            box-shadow: var(--shadow-sm);
+            overflow: hidden;
+            transition: all 0.2s ease;
+            display: flex;
+            flex-direction: column;
+            border: 1px solid var(--color-border);
+        }
+        #portfolio .case-card:hover {
+            box-shadow: var(--shadow-md);
+            transform: translateY(-3px);
+        }
+        .case-image-wrapper {
+            width: 100%;
+            padding-top: 56.25%; /* 16:9 Aspect Ratio */
+            position: relative;
+            background-color: var(--color-primary-light);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+        .case-image-wrapper img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-bottom: 1px solid var(--color-border);
+        }
+        .case-image-placeholder {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: #e0e0e0; /* Placeholder background */
+            color: #666;
+            font-size: 0.9rem;
+            text-align: center;
+            line-height: 1.4;
+            padding: var(--spacing-sm);
+        }
+        .case-content {
+            padding: var(--spacing-lg);
+            flex-grow: 1;
+        }
+        .case-tag {
+            display: inline-block;
+            background-color: var(--color-secondary-tech);
+            color: var(--color-primary-white);
+            font-size: 0.8rem;
+            padding: 0.25rem 0.75rem;
+            border-radius: var(--border-radius-sm);
+            margin-bottom: var(--spacing-sm);
+            font-weight: 500;
+        }
+        .case-title {
+            font-size: 1.35rem;
+            font-weight: 600;
+            margin-bottom: var(--spacing-sm);
+            color: var(--color-primary-dark);
+        }
+        .case-description {
+            font-size: 1rem;
+            color: var(--color-text-light);
+            margin-bottom: var(--spacing-md);
+        }
+        .case-cta {
+            margin-top: auto; /* Push to bottom */
+            text-align: right;
+        }
+        .case-cta a {
+            color: var(--color-accent-orange);
+            font-weight: 500;
+        }
+        .case-cta a::after {
+            content: ' →';
+        }
+
+        /* Comparison/Pricing Section */
+        #pricing {
+            text-align: center;
+        }
+        #pricing .grid {
+            display: grid;
+            gap: var(--spacing-xl);
+            grid-template-columns: 1fr;
+        }
+        #pricing .pricing-card {
+            background-color: var(--color-primary-white);
+            border-radius: var(--border-radius-lg);
+            box-shadow: var(--shadow-lg); /* Stronger shadow */
+            padding: var(--spacing-xl);
+            text-align: left;
+            display: flex;
+            flex-direction: column;
+            border: 2px solid transparent;
+            position: relative;
+            overflow: hidden;
+        }
+        .pricing-card-highlight {
+            border-color: var(--color-accent-orange);
+            box-shadow: 0 10px 30px rgba(255, 112, 67, 0.25);
+        }
+        .pricing-card-highlight::before {
+            content: '인기';
+            position: absolute;
+            top: 0;
+            right: 0;
+            background-color: var(--color-accent-orange);
+            color: var(--color-primary-white);
+            padding: var(--spacing-xs) var(--spacing-md);
+            font-size: 0.85rem;
+            font-weight: 600;
+            border-bottom-left-radius: var(--border-radius-md);
+        }
+        .pricing-card-title {
+            font-size: 1.75rem;
+            font-weight: 700;
+            color: var(--color-primary-dark);
+            margin-bottom: var(--spacing-sm);
+        }
+        .pricing-card-subtitle {
+            font-size: 1.15rem;
+            color: var(--color-text-light);
+            margin-bottom: var(--spacing-lg);
+        }
+        .pricing-card-price {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--color-accent-orange);
+            margin-bottom: var(--spacing-lg);
+        }
+        .pricing-card-price small {
+            font-size: 1rem;
+            font-weight: 500;
+            color: var(--color-text-light);
+        }
+        .pricing-features {
+            list-style: none;
+            margin-bottom: var(--spacing-xl);
+            flex-grow: 1;
+        }
+        .pricing-features li {
+            display: flex;
+            align-items: center;
+            margin-bottom: var(--spacing-sm);
+            font-size: 1rem;
+            color: var(--color-text-dark);
+        }
+        .pricing-features li::before {
+            content: '✓';
+            color: var(--color-secondary-tech);
+            margin-right: var(--spacing-sm);
+            font-weight: 700;
+        }
+        .pricing-features li.excluded::before {
+            content: '✕';
+            color: var(--color-text-light);
+        }
+        .pricing-features li.excluded {
+            color: var(--color-text-light);
+            opacity: 0.7;
+            text-decoration: line-through;
+        }
+        #pricing .btn {
+            width: 100%;
+            padding: var(--spacing-md) var(--spacing-lg);
+            font-size: 1.1rem;
+        }
+
+        /* Tech Stack & Security Section */
+        #tech-security .tech-logos {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: var(--spacing-xl);
+            margin-bottom: var(--spacing-xxl);
+        }
+        .tech-logo-item {
+            width: 120px;
+            height: 60px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            background-color: var(--color-primary-white);
+            border-radius: var(--border-radius-md);
+            box-shadow: var(--shadow-sm);
+            padding: var(--spacing-sm);
+            color: var(--color-text-light);
+            font-size: 0.9rem;
+            font-weight: 500;
+            text-align: center;
+            border: 1px solid var(--color-border);
+        }
+        .tech-logo-item::before {
+            content: attr(data-icon);
+            font-size: 2rem;
+            margin-bottom: var(--spacing-xs);
+            color: var(--color-primary-dark);
+        }
+        .tech-logo-item .status {
+            font-size: 0.75rem;
+            color: var(--color-secondary-tech);
+            font-weight: 600;
+        }
+        .security-info {
+            max-width: 800px;
+            margin: 0 auto;
+            background-color: var(--color-primary-dark);
+            color: var(--color-primary-white);
+            padding: var(--spacing-xxl);
+            border-radius: var(--border-radius-lg);
+            text-align: center;
+        }
+        .security-info h3 {
+            color: var(--color-primary-white);
+            margin-bottom: var(--spacing-md);
+        }
+        .security-info ul {
+            list-style: none;
+            margin-bottom: var(--spacing-lg);
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: var(--spacing-sm);
+        }
+        .security-info li {
+            font-size: 1.1rem;
+            color: rgba(255, 255, 255, 0.8);
+            position: relative;
+            padding-left: var(--spacing-lg);
+        }
+        .security-info li::before {
+            content: '🛡️';
+            position: absolute;
+            left: 0;
+            color: var(--color-secondary-tech);
+            font-size: 1.2rem;
+        }
+
+        /* FAQ Section */
+        #faq .faq-list {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        .faq-item {
+            background-color: var(--color-primary-white);
+            border: 1px solid var(--color-border);
+            border-radius: var(--border-radius-md);
+            margin-bottom: var(--spacing-md);
+            overflow: hidden;
+            box-shadow: var(--shadow-sm);
+        }
+        .faq-question {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: var(--spacing-md) var(--spacing-lg);
+            font-size: 1.15rem;
+            font-weight: 600;
+            color: var(--color-primary-dark);
+            cursor: pointer;
+            background-color: var(--color-primary-light);
+            transition: background-color 0.2s ease;
+        }
+        .faq-question:hover {
+            background-color: #E2E3E4;
+        }
+        .faq-question .icon {
+            font-size: 1.5rem;
+            transition: transform 0.2s ease;
+        }
+        .faq-question[aria-expanded="true"] .icon {
+            transform: rotate(180deg);
+        }
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out, padding 0.3s ease-out;
+            padding: 0 var(--spacing-lg);
+            color: var(--color-text-dark);
+        }
+        .faq-answer p {
+            padding: var(--spacing-md) 0;
+            border-top: 1px solid var(--color-border);
+            margin-top: var(--spacing-md);
+        }
+        .faq-answer[aria-hidden="false"] {
+            max-height: 500px; /* Max height for expansion */
+            padding-bottom: var(--spacing-md);
+        }
+
+        /* Team Section */
+        #team .grid {
+            display: grid;
+            gap: var(--spacing-xl);
+            grid-template-columns: 1fr;
+        }
+        .team-member-card {
+            background-color: var(--color-primary-white);
+            border-radius: var(--border-radius-md);
+            box-shadow: var(--shadow-sm);
+            padding: var(--spacing-xl);
+            text-align: center;
+            border: 1px solid var(--color-border);
+        }
+        .team-member-photo {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            background-color: var(--color-primary-light);
+            margin: 0 auto var(--spacing-md);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            color: var(--color-primary-dark);
+            overflow: hidden;
+            border: 3px solid var(--color-secondary-tech);
+        }
+        .team-member-name {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--color-primary-dark);
+            margin-bottom: var(--spacing-xs);
+        }
+        .team-member-role {
+            font-size: 1.1rem;
+            color: var(--color-secondary-tech);
+            font-weight: 600;
+            margin-bottom: var(--spacing-sm);
+        }
+        .team-member-desc {
+            font-size: 1rem;
+            color: var(--color-text-light);
+            margin-bottom: var(--spacing-md);
+        }
+        .team-member-contact .btn {
+            font-size: 0.9rem;
+            padding: var(--spacing-xs) var(--spacing-md);
+        }
+
+        /* Contact Form Section */
+        #contact {
+            text-align: center;
+        }
+        #contact .form-wrapper {
+            max-width: 800px;
+            margin: 0 auto;
+            background-color: var(--color-primary-white);
+            border-radius: var(--border-radius-lg);
+            box-shadow: var(--shadow-lg);
+            padding: var(--spacing-xxl);
+            text-align: left;
+        }
+        #contact h2 {
+            text-align: center;
+            margin-bottom: var(--spacing-md);
+            color: var(--color-primary-dark);
+        }
+        #contact .form-helper-text {
+            text-align: center;
+            color: var(--color-text-light);
+            margin-bottom: var(--spacing-xl);
+            font-size: 1.1rem;
+        }
+        .form-grid {
+            display: grid;
+            gap: var(--spacing-md);
+            grid-template-columns: 1fr; /* Default to single column */
+        }
+        .form-group {
+            margin-bottom: var(--spacing-sm);
+        }
+        .form-group label {
+            display: block;
+            margin-bottom: var(--spacing-xs);
+            font-weight: 600;
+            color: var(--color-primary-dark);
+            font-size: 0.95rem;
+        }
+        .form-group input[type="text"],
+        .form-group input[type="email"],
+        .form-group input[type="tel"],
+        .form-group input[type="date"],
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: var(--spacing-sm) var(--spacing-md);
+            border: 1px solid var(--color-border);
+            border-radius: var(--border-radius-sm);
+            font-size: 1rem;
+            color: var(--color-text-dark);
+            transition: border-color 0.2s ease, box-shadow 0.2s ease;
+        }
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--color-secondary-tech);
+            box-shadow: 0 0 0 3px rgba(0, 191, 165, 0.2);
+        }
+        .form-group textarea {
+            min-height: 120px;
+            resize: vertical;
+        }
+        .checkbox-group {
+            margin-top: var(--spacing-md);
+            margin-bottom: var(--spacing-md);
+        }
+        .checkbox-group label {
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+            font-weight: 400;
+            color: var(--color-text-dark);
+        }
+        .checkbox-group input[type="checkbox"] {
+            margin-right: var(--spacing-xs);
+            width: 18px;
+            height: 18px;
+            accent-color: var(--color-secondary-tech);
+        }
+        .file-upload-info {
+            font-size: 0.85rem;
+            color: var(--color-text-light);
+            margin-top: var(--spacing-xs);
+            display: block;
+        }
+        #contact .btn-primary {
+            width: 100%;
+            padding: var(--spacing-md);
+            font-size: 1.1rem;
+            margin-top: var(--spacing-lg);
+        }
+        .privacy-note {
+            font-size: 0.85rem;
+            color: var(--color-text-light);
+            margin-top: var(--spacing-md);
+            text-align: center;
+        }
+
+        /* Footer */
+        .footer {
+            background-color: var(--color-primary-dark);
+            color: rgba(255, 255, 255, 0.7);
+            padding: var(--spacing-xxxl) 0 var(--spacing-xl);
+            font-size: 0.9rem;
+            text-align: center;
+        }
+        .footer .container {
+            display: flex;
+            flex-direction: column;
+            gap: var(--spacing-lg);
+            align-items: center;
+        }
+        .footer-logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--color-primary-white);
+            margin-bottom: var(--spacing-md);
+        }
+        .footer-logo span {
+            color: var(--color-secondary-tech);
+        }
+        .footer-links {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: var(--spacing-md);
+            list-style: none;
+            margin-bottom: var(--spacing-md);
+        }
+        .footer-links a {
+            color: rgba(255, 255, 255, 0.7);
+        }
+        .footer-links a:hover {
+            color: var(--color-primary-white);
+        }
+        .footer-social-links {
+            display: flex;
+            gap: var(--spacing-md);
+            margin-bottom: var(--spacing-md);
+        }
+        .footer-social-links a {
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 1.5rem;
+        }
+        .footer-social-links a:hover {
+            color: var(--color-primary-white);
+        }
+
+        /* Floating Action Buttons */
+        .fab-container {
+            position: fixed;
+            bottom: var(--spacing-lg);
+            right: var(--spacing-lg);
+            display: flex;
+            flex-direction: column;
+            gap: var(--spacing-md);
+            z-index: 1000;
+        }
+        .fab {
+            width: 56px;
+            height: 56px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: var(--shadow-md);
+            cursor: pointer;
+            transition: all 0.2s ease;
+            font-size: 1.5rem;
+            color: var(--color-primary-white);
+            text-decoration: none;
+        }
+        .fab-primary {
+            background-color: var(--color-accent-orange);
+        }
+        .fab-primary:hover {
+            background-color: #e6663d;
+            transform: scale(1.05);
+        }
+        .fab-chat {
+            background-color: var(--color-secondary-tech);
+        }
+        .fab-chat:hover {
+            background-color: #00a890;
+            transform: scale(1.05);
+        }
+        .fab-primary .tooltip {
+            visibility: hidden;
+            width: 120px;
+            background-color: var(--color-primary-dark);
+            color: var(--color-primary-white);
+            text-align: center;
+            border-radius: var(--border-radius-sm);
+            padding: var(--spacing-xs) var(--spacing-sm);
+            position: absolute;
+            z-index: 1;
+            right: 65px; /* Position to the left of the FAB */
+            top: 50%;
+            transform: translateY(-50%);
+            opacity: 0;
+            transition: opacity 0.3s;
+            font-size: 0.9rem;
+            white-space: nowrap;
+        }
+        .fab-primary:hover .tooltip {
+            visibility: visible;
+            opacity: 1;
+        }
+
+        /* Responsive Design */
+        @media (min-width: 768px) {
+            .header-nav {
+                display: block;
+            }
+            .hero-content {
+                text-align: left;
+            }
+            .hero-cta-group {
+                flex-direction: row;
+            }
+            .hero-cta-group .btn {
+                width: auto;
+            }
+            #hero .container {
+                flex-direction: row;
+                text-align: left;
+            }
+            .hero-visual {
+                height: 500px;
+            }
+
+            #problem .grid,
+            #what-we-do .grid,
+            #services .grid,
+            #portfolio .grid,
+            #team .grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            #pricing .grid {
+                grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            }
+            .form-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+            .form-full-width {
+                grid-column: 1 / -1;
+            }
+            .process-timeline {
+                flex-direction: row; /* Horizontal on desktop */
+                justify-content: space-between;
+                align-items: flex-start;
+                padding: var(--spacing-xxl) 0;
+            }
+            .process-timeline::before {
+                left: 0;
+                top: 50%;
+                width: 100%;
+                height: 2px;
+                background-color: rgba(255, 255, 255, 0.3);
+            }
+            .process-step {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+                flex: 1;
+                max-width: 200px; /* Adjust width for horizontal steps */
+            }
+            .process-step-marker {
+                margin: 0 0 var(--spacing-md) 0;
+            }
+            .process-step-content {
+                padding: var(--spacing-md) var(--spacing-sm);
+            }
+        }
+
+        @media (min-width: 1024px) {
+            #problem .grid,
+            #what-we-do .grid,
+            #services .grid,
+            #portfolio .grid,
+            #team .grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+            .hero-visual {
+                height: 600px;
+            }
+            .process-timeline {
+                max-width: 1000px;
+            }
+            .process-step {
+                max-width: 220px;
+            }
+        }
+
+        @media (min-width: 1440px) {
+            .container {
+                padding: 0; /* Remove horizontal padding on very large screens */
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <a href="#hero" class="logo">옆에서 <span>웹·AI</span></a>
+            <nav class="header-nav">
+                <ul>
+                    <li><a href="#problem">문제점</a></li>
+                    <li><a href="#what-we-do">우리가 하는 일</a></li>
+                    <li><a href="#process">프로세스</a></li>
+                    <li><a href="#services">핵심 서비스</a></li>
+                    <li><a href="#portfolio">사례</a></li>
+                    <li><a href="#pricing">견적 가이드</a></li>
+                    <li><a href="#contact" class="btn btn-primary" data-ab-test="header-cta-color">상담 요청하기</a></li>
+                </ul>
+            </nav>
+            <a href="#contact" class="btn btn-primary mobile-cta">상담 요청</a>
+        </div>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section id="hero" class="bg-white">
+            <div class="container">
+                <div class="hero-content">
+                    <span class="hero-label">데이터 기반 웹 + AI 자동화</span>
+                    <h1 class="hero-headline" data-ab-test="hero-headline">웹사이트는 있는데 전환·데이터가 나오지 않나요?</h1>
+                    <p class="hero-subcopy">옆에서 웹·AI는 웹 제작부터 데이터 구조 설계, 실무에서 바로 쓰는 AI 자동화와 마케팅 연동까지 한 팀이 연결해 드립니다.</p>
+                    <div class="hero-cta-group">
+                        <a href="#contact" class="btn btn-primary btn-lg" data-ab-test="hero-primary-cta-color">상담 요청하기</a>
+                        <a href="#services" class="btn btn-secondary btn-lg">서비스 자세히 보기</a>
+                    </div>
+                    <p class="hero-trust-info">보통 48시간 내 회신 (상담 상황에 따라 변동) <br>비밀 유지 보장</p>
+                </div>
+                <div class="hero-visual">
+                    <!-- Replace with real business person image + device frame with dashboard screenshot -->
+                    <div class="hero-visual-inner">
+                        <span>데이터 기반 비즈니스 성장</span>
+                        <span>AI 자동화 흐름도 & 대시보드 스냅샷</span>
+                        <small>실제 고객 데이터 기반 분석 예시 (민감 정보 제외)</small>
+                    </div>
+                </div>
+            </div>
+            <div class="hero-badge-row">
+                <span>대시보드 샘플 보기</span>
+                <span>연동 가능한 플랫폼: Google Analytics</span>
+                <span>Firebase</span>
+                <span>AWS</span>
+                <span>Zapier</span>
+            </div>
+        </section>
+
+        <!-- Problem Section -->
+        <section id="problem" class="bg-light-gray">
+            <div class="container">
+                <div class="section-header">
+                    <h2>지금 겪고 계신 문제인가요?</h2>
+                    <p>옆에서 웹·AI는 고객의 목소리에 귀 기울여 비즈니스 성장을 가로막는 근본적인 문제를 해결합니다.</p>
+                </div>
+                <div class="grid">
+                    <div class="card">
+                        <span class="card-icon">📈</span>
+                        <h3 class="card-title">전환이 안돼요</h3>
+                        <p class="card-text">광고는 열심히 돌리는데 실제 전환과 유의미한 데이터가 나오지 않나요? 어떤 지표를 봐야 할지 모르는 경우가 많습니다.</p>
+                        <div class="card-footer">
+                            <a href="#what-we-do" class="btn-text">해결책 보기</a>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <span class="card-icon">🔗</span>
+                        <h3 class="card-title">연동이 복잡해요</h3>
+                        <p class="card-text">여러 툴을 연결하는 과정에서 기술적 리스크가 크고, 담당자와 에이전시 사이에 책임이 모호해지는 경우가 많습니다.</p>
+                        <div class="card-footer">
+                            <a href="#what-we-do" class="btn-text">해결책 보기</a>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <span class="card-icon">🎯</span>
+                        <h3 class="card-title">어떤 데이터가 중요한지 모르겠어요</h3>
+                        <p class="card-text">모든 데이터를 다 추적하려다 핵심 신호를 놓치거나, 사업 목표에 맞춘 KPI 설계가 어려워 고민하고 계신가요?</p>
+                        <div class="card-footer">
+                            <a href="#what-we-do" class="btn-text">해결책 보기</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- What We Do Summary Section -->
+        <section id="what-we-do" class="bg-white">
+            <div class="container">
+                <div class="section-header">
+                    <h2>옆에서 웹·AI는 이렇게 해결합니다</h2>
+                    <p class="intro-text">한 팀이 기획부터 운영까지 연결해 불필요한 연동·관리 부담을 줄이고, 사업 목표에 맞춘 KPI 설계로 '필요한 데이터'만 수집해 실무에서 바로 쓰는 자동화 루틴을 만듭니다.</p>
+                </div>
+                <div class="grid">
+                    <div class="card">
+                        <span class="card-icon">💻</span>
+                        <h3 class="card-title">웹 제작</h3>
+                        <p class="card-text">사업 목적에 맞춘 정보구조·퍼포먼스 최적화·컨버전 설계를 통해 단순히 보기 좋은 웹사이트를 넘어, 성과를 내는 웹사이트를 만듭니다.</p>
+                        <div class="card-footer">
+                            <a href="#services" class="btn-text" data-interest="웹 제작">관련 사례 보기</a>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <span class="card-icon">🤖</span>
+                        <h3 class="card-title">AI 자동화</h3>
+                        <p class="card-text">수집된 데이터를 바탕으로 반복 가능한 마케팅 자동화를 설계하고 구축합니다. 이메일, CRM, 광고 연동을 통해 효율적인 운영을 지원합니다.</p>
+                        <div class="card-footer">
+                            <a href="#services" class="btn-text" data-interest="AI 자동화">관련 사례 보기</a>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <span class="card-icon">📊</span>
+                        <h3 class="card-title">데이터 비교·분석</h3>
+                        <p class="card-text">KPI 중심의 비교 템플릿과 대시보드를 제공하여 어떤 데이터가 중요한지 명확히 보여주고, 빠르고 정확한 의사결정을 돕습니다.</p>
+                        <div class="card-footer">
+                            <a href="#services" class="btn-text" data-interest="데이터 분석">관련 사례 보기</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Process Section -->
+        <section id="process" class="bg-dark-blue">
+            <div class="container">
+                <div class="section-header">
+                    <h2>프로젝트 진행 프로세스</h2>
+                    <p>투명하고 체계적인 5단계 프로세스로 웹 제작부터 AI 자동화까지 성공적인 프로젝트를 약속합니다.</p>
+                </div>
+                <div class="process-timeline">
+                    <div class="process-step">
+                        <div class="process-step-marker">1</div>
+                        <div class="process-step-content">
+                            <h3 class="process-step-title">기획 (목표·KPI 설계)</h3>
+                            <p class="process-step-desc">비즈니스 목표, 필요한 데이터, 우선순위를 함께 설계합니다.</p>
+                            <!-- Replace with micro screenshot of wireframe/planning doc -->
+                        </div>
+                    </div>
+                    <div class="process-step">
+                        <div class="process-step-marker">2</div>
+                        <div class="process-step-content">
+                            <h3 class="process-step-title">제작 (디자인·개발)</h3>
+                            <p class="process-step-desc">퍼포먼스와 확장성을 고려한 반응형 사이트를 개발합니다.</p>
+                            <!-- Replace with micro screenshot of design mockup -->
+                        </div>
+                    </div>
+                    <div class="process-step">
+                        <div class="process-step-marker">3</div>
+                        <div class="process-step-content">
+                            <h3 class="process-step-title">데이터 수집 (구조화)</h3>
+                            <p class="process-step-desc">필요한 이벤트와 데이터 파이프라인을 구축해 정확한 수집을 보장합니다.</p>
+                            <!-- Replace with micro screenshot of data flow diagram -->
+                        </div>
+                    </div>
+                    <div class="process-step">
+                        <div class="process-step-marker">4</div>
+                        <div class="process-step-content">
+                            <h3 class="process-step-title">AI 자동화 구축</h3>
+                            <p class="process-step-desc">수집된 데이터를 바탕으로 자동화 루틴을 설계·연동합니다.</p>
+                            <!-- Replace with micro screenshot of automation workflow -->
+                        </div>
+                    </div>
+                    <div class="process-step">
+                        <div class="process-step-marker">5</div>
+                        <div class="process-step-content">
+                            <h3 class="process-step-title">운영·분석</h3>
+                            <p class="process-step-desc">대시보드로 성과를 모니터링하고 개선 가설을 반복 적용합니다.</p>
+                            <!-- Replace with micro screenshot of live dashboard -->
+                        </div>
+                    </div>
+                </div>
+                <p class="process-note">프로젝트 규모와 요구사항에 따라 소요 기간 및 상세 범위는 달라질 수 있습니다.</p>
+            </div>
+        </section>
+
+        <!-- Core Services Section -->
+        <section id="services" class="bg-white">
+            <div class="container">
+                <div class="section-header">
+                    <h2>옆에서 웹·AI의 핵심 서비스</h2>
+                    <p>비즈니스 성장을 위한 웹 제작, AI 자동화, 데이터 분석 및 마케팅 연동까지, 필요한 모든 것을 제공합니다.</p>
+                </div>
+                <div class="grid">
+                    <div class="card">
+                        <span class="card-icon">🌐</span>
+                        <h3 class="card-title">맞춤형 웹사이트 제작</h3>
+                        <p class="card-text">비즈니스 목표 기반 정보구조 설계, 반응형 UI/UX 디자인, 성능 최적화 개발을 통해 고객의 비즈니스에 최적화된 웹사이트를 구축합니다.</p>
+                        <ul class="service-features">
+                            <li>타겟 고객 분석 및 정보구조 설계</li>
+                            <li>모든 기기에 최적화된 반응형 웹 개발</li>
+                            <li>CMS 연동 옵션 (WordPress, Headless CMS)</li>
+                            <li>SEO 최적화 및 웹 성능 개선</li>
+                        </ul>
+                        <div class="card-footer">
+                            <a href="#portfolio" class="btn-text" data-interest="웹 제작">사례 확인하기</a>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <span class="card-icon">🧠</span>
+                        <h3 class="card-title">AI 기반 자동화 구축</h3>
+                        <p class="card-text">수집된 데이터를 활용하여 반복 가능한 마케팅 및 운영 자동화 워크플로우를 설계하고 구현합니다. 효율적인 비즈니스 운영을 지원합니다.</p>
+                        <ul class="service-features">
+                            <li>이벤트 트래킹 및 데이터 파이프라인 설계</li>
+                            <li>자동화 워크플로 구축 (이메일, CRM 연동)</li>
+                            <li>개인화된 콘텐츠 추천 시스템</li>
+                            <li>챗봇 및 고객 응대 자동화 연동</li>
+                        </ul>
+                        <div class="card-footer">
+                            <a href="#portfolio" class="btn-text" data-interest="AI 자동화">AI 자동화 사례 확인</a>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <span class="card-icon">🔍</span>
+                        <h3 class="card-title">데이터 비교·분석</h3>
+                        <p class="card-text">핵심 성과 지표(KPI) 중심의 대시보드와 A/B 비교 템플릿을 제공하여 데이터 기반의 의사결정을 돕고, 주기적인 리포트로 인사이트를 제공합니다.</p>
+                        <ul class="service-features">
+                            <li>사업 목표에 맞는 KPI 대시보드 구축</li>
+                            <li>A/B 테스트 및 비교 분석 템플릿 제공</li>
+                            <li>정기적인 데이터 리포트 및 인사이트 도출</li>
+                            <li>데이터 기반 개선 가설 수립 지원</li>
+                        </ul>
+                        <div class="card-footer">
+                            <a href="#portfolio" class="btn-text" data-interest="데이터 분석">분석 대시보드 샘플 보기</a>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <span class="card-icon">📣</span>
+                        <h3 class="card-title">마케팅 연동 및 최적화</h3>
+                        <p class="card-text">웹사이트 데이터와 마케팅 채널을 연동하여 전환 퍼널을 개선하고, 광고 태깅 및 UTM 정리를 통해 캠페인 자동화 연동을 지원합니다.</p>
+                        <ul class="service-features">
+                            <li>전환 퍼널 분석 및 개선 작업</li>
+                            <li>광고 태깅 및 UTM 파라미터 관리</li>
+                            <li>CRM 및 마케팅 자동화 솔루션 연동</li>
+                            <li>개인화된 마케팅 캠페인 지원</li>
+                        </ul>
+                        <div class="card-footer">
+                            <a href="#portfolio" class="btn-text" data-interest="마케팅 연동">마케팅 연동 사례 보기</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Case Studies/Portfolio Section -->
+        <section id="portfolio" class="bg-light-gray">
+            <div class="container">
+                <div class="section-header">
+                    <h2>성공적인 파트너십 사례</h2>
+                    <p>실제 비즈니스에 적용된 옆에서 웹·AI의 웹 제작 및 AI 자동화 솔루션을 확인해보세요.</p>
+                </div>
+                <div class="grid">
+                    <div class="case-card">
+                        <div class="case-image-wrapper">
+                            <!-- Replace with actual project screenshot (desktop/mobile mockup) -->
+                            <div class="case-image-placeholder">
+                                <h3>사례 1: SaaS 서비스 대시보드</h3>
+                                <p>데이터 시각화 및 AI 예측</p>
+                            </div>
+                        </div>
+                        <div class="case-content">
+                            <span class="case-tag">SaaS 스타트업</span>
+                            <h3 class="case-title">고객 이탈 예측 대시보드 구축</h3>
+                            <p class="case-description">문제: 고객 이탈률이 높지만 원인을 알기 어려웠습니다.<br>해결: 행동 데이터를 기반으로 이탈 예측 모델을 구축하고 대시보드를 제공했습니다.<br>역할: 웹 트래킹 설계, 데이터 파이프라인 구축, AI 모델 연동, 대시보드 시각화</p>
+                        </div>
+                        <div class="case-cta">
+                            <a href="#contact" data-prefill-interest="AI 자동화 사례">유사 사례 문의</a>
+                        </div>
+                    </div>
+                    <div class="case-card">
+                        <div class="case-image-wrapper">
+                            <!-- Replace with actual project screenshot (desktop/mobile mockup) -->
+                            <div class="case-image-placeholder">
+                                <h3>사례 2: 소상공인 예약 웹사이트</h3>
+                                <p>간편 예약 및 자동 알림</p>
+                            </div>
+                        </div>
+                        <div class="case-content">
+                            <span class="case-tag">소상공인</span>
+                            <h3 class="case-title">예약 및 고객 관리 자동화</h3>
+                            <p class="case-description">문제: 수기 예약 관리로 인한 누락과 시간 소모가 컸습니다.<br>해결: 반응형 예약 웹사이트와 자동 알림, 고객 데이터 연동 시스템을 구축했습니다.<br>역할: 웹사이트 제작, 예약 시스템 연동, 이메일/SMS 자동화</p>
+                        </div>
+                        <div class="case-cta">
+                            <a href="#contact" data-prefill-interest="웹 제작 사례">유사 사례 문의</a>
+                        </div>
+                    </div>
+                    <div class="case-card">
+                        <div class="case-image-wrapper">
+                            <!-- Replace with actual project screenshot (desktop/mobile mockup) -->
+                            <div class="case-image-placeholder">
+                                <h3>사례 3: 중소기업 마케팅 분석</h3>
+                                <p>광고 성과 통합 분석</p>
+                            </div>
+                        </div>
+                        <div class="case-content">
+                            <span class="case-tag">중소기업</span>
+                            <h3 class="case-title">광고 성과 통합 대시보드</h3>
+                            <p class="case-description">문제: 여러 광고 채널의 데이터를 통합 분석하기 어려웠습니다.<br>해결: 구글 애널리틱스, 광고 플랫폼 데이터를 통합하여 맞춤형 대시보드를 구축했습니다.<br>역할: 데이터 연동, KPI 설정, 대시보드 개발, 정기 리포트 템플릿 제공</p>
+                        </div>
+                        <div class="case-cta">
+                            <a href="#contact" data-prefill-interest="데이터 분석 사례">유사 사례 문의</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="section-footer" style="margin-top: var(--spacing-xxl); text-align: center;">
+                    <a href="#contact" class="btn btn-secondary">더 많은 포트폴리오 보기</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Comparison/Pricing Guide Section -->
+        <section id="pricing" class="bg-dark-blue">
+            <div class="container">
+                <div class="section-header">
+                    <h2>어떤 솔루션이 필요하신가요?</h2>
+                    <p>옆에서 웹·AI는 고객의 비즈니스 단계와 목표에 맞춰 최적의 패키지를 제안합니다.</p>
+                </div>
+                <div class="grid">
+                    <div class="pricing-card">
+                        <h3 class="pricing-card-title">기본 웹 구축</h3>
+                        <p class="pricing-card-subtitle">홍보 및 정보 제공 중심의 웹사이트</p>
+                        <p class="pricing-card-price">맞춤 견적 <small>/ 프로젝트</small></p>
+                        <ul class="pricing-features">
+                            <li>맞춤형 디자인 및 반응형 웹</li>
+                            <li>기본 SEO 및 웹 성능 최적화</li>
+                            <li>콘텐츠 관리 시스템(CMS) 연동</li>
+                            <li>기본 구글 애널리틱스 연동</li>
+                            <li class="excluded">AI 자동화 워크플로 구축</li>
+                            <li class="excluded">맞춤형 데이터 대시보드</li>
+                        </ul>
+                        <a href="#contact" class="btn btn-secondary" data-prefill-interest="기본 웹 구축">견적 요청하기</a>
+                    </div>
+                    <div class="pricing-card pricing-card-highlight">
+                        <h3 class="pricing-card-title">웹 + 데이터 & 자동화</h3>
+                        <p class="pricing-card-subtitle">데이터 기반 성장 및 마케팅 자동화</p>
+                        <p class="pricing-card-price">맞춤 견적 <small>/ 프로젝트</small></p>
+                        <ul class="pricing-features">
+                            <li>맞춤형 디자인 및 반응형 웹</li>
+                            <li>기본 SEO 및 웹 성능 최적화</li>
+                            <li>콘텐츠 관리 시스템(CMS) 연동</li>
+                            <li>고도화된 데이터 수집 구조 설계</li>
+                            <li>AI 자동화 워크플로 구축</li>
+                            <li>맞춤형 데이터 대시보드 및 리포트</li>
+                        </ul>
+                        <a href="#contact" class="btn btn-primary" data-prefill-interest="웹 + 데이터 & 자동화">견적 요청하기</a>
+                    </div>
+                    <div class="pricing-card">
+                        <h3 class="pricing-card-title">운영 & 컨설팅</h3>
+                        <p class="pricing-card-subtitle">지속적인 개선 및 성장 파트너십</p>
+                        <p class="pricing-card-price">맞춤 견적 <small>/ 월</small></p>
+                        <ul class="pricing-features">
+                            <li>기존 웹사이트/자동화 시스템 분석</li>
+                            <li>데이터 기반 최적화 컨설팅</li>
+                            <li>A/B 테스트 및 전환율 개선</li>
+                            <li>주기적인 성과 리포트 및 피드백</li>
+                            <li>기술 지원 및 유지보수</li>
+                            <li>신규 자동화/기능 확장 제안</li>
+                        </ul>
+                        <a href="#contact" class="btn btn-secondary" data-prefill-interest="운영 & 컨설팅">견적 요청하기</a>
+                    </div>
+                </div>
+                <p class="process-note" style="margin-top: var(--spacing-xxl);">예비 고객 상담에서 사이트 상태를 검토한 뒤, 최소한의 추가 작업으로 자동화 가능성을 판단해 안내드립니다.</p>
+            </div>
+        </section>
+
+        <!-- Tech Stack & Security Section -->
+        <section id="tech-security" class="bg-white">
+            <div class="container">
+                <div class="section-header">
+                    <h2>기술 스택 & 보안·데이터 처리 원칙</h2>
+                    <p>안정적인 기술과 투명한 데이터 처리 방식으로 신뢰할 수 있는 서비스를 제공합니다.</p>
+                </div>
+                <div class="tech-logos">
+                    <div class="tech-logo-item" data-icon="GA">Google Analytics <span class="status">(연동 가능)</span></div>
+                    <div class="tech-logo-item" data-icon="FB">Firebase <span class="status">(연동 가능)</span></div>
+                    <div class="tech-logo-item" data-icon="AWS">AWS <span class="status">(사용 중)</span></div>
+                    <div class="tech-logo-item" data-icon="Zap">Zapier <span class="status">(연동 가능)</span></div>
+                    <div class="tech-logo-item" data-icon="CRM">CRM Solutions <span class="status">(연동 가능)</span></div>
+                    <div class="tech-logo-item" data-icon="WP">WordPress <span class="status">(연동 가능)</span></div>
+                </div>
+                <div class="security-info">
+                    <h3>투명한 프로세스와 데이터 책임 원칙</h3>
+                    <ul>
+                        <li>프로젝트 계약서·검수 기준·유지보수 조건 명확화</li>
+                        <li>데이터 전송은 TLS 암호화, 접근 권한 관리 적용</li>
+                        <li>사용 중인 (또는 연동 가능한) 기술 스택 로고 표시 및 실제 연동 여부 표기</li>
+                        <li>샘플 대시보드·리포트 스냅샷으로 산출물 예시 제공</li>
+                        <li>상담 후 상세 산출물 목록·작업 범위 문서 제공</li>
+                    </ul>
+                    <a href="#" class="btn btn-outline">기술 및 보안 문의</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- FAQ Section -->
+        <section id="faq" class="bg-light-gray">
+            <div class="container">
+                <div class="section-header">
+                    <h2>자주 묻는 질문</h2>
+                    <p>웹 제작과 AI 자동화에 대해 궁금한 점들을 해결해 드립니다.</p>
+                </div>
+                <div class="faq-list">
+                    <div class="faq-item">
+                        <button class="faq-question" aria-expanded="false" aria-controls="faq-answer-1">
+                            기존 사이트에 자동화를 붙일 수 있나요? <span class="icon">▼</span>
+                        </button>
+                        <div id="faq-answer-1" class="faq-answer" aria-hidden="true">
+                            <p>네. 기존 사이트의 구조와 데이터 상태를 검토한 뒤 필요한 트래킹·연동을 설계합니다. 기존 플랫폼(Shopify, WordPress 등)에서도 플랫폼별 제약을 검토해 가능한 연동 방안을 제시합니다.</p>
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <button class="faq-question" aria-expanded="false" aria-controls="faq-answer-2">
+                            비용은 어떻게 책정되나요? <span class="icon">▼</span>
+                        </button>
+                        <div id="faq-answer-2" class="faq-answer" aria-hidden="true">
+                            <p>필요 기능·연동 범위·데이터 가공 수준에 따라 패키지 또는 맞춤 견적으로 안내됩니다. 소규모 예산의 경우, 우선순위가 높은 핵심 트래킹과 자동화부터 단계별로 진행해 비용 효율을 높이는 방식으로 제안합니다.</p>
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <button class="faq-question" aria-expanded="false" aria-controls="faq-answer-3">
+                            완료까지 시간이 얼마나 걸리나요? <span class="icon">▼</span>
+                        </button>
+                        <div id="faq-answer-3" class="faq-answer" aria-hidden="true">
+                            <p>프로젝트 규모와 요구사항에 따라 달라집니다. 초기 미팅에서 상세한 일정 예시를 제시합니다. 상담 후 바로 개발이 시작되는 것이 아니라, 초기 미팅에서 범위와 검수 기준을 합의한 뒤 계약 절차를 진행합니다.</p>
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <button class="faq-question" aria-expanded="false" aria-controls="faq-answer-4">
+                            유지보수는 어떻게 되나요? <span class="icon">▼</span>
+                        </button>
+                        <div id="faq-answer-4" class="faq-answer" aria-hidden="true">
+                            <p>운영·분석 지원을 옵션으로 제공하며 SLA(서비스 수준 협약) 범위는 계약 시 명확히 합의합니다. 필요시 지속적인 개선 및 성장 파트너십을 위한 컨설팅도 제공합니다.</p>
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <button class="faq-question" aria-expanded="false" aria-controls="faq-answer-5">
+                            보안·개인정보 관리는 어떻게 되나요? <span class="icon">▼</span>
+                        </button>
+                        <div id="faq-answer-5" class="faq-answer" aria-hidden="true">
+                            <p>데이터 전송 시 TLS 암호화를 적용하고, 저장된 데이터는 접근 권한으로 통제합니다. 세부 정책은 계약서와 별도 문서로 안내합니다. 개인정보는 상담 목적 외 사용하지 않습니다.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Team Section -->
+        <section id="team" class="bg-white">
+            <div class="container">
+                <div class="section-header">
+                    <h2>옆에서 웹·AI 팀을 소개합니다</h2>
+                    <p>당신의 비즈니스 성장을 위해 함께 고민하고 실행하는 전문 파트너들입니다.</p>
+                </div>
+                <div class="grid">
+                    <div class="team-member-card">
+                        <!-- Replace with real team member photo -->
+                        <div class="team-member-photo">🧑‍💻</div>
+                        <h3 class="team-member-name">김현수</h3>
+                        <p class="team-member-role">웹 기획 & 프로젝트 총괄</p>
+                        <p class="team-member-desc">비즈니스 목표 분석부터 웹사이트 기획, 전체 프로젝트 진행 상황을 책임지고 관리합니다.</p>
+                        <div class="team-member-contact">
+                            <a href="#contact" class="btn btn-secondary">상담 요청</a>
+                        </div>
+                    </div>
+                    <div class="team-member-card">
+                        <!-- Replace with real team member photo -->
+                        <div class="team-member-photo">👨‍💻</div>
+                        <h3 class="team-member-name">이준영</h3>
+                        <p class="team-member-role">프론트엔드 개발 & UI/UX</p>
+                        <p class="team-member-desc">사용자 경험을 최우선으로, 퍼포먼스와 확장성을 고려한 웹사이트를 개발합니다.</p>
+                        <div class="team-member-contact">
+                            <a href="#contact" class="btn btn-secondary">상담 요청</a>
+                        </div>
+                    </div>
+                    <div class="team-member-card">
+                        <!-- Replace with real team member photo -->
+                        <div class="team-member-photo">👩‍💻</div>
+                        <h3 class="team-member-name">박지민</h3>
+                        <p class="team-member-role">데이터 & AI 자동화 전문가</p>
+                        <p class="team-member-desc">데이터 수집부터 AI 자동화 워크플로 구축, 성과 분석 및 최적화까지 담당합니다.</p>
+                        <div class="team-member-contact">
+                            <a href="#contact" class="btn btn-secondary">상담 요청</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Form Section -->
+        <section id="contact" class="bg-dark-blue">
+            <div class="container">
+                <div class="form-wrapper">
+                    <h2 class="section-header-form">지금 상담으로 시작하세요</h2>
+                    <p class="form-helper-text">짧은 예비정보만으로 빠르게 상담 일정을 제안 드립니다. 비밀 보장·개인정보는 안전하게 처리됩니다.</p>
+                    <form id="contactForm">
+                        <div class="form-grid">
+                            <div class="form-group">
+                                <label for="name">이름 <span style="color:var(--color-accent-orange);">*</span></label>
+                                <input type="text" id="name" name="name" placeholder="홍길동" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="company">회사명 <span style="color:var(--color-accent-orange);">*</span></label>
+                                <input type="text" id="company" name="company" placeholder="옆에서 웹·AI" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="role">직책 (선택)</label>
+                                <input type="text" id="role" name="role" placeholder="마케팅 담당자">
+                            </div>
+                            <div class="form-group">
+                                <label for="phone">연락처 <span style="color:var(--color-accent-orange);">*</span></label>
+                                <input type="tel" id="phone" name="phone" placeholder="010-1234-5678" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="email">이메일 <span style="color:var(--color-accent-orange);">*</span></label>
+                                <input type="email" id="email" name="email" placeholder="hello@yeopseo-web-ai.com" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="interest">관심 서비스 (복수 선택)</label>
+                                <select id="interest" name="interest" multiple>
+                                    <option value="웹 제작">웹 제작</option>
+                                    <option value="AI 자동화">AI 자동화</option>
+                                    <option value="데이터 분석">데이터 분석</option>
+                                    <option value="마케팅 연동">마케팅 연동</option>
+                                    <option value="운영 & 컨설팅">운영 & 컨설팅</option>
+                                    <option value="기타">기타</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="budget">예산 범위 (선택)</label>
+                                <select id="budget" name="budget">
+                                    <option value="">선택해주세요</option>
+                                    <option value="500만원 미만">500만원 미만</option>
+                                    <option value="500만원 ~ 1천만원">500만원 ~ 1천만원</option>
+                                    <option value="1천만원 ~ 3천만원">1천만원 ~ 3천만원</option>
+                                    <option value="3천만원 이상">3천만원 이상</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="meeting_date">희망 미팅 일자 (선택)</label>
+                                <input type="date" id="meeting_date" name="meeting_date">
+                                <span class="file-upload-info">캘린더 연동은 상담 확정 후 진행됩니다.</span>
+                            </div>
+                            <div class="form-group form-full-width">
+                                <label for="message">프로젝트 목표/요청사항 (간단 서술)</label>
+                                <textarea id="message" name="message" placeholder="현재 웹사이트 상황, 원하는 목표, 질문 등 자유롭게 작성해주세요."></textarea>
+                            </div>
+                            <div class="form-group form-full-width">
+                                <label for="attachment">관련 파일 업로드 (선택)</label>
+                                <input type="file" id="attachment" name="attachment" accept=".pdf, .doc, .docx, .ppt, .pptx, .zip" multiple>
+                                <span class="file-upload-info">최대 10MB까지 업로드 가능합니다. (PDF, DOC, PPT, ZIP 등)</span>
+                            </div>
+                        </div>
+                        <div class="checkbox-group">
+                            <input type="checkbox" id="privacyConsent" name="privacyConsent" required>
+                            <label for="privacyConsent">개인정보 수집·이용에 동의합니다 <span style="color:var(--color-accent-orange);">*</span></label>
+                        </div>
+                        <button type="submit" class="btn btn-primary">상담 신청하기</button>
+                        <p class="privacy-note">개인정보는 상담 목적 외 사용하지 않습니다.</p>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <a href="#hero" class="footer-logo">옆에서 <span>웹·AI</span></a>
+            <p><strong>주소:</strong> 서울특별시 강남구 테헤란로 123 (가상 주소)</p>
+            <p><strong>이메일:</strong> contact@yeopseo-web-ai.com</p>
+            <p><strong>전화:</strong> 070-1234-5678</p>
+            <ul class="footer-links">
+                <li><a href="#">개인정보처리방침</a></li>
+                <li><a href="#">서비스 이용약관</a></li>
+                <li><a href="#">사이트맵</a></li>
+            </ul>
+            <div class="footer-social-links">
+                <a href="#" aria-label="Facebook">F</a> <!-- Replace with real social icons -->
+                <a href="#" aria-label="LinkedIn">L</a>
+                <a href="#" aria-label="Instagram">I</a>
+            </div>
+            <p>&copy; 2024 옆에서 웹·AI. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Floating Action Buttons -->
+    <div class="fab-container">
+        <a href="#contact" class="fab fab-primary" aria-label="상담 요청하기">
+            📞
+            <span class="tooltip">상담 요청하기</span>
+        </a>
+        <a href="#" class="fab fab-chat" aria-label="빠른 채팅 문의">
+            💬
+        </a>
+    </div>
+
+    <script>
+        // Accordion functionality for FAQ
+        document.querySelectorAll('.faq-question').forEach(button => {
+            button.addEventListener('click', () => {
+                const isExpanded = button.getAttribute('aria-expanded') === 'true';
+                const answer = document.getElementById(button.getAttribute('aria-controls'));
+
+                // Close all other open accordions
+                document.querySelectorAll('.faq-question[aria-expanded="true"]').forEach(otherButton => {
+                    if (otherButton !== button) {
+                        otherButton.setAttribute('aria-expanded', 'false');
+                        document.getElementById(otherButton.getAttribute('aria-controls')).setAttribute('aria-hidden', 'true');
+                    }
+                });
+
+                button.setAttribute('aria-expanded', !isExpanded);
+                answer.setAttribute('aria-hidden', isExpanded);
+            });
+        });
+
+        // Form submission handler
+        document.getElementById('contactForm').addEventListener('submit', function(event) {
+            event.preventDefault(); // Prevent actual form submission
+
+            // Simple validation
+            const name = document.getElementById('name').value;
+            const company = document.getElementById('company').value;
+            const phone = document.getElementById('phone').value;
+            const email = document.getElementById('email').value;
+            const privacyConsent = document.getElementById('privacyConsent').checked;
+
+            if (!name || !company || !phone || !email) {
+                alert('이름, 회사명, 연락처, 이메일은 필수 입력 항목입니다.');
+                return;
+            }
+            if (!privacyConsent) {
+                alert('개인정보 수집·이용에 동의해야 합니다.');
+                return;
+            }
+
+            // Simulate form submission
+            alert('상담 요청이 성공적으로 접수되었습니다. 빠른 시일 내에 연락드리겠습니다.');
+
+            // Optional: Clear form or redirect
+            this.reset();
+            
+            // Optional: Show calendar scheduling modal (placeholder)
+            // console.log('Show calendar scheduling modal here');
+        });
+
+        // Contextual form pre-fill based on CTA click
+        document.querySelectorAll('a[data-prefill-interest]').forEach(link => {
+            link.addEventListener('click', function(event) {
+                const interest = this.getAttribute('data-prefill-interest');
+                const contactFormInterest = document.getElementById('interest');
+                
+                // Clear previous selections
+                for (let i = 0; i < contactFormInterest.options.length; i++) {
+                    contactFormInterest.options[i].selected = false;
+                }
+
+                // Select the option matching the interest
+                for (let i = 0; i < contactFormInterest.options.length; i++) {
+                    if (contactFormInterest.options[i].value === interest) {
+                        contactFormInterest.options[i].selected = true;
+                        break;
+                    }
+                }
+            });
+        });
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Sticky header logic (optional, CSS sticky is usually enough)
+        // window.addEventListener('scroll', function() {
+        //     const header = document.querySelector('.header');
+        //     if (window.scrollY > 0) {
+        //         header.classList.add('scrolled');
+        //     } else {
+        //         header.classList.remove('scrolled');
+        //     }
+        // });
+    </script>
+</body>
+</html>
