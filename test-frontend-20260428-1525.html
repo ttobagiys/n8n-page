@@ -1,0 +1,2153 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WebAI Partner - 데이터 기반 웹 성과 개선</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --color-primary: #FF7043; /* Warm Orange for primary CTA */
+            --color-secondary: #0A2342; /* Deep Blue for secondary CTA outline, footer */
+            --color-accent-light: #4CAF50; /* A subtle green for success/highlight */
+            --color-text-dark: #2C3E50;
+            --color-text-medium: #555;
+            --color-text-light: #777;
+            --color-background-light: #F8F9FA;
+            --color-background-gray: #F5F7FA;
+            --color-border: #E0E0E0;
+            --spacing-unit: 1rem; /* 16px */
+            --max-width: 1180px;
+            --header-height: 80px;
+        }
+
+        /* Base Styles */
+        body {
+            font-family: 'Noto Sans KR', sans-serif;
+            margin: 0;
+            padding: 0;
+            color: var(--color-text-medium);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+            background-color: #fff;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            color: var(--color-text-dark);
+            line-height: 1.2;
+            margin-top: 0;
+            font-weight: 700;
+        }
+
+        h1 { font-size: 2.5rem; }
+        h2 { font-size: 2rem; }
+        h3 { font-size: 1.75rem; }
+        h4 { font-size: 1.5rem; }
+
+        p {
+            margin-bottom: var(--spacing-unit);
+            font-size: 1rem;
+        }
+
+        a {
+            color: var(--color-primary);
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        .container {
+            max-width: var(--max-width);
+            margin: 0 auto;
+            padding: 0 var(--spacing-unit);
+        }
+
+        section {
+            padding: calc(4 * var(--spacing-unit)) 0; /* 64px vertical padding */
+        }
+
+        .section-heading {
+            text-align: center;
+            margin-bottom: calc(3 * var(--spacing-unit));
+        }
+
+        .section-heading h2 {
+            font-size: 2.25rem;
+            margin-bottom: var(--spacing-unit);
+        }
+
+        .section-heading p {
+            font-size: 1.125rem;
+            color: var(--color-text-light);
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        /* Buttons */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 1rem 2rem;
+            border-radius: 8px;
+            font-weight: 700;
+            font-size: 1.125rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-align: center;
+            white-space: nowrap;
+            border: 2px solid transparent;
+        }
+
+        .btn-primary {
+            background-color: var(--color-primary);
+            color: #fff;
+            border-color: var(--color-primary);
+        }
+
+        .btn-primary:hover {
+            background-color: #FF8F6B; /* Lighter shade of primary */
+            border-color: #FF8F6B;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 10px rgba(255, 112, 67, 0.3);
+        }
+
+        .btn-secondary {
+            background-color: transparent;
+            color: var(--color-secondary);
+            border-color: var(--color-secondary);
+        }
+
+        .btn-secondary:hover {
+            background-color: var(--color-secondary);
+            color: #fff;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 10px rgba(10, 35, 66, 0.2);
+        }
+
+        /* Badges */
+        .badge {
+            display: inline-block;
+            padding: 0.4rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.875rem;
+            font-weight: 500;
+            margin-bottom: var(--spacing-unit);
+            background-color: rgba(255, 112, 67, 0.1); /* Light primary */
+            color: var(--color-primary);
+        }
+
+        /* Header */
+        .header {
+            background-color: #fff;
+            padding: 1.5rem var(--spacing-unit);
+            border-bottom: 1px solid var(--color-border);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+
+        .header .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .header .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--color-secondary);
+        }
+
+        .header .nav-links a {
+            margin-left: 2rem;
+            color: var(--color-text-dark);
+            font-weight: 500;
+        }
+        .header .nav-links a:hover {
+            color: var(--color-primary);
+            text-decoration: none;
+        }
+        /* Hide nav links on mobile */
+        .header .nav-links {
+            display: none;
+        }
+        @media (min-width: 768px) {
+            .header .nav-links {
+                display: block;
+            }
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #fdfdfd 0%, #f0f4f8 100%);
+            padding: calc(6 * var(--spacing-unit)) 0; /* 96px vertical padding */
+            text-align: center;
+        }
+
+        .hero .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: calc(4 * var(--spacing-unit));
+        }
+
+        .hero-content {
+            max-width: 700px;
+            text-align: center;
+        }
+
+        .hero-content .badge {
+            margin-bottom: 1.5rem;
+            font-size: 0.95rem;
+            padding: 0.5rem 1.2rem;
+        }
+
+        .hero-content h1 {
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+            color: var(--color-text-dark);
+            font-weight: 700;
+        }
+
+        .hero-content p {
+            font-size: 1.25rem;
+            color: var(--color-text-light);
+            margin-bottom: 2.5rem;
+            line-height: 1.8;
+        }
+
+        .hero-actions {
+            display: flex;
+            gap: var(--spacing-unit);
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .hero-visual {
+            width: 100%;
+            max-width: 600px;
+            height: 350px; /* Fixed aspect ratio placeholder */
+            background-color: #E0E7EB;
+            border-radius: 12px;
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+            box-sizing: border-box;
+            background-image: linear-gradient(45deg, #f0f8ff 25%, transparent 25%, transparent 75%, #f0f8ff 75%, #f0f8ff),
+                              linear-gradient(45deg, #f0f8ff 25%, transparent 25%, transparent 75%, #f0f8ff 75%, #f0f8ff);
+            background-size: 20px 20px;
+            background-position: 0 0, 10px 10px;
+        }
+
+        .hero-visual::before {
+            content: '데이터 대시보드 모형';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: rgba(0,0,0,0.3);
+            font-size: 1.5rem;
+            font-weight: 500;
+        }
+
+        .hero-visual .dashboard-mockup {
+            width: 90%;
+            height: 90%;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+        }
+
+        .dashboard-mockup .header-bar {
+            height: 40px;
+            background-color: var(--color-secondary);
+            display: flex;
+            align-items: center;
+            padding: 0 1rem;
+            color: #fff;
+            font-size: 0.9rem;
+            justify-content: space-between;
+        }
+
+        .dashboard-mockup .header-bar::before {
+            content: 'WebAI Partner Dashboard';
+        }
+        .dashboard-mockup .header-bar::after {
+            content: '•••';
+            font-size: 1.2rem;
+            opacity: 0.7;
+        }
+
+        .dashboard-mockup .content-area {
+            flex-grow: 1;
+            padding: 1rem;
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            grid-template-rows: repeat(2, 1fr);
+            gap: 0.75rem;
+        }
+
+        .dashboard-mockup .chart-card {
+            background-color: #f9f9f9;
+            border-radius: 6px;
+            border: 1px solid #eee;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.8rem;
+            color: var(--color-text-light);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .dashboard-mockup .chart-card::before {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 10px;
+            background: linear-gradient(to right, #FF7043, #4CAF50, #2196F3);
+            top: 0;
+            left: -100%;
+            animation: dataFlow 3s infinite linear;
+        }
+
+        @keyframes dataFlow {
+            0% { left: -100%; }
+            50% { left: 0%; }
+            100% { left: 100%; }
+        }
+
+
+        @media (min-width: 768px) {
+            .hero .container {
+                flex-direction: row;
+                text-align: left;
+            }
+            .hero-content {
+                text-align: left;
+                flex: 1;
+                max-width: none;
+            }
+            .hero-content h1 {
+                font-size: 3.5rem;
+            }
+            .hero-actions {
+                justify-content: flex-start;
+            }
+            .hero-visual {
+                flex: 1;
+                height: 450px;
+                max-width: 600px; /* Ensure it doesn't get too wide */
+            }
+        }
+        @media (min-width: 1024px) {
+            .hero-content h1 {
+                font-size: 4rem;
+            }
+        }
+
+
+        /* Problem Section */
+        .problem-section {
+            background-color: var(--color-background-gray);
+        }
+
+        .problem-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: calc(2 * var(--spacing-unit));
+            margin-top: calc(3 * var(--spacing-unit));
+        }
+
+        .problem-card {
+            background-color: #fff;
+            padding: calc(2 * var(--spacing-unit));
+            border-radius: 12px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .problem-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 25px rgba(0, 0, 0, 0.12);
+        }
+
+        .problem-card .icon-placeholder {
+            width: 60px;
+            height: 60px;
+            background-color: var(--color-primary);
+            border-radius: 50%;
+            margin-bottom: var(--spacing-unit);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            font-size: 1.5rem;
+            font-weight: 700;
+        }
+        .problem-card p {
+            font-size: 1.125rem;
+            font-weight: 500;
+            color: var(--color-text-dark);
+            margin: 0;
+        }
+
+        /* Solution Section */
+        .solution-section .container {
+            display: flex;
+            flex-direction: column;
+            gap: calc(4 * var(--spacing-unit));
+            align-items: center;
+        }
+
+        .solution-content {
+            flex: 1;
+        }
+
+        .solution-content h2 {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: calc(2 * var(--spacing-unit));
+        }
+
+        .solution-content p {
+            font-size: 1.125rem;
+            line-height: 1.8;
+            max-width: 700px;
+            margin: 0 auto 2rem auto;
+            text-align: center;
+        }
+
+        .solution-grid {
+            flex: 1;
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: calc(1.5 * var(--spacing-unit));
+            max-width: 500px;
+        }
+
+        .solution-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            background-color: var(--color-background-light);
+            padding: calc(1.5 * var(--spacing-unit));
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            transition: transform 0.3s ease;
+        }
+        .solution-item:hover {
+            transform: translateY(-3px);
+        }
+
+        .solution-item .icon-placeholder {
+            width: 70px;
+            height: 70px;
+            background-color: var(--color-secondary);
+            border-radius: 50%;
+            margin-bottom: var(--spacing-unit);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            font-size: 1.8rem;
+            font-weight: 600;
+        }
+        .solution-item h4 {
+            margin: 0;
+            font-size: 1.15rem;
+            color: var(--color-text-dark);
+        }
+
+        @media (min-width: 768px) {
+            .solution-section .container {
+                flex-direction: row;
+                text-align: left;
+            }
+            .solution-content {
+                text-align: left;
+            }
+            .solution-content h2, .solution-content p {
+                text-align: left;
+                margin-left: 0;
+                margin-right: 0;
+            }
+            .solution-grid {
+                max-width: none;
+            }
+        }
+
+
+        /* Process Section */
+        .process-section {
+            background-color: var(--color-background-gray);
+        }
+
+        .process-steps {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: calc(3 * var(--spacing-unit));
+            position: relative;
+            padding-top: var(--spacing-unit);
+            padding-bottom: var(--spacing-unit);
+        }
+
+        .process-step {
+            display: flex;
+            align-items: flex-start;
+            gap: calc(1.5 * var(--spacing-unit));
+            position: relative;
+        }
+
+        .process-step .step-number {
+            flex-shrink: 0;
+            width: 50px;
+            height: 50px;
+            background-color: var(--color-primary);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            font-weight: 700;
+            font-size: 1.25rem;
+            box-shadow: 0 4px 10px rgba(255, 112, 67, 0.2);
+            z-index: 1;
+        }
+
+        .process-step-content {
+            flex-grow: 1;
+            padding-top: 0.5rem;
+        }
+
+        .process-step-content h3 {
+            font-size: 1.35rem;
+            margin-bottom: 0.5rem;
+            color: var(--color-text-dark);
+        }
+
+        .process-step-content p {
+            margin-bottom: var(--spacing-unit);
+            color: var(--color-text-medium);
+        }
+
+        .process-cta {
+            text-align: center;
+            margin-top: calc(4 * var(--spacing-unit));
+        }
+
+        @media (min-width: 768px) {
+            .process-steps {
+                grid-template-columns: repeat(4, 1fr);
+                gap: calc(2 * var(--spacing-unit));
+            }
+            .process-step {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+            }
+            .process-step-content {
+                padding-top: 0;
+            }
+            /* Timeline line for desktop */
+            .process-steps::before {
+                content: '';
+                position: absolute;
+                top: calc(50px / 2 + var(--spacing-unit) / 2); /* Half of step-number height + some offset */
+                left: 0;
+                right: 0;
+                height: 2px;
+                background-color: var(--color-border);
+                z-index: 0;
+                transform: translateY(-50%);
+                width: calc(100% - 100px); /* Adjust width to not cover first/last step numbers */
+                margin: 0 50px; /* Center the line */
+            }
+        }
+        @media (max-width: 767px) {
+            /* Vertical line for mobile */
+            .process-steps::before {
+                content: '';
+                position: absolute;
+                top: 0;
+                bottom: 0;
+                left: calc(50px / 2 + var(--spacing-unit) - 1px); /* Center relative to step number */
+                width: 2px;
+                background-color: var(--color-border);
+                z-index: 0;
+            }
+        }
+
+        /* Services Section */
+        .services-section {
+            background-color: #fff;
+        }
+
+        .service-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: calc(2 * var(--spacing-unit));
+        }
+
+        .service-card {
+            background-color: var(--color-background-light);
+            padding: calc(2 * var(--spacing-unit));
+            border-radius: 12px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .service-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 25px rgba(0, 0, 0, 0.1);
+        }
+
+        .service-card .icon-placeholder {
+            width: 60px;
+            height: 60px;
+            background-color: var(--color-accent-light);
+            border-radius: 50%;
+            margin-bottom: var(--spacing-unit);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            font-size: 1.5rem;
+            font-weight: 700;
+        }
+
+        .service-card h3 {
+            font-size: 1.35rem;
+            margin-bottom: 0.75rem;
+            color: var(--color-text-dark);
+        }
+
+        .service-card p {
+            font-size: 1rem;
+            color: var(--color-text-medium);
+            flex-grow: 1;
+            margin-bottom: calc(1.5 * var(--spacing-unit));
+        }
+
+        .service-card .view-snapshot {
+            display: inline-block;
+            color: var(--color-primary);
+            font-weight: 600;
+            font-size: 0.95rem;
+            cursor: pointer;
+            border-bottom: 2px solid var(--color-primary);
+            padding-bottom: 2px;
+            transition: all 0.2s ease;
+        }
+        .service-card .view-snapshot:hover {
+            color: #FF8F6B;
+            border-color: #FF8F6B;
+        }
+
+        /* Case Study Section */
+        .case-study-section {
+            background-color: var(--color-background-gray);
+        }
+
+        .case-studies-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: calc(2 * var(--spacing-unit));
+        }
+
+        .case-card {
+            background-color: #fff;
+            border-radius: 12px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+            overflow: hidden;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .case-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 25px rgba(0, 0, 0, 0.12);
+        }
+
+        .case-image-placeholder {
+            width: 100%;
+            height: 220px; /* Fixed aspect ratio */
+            background-color: #E0E7EB;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.1rem;
+            color: rgba(0,0,0,0.3);
+            font-weight: 500;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .case-image-placeholder::before {
+            content: 'Before/After 리포트';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 1;
+        }
+
+        .case-content {
+            padding: calc(1.5 * var(--spacing-unit));
+        }
+
+        .case-content h3 {
+            font-size: 1.35rem;
+            margin-bottom: 0.75rem;
+            color: var(--color-text-dark);
+        }
+
+        .case-content p {
+            font-size: 0.95rem;
+            color: var(--color-text-medium);
+            margin-bottom: calc(1.5 * var(--spacing-unit));
+            min-height: 3em; /* Ensure consistent card height */
+        }
+
+        .case-content .btn-case {
+            display: inline-block;
+            padding: 0.7rem 1.5rem;
+            background-color: var(--color-primary);
+            color: #fff;
+            border-radius: 6px;
+            font-size: 0.95rem;
+            font-weight: 600;
+            transition: background-color 0.3s ease;
+            border: none;
+            cursor: pointer;
+        }
+        .case-content .btn-case:hover {
+            background-color: #FF8F6B;
+        }
+
+
+        /* Quotation Flow Section */
+        .quote-flow-section {
+            background-color: #fff;
+            text-align: center;
+        }
+
+        .quote-flow-section h2 {
+            font-size: 2.5rem;
+            margin-bottom: calc(3 * var(--spacing-unit));
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .flow-steps {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: calc(2 * var(--spacing-unit));
+            margin-bottom: calc(3 * var(--spacing-unit));
+            position: relative;
+        }
+
+        .flow-steps::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 5%;
+            right: 5%;
+            height: 2px;
+            background-color: var(--color-border);
+            z-index: 0;
+            transform: translateY(-50%);
+            display: none; /* Hidden on mobile by default */
+        }
+
+        @media (min-width: 768px) {
+            .flow-steps::before {
+                display: block;
+            }
+        }
+
+        .flow-step {
+            background-color: var(--color-background-light);
+            padding: calc(1.5 * var(--spacing-unit));
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            position: relative;
+            z-index: 1; /* Above the line */
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 150px;
+        }
+
+        .flow-step .step-number {
+            width: 40px;
+            height: 40px;
+            background-color: var(--color-secondary);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            font-weight: 600;
+            margin-bottom: var(--spacing-unit);
+            font-size: 1.1rem;
+        }
+
+        .flow-step h4 {
+            margin: 0;
+            font-size: 1.2rem;
+            color: var(--color-text-dark);
+        }
+
+        /* Testimonials Section */
+        .testimonials-section {
+            background-color: var(--color-background-gray);
+        }
+
+        .testimonial-carousel {
+            display: flex;
+            overflow-x: auto; /* Enable horizontal scrolling */
+            scroll-snap-type: x mandatory;
+            -webkit-overflow-scrolling: touch;
+            gap: calc(2 * var(--spacing-unit));
+            padding-bottom: var(--spacing-unit); /* Space for scrollbar */
+            margin: 0 auto;
+        }
+        .testimonial-carousel::-webkit-scrollbar {
+            height: 8px;
+        }
+        .testimonial-carousel::-webkit-scrollbar-thumb {
+            background-color: rgba(0,0,0,0.2);
+            border-radius: 10px;
+        }
+        .testimonial-carousel::-webkit-scrollbar-track {
+            background-color: rgba(0,0,0,0.1);
+        }
+
+        .testimonial-card {
+            flex: 0 0 calc(100% - 2 * var(--spacing-unit)); /* Full width minus gap on mobile */
+            scroll-snap-align: start;
+            background-color: #fff;
+            padding: calc(2 * var(--spacing-unit));
+            border-radius: 12px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            min-height: 200px;
+        }
+
+        .testimonial-card p {
+            font-size: 1.125rem;
+            font-style: italic;
+            color: var(--color-text-dark);
+            margin-bottom: calc(1.5 * var(--spacing-unit));
+        }
+
+        .testimonial-author {
+            font-weight: 600;
+            color: var(--color-text-dark);
+            font-size: 1rem;
+        }
+
+        .testimonial-author span {
+            display: block;
+            font-weight: 400;
+            font-size: 0.9rem;
+            color: var(--color-text-light);
+        }
+
+        .partner-logos {
+            margin-top: calc(4 * var(--spacing-unit));
+            text-align: center;
+        }
+
+        .partner-logos h3 {
+            margin-bottom: calc(2 * var(--spacing-unit));
+            color: var(--color-text-dark);
+        }
+
+        .logo-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+            gap: calc(1.5 * var(--spacing-unit));
+            align-items: center;
+            justify-items: center;
+        }
+
+        .logo-placeholder {
+            width: 120px;
+            height: 60px;
+            background-color: #E0E7EB;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: rgba(0,0,0,0.3);
+            font-size: 0.9rem;
+            font-weight: 500;
+            border: 1px solid var(--color-border);
+        }
+
+        @media (min-width: 768px) {
+            .testimonial-carousel {
+                overflow-x: hidden; /* Disable carousel scroll on desktop if enough space */
+                display: grid;
+                grid-template-columns: repeat(3, 1fr);
+            }
+            .testimonial-card {
+                flex: 0 0 auto;
+            }
+        }
+
+
+        /* Team Section */
+        .team-section {
+            background-color: #fff;
+        }
+
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: calc(2 * var(--spacing-unit));
+        }
+
+        .team-member-card {
+            background-color: var(--color-background-light);
+            padding: calc(2 * var(--spacing-unit));
+            border-radius: 12px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);
+            text-align: center;
+        }
+
+        .team-member-card .photo-placeholder {
+            width: 120px;
+            height: 120px;
+            background-color: #E0E7EB;
+            border-radius: 50%;
+            margin: 0 auto 1.5rem auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: rgba(0,0,0,0.3);
+            font-size: 0.9rem;
+            font-weight: 500;
+            overflow: hidden;
+            border: 3px solid var(--color-primary);
+        }
+
+        .team-member-card h3 {
+            font-size: 1.35rem;
+            margin-bottom: 0.5rem;
+            color: var(--color-text-dark);
+        }
+
+        .team-member-card .role {
+            font-size: 1rem;
+            color: var(--color-primary);
+            font-weight: 600;
+            margin-bottom: 0.75rem;
+        }
+
+        .team-member-card .expertise {
+            font-size: 0.95rem;
+            color: var(--color-text-medium);
+        }
+
+
+        /* FAQ Section */
+        .faq-section {
+            background-color: var(--color-background-gray);
+        }
+
+        .faq-accordion {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .accordion-item {
+            background-color: #fff;
+            border-radius: 8px;
+            margin-bottom: var(--spacing-unit);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+            overflow: hidden;
+        }
+
+        .accordion-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.25rem 1.5rem;
+            cursor: pointer;
+            font-size: 1.15rem;
+            font-weight: 600;
+            color: var(--color-text-dark);
+            border: none;
+            background: none;
+            width: 100%;
+            text-align: left;
+        }
+
+        .accordion-header:focus {
+            outline: 2px solid var(--color-primary);
+            outline-offset: 2px;
+        }
+
+        .accordion-header .icon {
+            font-size: 1.5rem;
+            transition: transform 0.3s ease;
+        }
+
+        .accordion-header[aria-expanded="true"] .icon {
+            transform: rotate(180deg);
+        }
+
+        .accordion-content {
+            padding: 0 1.5rem 1.25rem 1.5rem;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease-out, padding 0.4s ease-out;
+            color: var(--color-text-medium);
+            font-size: 1rem;
+            line-height: 1.7;
+        }
+
+        .accordion-item.active .accordion-content {
+            max-height: 200px; /* Adjust as needed for content height */
+            padding-top: 0.5rem;
+            padding-bottom: 1.25rem;
+        }
+
+        /* Form Section */
+        .form-section {
+            background-color: #fff;
+        }
+
+        .form-container {
+            max-width: 800px;
+            margin: 0 auto;
+            background-color: var(--color-background-light);
+            padding: calc(3 * var(--spacing-unit));
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+        }
+
+        .form-container h2 {
+            font-size: 2rem;
+            margin-bottom: var(--spacing-unit);
+            text-align: center;
+        }
+
+        .form-container p.help-text {
+            text-align: center;
+            margin-bottom: calc(2.5 * var(--spacing-unit));
+            color: var(--color-text-light);
+        }
+
+        .form-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: calc(1.5 * var(--spacing-unit));
+        }
+
+        .form-group {
+            margin-bottom: 0.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+            color: var(--color-text-dark);
+            font-size: 0.95rem;
+        }
+
+        .form-group input[type="text"],
+        .form-group input[type="email"],
+        .form-group input[type="tel"],
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 0.8rem 1rem;
+            border: 1px solid var(--color-border);
+            border-radius: 6px;
+            font-size: 1rem;
+            color: var(--color-text-dark);
+            background-color: #fff;
+            transition: border-color 0.3s ease, box-shadow 0.3s ease;
+            box-sizing: border-box; /* Include padding in width */
+        }
+
+        .form-group input[type="text"]:focus,
+        .form-group input[type="email"]:focus,
+        .form-group input[type="tel"]:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            border-color: var(--color-primary);
+            box-shadow: 0 0 0 3px rgba(255, 112, 67, 0.2);
+            outline: none;
+        }
+
+        .form-group textarea {
+            min-height: 100px;
+            resize: vertical;
+        }
+
+        .file-upload-wrapper {
+            border: 1px dashed var(--color-border);
+            border-radius: 6px;
+            padding: 1.5rem;
+            text-align: center;
+            cursor: pointer;
+            transition: border-color 0.3s ease;
+            background-color: #fff;
+        }
+
+        .file-upload-wrapper:hover {
+            border-color: var(--color-primary);
+        }
+
+        .file-upload-wrapper input[type="file"] {
+            display: none;
+        }
+
+        .file-upload-wrapper .upload-icon {
+            font-size: 2rem;
+            color: var(--color-text-light);
+            margin-bottom: 0.5rem;
+        }
+
+        .file-upload-wrapper .upload-text {
+            font-size: 0.95rem;
+            color: var(--color-text-medium);
+            margin-bottom: 0.25rem;
+        }
+        .file-upload-wrapper .upload-help {
+            font-size: 0.85rem;
+            color: var(--color-text-light);
+        }
+
+        .calendar-widget-placeholder {
+            width: 100%;
+            height: 200px;
+            background-color: #f0f4f8;
+            border: 1px solid var(--color-border);
+            border-radius: 6px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.95rem;
+            color: var(--color-text-light);
+            margin-top: 0.5rem;
+        }
+
+        .checkbox-group {
+            display: flex;
+            align-items: flex-start;
+            margin-top: calc(1.5 * var(--spacing-unit));
+            margin-bottom: calc(2 * var(--spacing-unit));
+        }
+
+        .checkbox-group input[type="checkbox"] {
+            margin-top: 4px;
+            margin-right: 0.75rem;
+            accent-color: var(--color-primary);
+        }
+
+        .checkbox-group label {
+            font-size: 0.9rem;
+            color: var(--color-text-medium);
+            line-height: 1.4;
+        }
+
+        .form-security-note {
+            font-size: 0.85rem;
+            color: var(--color-text-light);
+            text-align: center;
+            margin-top: var(--spacing-unit);
+        }
+
+        .form-submit-btn {
+            width: 100%;
+            padding: 1rem 2rem;
+            font-size: 1.125rem;
+            font-weight: 700;
+            border-radius: 8px;
+            background-color: var(--color-primary);
+            color: #fff;
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+        }
+
+        .form-submit-btn:hover {
+            background-color: #FF8F6B;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 10px rgba(255, 112, 67, 0.3);
+        }
+
+        @media (min-width: 768px) {
+            .form-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .form-group.full-width {
+                grid-column: span 2;
+            }
+            .form-group.calendar-upload {
+                grid-column: span 1;
+            }
+        }
+
+        /* Call to Action Sticky */
+        .sticky-cta {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background-color: #fff;
+            padding: 1rem var(--spacing-unit);
+            box-shadow: 0 -2px 10px rgba(0,0,0,0.1);
+            z-index: 999;
+            text-align: center;
+            display: block; /* Show on mobile by default */
+        }
+
+        .sticky-cta .btn-primary {
+            width: 100%;
+            max-width: 400px;
+            margin: 0 auto;
+        }
+        @media (min-width: 768px) {
+            .sticky-cta {
+                width: auto;
+                left: auto;
+                right: 2rem;
+                bottom: 2rem;
+                border-radius: 8px;
+                padding: 1rem;
+                max-width: 250px;
+                box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+            }
+            .sticky-cta .btn-primary {
+                width: auto;
+            }
+        }
+
+
+        /* Footer */
+        .footer {
+            background-color: var(--color-secondary);
+            color: #E0E7EB;
+            padding: calc(4 * var(--spacing-unit)) 0;
+            font-size: 0.95rem;
+            line-height: 1.8;
+        }
+
+        .footer .container {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: calc(2 * var(--spacing-unit));
+        }
+
+        .footer-logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #fff;
+            margin-bottom: var(--spacing-unit);
+        }
+
+        .footer-section h4 {
+            color: #fff;
+            font-size: 1.1rem;
+            margin-bottom: calc(1.5 * var(--spacing-unit));
+        }
+
+        .footer-section ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .footer-section ul li {
+            margin-bottom: 0.75rem;
+        }
+
+        .footer-section ul li a {
+            color: #E0E7EB;
+            transition: color 0.2s ease;
+        }
+
+        .footer-section ul li a:hover {
+            color: var(--color-primary);
+            text-decoration: none;
+        }
+
+        .social-links {
+            display: flex;
+            gap: var(--spacing-unit);
+            margin-top: var(--spacing-unit);
+        }
+
+        .social-link {
+            display: inline-flex;
+            width: 36px;
+            height: 36px;
+            background-color: rgba(255,255,255,0.1);
+            border-radius: 50%;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            font-size: 1.1rem;
+            transition: background-color 0.2s ease;
+        }
+
+        .social-link:hover {
+            background-color: var(--color-primary);
+        }
+
+        .footer-bottom {
+            margin-top: calc(3 * var(--spacing-unit));
+            padding-top: calc(2 * var(--spacing-unit));
+            border-top: 1px solid rgba(255,255,255,0.1);
+            text-align: center;
+            color: rgba(255,255,255,0.7);
+            font-size: 0.85rem;
+        }
+
+        @media (min-width: 768px) {
+            .footer .container {
+                grid-template-columns: 2fr 1fr 1fr 1fr;
+            }
+            .footer-section.about {
+                grid-column: span 1;
+            }
+            .footer-bottom {
+                text-align: left;
+            }
+        }
+
+        /* Modal Styles */
+        .modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.6);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 2000;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s ease, visibility 0.3s ease;
+        }
+
+        .modal.open {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .modal-content {
+            background-color: #fff;
+            padding: calc(2 * var(--spacing-unit));
+            border-radius: 12px;
+            max-width: 90%;
+            max-height: 90%;
+            overflow-y: auto;
+            position: relative;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            transform: translateY(20px);
+            transition: transform 0.3s ease;
+        }
+        .modal.open .modal-content {
+            transform: translateY(0);
+        }
+
+        .modal-close-btn {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: none;
+            border: none;
+            font-size: 2rem;
+            color: var(--color-text-light);
+            cursor: pointer;
+            line-height: 1;
+            padding: 0;
+        }
+        .modal-close-btn:hover {
+            color: var(--color-primary);
+        }
+
+        .modal-image-placeholder {
+            width: 100%;
+            height: 300px; /* Adjust as needed */
+            background-color: #E0E7EB;
+            border-radius: 8px;
+            margin-bottom: var(--spacing-unit);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: rgba(0,0,0,0.4);
+            font-size: 1.2rem;
+            font-weight: 500;
+        }
+        .modal-body h3 {
+            margin-bottom: 1rem;
+            color: var(--color-text-dark);
+        }
+        .modal-body p {
+            font-size: 1rem;
+            color: var(--color-text-medium);
+        }
+        @media (min-width: 768px) {
+            .modal-content {
+                max-width: 700px;
+            }
+            .modal-image-placeholder {
+                height: 400px;
+            }
+        }
+
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <a href="#" class="logo">WebAI Partner</a>
+            <nav class="nav-links">
+                <a href="#problems">문제점</a>
+                <a href="#solution">솔루션</a>
+                <a href="#process">프로세스</a>
+                <a href="#services">서비스</a>
+                <a href="#cases">사례</a>
+                <a href="#team">팀</a>
+                <a href="#faq">FAQ</a>
+                <a href="#contact">문의</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <span class="badge">데이터 기반 · 맞춤 실행</span>
+                <h1>웹사이트로 더 많은 문의와 매출을 만들고 싶으신가요?</h1>
+                <p>WebAI Partner가 기존 데이터와 시스템을 연결해, 실무에서 바로 쓰는 대시보드와 자동화로 성과 흐름을 만듭니다.</p>
+                <div class="hero-actions">
+                    <button class="btn btn-primary" onclick="location.href='#contact'">맞춤 견적 요청</button>
+                    <button class="btn btn-secondary" onclick="location.href='#process'">1분 진단 받기</button>
+                </div>
+            </div>
+            <div class="hero-visual">
+                <!-- Image placeholder for dashboard with data flow animation -->
+                <div class="dashboard-mockup">
+                    <div class="header-bar"></div>
+                    <div class="content-area">
+                        <div class="chart-card">데이터 흐름 분석</div>
+                        <div class="chart-card">전환율 예측</div>
+                        <div class="chart-card">사용자 행동 패턴</div>
+                        <div class="chart-card">자동화 트리거</div>
+                    </div>
+                </div>
+                <!-- Replace with a real dashboard image or interactive mock if available -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Problem Section -->
+    <section id="problems" class="problem-section">
+        <div class="container">
+            <div class="section-heading">
+                <h2>웹사이트 성과, 혹시 이런 문제에 직면해 계신가요?</h2>
+            </div>
+            <div class="problem-cards">
+                <div class="problem-card">
+                    <div class="icon-placeholder">?</div>
+                    <p>웹 분석은 있는데, 어떤 지표가 실제 매출로 이어지는지 알기 어렵습니다.</p>
+                </div>
+                <div class="problem-card">
+                    <div class="icon-placeholder">⧉</div>
+                    <p>여러 툴과 보고서가 흩어져 있어 인사이트 도출에 너무 많은 시간이 듭니다.</p>
+                </div>
+                <div class="problem-card">
+                    <div class="icon-placeholder">⚙️</div>
+                    <p>내부에 AI·데이터 역량은 부족한데 성과 개선은 시급합니다.</p>
+                </div>
+                <div class="problem-card">
+                    <div class="icon-placeholder">⏳</div>
+                    <p>개발 리소스와 외주 관리를 동시에 하려니 일정과 품질이 불안합니다.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Solution Summary Section -->
+    <section id="solution" class="solution-section">
+        <div class="container">
+            <div class="solution-content">
+                <h2>데이터로 결정을 자동화하고 실행까지 연결합니다</h2>
+                <p>WebAI Partner는 귀사의 기존 데이터와 툴을 연결해 실제로 쓸 수 있는 대시보드와 자동화 흐름을 만듭니다. 진단부터 설계, 구현, 운영 최적화까지 전담팀이 함께하며 ‘결과로 이어지는 실행’에 집중합니다. 통합 리포트와 우선순위화된 액션 플랜을 제시해 의사결정을 빠르고 명확하게 만듭니다.</p>
+            </div>
+            <div class="solution-grid">
+                <div class="solution-item">
+                    <div class="icon-placeholder">📊</div>
+                    <h4>통합 리포트</h4>
+                </div>
+                <div class="solution-item">
+                    <div class="icon-placeholder">🚀</div>
+                    <h4>실행 플랜</h4>
+                </div>
+                <div class="solution-item">
+                    <div class="icon-placeholder">🔗</div>
+                    <h4>데이터 연동</h4>
+                </div>
+                <div class="solution-item">
+                    <div class="icon-placeholder">🤖</div>
+                    <h4>자동화</h4>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Process Section -->
+    <section id="process" class="process-section">
+        <div class="container">
+            <div class="section-heading">
+                <h2>WebAI Partner의 성과 개선 프로세스</h2>
+            </div>
+            <div class="process-steps">
+                <div class="process-step">
+                    <div class="step-number">1</div>
+                    <div class="process-step-content">
+                        <h3>초기 진단</h3>
+                        <p>현재 데이터와 목표를 빠르게 진단해 우선순위를 정합니다.</p>
+                    </div>
+                </div>
+                <div class="process-step">
+                    <div class="step-number">2</div>
+                    <div class="process-step-content">
+                        <h3>설계 제안</h3>
+                        <p>핵심 리포트와 연동 설계를 제시합니다(샘플 스냅샷 포함).</p>
+                    </div>
+                </div>
+                <div class="process-step">
+                    <div class="step-number">3</div>
+                    <div class="process-step-content">
+                        <h3>구현·연동</h3>
+                        <p>API·태그·자동화 규칙을 적용해 실환경에 배포합니다.</p>
+                    </div>
+                </div>
+                <div class="process-step">
+                    <div class="step-number">4</div>
+                    <div class="process-step-content">
+                        <h3>검증·최적화</h3>
+                        <p>성과 지표를 모니터링하며 반복 개선을 진행합니다.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="process-cta">
+                <button class="btn btn-secondary" onclick="location.href='#contact'">1분 진단 받기</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="services-section">
+        <div class="container">
+            <div class="section-heading">
+                <h2>WebAI Partner의 주요 서비스</h2>
+                <p>데이터 기반 성과 개선을 위한 핵심 기능들을 만나보세요.</p>
+            </div>
+            <div class="service-cards">
+                <div class="service-card">
+                    <div class="icon-placeholder">🔗</div>
+                    <h3>데이터 연동 및 통합</h3>
+                    <p>흩어진 웹 분석 툴, CRM, 광고 플랫폼 데이터를 한곳으로 모아 통합적인 시야를 제공합니다.</p>
+                    <span class="view-snapshot" data-modal-target="data-integration-modal">View Snapshot</span>
+                </div>
+                <div class="service-card">
+                    <div class="icon-placeholder">📈</div>
+                    <h3>맞춤형 대시보드 구축</h3>
+                    <p>사업 목표에 맞는 핵심 지표들로 구성된 대시보드를 구축하여 인사이트 도출을 돕습니다.</p>
+                    <span class="view-snapshot" data-modal-target="custom-dashboard-modal">View Snapshot</span>
+                </div>
+                <div class="service-card">
+                    <div class="icon-placeholder">🧠</div>
+                    <h3>AI 기반 인사이트</h3>
+                    <p>AI가 데이터 패턴을 분석하여 숨겨진 기회와 문제점을 발견하고, 최적의 개선 방안을 제안합니다.</p>
+                    <span class="view-snapshot" data-modal-target="ai-insights-modal">View Snapshot</span>
+                </div>
+                <div class="service-card">
+                    <div class="icon-placeholder">⚙️</div>
+                    <h3>성과 자동화 시스템</h3>
+                    <p>데이터 기반의 자동화 규칙을 설정하여 마케팅, 영업 활동의 효율을 극대화하고 반복 업무를 줄입니다.</p>
+                    <span class="view-snapshot" data-modal-target="automation-modal">View Snapshot</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Case Study Section -->
+    <section id="cases" class="case-study-section">
+        <div class="container">
+            <div class="section-heading">
+                <h2>실제 성공 사례: 데이터로 만드는 극적인 변화</h2>
+                <p>WebAI Partner와 함께 웹 성과를 개선한 고객사의 사례를 확인하세요.</p>
+            </div>
+            <div class="case-studies-grid">
+                <div class="case-card">
+                    <div class="case-image-placeholder">
+                        <!-- Replace with Before/After report image for specific case -->
+                    </div>
+                    <div class="case-content">
+                        <h3>이커머스 전환율 2배 개선</h3>
+                        <p>고객 행동 데이터 분석을 통해 구매 퍼널을 최적화하여 전환율을 크게 상승시켰습니다.</p>
+                        <button class="btn-case" data-modal-target="case1-modal">사례 보기</button>
+                    </div>
+                </div>
+                <div class="case-card">
+                    <div class="case-image-placeholder">
+                        <!-- Replace with Before/After report image for specific case -->
+                    </div>
+                    <div class="case-content">
+                        <h3>B2B 리드 획득 비용 30% 절감</h3>
+                        <p>광고 데이터와 CRM 연동으로 효율적인 리드 발굴 전략을 수립하여 비용을 절감했습니다.</p>
+                        <button class="btn-case" data-modal-target="case2-modal">사례 보기</button>
+                    </div>
+                </div>
+                <div class="case-card">
+                    <div class="case-image-placeholder">
+                        <!-- Replace with Before/After report image for specific case -->
+                    </div>
+                    <div class="case-content">
+                        <h3>콘텐츠 구독률 50% 증대</h3>
+                        <p>사용자 관심사 기반 콘텐츠 추천 시스템으로 구독 서비스의 참여율을 혁신적으로 높였습니다.</p>
+                        <button class="btn-case" data-modal-target="case3-modal">사례 보기</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Quotation Flow Section -->
+    <section class="quote-flow-section">
+        <div class="container">
+            <h2>지금 맞춤 견적으로 다음 단계를 시작하세요</h2>
+            <div class="flow-steps">
+                <div class="flow-step">
+                    <div class="step-number">1</div>
+                    <h4>요구사항 파악</h4>
+                </div>
+                <div class="flow-step">
+                    <div class="step-number">2</div>
+                    <h4>맞춤 제안서 전달</h4>
+                </div>
+                <div class="flow-step">
+                    <div class="step-number">3</div>
+                    <h4>일정 및 범위 조율</h4>
+                </div>
+            </div>
+            <p>귀사 상황에 맞춘 구체적 제안서와 일정안을 준비해 드립니다. 캘린더 예약 또는 간단한 1분 진단으로 시작하세요.</p>
+            <button class="btn btn-primary" onclick="location.href='#contact'">맞춤 견적 요청</button>
+        </div>
+    </section>
+
+    <!-- Testimonials & Partners Section -->
+    <section class="testimonials-section">
+        <div class="container">
+            <div class="section-heading">
+                <h2>고객사의 신뢰, WebAI Partner의 가치</h2>
+            </div>
+            <div class="testimonial-carousel">
+                <div class="testimonial-card">
+                    <p>“WebAI Partner 덕분에 데이터 분석 시간이 획기적으로 줄었고, 명확한 액션 플랜으로 실제 매출 증대까지 이어졌습니다. 복잡했던 데이터가 한눈에 들어와 의사결정이 빨라졌어요.”</p>
+                    <div class="testimonial-author">김하나 이사 <span>(IT 스타트업)</span></div>
+                </div>
+                <div class="testimonial-card">
+                    <p>“내부 리소스 부족으로 고민이 많았는데, WebAI Partner가 처음부터 끝까지 전문적으로 이끌어주셔서 큰 도움이 되었습니다. 기대 이상의 성과를 달성했습니다.”</p>
+                    <div class="testimonial-author">박지훈 마케팅 팀장 <span>(이커머스 기업)</span></div>
+                </div>
+                <div class="testimonial-card">
+                    <p>“데이터 보안과 연동에 대한 우려가 있었지만, 투명한 절차와 철저한 관리로 안심하고 프로젝트를 진행할 수 있었습니다. 신뢰할 수 있는 파트너입니다.”</p>
+                    <div class="testimonial-author">이민정 대표 <span>(컨설팅 회사)</span></div>
+                </div>
+            </div>
+
+            <div class="partner-logos">
+                <h3>저희와 함께하는 파트너들</h3>
+                <div class="logo-grid">
+                    <div class="logo-placeholder">Partner A</div>
+                    <div class="logo-placeholder">Partner B</div>
+                    <div class="logo-placeholder">Partner C</div>
+                    <div class="logo-placeholder">Partner D</div>
+                    <div class="logo-placeholder">Partner E</div>
+                    <div class="logo-placeholder">Partner F</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Team Section -->
+    <section id="team" class="team-section">
+        <div class="container">
+            <div class="section-heading">
+                <h2>WebAI Partner를 이끄는 전문가들</h2>
+                <p>데이터와 AI 기술로 귀사의 성장을 돕는 핵심 팀을 소개합니다.</p>
+            </div>
+            <div class="team-grid">
+                <div class="team-member-card">
+                    <div class="photo-placeholder">사진</div>
+                    <h3>최지훈</h3>
+                    <p class="role">프로젝트 리드 / 데이터 전략가</p>
+                    <p class="expertise">고객의 비즈니스 목표에 최적화된 데이터 전략 수립 및 실행을 총괄합니다.</p>
+                </div>
+                <div class="team-member-card">
+                    <div class="photo-placeholder">사진</div>
+                    <h3>김서연</h3>
+                    <p class="role">AI / 데이터 엔지니어</p>
+                    <p class="expertise">최신 AI 및 데이터 기술을 활용하여 분석 시스템을 설계하고 구현합니다.</p>
+                </div>
+                <div class="team-member-card">
+                    <div class="photo-placeholder">사진</div>
+                    <h3>박준형</h3>
+                    <p class="role">웹 분석 전문가</p>
+                    <p class="expertise">웹사이트 데이터 분석을 통해 전환 퍼널 최적화 및 사용자 경험 개선을 담당합니다.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section id="faq" class="faq-section">
+        <div class="container">
+            <div class="section-heading">
+                <h2>자주 묻는 질문</h2>
+            </div>
+            <div class="faq-accordion">
+                <div class="accordion-item">
+                    <button class="accordion-header" aria-expanded="false" aria-controls="faq-content-1">
+                        견적은 어떻게 진행되나요?
+                        <span class="icon">&#9660;</span>
+                    </button>
+                    <div id="faq-content-1" class="accordion-content" aria-hidden="true">
+                        <p>초기 진단 후 범위에 맞춘 맞춤 제안서를 드립니다. 고정 요금이 아닌 프로젝트 범위 기반 견적입니다.</p>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <button class="accordion-header" aria-expanded="false" aria-controls="faq-content-2">
+                        기존 데이터와 연동이 가능한가요?
+                        <span class="icon">&#9660;</span>
+                    </button>
+                    <div id="faq-content-2" class="accordion-content" aria-hidden="true">
+                        <p>대부분의 표준 API와 태그 기반 데이터는 연동 가능합니다. 연동 가능 여부는 초기 진단 시 확인해드립니다.</p>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <button class="accordion-header" aria-expanded="false" aria-controls="faq-content-3">
+                        보안과 개인정보는 어떻게 보호되나요?
+                        <span class="icon">&#9660;</span>
+                    </button>
+                    <div id="faq-content-3" class="accordion-content" aria-hidden="true">
+                        <p>모든 연동 및 자료는 암호화 채널로 처리하며, 외부 공개 자료는 고객 승인 후 진행합니다. 필요 시 NDA 체결이 가능합니다.</p>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <button class="accordion-header" aria-expanded="false" aria-controls="faq-content-4">
+                        소요 시간은 얼마나 걸리나요?
+                        <span class="icon">&#9660;</span>
+                    </button>
+                    <div id="faq-content-4" class="accordion-content" aria-hidden="true">
+                        <p>프로젝트 규모와 범위에 따라 달라집니다. 초기 진단 후 예상 일정표를 함께 제시합니다.</p>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <button class="accordion-header" aria-expanded="false" aria-controls="faq-content-5">
+                        내부 개발자가 없어도 진행할 수 있나요?
+                        <span class="icon">&#9660;</span>
+                    </button>
+                    <div id="faq-content-5" class="accordion-content" aria-hidden="true">
+                        <p>가능합니다. 필요 시 서버·퍼블릭 스크립트·태그 적용까지 전담으로 지원합니다.</p>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <button class="accordion-header" aria-expanded="false" aria-controls="faq-content-6">
+                        기존 리포트 샘플이나 사례를 볼 수 있나요?
+                        <span class="icon">&#9660;</span>
+                    </button>
+                    <div id="faq-content-6" class="accordion-content" aria-hidden="true">
+                        <p>상담 시 관련 Before/After 스냅샷과 유사 업종 사례를 공유드립니다(기밀 유출 방지를 위해 익명 처리 가능).</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Form Section -->
+    <section id="contact" class="form-section">
+        <div class="container">
+            <div class="form-container">
+                <h2>맞춤 견적 요청 및 상담 예약</h2>
+                <p class="help-text">간단한 정보로 맞춤 제안을 준비합니다. 캘린더 위젯으로 가능한 일정도 선택해 주세요.</p>
+                <form id="contactForm">
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label for="companyName">회사명 <span style="color:red;">*</span></label>
+                            <input type="text" id="companyName" name="companyName" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="websiteUrl">웹사이트 또는 프로젝트 URL <span style="color:red;">*</span></label>
+                            <input type="text" id="websiteUrl" name="websiteUrl" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="contactPerson">담당자 이름 <span style="color:red;">*</span></label>
+                            <input type="text" id="contactPerson" name="contactPerson" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="contactInfo">연락처(이메일 또는 전화) <span style="color:red;">*</span></label>
+                            <input type="text" id="contactInfo" name="contactInfo" required>
+                        </div>
+                        <div class="form-group full-width">
+                            <label for="mainGoal">현재 주요 목표 <span style="color:red;">*</span></label>
+                            <select id="mainGoal" name="mainGoal" required>
+                                <option value="">선택해주세요</option>
+                                <option value="lead-increase">리드 증가</option>
+                                <option value="sales-improvement">매출 개선</option>
+                                <option value="conversion-optimization">전환율 최적화</option>
+                                <option value="data-integration">데이터 통합</option>
+                                <option value="automation-build">자동화 구축</option>
+                                <option value="other">기타</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="budget">예산 범위 (선택)</label>
+                            <input type="text" id="budget" name="budget" placeholder="예: 500만원 ~ 1000만원">
+                        </div>
+                        <div class="form-group calendar-upload">
+                            <label for="preferredDate">상담 희망일 (캘린더 위젯)</label>
+                            <div class="calendar-widget-placeholder">
+                                <!-- Calendar widget placeholder -->
+                                <span>🗓️ 상담 날짜를 선택해주세요</span>
+                            </div>
+                            <input type="date" id="preferredDate" name="preferredDate" style="display: none;">
+                        </div>
+                        <div class="form-group full-width">
+                            <label for="projectFiles">관련 파일 업로드 (선택)</label>
+                            <div class="file-upload-wrapper" onclick="document.getElementById('projectFiles').click()">
+                                <span class="upload-icon">⬆️</span>
+                                <span class="upload-text">클릭하여 파일 업로드 또는 드래그 앤 드롭</span>
+                                <span class="upload-help">프로젝트 관련 자료(선택): PDF, 이미지, 스프레드시트 가능</span>
+                                <input type="file" id="projectFiles" name="projectFiles" multiple accept=".pdf,.doc,.docx,.jpg,.jpeg,.png,.gif,.xls,.xlsx">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="checkbox-group">
+                        <input type="checkbox" id="privacyConsent" name="privacyConsent" required>
+                        <label for="privacyConsent">개인정보 수집·이용에 동의합니다. <span style="color:red;">*</span></label>
+                    </div>
+                    <button type="submit" class="form-submit-btn">견적 요청 제출</button>
+                    <p class="form-security-note">제출된 데이터는 암호화되어 안전하게 처리됩니다. 제출하시면 담당자가 확인 후 연락드립니다. 제공하신 자료는 상담 목적에 한해 사용됩니다.</p>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-section about">
+                <div class="footer-logo">WebAI Partner</div>
+                <p>웹사이트와 데이터가 함께 작동하도록 설계된 실용적이고 신뢰 있는 기술 파트너입니다. 데이터 기반의 성과 개선으로 비즈니스 성장을 지원합니다.</p>
+                <div class="social-links">
+                    <a href="#" class="social-link" aria-label="Facebook">F</a>
+                    <a href="#" class="social-link" aria-label="LinkedIn">L</a>
+                    <a href="#" class="social-link" aria-label="Instagram">I</a>
+                </div>
+            </div>
+            <div class="footer-section">
+                <h4>빠른 링크</h4>
+                <ul>
+                    <li><a href="#problems">고객 문제</a></li>
+                    <li><a href="#solution">솔루션</a></li>
+                    <li><a href="#services">주요 서비스</a></li>
+                    <li><a href="#cases">성공 사례</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>지원</h4>
+                <ul>
+                    <li><a href="#faq">자주 묻는 질문</a></li>
+                    <li><a href="#contact">문의하기</a></li>
+                    <li><a href="#">이용약관</a></li>
+                    <li><a href="#">개인정보처리방침</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>연락처</h4>
+                <p>
+                    이메일: contact@webai.partner<br>
+                    전화: 070-1234-5678<br>
+                    주소: 서울특별시 강남구 테헤란로 123
+                </p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <div class="container">
+                &copy; 2023 WebAI Partner. All rights reserved.
+            </div>
+        </div>
+    </footer>
+
+    <!-- Sticky CTA for Mobile -->
+    <div class="sticky-cta">
+        <button class="btn btn-primary" onclick="location.href='#contact'" title="맞춤 견적 요청 — 전담 리드가 응대합니다">맞춤 견적 요청</button>
+    </div>
+
+    <!-- Modals for Snapshots -->
+    <div id="data-integration-modal" class="modal">
+        <div class="modal-content">
+            <button class="modal-close-btn">&times;</button>
+            <div class="modal-body">
+                <h3>데이터 연동 및 통합 스냅샷</h3>
+                <div class="modal-image-placeholder">
+                    <!-- Placeholder for Data Integration Snapshot -->
+                    <span>데이터 통합 대시보드 예시</span>
+                </div>
+                <p>다양한 소스의 데이터를 한 곳으로 모아 시각화한 통합 대시보드 샘플입니다. 파편화된 데이터를 연결하여 비즈니스 전반의 흐름을 한눈에 파악할 수 있도록 돕습니다. (민감 정보는 익명 처리됩니다)</p>
+            </div>
+        </div>
+    </div>
+    <div id="custom-dashboard-modal" class="modal">
+        <div class="modal-content">
+            <button class="modal-close-btn">&times;</button>
+            <div class="modal-body">
+                <h3>맞춤형 대시보드 구축 스냅샷</h3>
+                <div class="modal-image-placeholder">
+                    <!-- Placeholder for Custom Dashboard Snapshot -->
+                    <span>맞춤형 전환율 대시보드 예시</span>
+                </div>
+                <p>고객사의 특정 목표(예: 전환율 개선)에 맞춰 설계된 맞춤 대시보드 샘플입니다. 필요한 지표만 집중적으로 보여주어 빠르고 정확한 의사결정을 지원합니다. (민감 정보는 익명 처리됩니다)</p>
+            </div>
+        </div>
+    </div>
+    <div id="ai-insights-modal" class="modal">
+        <div class="modal-content">
+            <button class="modal-close-btn">&times;</button>
+            <div class="modal-body">
+                <h3>AI 기반 인사이트 스냅샷</h3>
+                <div class="modal-image-placeholder">
+                    <!-- Placeholder for AI Insights Snapshot -->
+                    <span>AI 기반 이상 감지 및 예측 리포트 예시</span>
+                </div>
+                <p>AI가 분석한 데이터 기반의 인사이트 리포트 샘플입니다. 이상 감지, 미래 예측, 최적화 제안 등 AI가 발견한 핵심 정보를 시각적으로 제공합니다. (민감 정보는 익명 처리됩니다)</p>
+            </div>
+        </div>
+    </div>
+    <div id="automation-modal" class="modal">
+        <div class="modal-content">
+            <button class="modal-close-btn">&times;</button>
+            <div class="modal-body">
+                <h3>성과 자동화 시스템 스냅샷</h3>
+                <div class="modal-image-placeholder">
+                    <!-- Placeholder for Automation Snapshot -->
+                    <span>자동화 워크플로우 설계 예시</span>
+                </div>
+                <p>데이터 조건에 따라 자동으로 실행되는 마케팅 및 운영 자동화 워크플로우 설계 샘플입니다. 효율적인 업무 환경 구축을 위한 자동화 로직을 보여줍니다. (민감 정보는 익명 처리됩니다)</p>
+            </div>
+        </div>
+    </div>
+    <div id="case1-modal" class="modal">
+        <div class="modal-content">
+            <button class="modal-close-btn">&times;</button>
+            <div class="modal-body">
+                <h3>이커머스 전환율 2배 개선 사례</h3>
+                <div class="modal-image-placeholder">
+                    <!-- Placeholder for Case Study 1 Before/After -->
+                    <span>Before/After 전환율 리포트 (익명 처리)</span>
+                </div>
+                <p><strong>배경:</strong> 고객사 A는 높은 유입량에도 불구하고 낮은 구매 전환율로 고민하고 있었습니다. 데이터 파편화로 인해 정확한 원인 분석이 어려웠습니다.</p>
+                <p><strong>솔루션:</strong> WebAI Partner는 구글 애널리틱스, CRM, 결제 데이터를 통합하고, AI 기반의 사용자 행동 패턴 분석을 통해 구매 이탈 구간을 정확히 진단했습니다. 이탈 지점별 맞춤형 캠페인 자동화 시스템을 구축하고 A/B 테스트를 통해 최적의 퍼널을 찾아냈습니다.</p>
+                <p><strong>결과:</strong> 프로젝트 3개월 만에 전체 구매 전환율을 기존 대비 2배 향상시켰습니다. 또한, 고객 생애 가치(LTV) 예측 모델을 통해 마케팅 예산 효율을 15% 개선했습니다.</p>
+                <p>자세한 내용은 상담을 통해 확인하실 수 있습니다.</p>
+            </div>
+        </div>
+    </div>
+    <div id="case2-modal" class="modal">
+        <div class="modal-content">
+            <button class="modal-close-btn">&times;</button>
+            <div class="modal-body">
+                <h3>B2B 리드 획득 비용 30% 절감 사례</h3>
+                <div class="modal-image-placeholder">
+                    <!-- Placeholder for Case Study 2 Before/After -->
+                    <span>Before/After 리드 획득 비용 리포트 (익명 처리)</span>
+                </div>
+                <p><strong>배경:</strong> 고객사 B는 B2B SaaS 기업으로, 유료 광고를 통한 리드 획득 비용이 지속적으로 증가하여 수익성 악화에 대한 우려가 있었습니다.</p>
+                <p><strong>솔루션:</strong> 광고 플랫폼 데이터와 내부 CRM 데이터를 연동하여, 어떤 광고 채널과 캠페인이 실제 계약까지 이어지는지 정확하게 추적했습니다. AI 모델을 활용해 고품질 리드를 예측하고, 해당 리드에게만 집중적으로 광고를 노출하는 자동화된 타겟팅 시스템을 구현했습니다.</p>
+                <p><strong>결과:</strong> 리드 획득 비용(CPL)을 기존 대비 30% 절감하고, 계약 전환율은 10% 증가하는 성과를 달성했습니다. 마케팅 ROI가 크게 개선되었습니다.</p>
+                <p>자세한 내용은 상담을 통해 확인하실 수 있습니다.</p>
+            </div>
+        </div>
+    </div>
+    <div id="case3-modal" class="modal">
+        <div class="modal-content">
+            <button class="modal-close-btn">&times;</button>
+            <div class="modal-body">
+                <h3>콘텐츠 구독률 50% 증대 사례</h3>
+                <div class="modal-image-placeholder">
+                    <!-- Placeholder for Case Study 3 Before/After -->
+                    <span>Before/After 구독률 변화 리포트 (익명 처리)</span>
+                </div>
+                <p><strong>배경:</strong> 고객사 C는 온라인 교육 콘텐츠 플랫폼으로, 신규 콘텐츠 발행에도 불구하고 구독자의 이탈률이 높고 재방문율이 정체되어 있었습니다.</p>
+                <p><strong>솔루션:</strong> 사용자별 시청 기록, 관심 카테고리, 검색어 데이터를 분석하여 개인화된 콘텐츠 추천 시스템을 구축했습니다. AI 기반으로 구독자가 이탈할 징후를 미리 감지하고, 맞춤형 알림과 독점 콘텐츠를 제안하는 자동화된 리텐션 전략을 적용했습니다.</p>
+                <p><strong>결과:</strong> 프로젝트 4개월 만에 월간 구독자 이탈률을 20% 감소시키고, 신규 콘텐츠 구독률을 50% 증대시켰습니다. 활성 사용자 수가 꾸준히 증가하는 추세를 보였습니다.</p>
+                <p>자세한 내용은 상담을 통해 확인하실 수 있습니다.</p>
+            </div>
+        </div>
+    </div>
+
+
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // FAQ Accordion
+        document.addEventListener('DOMContentLoaded', () => {
+            const accordionHeaders = document.querySelectorAll('.accordion-header');
+
+            accordionHeaders.forEach(header => {
+                header.addEventListener('click', () => {
+                    const item = header.closest('.accordion-item');
+                    const content = item.querySelector('.accordion-content');
+                    const isExpanded = header.getAttribute('aria-expanded') === 'true';
+
+                    // Close all other open accordions
+                    document.querySelectorAll('.accordion-item.active').forEach(openItem => {
+                        if (openItem !== item) {
+                            openItem.classList.remove('active');
+                            openItem.querySelector('.accordion-header').setAttribute('aria-expanded', 'false');
+                            openItem.querySelector('.accordion-content').style.maxHeight = 0;
+                            openItem.querySelector('.accordion-content').setAttribute('aria-hidden', 'true');
+                        }
+                    });
+
+                    // Toggle current accordion
+                    item.classList.toggle('active');
+                    header.setAttribute('aria-expanded', !isExpanded);
+                    content.setAttribute('aria-hidden', isExpanded);
+
+                    if (item.classList.contains('active')) {
+                        content.style.maxHeight = content.scrollHeight + 'px';
+                    } else {
+                        content.style.maxHeight = 0;
+                    }
+                });
+            });
+        });
+
+        // Form Submission
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            // In a real application, you would send this data to a server.
+            // For this exercise, we just show an alert.
+            alert('견적 요청이 성공적으로 제출되었습니다. 담당자가 곧 연락드리겠습니다!');
+            this.reset(); // Clear the form
+        });
+
+        // Modals
+        document.addEventListener('DOMContentLoaded', () => {
+            const openModalButtons = document.querySelectorAll('[data-modal-target]');
+            const closeButtons = document.querySelectorAll('.modal-close-btn');
+            const modals = document.querySelectorAll('.modal');
+
+            openModalButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    const modalId = button.getAttribute('data-modal-target');
+                    const modal = document.getElementById(modalId);
+                    if (modal) {
+                        modal.classList.add('open');
+                        document.body.style.overflow = 'hidden'; // Prevent scrolling background
+                    }
+                });
+            });
+
+            closeButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    const modal = button.closest('.modal');
+                    if (modal) {
+                        modal.classList.remove('open');
+                        document.body.style.overflow = ''; // Restore scrolling
+                    }
+                });
+            });
+
+            modals.forEach(modal => {
+                modal.addEventListener('click', (e) => {
+                    if (e.target === modal) { // Close when clicking outside modal-content
+                        modal.classList.remove('open');
+                        document.body.style.overflow = '';
+                    }
+                });
+            });
+
+            // Handle ESC key to close modals
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape') {
+                    const openModal = document.querySelector('.modal.open');
+                    if (openModal) {
+                        openModal.classList.remove('open');
+                        document.body.style.overflow = '';
+                    }
+                }
+            });
+        });
+
+        // File upload display name
+        document.getElementById('projectFiles').addEventListener('change', function() {
+            const uploadText = this.closest('.file-upload-wrapper').querySelector('.upload-text');
+            if (this.files.length > 0) {
+                if (this.files.length === 1) {
+                    uploadText.textContent = this.files[0].name;
+                } else {
+                    uploadText.textContent = `${this.files.length}개 파일 선택됨`;
+                }
+            } else {
+                uploadText.textContent = '클릭하여 파일 업로드 또는 드래그 앤 드롭';
+            }
+        });
+    </script>
+
+</body>
+</html>
