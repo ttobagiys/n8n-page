@@ -1,0 +1,1347 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI로 매출과 운영 효율을 동시에 개선하고 싶으신가요? - 맞춤형 AI 컨설팅</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <style>
+        /* CSS Reset & Base Styles */
+        :root {
+            --color-primary: #0056b3; /* Deep Blue */
+            --color-secondary: #20c997; /* Mint Green */
+            --color-accent: #f8f9fa; /* Light Gray for sections */
+            --color-text-dark: #212529;
+            --color-text-light: #6c757d;
+            --color-white: #ffffff;
+            --color-gray-100: #f8f9fa;
+            --color-gray-200: #e9ecef;
+            --color-gray-300: #dee2e6;
+            --color-shadow: rgba(0, 0, 0, 0.08);
+            --border-radius-sm: 8px;
+            --border-radius-md: 12px;
+            --border-radius-lg: 16px;
+            --spacing-xs: 8px;
+            --spacing-sm: 16px;
+            --spacing-md: 24px;
+            --spacing-lg: 48px;
+            --spacing-xl: 80px;
+            --max-width-content: 1180px;
+        }
+
+        *, *::before, *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Noto Sans KR', sans-serif;
+            line-height: 1.6;
+            color: var(--color-text-dark);
+            background-color: var(--color-white);
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            font-size: 16px; /* Base font size for rem */
+        }
+
+        /* Typography */
+        h1, h2, h3, h4, h5, h6 {
+            font-weight: 700;
+            line-height: 1.2;
+            margin-bottom: var(--spacing-sm);
+        }
+
+        h1 { font-size: 2.8rem; }
+        h2 { font-size: 2.2rem; }
+        h3 { font-size: 1.8rem; }
+        h4 { font-size: 1.4rem; }
+        p { margin-bottom: var(--spacing-sm); }
+
+        @media (max-width: 768px) {
+            h1 { font-size: 2rem; }
+            h2 { font-size: 1.8rem; }
+            h3 { font-size: 1.5rem; }
+            h4 { font-size: 1.2rem; }
+            body { font-size: 0.95rem; } /* Slightly smaller base on mobile */
+        }
+
+        /* Utility Classes */
+        .container {
+            max-width: var(--max-width-content);
+            margin: 0 auto;
+            padding: 0 var(--spacing-sm);
+        }
+
+        .text-center { text-align: center; }
+        .text-left { text-align: left; }
+        .text-right { text-align: right; }
+
+        .section-padding {
+            padding: var(--spacing-xl) 0;
+        }
+
+        .mb-md { margin-bottom: var(--spacing-md); }
+        .mb-lg { margin-bottom: var(--spacing-lg); }
+
+        /* Buttons */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 14px 28px;
+            border-radius: var(--border-radius-md);
+            font-size: 1.1rem;
+            font-weight: 500;
+            text-decoration: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            min-width: 140px; /* Ensure good tap target */
+            min-height: 48px; /* Ensure good tap target */
+            border: 2px solid transparent;
+        }
+        .btn-sm {
+            padding: 10px 20px;
+            font-size: 0.95rem;
+            min-width: 100px;
+            min-height: 40px;
+        }
+
+        .btn-primary {
+            background-color: var(--color-primary);
+            color: var(--color-white);
+            border-color: var(--color-primary);
+        }
+
+        .btn-primary:hover, .btn-primary:focus {
+            background-color: #004494;
+            border-color: #004494;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px var(--color-shadow);
+            outline: none;
+        }
+
+        .btn-secondary {
+            background-color: var(--color-white);
+            color: var(--color-secondary);
+            border-color: var(--color-secondary);
+        }
+
+        .btn-secondary:hover, .btn-secondary:focus {
+            background-color: var(--color-secondary);
+            color: var(--color-white);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px var(--color-shadow);
+            outline: none;
+        }
+
+        /* Badges */
+        .badge {
+            display: inline-block;
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            letter-spacing: -0.02em;
+        }
+
+        .badge-primary {
+            background-color: rgba(0, 86, 179, 0.1);
+            color: var(--color-primary);
+        }
+
+        .badge-secondary {
+            background-color: rgba(32, 201, 151, 0.1);
+            color: var(--color-secondary);
+        }
+
+        /* Image Placeholder Styles */
+        .img-placeholder {
+            background: linear-gradient(135deg, var(--color-gray-100) 0%, var(--color-gray-200) 100%);
+            border: 1px solid var(--color-gray-300);
+            border-radius: var(--border-radius-lg);
+            box-shadow: 0 10px 30px var(--color-shadow);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            font-size: 1.1rem;
+            color: var(--color-text-light);
+            overflow: hidden;
+            position: relative;
+        }
+
+        .img-placeholder--hero {
+            aspect-ratio: 16 / 10; /* Common aspect ratio for hero visuals */
+            background: linear-gradient(135deg, #e0f2f7 0%, #c2e9fb 100%); /* Lighter, more vibrant gradient */
+            border: none;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+        }
+        .img-placeholder--hero::before {
+            content: 'AI 플랫폼 시각화 / 추상 그래픽'; /* Placeholder text */
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 80%;
+            font-size: 1.2rem;
+            font-weight: 500;
+            color: var(--color-text-dark);
+            opacity: 0.7;
+        }
+        .img-placeholder--hero::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 50px;
+            background: linear-gradient(to top, rgba(255,255,255,0.7) 0%, rgba(255,255,255,0) 100%);
+        }
+
+        .img-placeholder--case-study {
+            aspect-ratio: 16 / 9;
+            background: linear-gradient(135deg, #f0f4f7 0%, #e2eaf0 100%);
+            border: none;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+        }
+        .img-placeholder--case-study::before {
+            content: '고객사 로고 또는 솔루션 스크린샷';
+            font-size: 0.9rem;
+            color: var(--color-text-light);
+            opacity: 0.8;
+        }
+
+        /* Header */
+        .site-header {
+            padding: var(--spacing-md) 0;
+            border-bottom: 1px solid var(--color-gray-100);
+            background-color: var(--color-white);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.03);
+        }
+        .site-header .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .site-logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--color-primary);
+            text-decoration: none;
+        }
+
+        /* Hero Section */
+        .hero-section {
+            background: linear-gradient(180deg, var(--color-white) 0%, var(--color-gray-100) 100%);
+            padding: calc(var(--spacing-xl) * 1.5) 0 var(--spacing-xl) 0;
+            text-align: center;
+        }
+
+        .hero-content {
+            display: flex;
+            flex-direction: column;
+            gap: var(--spacing-lg);
+            align-items: center;
+        }
+
+        .hero-text {
+            flex: 1;
+            text-align: left;
+        }
+
+        .hero-text .badge {
+            margin-bottom: var(--spacing-sm);
+        }
+
+        .hero-actions {
+            display: flex;
+            gap: var(--spacing-sm);
+            margin-top: var(--spacing-md);
+            flex-wrap: wrap;
+        }
+
+        .hero-visual {
+            flex: 1;
+            min-width: 300px; /* Ensure it doesn't shrink too much */
+        }
+
+        .hero-microcopy {
+            margin-top: var(--spacing-sm);
+            font-size: 0.95rem;
+            color: var(--color-text-light);
+        }
+
+        @media (min-width: 992px) {
+            .hero-content {
+                flex-direction: row;
+                text-align: left;
+                align-items: center;
+            }
+            .hero-text {
+                padding-right: var(--spacing-lg);
+            }
+            .hero-visual {
+                padding-left: var(--spacing-lg);
+            }
+        }
+        @media (max-width: 991px) {
+            .hero-text {
+                text-align: center;
+            }
+            .hero-actions {
+                justify-content: center;
+            }
+        }
+
+
+        /* Section: Problem & Solution */
+        .problem-solution-section {
+            background-color: var(--color-white);
+            padding: var(--spacing-xl) 0;
+        }
+
+        .problem-solution-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: var(--spacing-lg);
+        }
+
+        .problem-card, .solution-card {
+            padding: var(--spacing-lg);
+            border-radius: var(--border-radius-lg);
+            box-shadow: 0 5px 20px var(--color-shadow);
+        }
+
+        .problem-card {
+            background-color: #fff0f0; /* Light red/pink for problem */
+            border: 1px solid #ffcccc;
+        }
+        .problem-card h3 {
+            color: #cc0000;
+        }
+        .problem-card ul {
+            list-style: none;
+            padding-left: 0;
+        }
+        .problem-card li {
+            position: relative;
+            padding-left: 28px;
+            margin-bottom: var(--spacing-xs);
+            color: var(--color-text-dark);
+        }
+        .problem-card li::before {
+            content: '❌'; /* Red X icon */
+            position: absolute;
+            left: 0;
+            font-size: 1.1rem;
+        }
+
+        .solution-card {
+            background-color: #f0faff; /* Light blue for solution */
+            border: 1px solid #cceeff;
+        }
+        .solution-card h3 {
+            color: var(--color-primary);
+        }
+        .solution-card p {
+            color: var(--color-text-dark);
+            font-size: 1.05rem;
+            line-height: 1.7;
+        }
+
+        @media (min-width: 768px) {
+            .problem-solution-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+
+        /* Section: Our Promise */
+        .promise-section {
+            background-color: var(--color-gray-100);
+        }
+
+        .promise-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: var(--spacing-md);
+            margin-top: var(--spacing-lg);
+        }
+
+        .promise-card {
+            background-color: var(--color-white);
+            padding: var(--spacing-md);
+            border-radius: var(--border-radius-md);
+            box-shadow: 0 5px 15px var(--color-shadow);
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .promise-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px var(--color-shadow);
+        }
+
+        .promise-card .icon {
+            font-size: 2.5rem;
+            color: var(--color-secondary);
+            margin-bottom: var(--spacing-xs);
+            display: block;
+        }
+
+        .promise-card h4 {
+            font-weight: 600;
+            margin-bottom: var(--spacing-xs);
+        }
+
+        .promise-card p {
+            font-size: 0.95rem;
+            color: var(--color-text-light);
+            margin-bottom: 0;
+        }
+
+        .trust-badges {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: var(--spacing-sm);
+            margin-top: var(--spacing-md);
+        }
+
+        /* Section: AI Automation Power */
+        .ai-features-section {
+            background-color: var(--color-white);
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: var(--spacing-md);
+            margin-top: var(--spacing-lg);
+        }
+
+        .feature-card {
+            background-color: var(--color-gray-100);
+            padding: var(--spacing-md);
+            border-radius: var(--border-radius-md);
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.05);
+            text-align: left;
+            border: 1px solid var(--color-gray-200);
+            transition: transform 0.3s ease;
+        }
+        .feature-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.08);
+        }
+
+        .feature-card .icon {
+            font-size: 2rem;
+            color: var(--color-primary);
+            margin-bottom: var(--spacing-xs);
+        }
+
+        .feature-card h4 {
+            font-weight: 600;
+            margin-bottom: var(--spacing-xs);
+        }
+
+        .feature-card p {
+            font-size: 0.95rem;
+            color: var(--color-text-light);
+            margin-bottom: 0;
+        }
+
+        /* Section: How It Works */
+        .process-section {
+            background-color: var(--color-gray-100);
+            overflow: hidden; /* For potential decorative elements */
+        }
+
+        .process-steps {
+            display: flex;
+            flex-direction: column;
+            gap: var(--spacing-lg);
+            margin-top: var(--spacing-lg);
+            position: relative; /* For the vertical line */
+            padding-left: var(--spacing-md); /* Space for the line */
+        }
+
+        .process-steps::before {
+            content: '';
+            position: absolute;
+            left: 30px; /* Align with step numbers */
+            top: 0;
+            height: 100%;
+            width: 2px;
+            background-color: var(--color-gray-200);
+            z-index: 0;
+        }
+
+        .process-step {
+            display: flex;
+            align-items: center; /* Center number and text */
+            position: relative;
+            padding-left: var(--spacing-lg);
+        }
+
+        .process-step .step-number {
+            position: absolute;
+            left: 0;
+            top: 0;
+            transform: translateX(-50%);
+            background-color: var(--color-gray-100); /* To cover the line */
+            padding: 0 8px;
+            border-radius: 50%;
+            border: 2px solid var(--color-primary);
+            font-size: 2rem;
+            color: var(--color-primary);
+            z-index: 1;
+            line-height: 1.2;
+            width: 60px;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .process-step .step-content {
+            margin-left: var(--spacing-lg);
+            text-align: left; /* Ensure text is left-aligned on mobile */
+        }
+
+        .process-step .step-content h4 {
+            font-weight: 600;
+            margin-bottom: var(--spacing-xs);
+        }
+        .process-step .step-content p {
+            color: var(--color-text-light);
+            font-size: 0.95rem;
+            margin-bottom: 0;
+        }
+
+
+        @media (min-width: 768px) {
+            .process-steps {
+                flex-direction: row;
+                justify-content: space-between;
+                align-items: flex-start;
+                position: relative;
+                padding-top: var(--spacing-md);
+                padding-left: 0; /* No padding on desktop */
+            }
+            .process-steps::before {
+                content: '';
+                position: absolute;
+                top: calc(3rem + 10px); /* Adjust based on step number size */
+                left: 0;
+                right: 0;
+                height: 2px;
+                background-color: var(--color-gray-200);
+                z-index: 0;
+            }
+            .process-step {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+                flex: 1;
+                position: relative;
+                padding: 0 var(--spacing-sm);
+                padding-left: 0; /* Remove mobile padding */
+            }
+            .process-step .step-number {
+                background-color: var(--color-gray-100);
+                padding: 0 10px;
+                border-radius: 50%;
+                border: 2px solid var(--color-primary);
+                margin-bottom: var(--spacing-md);
+                position: relative;
+                z-index: 1;
+                width: 80px;
+                height: 80px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                font-size: 2.5rem;
+                transform: translateY(-50%); /* Pull up to sit on the line */
+                left: auto; /* Reset left positioning */
+                top: auto; /* Reset top positioning */
+            }
+            .process-step .step-content {
+                margin-top: 0;
+                margin-left: 0; /* Reset margin */
+                text-align: center;
+            }
+        }
+
+
+        /* Section: Case Studies */
+        .case-study-section {
+            background-color: var(--color-white);
+        }
+
+        .case-study-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: var(--spacing-lg);
+            margin-top: var(--spacing-lg);
+        }
+
+        .case-study-card {
+            background-color: var(--color-white);
+            border-radius: var(--border-radius-lg);
+            box-shadow: 0 10px 30px var(--color-shadow);
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .case-study-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.12);
+        }
+
+        .case-study-card .content {
+            padding: var(--spacing-md);
+        }
+
+        .case-study-card h4 {
+            color: var(--color-primary);
+            margin-bottom: var(--spacing-xs);
+        }
+
+        .case-study-card .meta {
+            font-size: 0.9rem;
+            color: var(--color-text-light);
+            margin-bottom: var(--spacing-sm);
+        }
+
+        .case-study-card p {
+            font-size: 1rem;
+            line-height: 1.6;
+            margin-bottom: var(--spacing-md);
+        }
+
+        .case-study-card .btn {
+            width: fit-content;
+            margin-top: auto; /* Push button to bottom */
+        }
+
+        @media (min-width: 768px) {
+            .case-study-grid {
+                grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
+            }
+            .case-study-card {
+                flex-direction: row;
+                align-items: center;
+            }
+            .case-study-card .img-placeholder--case-study {
+                flex: 0 0 40%; /* Fixed width for image */
+                height: auto;
+                border-radius: var(--border-radius-lg) 0 0 var(--border-radius-lg);
+            }
+            .case-study-card .content {
+                flex: 1;
+                padding: var(--spacing-lg);
+            }
+        }
+        @media (min-width: 992px) {
+            .case-study-card .img-placeholder--case-study {
+                flex: 0 0 35%;
+            }
+        }
+
+        /* Section: Why Us */
+        .why-us-section {
+            background-color: var(--color-gray-100);
+        }
+
+        .why-us-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: var(--spacing-lg);
+            margin-top: var(--spacing-lg);
+        }
+
+        .why-us-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            padding: var(--spacing-md);
+            background-color: var(--color-white);
+            border-radius: var(--border-radius-lg);
+            box-shadow: 0 5px 15px var(--color-shadow);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .why-us-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px var(--color-shadow);
+        }
+
+        .why-us-item .icon {
+            font-size: 3rem;
+            color: var(--color-primary);
+            margin-bottom: var(--spacing-sm);
+        }
+
+        .why-us-item h3 {
+            font-weight: 600;
+            margin-bottom: var(--spacing-xs);
+        }
+
+        .why-us-item p {
+            font-size: 1rem;
+            color: var(--color-text-light);
+            margin-bottom: 0;
+        }
+
+        @media (min-width: 768px) {
+            .why-us-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+
+        /* Section: FAQ */
+        .faq-section {
+            background-color: var(--color-white);
+        }
+
+        .accordion {
+            margin-top: var(--spacing-lg);
+            border-top: 1px solid var(--color-gray-200);
+        }
+
+        .accordion-item {
+            border-bottom: 1px solid var(--color-gray-200);
+        }
+
+        .accordion-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: var(--spacing-sm) var(--spacing-xs);
+            cursor: pointer;
+            background-color: var(--color-white);
+            transition: background-color 0.2s ease;
+            min-height: 48px; /* Tap target */
+            width: 100%; /* Ensure full width clickable area */
+            border: none;
+            text-align: left;
+        }
+
+        .accordion-header:hover, .accordion-header:focus {
+            background-color: var(--color-gray-100);
+            outline: none;
+        }
+
+        .accordion-header h4 {
+            margin: 0;
+            font-weight: 500;
+            color: var(--color-text-dark);
+            flex-grow: 1;
+            padding-right: var(--spacing-xs);
+        }
+
+        .accordion-icon {
+            font-size: 1.5rem;
+            color: var(--color-primary);
+            transition: transform 0.3s ease;
+            line-height: 1;
+        }
+
+        .accordion-item.active .accordion-icon {
+            transform: rotate(45deg);
+        }
+
+        .accordion-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease-out, padding 0.4s ease-out;
+            padding: 0 var(--spacing-xs);
+        }
+
+        .accordion-item.active .accordion-content {
+            max-height: 200px; /* Adjust based on max expected content height */
+            padding: var(--spacing-xs) var(--spacing-xs) var(--spacing-md) var(--spacing-xs);
+        }
+        .accordion-content p {
+            margin-bottom: 0;
+            color: var(--color-text-light);
+            line-height: 1.5;
+            font-size: 0.95rem;
+        }
+
+        /* Section: Consulting Form */
+        .consulting-form-section {
+            background-color: var(--color-primary);
+            color: var(--color-white);
+            padding: var(--spacing-xl) 0;
+        }
+
+        .consulting-form-section h2 {
+            color: var(--color-white);
+            margin-bottom: var(--spacing-md);
+        }
+
+        .consulting-form-section p {
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 1.05rem;
+            margin-bottom: var(--spacing-lg);
+        }
+
+        .form-card {
+            background-color: var(--color-white);
+            padding: var(--spacing-lg);
+            border-radius: var(--border-radius-lg);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
+            color: var(--color-text-dark);
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .form-card h3 {
+            color: var(--color-primary);
+            margin-bottom: var(--spacing-xs);
+        }
+        .form-card .form-help-text {
+            font-size: 0.95rem;
+            color: var(--color-text-light);
+            margin-bottom: var(--spacing-md);
+            display: block;
+        }
+
+        .form-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: var(--spacing-md);
+        }
+
+        .form-group {
+            margin-bottom: var(--spacing-xs);
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+            font-size: 0.95rem;
+        }
+
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            width: 100%;
+            padding: 12px 16px;
+            border: 1px solid var(--color-gray-300);
+            border-radius: var(--border-radius-sm);
+            font-family: 'Noto Sans KR', sans-serif;
+            font-size: 1rem;
+            color: var(--color-text-dark);
+            transition: border-color 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus,
+        .form-group select:focus {
+            border-color: var(--color-primary);
+            box-shadow: 0 0 0 3px rgba(0, 86, 179, 0.2);
+            outline: none;
+        }
+
+        .form-group textarea {
+            min-height: 100px;
+            resize: vertical;
+        }
+
+        .form-group small {
+            display: block;
+            margin-top: 5px;
+            font-size: 0.85rem;
+            color: var(--color-text-light);
+        }
+
+        .checkbox-group {
+            display: flex;
+            align-items: flex-start;
+            margin-top: var(--spacing-md);
+            margin-bottom: var(--spacing-md);
+        }
+
+        .checkbox-group input[type="checkbox"] {
+            margin-right: var(--spacing-xs);
+            margin-top: 4px; /* Align with text */
+            flex-shrink: 0;
+            width: 18px;
+            height: 18px;
+            accent-color: var(--color-primary);
+            min-width: 18px; /* For tap target */
+            min-height: 18px; /* For tap target */
+        }
+
+        .checkbox-group label {
+            font-size: 0.9rem;
+            color: var(--color-text-light);
+            line-height: 1.5;
+            cursor: pointer;
+        }
+
+        .form-submit-btn {
+            width: 100%;
+            margin-top: var(--spacing-sm);
+        }
+
+        .form-bottom-microcopy {
+            text-align: center;
+            margin-top: var(--spacing-md);
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+
+        @media (min-width: 768px) {
+            .form-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .form-grid .full-width {
+                grid-column: span 2;
+            }
+        }
+
+        /* Footer */
+        .site-footer {
+            background-color: var(--color-text-dark);
+            color: var(--color-gray-200);
+            padding: var(--spacing-lg) 0;
+            text-align: center;
+            font-size: 0.9rem;
+        }
+        .site-footer p {
+            margin-bottom: 0;
+        }
+        .site-footer a {
+            color: var(--color-secondary);
+            text-decoration: none;
+        }
+        .site-footer a:hover {
+            text-decoration: underline;
+        }
+
+        /* Icons (simple text based for this example) */
+        .icon-lightbulb::before { content: '💡'; }
+        .icon-shield::before { content: '🛡️'; }
+        .icon-wrench::before { content: '🛠️'; }
+        .icon-chart::before { content: '📊'; }
+        .icon-robot::before { content: '🤖'; }
+        .icon-predict::before { content: '🔮'; }
+        .icon-diagnose::before { content: '🔍'; }
+        .icon-strategy::before { content: '📈'; }
+        .icon-implement::before { content: '🚀'; }
+        .icon-optimize::before { content: '⚙️'; }
+        .icon-team::before { content: '🧑‍💻'; }
+        .icon-integrate::before { content: '🔗'; }
+        .icon-report::before { content: '📝'; }
+
+    </style>
+</head>
+<body>
+
+    <header class="site-header">
+        <div class="container">
+            <a href="#" class="site-logo">AI 컨설팅</a>
+            <a href="#consulting-form" class="btn btn-primary btn-sm">무료 컨설팅</a>
+        </div>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section class="hero-section">
+            <div class="container hero-content">
+                <div class="hero-text">
+                    <span class="badge badge-primary hero_label">맞춤형 AI 컨설팅</span>
+                    <h1>AI로 매출과 운영 효율을 동시에 개선하고 싶으신가요?</h1>
+                    <p class="hero_subcopy">데이터 진단→전략→시스템 통합까지 실무팀과 함께 마련하는 맞춤형 AI 로드맵 — 빠르게 적용 가능한 솔루션 중심입니다.</p>
+                    <div class="hero-actions">
+                        <a href="#consulting-form" class="btn btn-primary primary_cta">무료 컨설팅 신청하기</a>
+                        <a href="#solution-strength" class="btn btn-secondary secondary_cta">솔루션 살펴보기</a>
+                    </div>
+                    <p class="hero-microcopy">초기 상담과 진단은 무료입니다.</p>
+                </div>
+                <div class="hero-visual">
+                    <!-- Premium AI platform visual or abstract AI graphic.
+                         Replace with a high-resolution image (e.g., a sleek dashboard mockup with AI elements,
+                         a neural network visualization, or a stylized abstract representation of data flow). -->
+                    <div class="img-placeholder img-placeholder--hero" aria-label="AI 플랫폼 시각화"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Problem & Solution Section -->
+        <section class="problem-solution-section section-padding">
+            <div class="container text-center">
+                <h2 class="mb-lg">AI 도입, 더 이상 막막하지 않습니다.</h2>
+                <div class="problem-solution-grid">
+                    <div class="problem-card">
+                        <h3>이런 고민을 하고 계신가요?</h3>
+                        <ul>
+                            <li>AI 도입을 시도했지만 가시적 성과가 나지 않아 속도를 잃으셨나요?</li>
+                            <li>내부에 데이터는 있지만 무엇부터 시작해야 할지, 어디에 투자해야 할지 막막하신가요?</li>
+                            <li>도입 비용과 운영 부담 때문에 프로젝트가 지연되거나 중단된 경험이 있으신가요?</li>
+                            <li>외부 솔루션을 도입했지만 기존 시스템과 연동이 어려워 실무에 적용하지 못하셨나요?</li>
+                        </ul>
+                    </div>
+                    <div class="solution-card">
+                        <h3>우리의 해결책은 명확합니다.</h3>
+                        <p>우리는 '빠르게 검증하고 단계적으로 확장'하는 방식을 사용합니다. 먼저 현황을 진단해 우선순위가 높은 사용 사례를 도출하고, 파일럿으로 검증한 뒤 시스템에 통합합니다. 전담 컨설턴트와 엔지니어가 함께 실무 구현까지 책임져 실제 업무에 바로 적용 가능한 결과를 제공합니다.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 우리의 약속: 신뢰를 주는 3가지 가치 제시 -->
+        <section class="promise-section section-padding">
+            <div class="container text-center">
+                <h2 class="mb-md">우리가 드리는 약속</h2>
+                <p class="text-light mb-lg" style="color: var(--color-text-light);">성공적인 AI 도입을 위한 투명하고 실질적인 파트너십</p>
+                <div class="trust-badges">
+                    <span class="badge badge-secondary">NDA 가능</span>
+                    <span class="badge badge-secondary">실무 구현 포함</span>
+                    <span class="badge badge-secondary">전담 컨설턴트 배정</span>
+                </div>
+                <div class="promise-grid">
+                    <div class="promise-card">
+                        <span class="icon icon-wrench"></span>
+                        <h4>실무 중심의 실행력</h4>
+                        <p>컨설팅 팀이 직접 설계하고 구현하여 실질적인 결과를 만듭니다.</p>
+                    </div>
+                    <div class="promise-card">
+                        <span class="icon icon-report"></span>
+                        <h4>투명한 단계별 보고</h4>
+                        <p>진단 리포트, 로드맵, 시범 구현 등 명확한 산출물을 약속합니다.</p>
+                    </div>
+                    <div class="promise-card">
+                        <span class="icon icon-shield"></span>
+                        <h4>강력한 데이터 보안</h4>
+                        <p>고객 데이터 보안을 최우선으로, 필요 시 NDA 체결을 지원합니다.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- AI 자동화의 힘: 핵심 기능 3~4가지 강조 -->
+        <section id="solution-strength" class="ai-features-section section-padding">
+            <div class="container text-center">
+                <h2 class="mb-md">AI 자동화, 당신의 비즈니스를 혁신합니다.</h2>
+                <p class="text-light mb-lg" style="color: var(--color-text-light);">핵심 비즈니스 프로세스에 AI를 적용하여 새로운 가치를 창출하세요.</p>
+                <div class="features-grid">
+                    <div class="feature-card">
+                        <span class="icon icon-chart"></span>
+                        <h4>데이터 분석 자동화</h4>
+                        <p>복잡한 데이터도 AI가 자동으로 분석하여 인사이트를 도출합니다.</p>
+                    </div>
+                    <div class="feature-card">
+                        <span class="icon icon-robot"></span>
+                        <h4>업무 프로세스 자동화</h4>
+                        <p>반복적이고 비효율적인 업무를 AI로 대체하여 핵심 역량에 집중합니다.</p>
+                    </div>
+                    <div class="feature-card">
+                        <span class="icon icon-predict"></span>
+                        <h4>맞춤형 예측 모델</h4>
+                        <p>정확한 예측 모델을 구축하여 의사결정의 질을 높이고 리스크를 줄입니다.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 어떻게 작동하나요?: 4단계 프로세스 -->
+        <section class="process-section section-padding">
+            <div class="container text-center">
+                <h2 class="mb-md">우리의 AI 컨설팅 프로세스</h2>
+                <p class="text-light mb-lg" style="color: var(--color-text-light);">체계적인 4단계 접근으로 성공적인 AI 도입을 보장합니다.</p>
+                <div class="process-steps">
+                    <div class="process-step">
+                        <div class="step-number">1</div>
+                        <div class="step-content">
+                            <h4>현황 진단</h4>
+                            <p>1차 워크숍과 데이터 스냅샷으로 핵심 과제 도출</p>
+                        </div>
+                    </div>
+                    <div class="process-step">
+                        <div class="step-number">2</div>
+                        <div class="step-content">
+                            <h4>전략 수립</h4>
+                            <p>우선순위 기반 AI 로드맵과 실증 계획 제안</p>
+                        </div>
+                    </div>
+                    <div class="process-step">
+                        <div class="step-number">3</div>
+                        <div class="step-content">
+                            <h4>파일럿 구현</h4>
+                            <p>최소한의 범위로 빠르게 검증 가능한 PoC 수행</p>
+                        </div>
+                    </div>
+                    <div class="process-step">
+                        <div class="step-number">4</div>
+                        <div class="step-content">
+                            <h4>통합·확장</h4>
+                            <p>운영 환경에 맞춘 시스템 통합과 성과 최적화</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 성공을 위한 여정 (사례 하이라이트) -->
+        <section class="case-study-section section-padding">
+            <div class="container text-center">
+                <h2 class="mb-md">성공을 위한 여정: 고객 사례 하이라이트</h2>
+                <p class="text-light mb-lg" style="color: var(--color-text-light);">실질적인 비즈니스 가치를 창출한 우리의 성공 사례</p>
+                <div class="case-study-grid">
+                    <div class="case-study-card">
+                        <!-- Replace with actual customer logo or solution screenshot -->
+                        <div class="img-placeholder img-placeholder--case-study" aria-label="물류 기업 AI 예측 솔루션"></div>
+                        <div class="content">
+                            <h4>물류 기업: 재고 및 수요 예측 최적화</h4>
+                            <p class="meta">업종: 물류/유통 &nbsp;|&nbsp; 과제: 비효율적인 재고 관리, 수요 예측 부정확</p>
+                            <p>기존 재고 데이터를 기반으로 AI 예측 모델을 도입하여 재고 회전율을 높이고, 과잉 재고 비용을 절감했습니다. 실시간 수요 변동에 빠르게 대응 가능한 시스템을 구축하여 운영 효율성을 크게 개선했습니다.</p>
+                            <a href="#" class="btn btn-secondary btn-sm">자세히 보기</a>
+                        </div>
+                    </div>
+                    <!-- Add more case study cards as needed, following the same structure -->
+                </div>
+            </div>
+        </section>
+
+        <!-- 왜 우리와 함께해야 할까요?: 경쟁 우위 3가지 -->
+        <section class="why-us-section section-padding">
+            <div class="container text-center">
+                <h2 class="mb-md">왜, 우리의 AI 컨설팅이어야 할까요?</h2>
+                <p class="text-light mb-lg" style="color: var(--color-text-light);">차별화된 전문성과 실질적인 성과로 당신의 성공을 이끌겠습니다.</p>
+                <div class="why-us-grid">
+                    <div class="why-us-item">
+                        <span class="icon icon-team"></span>
+                        <h3>실무 중심의 전담 팀</h3>
+                        <p>경험 많은 컨설턴트와 엔지니어가 한 팀이 되어 기획부터 구현까지 책임집니다.</p>
+                    </div>
+                    <div class="why-us-item">
+                        <span class="icon icon-integrate"></span>
+                        <h3>통합적인 솔루션 역량</h3>
+                        <p>데이터 진단, 전략 수립, 시스템 통합 및 운영 최적화까지 모든 단계를 지원합니다.</p>
+                    </div>
+                    <div class="why-us-item">
+                        <span class="icon icon-report"></span>
+                        <h3>단계별 투명한 리포트</h3>
+                        <p>프로젝트 진척 상황과 산출물을 정기적으로 공유하여 신뢰를 구축합니다.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- FAQ: 자주 묻는 질문 -->
+        <section class="faq-section section-padding">
+            <div class="container text-center">
+                <h2 class="mb-md">자주 묻는 질문</h2>
+                <p class="text-light mb-lg" style="color: var(--color-text-light);">AI 컨설팅에 대한 궁금증을 해결해 드립니다.</p>
+                <div class="accordion">
+                    <div class="accordion-item">
+                        <button class="accordion-header">
+                            <h4>Q1: 컨설팅 범위는 어떻게 되나요?</h4>
+                            <span class="accordion-icon">+</span>
+                        </button>
+                        <div class="accordion-content">
+                            <p>A1: 현황 진단, 우선순위 도출, 파일럿 설계·구현, 시스템 통합 및 운영 최적화까지 실무 중심의 단계별 서비스를 제공합니다.</p>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <button class="accordion-header">
+                            <h4>Q2: 비용과 소요 기간은 어느 정도인가요?</h4>
+                            <span class="accordion-icon">+</span>
+                        </button>
+                        <div class="accordion-content">
+                            <p>A2: 프로젝트 범위·데이터 준비 상태에 따라 달라집니다. 간단한 진단과 파일럿은 보통 수주 내 착수 가능하며, 초기 상담 후 견적을 안내해 드립니다.</p>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <button class="accordion-header">
+                            <h4>Q3: 내부 시스템과 연동이 가능한가요?</h4>
+                            <span class="accordion-icon">+</span>
+                        </button>
+                        <div class="accordion-content">
+                            <p>A3: 기존 시스템 연동을 전제로 설계하며, 주요 API와 데이터 파이프라인 연동 경험이 있습니다. 상세 연동 가능성은 진단 단계에서 확인합니다.</p>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <button class="accordion-header">
+                            <h4>Q4: 데이터 보안은 어떻게 관리하나요?</h4>
+                            <span class="accordion-icon">+</span>
+                        </button>
+                        <div class="accordion-content">
+                            <p>A4: 접근 권한 최소화, 전송 암호화 등 기본 보안 원칙을 적용하며, 요청 시 NDA 체결로 추가 보호를 약속합니다.</p>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <button class="accordion-header">
+                            <h4>Q5: 성과는 언제쯤 확인할 수 있나요?</h4>
+                            <span class="accordion-icon">+</span>
+                        </button>
+                        <div class="accordion-content">
+                            <p>A5: 파일럿 단계에서 초도 성과를 확인할 수 있으며, 실제 운영 효과는 통합 후 1~3개월 내 가시화되는 경우가 많습니다(사례별 상이).</p>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <button class="accordion-header">
+                            <h4>Q6: 내부 인력 교육도 가능한가요?</h4>
+                            <span class="accordion-icon">+</span>
+                        </button>
+                        <div class="accordion-content">
+                            <p>A6: 네. 운영 인력 대상 교육과 운영 매뉴얼을 제공해 자체 운영이 가능하도록 지원합니다.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 컨설팅 신청(폼) -->
+        <section id="consulting-form" class="consulting-form-section section-padding">
+            <div class="container text-center">
+                <h2>지금 무료 컨설팅으로 AI 전략을 시작하세요</h2>
+                <p>간단한 정보만으로도 우선 진단과 실행 가능성을 빠르게 검토해 드립니다. 초기 상담은 무료이며, 필요 시 맞춤 제안서를 제공합니다.</p>
+
+                <div class="form-card">
+                    <h3>무료 컨설팅 신청서</h3>
+                    <span class="form-help-text">간단한 정보만으로도 우선 진단을 진행합니다. 제출해 주시면 48시간 내 담당자가 연락드립니다.</span>
+                    <form onsubmit="submitForm(event)">
+                        <div class="form-grid">
+                            <div class="form-group">
+                                <label for="companyName">회사명 (선택)</label>
+                                <input type="text" id="companyName" name="companyName" placeholder="회사명을 입력해주세요">
+                            </div>
+                            <div class="form-group">
+                                <label for="contactName">담당자 이름 (필수)</label>
+                                <input type="text" id="contactName" name="contactName" placeholder="홍길동" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="contactInfo">연락처(이메일 또는 전화, 필수)</label>
+                                <input type="text" id="contactInfo" name="contactInfo" placeholder="예: example@company.com 또는 010-1234-5678" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="website">웹사이트 (선택)</label>
+                                <input type="url" id="website" name="website" placeholder="예: https://www.yourcompany.com">
+                            </div>
+                            <div class="form-group full-width">
+                                <label for="currentTask">현재 과제 요약 (한 문장)</label>
+                                <textarea id="currentTask" name="currentTask" rows="3" placeholder="예: 고객 데이터 연결·예측 모델 도입 등 간단히 적어주세요."></textarea>
+                            </div>
+                            <div class="form-group">
+                                <label for="budgetRange">예산 범위 (선택)</label>
+                                <select id="budgetRange" name="budgetRange">
+                                    <option value="">선택하세요</option>
+                                    <option value="under_10m">1천만원 미만</option>
+                                    <option value="10m_50m">1천만원 ~ 5천만원</option>
+                                    <option value="50m_100m">5천만원 ~ 1억원</option>
+                                    <option value="over_100m">1억원 이상</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="preferredDate">상담 희망일 (선택)</label>
+                                <input type="date" id="preferredDate" name="preferredDate">
+                            </div>
+                        </div>
+                        <div class="checkbox-group">
+                            <input type="checkbox" id="privacyConsent" name="privacyConsent" required>
+                            <label for="privacyConsent">
+                                제출하신 정보는 상담 목적 외에 사용되지 않으며, 필요시 NDA 체결이 가능합니다. 개인정보 보호 정책에 동의합니다.
+                            </label>
+                        </div>
+                        <button type="submit" class="btn btn-primary form-submit-btn">무료 컨설팅 신청하기</button>
+                    </form>
+                </div>
+                <p class="form-bottom-microcopy">간단한 정보로 48시간 내 응답</p>
+            </div>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <div class="container">
+            <p>&copy; 2023 AI Consulting. All rights reserved.</p>
+            <p><a href="#">개인정보 처리방침</a> | <a href="#">이용약관</a></p>
+        </div>
+    </footer>
+
+    <script>
+        // Accordion functionality
+        document.querySelectorAll('.accordion-header').forEach(header => {
+            header.addEventListener('click', () => {
+                const item = header.closest('.accordion-item');
+                const content = item.querySelector('.accordion-content');
+
+                // Toggle active class on the clicked item
+                item.classList.toggle('active');
+
+                if (item.classList.contains('active')) {
+                    // Set max-height to scrollHeight to animate opening
+                    content.style.maxHeight = content.scrollHeight + 'px';
+                } else {
+                    // Set max-height to 0 to animate closing
+                    content.style.maxHeight = '0';
+                }
+
+                // Close other open accordions
+                document.querySelectorAll('.accordion-item.active').forEach(openItem => {
+                    if (openItem !== item) { // Only close if it's not the currently clicked item
+                        openItem.classList.remove('active');
+                        openItem.querySelector('.accordion-content').style.maxHeight = '0';
+                    }
+                });
+            });
+        });
+
+        // Form submission alert
+        function submitForm(event) {
+            event.preventDefault(); // Prevent actual form submission
+
+            const form = event.target;
+            const requiredFields = form.querySelectorAll('[required]');
+            let allFieldsFilled = true;
+
+            requiredFields.forEach(field => {
+                field.style.borderColor = ''; // Reset border before checking
+                if (field.type === 'checkbox' && !field.checked) {
+                    allFieldsFilled = false;
+                    // For checkboxes, highlight the label or parent if possible, or just the field itself
+                    field.style.outline = '2px solid red';
+                    field.style.outlineOffset = '2px';
+                } else if (!field.value.trim()) {
+                    allFieldsFilled = false;
+                    field.style.borderColor = 'red'; // Highlight empty text/input fields
+                }
+            });
+
+            if (!allFieldsFilled) {
+                alert('필수 입력 항목을 모두 작성해 주세요.');
+                return;
+            }
+
+            // If all required fields are filled, show success message
+            alert('무료 컨설팅 신청이 완료되었습니다! 48시간 내 담당자가 연락드리겠습니다.');
+            form.reset(); // Clear the form
+            // Reset any custom highlighting
+            requiredFields.forEach(field => {
+                field.style.borderColor = '';
+                field.style.outline = '';
+            });
+        }
+    </script>
+
+</body>
+</html>
