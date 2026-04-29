@@ -1,0 +1,531 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>미래숲교육 - 학생 중심 맞춤 교육</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, sans-serif;
+            line-height: 1.6;
+            color: #333;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        header {
+            background: #fff;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.5rem 0;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #2c5f2d;
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-menu a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-menu a:hover {
+            color: #2c5f2d;
+        }
+
+        .hero {
+            background: linear-gradient(135deg, #2c5f2d 0%, #4a8f4d 100%);
+            color: white;
+            padding: 6rem 0;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+            font-weight: 700;
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            margin-bottom: 2rem;
+            opacity: 0.95;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: white;
+            color: #2c5f2d;
+            padding: 1rem 2.5rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+        }
+
+        section {
+            padding: 5rem 0;
+        }
+
+        section:nth-child(even) {
+            background: #f8f9fa;
+        }
+
+        h2 {
+            font-size: 2.5rem;
+            text-align: center;
+            margin-bottom: 3rem;
+            color: #2c5f2d;
+            font-weight: 700;
+        }
+
+        .intro-content {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .intro-content p {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+            color: #555;
+        }
+
+        .philosophy-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .philosophy-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+            text-align: center;
+            transition: transform 0.3s;
+        }
+
+        .philosophy-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .philosophy-card h3 {
+            font-size: 1.5rem;
+            color: #2c5f2d;
+            margin-bottom: 1rem;
+        }
+
+        .philosophy-card p {
+            color: #666;
+            line-height: 1.7;
+        }
+
+        .curriculum-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .curriculum-item {
+            background: white;
+            padding: 2rem;
+            border-radius: 12px;
+            border-left: 4px solid #2c5f2d;
+            box-shadow: 0 3px 15px rgba(0,0,0,0.08);
+        }
+
+        .curriculum-item h3 {
+            font-size: 1.4rem;
+            color: #2c5f2d;
+            margin-bottom: 1rem;
+        }
+
+        .curriculum-item ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .curriculum-item li {
+            padding: 0.5rem 0;
+            color: #555;
+            position: relative;
+            padding-left: 1.5rem;
+        }
+
+        .curriculum-item li:before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: #2c5f2d;
+            font-weight: bold;
+        }
+
+        .management-features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .feature-box {
+            background: white;
+            padding: 2rem;
+            border-radius: 12px;
+            text-align: center;
+            box-shadow: 0 3px 15px rgba(0,0,0,0.08);
+        }
+
+        .feature-box h3 {
+            font-size: 1.3rem;
+            color: #2c5f2d;
+            margin-bottom: 1rem;
+        }
+
+        .feature-box p {
+            color: #666;
+            line-height: 1.7;
+        }
+
+        .contact-form {
+            max-width: 600px;
+            margin: 0 auto;
+            background: white;
+            padding: 3rem;
+            border-radius: 15px;
+            box-shadow: 0 5px 25px rgba(0,0,0,0.1);
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            color: #333;
+        }
+
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            width: 100%;
+            padding: 0.8rem;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-family: 'Pretendard', sans-serif;
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        .submit-button {
+            width: 100%;
+            background: #2c5f2d;
+            color: white;
+            padding: 1rem;
+            border: none;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .submit-button:hover {
+            background: #1f4420;
+        }
+
+        .success-message {
+            display: none;
+            background: #d4edda;
+            color: #155724;
+            padding: 1rem;
+            border-radius: 8px;
+            margin-top: 1rem;
+            text-align: center;
+        }
+
+        footer {
+            background: #2c5f2d;
+            color: white;
+            padding: 3rem 0;
+            text-align: center;
+        }
+
+        footer p {
+            margin-bottom: 0.5rem;
+            opacity: 0.9;
+        }
+
+        .image-placeholder {
+            background: #e9ecef;
+            border: 2px dashed #adb5bd;
+            border-radius: 10px;
+            padding: 3rem;
+            text-align: center;
+            color: #6c757d;
+            margin: 2rem 0;
+        }
+
+        @media (max-width: 768px) {
+            .nav-menu {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .hero p {
+                font-size: 1.1rem;
+            }
+
+            h2 {
+                font-size: 2rem;
+            }
+
+            section {
+                padding: 3rem 0;
+            }
+
+            .philosophy-grid,
+            .curriculum-list,
+            .management-features {
+                grid-template-columns: 1fr;
+            }
+
+            .contact-form {
+                padding: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="container">
+            <div class="logo">미래숲교육</div>
+            <ul class="nav-menu">
+                <li><a href="#intro">소개</a></li>
+                <li><a href="#philosophy">교육 철학</a></li>
+                <li><a href="#curriculum">커리큘럼</a></li>
+                <li><a href="#management">학습 관리</a></li>
+                <li><a href="#contact">미래숲교육</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <div class="container">
+            <h1>학생 중심 맞춤 교육<br>미래숲교육</h1>
+            <p>개별 학습 진단과 체계적인 관리로<br>학생의 성장을 함께 만들어갑니다</p>
+            <a href="#contact" class="cta-button">학습 상담 신청</a>
+        </div>
+    </section>
+
+    <section id="intro">
+        <div class="container">
+            <h2>미래숲교육 소개</h2>
+            <div class="intro-content">
+                <div class="image-placeholder">
+                    [교육 현장 이미지]<br>
+                    추천: 학생들이 수업을 듣거나 선생님과 상담하는 모습<br>
+                    역할: 실제 교육 환경과 분위기 전달<br>
+                    교체 자료: 실제 수업 현장 사진
+                </div>
+                <p>미래숲교육은 학생 개개인의 학습 수준과 목표에 맞춘 교육을 제공합니다.</p>
+                <p>단순한 지식 전달이 아닌, 학습 습관 형성과 자기주도 학습 능력 향상을 목표로 합니다.</p>
+                <p>체계적인 진단과 관리를 통해 학생의 성장 과정을 함께 만들어갑니다.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="philosophy">
+        <div class="container">
+            <h2>교육 철학</h2>
+            <div class="philosophy-grid">
+                <div class="philosophy-card">
+                    <h3>개별 맞춤 학습</h3>
+                    <p>학생의 현재 수준을 정확히 파악하고, 개인별 학습 계획을 수립합니다.</p>
+                </div>
+                <div class="philosophy-card">
+                    <h3>체계적 관리</h3>
+                    <p>정기적인 학습 점검과 피드백으로 꾸준한 성장을 지원합니다.</p>
+                </div>
+                <div class="philosophy-card">
+                    <h3>자기주도 학습</h3>
+                    <p>스스로 학습하는 습관과 방법을 익혀 장기적인 학습 능력을 키웁니다.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="curriculum">
+        <div class="container">
+            <h2>커리큘럼</h2>
+            <div class="curriculum-list">
+                <div class="curriculum-item">
+                    <h3>초등 과정</h3>
+                    <ul>
+                        <li>기초 학습 능력 강화</li>
+                        <li>학습 습관 형성</li>
+                        <li>교과 기본 개념 학습</li>
+                        <li>독해력 및 사고력 향상</li>
+                    </ul>
+                </div>
+                <div class="curriculum-item">
+                    <h3>중등 과정</h3>
+                    <ul>
+                        <li>교과 심화 학습</li>
+                        <li>내신 대비 관리</li>
+                        <li>학습 전략 수립</li>
+                        <li>자기주도 학습 훈련</li>
+                    </ul>
+                </div>
+                <div class="curriculum-item">
+                    <h3>고등 과정</h3>
+                    <ul>
+                        <li>수능 대비 학습</li>
+                        <li>내신 집중 관리</li>
+                        <li>개별 진도 관리</li>
+                        <li>학습 컨설팅</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="management">
+        <div class="container">
+            <h2>학습 관리 시스템</h2>
+            <div class="management-features">
+                <div class="feature-box">
+                    <h3>학습 진단</h3>
+                    <p>정기적인 테스트와 분석을 통해 학습 상태를 점검합니다.</p>
+                </div>
+                <div class="feature-box">
+                    <h3>개별 피드백</h3>
+                    <p>학생별 학습 상황에 맞는 구체적인 피드백을 제공합니다.</p>
+                </div>
+                <div class="feature-box">
+                    <h3>학부모 상담</h3>
+                    <p>정기적인 상담을 통해 학습 진행 상황을 공유합니다.</p>
+                </div>
+                <div class="feature-box">
+                    <h3>출결 관리</h3>
+                    <p>체계적인 출결 관리로 꾸준한 학습을 지원합니다.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact">
+        <div class="container">
+            <h2>학습 상담 신청</h2>
+            <form class="contact-form" id="contactForm">
+                <div class="form-group">
+                    <label for="name">학부모 성함</label>
+                    <input type="text" id="name" name="name" required>
+                </div>
+                <div class="form-group">
+                    <label for="student">학생 이름</label>
+                    <input type="text" id="student" name="student" required>
+                </div>
+                <div class="form-group">
+                    <label for="grade">학년</label>
+                    <select id="grade" name="grade" required>
+                        <option value="">선택해주세요</option>
+                        <option value="초등">초등학생</option>
+                        <option value="중등">중학생</option>
+                        <option value="고등">고등학생</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="phone">연락처</label>
+                    <input type="tel" id="phone" name="phone" required>
+                </div>
+                <div class="form-group">
+                    <label for="message">상담 내용</label>
+                    <textarea id="message" name="message" placeholder="상담받고 싶은 내용을 자유롭게 작성해주세요"></textarea>
+                </div>
+                <button type="submit" class="submit-button">상담 신청하기</button>
+                <div class="success-message" id="successMessage">
+                    상담 신청이 완료되었습니다. 빠른 시일 내에 연락드리겠습니다.
+                </div>
+            </form>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 미래숲교육. All rights reserved.</p>
+            <p>학생 중심 맞춤 교육</p>
+        </div>
+    </footer>
+
+    <script>
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            document.getElementById('successMessage').style.display = 'block';
+            this.reset();
+            setTimeout(function() {
+                document.getElementById('successMessage').style.display = 'none';
+            }, 5000);
+        });
+
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if(target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
