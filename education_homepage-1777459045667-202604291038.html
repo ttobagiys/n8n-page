@@ -1,0 +1,547 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>마루에듀 - 학생 중심 교육 플랫폼</title>
+    <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.8/dist/web/static/pretendard.css" />
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, system-ui, Roboto, sans-serif;
+            line-height: 1.6;
+            color: #333;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        header {
+            background: #fff;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 0;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #2563eb;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: #2563eb;
+        }
+
+        .hero {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 100px 0;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            font-weight: 700;
+        }
+
+        .hero p {
+            font-size: 1.25rem;
+            margin-bottom: 2rem;
+            opacity: 0.95;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: white;
+            color: #667eea;
+            padding: 1rem 2.5rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+        }
+
+        section {
+            padding: 80px 0;
+        }
+
+        section:nth-child(even) {
+            background: #f8fafc;
+        }
+
+        h2 {
+            font-size: 2.5rem;
+            text-align: center;
+            margin-bottom: 3rem;
+            color: #1e293b;
+            font-weight: 700;
+        }
+
+        .intro-content {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .intro-content p {
+            font-size: 1.125rem;
+            line-height: 1.8;
+            color: #475569;
+            margin-bottom: 1.5rem;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .feature-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.07);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 24px rgba(0,0,0,0.15);
+        }
+
+        .feature-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: #2563eb;
+        }
+
+        .feature-card p {
+            color: #64748b;
+            line-height: 1.7;
+        }
+
+        .curriculum-list {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .curriculum-item {
+            background: white;
+            padding: 2rem;
+            margin-bottom: 1.5rem;
+            border-radius: 12px;
+            border-left: 4px solid #2563eb;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+        }
+
+        .curriculum-item h3 {
+            font-size: 1.5rem;
+            margin-bottom: 0.75rem;
+            color: #1e293b;
+        }
+
+        .curriculum-item p {
+            color: #64748b;
+            line-height: 1.7;
+        }
+
+        .process-steps {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .step {
+            text-align: center;
+            padding: 2rem;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.07);
+        }
+
+        .step-number {
+            display: inline-block;
+            width: 60px;
+            height: 60px;
+            background: #2563eb;
+            color: white;
+            border-radius: 50%;
+            line-height: 60px;
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        .step h3 {
+            font-size: 1.25rem;
+            margin-bottom: 0.75rem;
+            color: #1e293b;
+        }
+
+        .step p {
+            color: #64748b;
+        }
+
+        .contact-form {
+            max-width: 600px;
+            margin: 0 auto;
+            background: white;
+            padding: 3rem;
+            border-radius: 12px;
+            box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            color: #1e293b;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 0.875rem;
+            border: 2px solid #e2e8f0;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-family: 'Pretendard', sans-serif;
+            transition: border-color 0.3s;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #2563eb;
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        .submit-button {
+            width: 100%;
+            background: #2563eb;
+            color: white;
+            padding: 1rem;
+            border: none;
+            border-radius: 8px;
+            font-size: 1.125rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .submit-button:hover {
+            background: #1d4ed8;
+        }
+
+        .success-message {
+            display: none;
+            background: #10b981;
+            color: white;
+            padding: 1rem;
+            border-radius: 8px;
+            margin-top: 1rem;
+            text-align: center;
+        }
+
+        footer {
+            background: #1e293b;
+            color: white;
+            padding: 3rem 0;
+            text-align: center;
+        }
+
+        footer p {
+            opacity: 0.8;
+        }
+
+        .mobile-menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: #333;
+        }
+
+        @media (max-width: 768px) {
+            .mobile-menu-toggle {
+                display: block;
+            }
+
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background: white;
+                flex-direction: column;
+                padding: 1rem;
+                box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .hero p {
+                font-size: 1rem;
+            }
+
+            h2 {
+                font-size: 1.875rem;
+            }
+
+            .features-grid,
+            .process-steps {
+                grid-template-columns: 1fr;
+            }
+
+            .contact-form {
+                padding: 2rem 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="container">
+            <div class="logo">마루에듀</div>
+            <button class="mobile-menu-toggle" onclick="toggleMenu()">☰</button>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#intro">소개</a></li>
+                <li><a href="#philosophy">교육 철학</a></li>
+                <li><a href="#curriculum">커리큘럼</a></li>
+                <li><a href="#management">학습 관리</a></li>
+                <li><a href="#process">수강 절차</a></li>
+                <li><a href="#contact">마루에듀</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <div class="container">
+            <h1>학생 중심의 맞춤형 교육</h1>
+            <p>마루에듀는 학생 개개인의 성장을 돕는 교육 플랫폼입니다</p>
+            <a href="#contact" class="cta-button">상담 신청하기</a>
+        </div>
+    </section>
+
+    <section id="intro">
+        <div class="container">
+            <h2>마루에듀 소개</h2>
+            <div class="intro-content">
+                <p>마루에듀는 학생 한 명 한 명의 학습 목표와 수준에 맞춘 교육을 제공합니다. 체계적인 커리큘럼과 전문 강사진의 세심한 지도로 학생들의 학업 성취를 지원합니다.</p>
+                <p>단순한 지식 전달을 넘어, 학생들이 스스로 학습하는 능력을 기를 수 있도록 돕습니다.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="philosophy">
+        <div class="container">
+            <h2>교육 철학</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <h3>개별 맞춤 학습</h3>
+                    <p>학생의 현재 수준과 목표에 맞춘 개별화된 학습 계획을 수립하고 진행합니다.</p>
+                </div>
+                <div class="feature-card">
+                    <h3>체계적 관리</h3>
+                    <p>정기적인 학습 점검과 피드백을 통해 학생의 성장 과정을 함께 관리합니다.</p>
+                </div>
+                <div class="feature-card">
+                    <h3>자기주도 학습</h3>
+                    <p>스스로 학습하는 습관과 방법을 익혀 지속적인 성장이 가능하도록 지도합니다.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="curriculum">
+        <div class="container">
+            <h2>커리큘럼</h2>
+            <div class="curriculum-list">
+                <div class="curriculum-item">
+                    <h3>기초 과정</h3>
+                    <p>학습의 기본이 되는 개념과 원리를 탄탄하게 다집니다. 학생의 현재 수준을 정확히 파악하고 필요한 부분부터 차근차근 학습합니다.</p>
+                </div>
+                <div class="curriculum-item">
+                    <h3>심화 과정</h3>
+                    <p>기초를 바탕으로 더 깊이 있는 학습을 진행합니다. 다양한 문제 유형을 접하며 응용력을 키웁니다.</p>
+                </div>
+                <div class="curriculum-item">
+                    <h3>실전 과정</h3>
+                    <p>실제 시험과 유사한 환경에서 문제 해결 능력을 키웁니다. 시간 관리와 실전 감각을 익힙니다.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="management">
+        <div class="container">
+            <h2>학습 관리</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <h3>학습 진도 관리</h3>
+                    <p>학생의 학습 진행 상황을 정기적으로 점검하고 필요한 부분을 보완합니다.</p>
+                </div>
+                <div class="feature-card">
+                    <h3>정기 평가</h3>
+                    <p>주기적인 평가를 통해 학습 성취도를 확인하고 다음 단계를 계획합니다.</p>
+                </div>
+                <div class="feature-card">
+                    <h3>학부모 상담</h3>
+                    <p>학생의 학습 상황과 진행 과정을 학부모님과 공유하며 함께 관리합니다.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="process">
+        <div class="container">
+            <h2>수강 절차</h2>
+            <div class="process-steps">
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <h3>상담 신청</h3>
+                    <p>온라인 또는 전화로 상담을 신청합니다</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <h3>수준 진단</h3>
+                    <p>학생의 현재 학습 수준을 파악합니다</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <h3>학습 계획 수립</h3>
+                    <p>개별 맞춤 학습 계획을 함께 세웁니다</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">4</div>
+                    <h3>수업 시작</h3>
+                    <p>계획에 따라 체계적인 학습을 시작합니다</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact">
+        <div class="container">
+            <h2>마루에듀</h2>
+            <form class="contact-form" onsubmit="handleSubmit(event)">
+                <div class="form-group">
+                    <label for="name">이름</label>
+                    <input type="text" id="name" name="name" required>
+                </div>
+                <div class="form-group">
+                    <label for="phone">연락처</label>
+                    <input type="tel" id="phone" name="phone" required>
+                </div>
+                <div class="form-group">
+                    <label for="grade">학년</label>
+                    <input type="text" id="grade" name="grade" required>
+                </div>
+                <div class="form-group">
+                    <label for="message">상담 내용</label>
+                    <textarea id="message" name="message" required></textarea>
+                </div>
+                <button type="submit" class="submit-button">상담 신청하기</button>
+                <div class="success-message" id="successMessage">
+                    상담 신청이 접수되었습니다. 빠른 시일 내에 연락드리겠습니다.
+                </div>
+            </form>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 마루에듀. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        function toggleMenu() {
+            const navLinks = document.getElementById('navLinks');
+            navLinks.classList.toggle('active');
+        }
+
+        function handleSubmit(event) {
+            event.preventDefault();
+            const form = event.target;
+            const successMessage = document.getElementById('successMessage');
+            
+            successMessage.style.display = 'block';
+            form.reset();
+            
+            setTimeout(() => {
+                successMessage.style.display = 'none';
+            }, 5000);
+        }
+
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                    const navLinks = document.getElementById('navLinks');
+                    navLinks.classList.remove('active');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
