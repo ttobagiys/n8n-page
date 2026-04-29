@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>기틀</title>
+  <meta name="description" content="기틀 웹사이트">
+  <link href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, sans-serif;
+      word-break: keep-all;
+      overflow-wrap: break-word;
+      color: var(--color-text);
+      background: var(--color-bg);
+      -webkit-font-smoothing: antialiased;
+      padding-bottom: 72px;
+    }
+    img { max-width: 100%; display: block; }
+    a { text-decoration: none; color: inherit; -webkit-tap-highlight-color: transparent; }
+    button, input, textarea { font-family: inherit; }
+    section { scroll-margin-top: 80px; }
+    
+
+    .g-header {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      height: 72px;
+      padding: 0 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: rgba(255,255,255,0.94);
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--color-border);
+    }
+
+    .g-logo {
+      font-weight: 900;
+      letter-spacing: -0.04em;
+      color: var(--color-primary);
+      font-size: 20px;
+    }
+
+    .g-nav {
+      display: flex;
+      gap: 28px;
+      align-items: center;
+      list-style: none;
+    }
+
+    .g-nav a {
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--color-text);
+    }
+
+    .g-nav-cta {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 42px;
+      padding: 0 20px;
+      border-radius: var(--radius-btn);
+      background: var(--color-primary);
+      color: #fff;
+      font-size: 14px;
+      font-weight: 800;
+    }
+
+    .g-hamburger {
+      display: none;
+      width: 44px;
+      height: 44px;
+      border: 0;
+      background: transparent;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 5px;
+    }
+
+    .g-hamburger span {
+      width: 22px;
+      height: 2px;
+      background: var(--color-text);
+      border-radius: 2px;
+    }
+
+    .g-mobile-nav {
+      display: none;
+      position: fixed;
+      top: 72px;
+      left: 0;
+      right: 0;
+      z-index: 999;
+      background: rgba(255,255,255,0.98);
+      border-bottom: 1px solid var(--color-border);
+      padding: 16px 24px 24px;
+    }
+
+    .g-mobile-nav.open { display: block; }
+
+    .g-mobile-nav a {
+      display: block;
+      padding: 16px 0;
+      font-weight: 800;
+      border-bottom: 1px solid var(--color-border);
+    }
+
+    .g-footer {
+      background: var(--color-primary);
+      color: rgba(255,255,255,0.88);
+      padding: 56px 24px 32px;
+    }
+
+    .g-footer-inner {
+      max-width: var(--container);
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 40px;
+    }
+
+    .g-footer-logo {
+      color: #fff;
+      font-weight: 900;
+      font-size: 22px;
+      margin-bottom: 10px;
+    }
+
+    .g-footer p {
+      font-size: 14px;
+      line-height: 1.8;
+      opacity: .78;
+    }
+
+    .g-footer-bottom {
+      max-width: var(--container);
+      margin: 32px auto 0;
+      padding-top: 20px;
+      border-top: 1px solid rgba(255,255,255,.16);
+      display: flex;
+      justify-content: space-between;
+      gap: 16px;
+      font-size: 12px;
+      opacity: .7;
+    }
+
+    .g-sticky-cta {
+      position: fixed;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      z-index: 1001;
+      display: none;
+      padding: 12px 18px;
+      background: rgba(255,255,255,0.92);
+      backdrop-filter: blur(16px);
+      border-top: 1px solid var(--color-border);
+    }
+
+    .g-sticky-cta a {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 52px;
+      border-radius: var(--radius-btn);
+      background: var(--color-accent);
+      color: #111827;
+      font-weight: 900;
+    }
+
+    @media (max-width: 768px) {
+      body { padding-bottom: 76px; }
+      .g-nav, .g-nav-cta { display: none; }
+      .g-hamburger { display: flex; }
+      .g-footer-inner { grid-template-columns: 1fr; }
+      .g-footer-bottom { flex-direction: column; }
+      .g-sticky-cta { display: block; }
+    }
+  </style>
+</head>
+<body>
+
+<header class="g-header">
+  <a href="#" class="g-logo">기틀</a>
+  <nav>
+    <ul class="g-nav">
+      
+    </ul>
+  </nav>
+  <a class="g-nav-cta" href="#s8">상담 문의하기</a>
+  <button class="g-hamburger" id="hamburger" aria-label="메뉴 열기">
+    <span></span><span></span><span></span>
+  </button>
+</header>
+
+<div class="g-mobile-nav" id="mobileNav">
+  
+  <a href="#s8" class="mobile-nav-link">상담 문의하기</a>
+</div>
+
+
+
+<footer class="g-footer">
+  <div class="g-footer-inner">
+    <div>
+      <div class="g-footer-logo">기틀</div>
+      <p>브랜드의 신뢰와 문의 흐름을 설계하는 웹사이트입니다.</p>
+    </div>
+    <div>
+      <p>본 페이지는 자동 생성된 웹사이트 초안입니다.<br>실제 연락처, 주소, 사진, 사례 자료는 최종 제작 시 교체됩니다.</p>
+    </div>
+  </div>
+  <div class="g-footer-bottom">
+    <span>© <span id="year"></span> 기틀</span>
+    <span>Generated by Gitul AI Hybrid Web Builder</span>
+  </div>
+</footer>
+
+<div class="g-sticky-cta">
+  <a href="#s8">상담 문의하기</a>
+</div>
+
+<script>
+  document.getElementById('year').textContent = new Date().getFullYear();
+
+  const hamburger = document.getElementById('hamburger');
+  const mobileNav = document.getElementById('mobileNav');
+
+  hamburger.addEventListener('click', function () {
+    mobileNav.classList.toggle('open');
+  });
+
+  document.querySelectorAll('.mobile-nav-link').forEach(function (link) {
+    link.addEventListener('click', function () {
+      mobileNav.classList.remove('open');
+    });
+  });
+
+  document.addEventListener('click', function (e) {
+    const question = e.target.closest('.faq-question, .faq-q, [data-faq-question]');
+    if (!question) return;
+
+    const item = question.closest('.faq-item, [data-faq-item]');
+    if (!item) return;
+
+    const answer = item.querySelector('.faq-answer, .faq-a, [data-faq-answer]');
+    if (!answer) return;
+
+    const isOpen = item.classList.contains('open');
+
+    document.querySelectorAll('.faq-item.open, [data-faq-item].open').forEach(function (openItem) {
+      openItem.classList.remove('open');
+      const openAnswer = openItem.querySelector('.faq-answer, .faq-a, [data-faq-answer]');
+      if (openAnswer) openAnswer.style.maxHeight = '0px';
+    });
+
+    if (!isOpen) {
+      item.classList.add('open');
+      answer.style.maxHeight = answer.scrollHeight + 'px';
+    }
+  });
+
+  document.querySelectorAll('form').forEach(function (form) {
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      const success = form.querySelector('.form-success, [data-success]');
+      if (success) success.style.display = 'block';
+      form.reset();
+    });
+  });
+</script>
+
+</body>
+</html>
