@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>기틀 웹스튜디오</title>
+  <link href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, sans-serif;
+      word-break: keep-all;
+      overflow-wrap: break-word;
+      -webkit-font-smoothing: antialiased;
+      padding-bottom: 72px;
+    }
+    section { scroll-margin-top: 72px; }
+    img { max-width: 100%; height: auto; display: block; }
+    a { -webkit-tap-highlight-color: transparent; }
+    button, a { touch-action: manipulation; }
+    :root {
+  --color-primary: #0D3B66;
+  --color-secondary: #17A2A8;
+  --color-accent: #FF8A00;
+  --color-bg: #F5F7FA;
+  --color-bg-alt: #FFFFFF;
+  --color-surface: #FFFFFF;
+  --color-text: #1A1A2E;
+  --color-text-muted: #6B7280;
+  --color-border: #E5E7EB;
+  --radius-card: 16px;
+  --radius-btn: 999px;
+  --shadow-card: 0 4px 24px rgba(0,0,0,0.06);
+  --shadow-hover: 0 12px 40px rgba(0,0,0,0.12);
+  --spacing-section: 96px;
+  --container: 1180px;
+  --font-main: 'Pretendard', -apple-system, sans-serif;
+}
+
+    /* ── 글로벌 네비게이션 ── */
+    .g-header {
+      position: sticky; top: 0; z-index: 1000;
+      background: rgba(255,255,255,0.96);
+      backdrop-filter: blur(12px);
+      border-bottom: 0.5px solid var(--color-border);
+      padding: 0 24px;
+      height: 68px;
+      display: flex; align-items: center; justify-content: space-between;
+    }
+    .g-logo {
+      font-size: 1.2rem; font-weight: 800;
+      color: var(--color-primary); letter-spacing: -0.03em;
+      text-decoration: none;
+    }
+    .g-nav { display: flex; gap: 32px; list-style: none; }
+    .g-nav a { font-size: 14px; font-weight: 500; color: var(--color-text); text-decoration: none; transition: color .2s; }
+    .g-nav a:hover { color: var(--color-primary); }
+    .g-nav-cta {
+      background: var(--color-primary); color: #fff;
+      padding: 10px 22px; border-radius: var(--radius-btn);
+      font-size: 14px; font-weight: 600; text-decoration: none;
+      transition: all .2s;
+    }
+    .g-nav-cta:hover { opacity: .85; transform: translateY(-1px); }
+    .g-hamburger {
+      display: none; background: none; border: none;
+      width: 44px; height: 44px; cursor: pointer;
+      flex-direction: column; align-items: center; justify-content: center; gap: 5px;
+    }
+    .g-hamburger span {
+      display: block; width: 22px; height: 2px;
+      background: var(--color-text); border-radius: 2px; transition: all .25s;
+    }
+    .g-mobile-nav {
+      display: none; position: fixed; top: 68px; left: 0; right: 0; bottom: 0;
+      background: rgba(255,255,255,0.98); z-index: 999;
+      flex-direction: column; align-items: center; justify-content: center; gap: 0;
+      list-style: none;
+    }
+    .g-mobile-nav.open { display: flex; }
+    .g-mobile-nav a {
+      display: flex; align-items: center; justify-content: center;
+      width: 100%; height: 60px; font-size: 18px; font-weight: 600;
+      color: var(--color-text); text-decoration: none;
+      border-bottom: 0.5px solid var(--color-border);
+    }
+
+    /* ── 글로벌 푸터 ── */
+    .g-footer {
+      background: var(--color-primary); color: rgba(255,255,255,0.9);
+      padding: 48px 24px 32px;
+    }
+    .g-footer-inner {
+      max-width: var(--container); margin: auto;
+      display: grid; grid-template-columns: 1fr 1fr; gap: 40px;
+    }
+    .g-footer-brand .logo { font-size: 1.3rem; font-weight: 800; color: #fff; margin-bottom: 8px; }
+    .g-footer-brand p { font-size: 13px; opacity: .75; line-height: 1.7; }
+    .g-footer-bottom {
+      max-width: var(--container); margin: 24px auto 0;
+      padding-top: 20px; border-top: 0.5px solid rgba(255,255,255,.15);
+      font-size: 12px; opacity: .6; display: flex; justify-content: space-between;
+    }
+
+    /* ── 모바일 sticky CTA ── */
+    .g-sticky-cta {
+      position: fixed; bottom: 0; left: 0; right: 0; z-index: 998;
+      background: var(--color-primary); padding: 12px 20px;
+      display: none;
+    }
+    .g-sticky-cta a {
+      display: block; text-align: center; color: #fff;
+      font-weight: 700; font-size: 16px; text-decoration: none;
+      padding: 14px; border-radius: var(--radius-btn);
+      background: var(--color-accent);
+    }
+
+    @media (max-width: 768px) {
+      .g-nav, .g-nav-cta { display: none; }
+      .g-hamburger { display: flex; }
+      .g-footer-inner { grid-template-columns: 1fr; }
+      .g-footer-bottom { flex-direction: column; gap: 4px; }
+      .g-sticky-cta { display: block; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- 글로벌 헤더 -->
+<header class="g-header">
+  <a href="#" class="g-logo">기틀 웹스튜디오</a>
+  <nav>
+    <ul class="g-nav">
+      <li><a href="#s2">해결 방식</a></li>
+      <li><a href="#s3">서비스</a></li>
+      <li><a href="#s4">과정</a></li>
+      <li><a href="#s5">FAQ</a></li>
+      <li><a href="#s6">신청</a></li>
+    </ul>
+  </nav>
+  <a href="#s8" class="g-nav-cta">문의하기</a>
+  <button class="g-hamburger" id="hamburger" aria-label="메뉴">
+    <span></span><span></span><span></span>
+  </button>
+</header>
+
+<!-- 모바일 메뉴 -->
+<ul class="g-mobile-nav" id="mobileNav">
+  <li><a href="#s2" class="mobile-nav-link">해결 방식</a></li>
+  <li><a href="#s3" class="mobile-nav-link">서비스</a></li>
+  <li><a href="#s4" class="mobile-nav-link">과정</a></li>
+  <li><a href="#s5" class="mobile-nav-link">FAQ</a></li>
+  <li><a href="#s6" class="mobile-nav-link">신청</a></li>
+  <li><a href="#s8" class="mobile-nav-link" style="color:var(--color-primary);font-weight:800">문의하기</a></li>
+</ul>
+
+<!-- 섹션들 -->
+<!-- Hero section not generated -->
+
+<!-- 문제 인식 section not generated -->
+
+<!-- 해결 방식 section not generated -->
+
+<!-- 서비스 section not generated -->
+
+<!-- 진행 과정 section not generated -->
+
+<!-- 신뢰 요소 section not generated -->
+
+<!-- FAQ section not generated -->
+
+<!-- CTA section not generated -->
+
+<!-- 글로벌 푸터 -->
+<footer class="g-footer">
+  <div class="g-footer-inner">
+    <div class="g-footer-brand">
+      <div class="logo">기틀 웹스튜디오</div>
+      <p>홈페이지 제작 / AI 자동화 / n8n 자동화 / 문의 DB 자동화</p>
+    </div>
+    <div>
+      <p style="font-size:13px;opacity:.6;line-height:1.8">본 페이지는 웹사이트 초안입니다.<br>실제 사진, 연락처, 주소는 제작 시 교체됩니다.</p>
+    </div>
+  </div>
+  <div class="g-footer-bottom">
+    <span>© <span id="cy"></span> 기틀 웹스튜디오</span>
+    <span>Powered by Gitul Studio</span>
+  </div>
+</footer>
+
+<!-- 모바일 Sticky CTA -->
+<div class="g-sticky-cta">
+  <a href="#s8">무료 상담 문의하기</a>
+</div>
+
+<script>
+  // 연도 자동
+  document.getElementById('cy').textContent = new Date().getFullYear();
+
+  // 햄버거 메뉴
+  const btn = document.getElementById('hamburger');
+  const nav = document.getElementById('mobileNav');
+  btn.addEventListener('click', () => nav.classList.toggle('open'));
+  document.querySelectorAll('.mobile-nav-link').forEach(a => {
+    a.addEventListener('click', () => nav.classList.remove('open'));
+  });
+
+  // FAQ 아코디언 (섹션 내에 있을 수 있음)
+  document.addEventListener('click', e => {
+    const q = e.target.closest('.faq-question, .faq-q, [data-faq]');
+    if (!q) return;
+    const item = q.closest('.faq-item, .faq-row, [data-faq-item]');
+    if (!item) return;
+    const answer = item.querySelector('.faq-answer, .faq-a, [data-faq-answer]');
+    if (!answer) return;
+    const isOpen = item.dataset.open === 'true';
+    document.querySelectorAll('[data-faq-item],[.faq-item]').forEach(i => {
+      i.dataset.open = 'false';
+      const a = i.querySelector('.faq-answer,.faq-a,[data-faq-answer]');
+      if (a) a.style.maxHeight = '0';
+    });
+    if (!isOpen) {
+      item.dataset.open = 'true';
+      answer.style.maxHeight = answer.scrollHeight + 'px';
+    }
+  });
+
+  // 폼 제출 인라인 피드백
+  document.querySelectorAll('form').forEach(form => {
+    form.addEventListener('submit', e => {
+      e.preventDefault();
+      const success = form.querySelector('.form-success,[data-success]');
+      if (success) { success.style.display = 'block'; form.reset(); }
+    });
+  });
+</script>
+</body>
+</html>
