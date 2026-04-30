@@ -1,0 +1,657 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>브릿지온 영어학원 | 레벨 진단과 관리형 영어 학습</title>
+<meta name="description" content="브릿지온 영어학원은 레벨 진단, 약점 분석, 문법·독해·내신·어휘 관리와 피드백 흐름으로 학생에게 맞는 영어 학습을 안내합니다.">
+<style>
+:root{
+  --bg:#070B16;
+  --surface:#101827;
+  --surface-2:#151F33;
+  --text:#F5F7FF;
+  --muted:#A8B3C7;
+  --primary:#7C8CFF;
+  --accent:#63E6BE;
+  --warm:#F6B65A;
+  --border:rgba(255,255,255,0.12);
+  --radius:24px;
+  --max-width:1180px;
+  --section-padding:104px;
+  --shadow:0 24px 60px rgba(0,0,0,0.35);
+  --soft-shadow:0 12px 30px rgba(0,0,0,0.22);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;
+  background:
+    radial-gradient(1200px 700px at 18% -10%, rgba(124,140,255,.14), transparent 55%),
+    radial-gradient(900px 600px at 100% 0%, rgba(99,230,190,.08), transparent 45%),
+    linear-gradient(180deg, #08101f 0%, #070b16 40%, #070b16 100%);
+  color:var(--text);
+  font-family:system-ui, Pretendard, Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif;
+  word-break:keep-all;
+  overflow-x:hidden;
+  line-height:1.65;
+}
+a{color:inherit;text-decoration:none}
+button,input,textarea,summary{font:inherit}
+img{max-width:100%;display:block}
+.container{width:min(100% - 40px, var(--max-width));margin:0 auto}
+.section{padding:var(--section-padding) 0;position:relative}
+.section + .section{border-top:1px solid rgba(255,255,255,.04)}
+.section-head{max-width:760px;margin-bottom:28px}
+.eyebrow{
+  display:inline-flex;align-items:center;gap:10px;
+  color:var(--accent);font-size:13px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;
+  margin-bottom:14px
+}
+.eyebrow::before{content:"";width:34px;height:1px;background:linear-gradient(90deg,var(--accent),transparent)}
+h1,h2,h3,p{margin:0}
+h1{
+  font-size:clamp(52px, 7vw, 88px);
+  line-height:1.05;
+  letter-spacing:-0.055em;
+  max-width:11.5ch
+}
+h2{
+  font-size:clamp(34px, 4.5vw, 56px);
+  line-height:1.08;
+  letter-spacing:-0.04em;
+  margin-bottom:14px
+}
+.subheadline{
+  font-size:18px;color:#dfe6ff;max-width:52ch;margin-top:16px
+}
+.description{color:var(--muted);max-width:64ch;margin-top:14px;font-size:16px}
+.badge{
+  display:inline-flex;align-items:center;gap:8px;
+  padding:9px 12px;border-radius:999px;
+  background:rgba(124,140,255,.12);border:1px solid rgba(124,140,255,.22);
+  color:#dbe1ff;font-size:13px;font-weight:700
+}
+.badge.dot::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--accent);box-shadow:0 0 0 4px rgba(99,230,190,.12)}
+.card,.panel,.mockup,.faq details,.contact{
+  background:linear-gradient(180deg, rgba(255,255,255,.04), rgba(255,255,255,.02));
+  border:1px solid var(--border);
+  border-radius:var(--radius);
+  box-shadow:var(--soft-shadow);
+  backdrop-filter: blur(14px);
+}
+.grid{display:grid;gap:18px}
+.bento{display:grid;gap:18px}
+.timeline{display:grid;gap:16px;position:relative}
+.faq{display:grid;gap:14px}
+.contact{padding:24px}
+.btn{
+  display:inline-flex;align-items:center;justify-content:center;gap:10px;
+  min-height:48px;padding:14px 18px;border-radius:16px;border:1px solid transparent;
+  font-weight:800;letter-spacing:-0.02em;transition:transform .18s ease, border-color .18s ease, background .18s ease, box-shadow .18s ease;
+  cursor:pointer
+}
+.btn:hover{transform:translateY(-1px)}
+.btn-primary{
+  background:linear-gradient(135deg, var(--primary), #9aa5ff);
+  color:#08101f;box-shadow:0 14px 30px rgba(124,140,255,.28)
+}
+.btn-secondary{
+  background:rgba(255,255,255,.03);
+  color:var(--text);
+  border-color:rgba(255,255,255,.14)
+}
+.btn-secondary:hover{border-color:rgba(124,140,255,.42)}
+:focus-visible{outline:3px solid rgba(99,230,190,.6);outline-offset:3px}
+header{
+  position:sticky;top:0;z-index:20;
+  background:rgba(7,11,22,.7);
+  backdrop-filter:blur(18px);
+  border-bottom:1px solid rgba(255,255,255,.06)
+}
+.header-wrap{display:flex;align-items:center;justify-content:space-between;gap:20px;padding:16px 0}
+.brand{display:flex;align-items:center;gap:12px;min-width:0}
+.brand-mark{
+  width:40px;height:40px;border-radius:14px;display:grid;place-items:center;flex:0 0 auto;
+  background:linear-gradient(135deg, rgba(124,140,255,.28), rgba(99,230,190,.18));
+  border:1px solid rgba(255,255,255,.12);
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.08)
+}
+.brand-mark span{font-size:18px;font-weight:900;letter-spacing:-0.05em}
+.brand-text strong{display:block;font-size:16px;line-height:1.1}
+.brand-text span{display:block;color:var(--muted);font-size:12px;margin-top:3px}
+.nav{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.nav a{padding:10px 12px;border-radius:12px;color:#dfe6ff;font-size:14px}
+.nav a:hover{background:rgba(255,255,255,.05)}
+.hero{
+  display:grid;grid-template-columns:1.08fr .92fr;gap:28px;align-items:center
+}
+.hero-copy .badge{margin-bottom:18px}
+.hero-copy .actions{display:flex;gap:12px;flex-wrap:wrap;margin:28px 0 18px}
+.hero-copy .actions .btn{min-width:180px}
+.hero-bullets{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin-top:18px}
+.hero-bullets li,.list-check li{list-style:none;display:flex;gap:10px;align-items:flex-start;color:#dbe2f5}
+.hero-bullets li::before,.list-check li::before{
+  content:"";width:8px;height:8px;border-radius:50%;background:var(--accent);margin-top:9px;flex:0 0 auto;box-shadow:0 0 0 4px rgba(99,230,190,.10)
+}
+.hero-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:26px}
+.mini-card{padding:18px}
+.mini-card h3{font-size:16px;margin-bottom:6px}
+.mini-card p{font-size:14px;color:var(--muted)}
+.mockup{padding:18px;background:
+  linear-gradient(180deg, rgba(255,255,255,.05), rgba(255,255,255,.02)),
+  radial-gradient(800px 300px at 50% 0%, rgba(124,140,255,.13), transparent 48%);}
+.mockup-window{border-radius:20px;border:1px solid rgba(255,255,255,.12);overflow:hidden;background:rgba(8,13,24,.72)}
+.mockup-top{display:flex;align-items:center;justify-content:space-between;padding:14px 16px;border-bottom:1px solid rgba(255,255,255,.08)}
+.dots{display:flex;gap:8px}
+.dots span{width:10px;height:10px;border-radius:50%;background:rgba(255,255,255,.18)}
+.mockup-title{font-size:13px;color:#dfe6ff;font-weight:700}
+.mockup-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:14px;padding:16px}
+.panel{padding:16px}
+.panel h3{font-size:14px;color:#e9eeff;margin-bottom:12px}
+.status-row{display:flex;justify-content:space-between;align-items:center;gap:10px;padding:12px 0;border-bottom:1px solid rgba(255,255,255,.06)}
+.status-row:last-child{border-bottom:0}
+.status-row strong{font-size:14px}
+.status-row span{font-size:13px;color:var(--muted)}
+.flow-line{position:relative;padding-left:18px}
+.flow-line::before{
+  content:"";position:absolute;left:7px;top:10px;bottom:10px;width:2px;
+  background:linear-gradient(180deg, rgba(124,140,255,.9), rgba(99,230,190,.35))
+}
+.flow-step{position:relative;padding:0 0 18px 18px}
+.flow-step::before{
+  content:"";position:absolute;left:0;top:5px;width:16px;height:16px;border-radius:50%;
+  background:var(--surface-2);border:2px solid rgba(124,140,255,.8);box-shadow:0 0 0 4px rgba(124,140,255,.08)
+}
+.flow-step:last-child{padding-bottom:0}
+.flow-step .small{font-size:13px;color:var(--muted);margin-top:4px}
+.problem-grid{grid-template-columns:repeat(4,1fr)}
+.problem-grid .card{padding:22px}
+.card .meta{color:var(--accent);font-size:12px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;margin-bottom:10px}
+.card h3{font-size:20px;line-height:1.2;margin-bottom:10px}
+.card p{color:var(--muted);font-size:15px}
+.workflow{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;align-items:stretch}
+.workflow .step{position:relative;padding:22px}
+.step .num{display:inline-flex;align-items:center;justify-content:center;width:34px;height:34px;border-radius:12px;background:rgba(124,140,255,.14);border:1px solid rgba(124,140,255,.24);font-weight:800;margin-bottom:14px}
+.step .chip{display:inline-flex;margin-top:14px;padding:8px 10px;border-radius:999px;background:rgba(99,230,190,.11);border:1px solid rgba(99,230,190,.2);font-size:12px;font-weight:700;color:#d7fff3}
+.workflow .connector{
+  align-self:center;height:2px;background:linear-gradient(90deg, rgba(124,140,255,.4), rgba(99,230,190,.35));border-radius:999px
+}
+.bento-grid{grid-template-columns:1.15fr .85fr .85fr;grid-auto-rows:minmax(160px,auto)}
+.bento-grid .card{padding:22px}
+.span-2{grid-column:span 2}
+.span-2-row{grid-row:span 2}
+.service-list{display:grid;gap:12px;margin-top:8px}
+.service-item{display:flex;justify-content:space-between;gap:14px;padding:14px 0;border-bottom:1px solid rgba(255,255,255,.06)}
+.service-item:last-child{border-bottom:0}
+.service-item strong{font-size:16px}
+.service-item span{color:var(--muted);font-size:14px;max-width:26ch}
+.dashboard-panel{padding:18px}
+.dashboard-inner{display:grid;grid-template-columns:.9fr 1.1fr;gap:16px}
+.kpi-row{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
+.kpi{padding:14px;border-radius:18px;background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.08)}
+.kpi strong{display:block;font-size:18px;margin-top:8px}
+.kpi span{font-size:13px;color:var(--muted)}
+.bar{height:10px;border-radius:999px;background:rgba(255,255,255,.06);overflow:hidden;margin-top:12px}
+.bar i{display:block;height:100%;width:72%;border-radius:inherit;background:linear-gradient(90deg,var(--primary),var(--accent))}
+.checklist{display:grid;gap:12px}
+.checklist li{padding:12px 0;border-bottom:1px solid rgba(255,255,255,.06)}
+.checklist li:last-child{border-bottom:0}
+.timeline .entry{display:grid;grid-template-columns:88px 1fr;gap:18px;padding:18px 0;border-bottom:1px solid rgba(255,255,255,.06)}
+.timeline .entry:last-child{border-bottom:0}
+.time-pill{display:inline-flex;align-items:center;justify-content:center;padding:10px 12px;border-radius:14px;background:rgba(124,140,255,.12);border:1px solid rgba(124,140,255,.18);font-weight:800;height:fit-content}
+.timeline .entry p{color:var(--muted);font-size:15px}
+.faq details{
+  padding:18px 20px;
+  background:rgba(255,255,255,.03)
+}
+.faq summary{
+  cursor:pointer;list-style:none;font-weight:800;font-size:17px;display:flex;justify-content:space-between;gap:16px;align-items:center
+}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{content:"＋";color:var(--accent);font-size:20px;line-height:1}
+.faq details[open] summary::after{content:"－"}
+.faq .answer{color:var(--muted);margin-top:12px;max-width:70ch}
+.contact-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:18px;align-items:start}
+.form-panel{padding:24px}
+.form-panel form{display:grid;gap:14px}
+.field{display:grid;gap:8px}
+label{font-size:14px;font-weight:700;color:#e5ebff}
+input,textarea{
+  width:100%;padding:14px 15px;border-radius:16px;border:1px solid rgba(255,255,255,.12);
+  background:rgba(8,13,24,.65);color:var(--text);outline:none
+}
+input:focus,textarea:focus{border-color:rgba(99,230,190,.55);box-shadow:0 0 0 4px rgba(99,230,190,.08)}
+textarea{min-height:130px;resize:vertical}
+.helper{color:var(--muted);font-size:13px}
+.next-steps{padding:24px}
+.next-steps ol{margin:0;padding-left:18px;color:#dfe6ff}
+.next-steps li{margin-bottom:12px;padding-left:4px}
+.footer{padding:26px 0 34px;color:var(--muted);border-top:1px solid rgba(255,255,255,.06)}
+.footer-inner{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;align-items:center}
+
+/* Responsive: ensure mobile 1-column and required breakpoints */
+@media (max-width: 900px) {
+  .hero,.contact-grid,.dashboard-inner{grid-template-columns:1fr}
+  .problem-grid,.workflow,.bento-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .hero-cards{grid-template-columns:1fr}
+  .mockup-grid{grid-template-columns:1fr}
+  .nav{display:none}
+}
+@media (max-width: 768px){
+  :root{--section-padding:64px;--radius:22px}
+  .container{width:min(100% - 28px, var(--max-width))}
+  .nav{display:none}
+  h1{font-size:clamp(38px, 10vw, 56px);line-height:1.05}
+  h2{font-size:clamp(30px, 7vw, 42px)}
+  .subheadline,.description{font-size:15px}
+  .hero-copy .actions{flex-direction:column}
+  .hero-copy .actions .btn{width:100%}
+  .hero-bullets{grid-template-columns:1fr}
+  .problem-grid,.workflow,.bento-grid{grid-template-columns:1fr}
+  .timeline .entry{grid-template-columns:1fr;gap:10px}
+  .form-panel,.next-steps,.panel,.card,.step{padding:18px}
+  .faq summary{font-size:16px}
+  .contact{padding:18px}
+  .btn{width:100%}
+}
+</style>
+</head>
+<body>
+<header>
+  <div class="container header-wrap">
+    <div class="brand" aria-label="브릿지온 영어학원 브랜드 락업">
+      <div class="brand-mark" aria-hidden="true"><span>브</span></div>
+      <div class="brand-text">
+        <strong>브릿지온 영어학원</strong>
+        <span>레벨 진단 · 관리형 영어 학습</span>
+      </div>
+    </div>
+    <nav class="nav" aria-label="주요 메뉴">
+      <a href="#section-4">프로그램</a>
+      <a href="#section-3">학습 흐름</a>
+      <a href="#section-5">관리 방식</a>
+      <a href="#section-8">상담 안내</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+<section id="section-1" class="section">
+  <div class="container hero">
+    <div class="hero-copy">
+      <div class="eyebrow">레벨 진단부터 관리까지, 한 번에 이어지는 영어 학습</div>
+      <h1>브릿지온 영어학원에서 우리 아이 수준에 맞는 수업과 관리형 학습을 시작하세요</h1>
+      <p class="subheadline">레벨 진단으로 현재 위치를 확인하고, 약점 분석과 피드백을 바탕으로 문법·독해·내신·어휘를 함께 관리합니다.</p>
+      <p class="description">학부모님과 학생이 함께 이해하기 쉬운 방식으로 수업 방향을 안내합니다. 처음 상담에서는 학습 습관과 현재 고민을 먼저 살펴보고, 이후에는 아이에게 맞는 속도와 범위로 수업을 이어갑니다. 오른쪽의 학습 리포트는 문법 약점, 복습 필요 항목, 독해 훈련 상태를 한눈에 보여주는 CSS 기반 목업입니다.</p>
+      <div class="actions">
+        <a class="btn btn-primary" href="#section-8">레벨 상담 신청하기</a>
+        <a class="btn btn-secondary" href="#section-4">커리큘럼 먼저 보기</a>
+      </div>
+      <ul class="hero-bullets list-check">
+        <li>브릿지온 영어학원</li>
+        <li>레벨 진단과 관리형 학습</li>
+        <li>문법·독해·내신·어휘 중심</li>
+        <li>상담 신청과 커리큘럼 확인</li>
+      </ul>
+      <div class="hero-cards">
+        <article class="card mini-card">
+          <div class="meta">상담 첫 단계</div>
+          <h3>레벨 진단</h3>
+          <p>현재 학년과 학습 상태를 기준으로 시작 위치를 살핍니다.</p>
+        </article>
+        <article class="card mini-card">
+          <div class="meta">학습 관리</div>
+          <h3>관리형 피드백</h3>
+          <p>수업 후에는 복습 포인트와 다음 학습 방향을 정리해 드립니다.</p>
+        </article>
+        <article class="card mini-card">
+          <div class="meta">기본 구성</div>
+          <h3>독해와 문법 병행</h3>
+          <p>기초 문법과 독해 훈련을 함께 연결해 수업합니다.</p>
+        </article>
+      </div>
+    </div>
+    <div class="mockup" aria-label="학습 리포트 목업">
+      <div class="mockup-window">
+        <div class="mockup-top">
+          <div class="dots" aria-hidden="true"><span></span><span></span><span></span></div>
+          <div class="mockup-title">학습 리포트 · 관리 패널</div>
+          <div class="badge dot">진행 중</div>
+        </div>
+        <div class="mockup-grid">
+          <div class="panel">
+            <h3>상태 흐름</h3>
+            <div class="status-row"><strong>레벨 진단</strong><span>상담 첫 단계</span></div>
+            <div class="status-row"><strong>문법 약점</strong><span>복습 필요</span></div>
+            <div class="status-row"><strong>독해 훈련</strong><span>진행 확인</span></div>
+            <div class="status-row"><strong>내신 대비</strong><span>다음 연결</span></div>
+          </div>
+          <div class="panel">
+            <h3>관리 흐름</h3>
+            <div class="flow-line">
+              <div class="flow-step">
+                <div class="badge">신규 문의</div>
+                <div class="small">상담 요청이 들어오면 먼저 확인합니다.</div>
+              </div>
+              <div class="flow-step">
+                <div class="badge">상담 확인 중</div>
+                <div class="small">학습 수준과 고민을 정리합니다.</div>
+              </div>
+              <div class="flow-step">
+                <div class="badge">기록 저장</div>
+                <div class="small">기록이 남아 다음 안내가 이어집니다.</div>
+              </div>
+              <div class="flow-step">
+                <div class="badge">후속 안내</div>
+                <div class="small">수업 연결과 복습 방향을 안내합니다.</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="section-2" class="section">
+  <div class="container">
+    <div class="section-head">
+      <div class="eyebrow">학부모님이 자주 묻는 고민</div>
+      <h2>학부모님, 이런 고민 있으시죠?</h2>
+      <p class="description">영어 공부는 단순히 시간을 늘리는 것보다, 어디에서 어려움을 느끼는지 먼저 확인하는 일이 중요합니다. 브릿지온 영어학원은 학생의 현재 상태를 바탕으로 문법, 독해, 내신, 학습 습관을 차근차게 살핍니다.</p>
+    </div>
+    <div class="grid problem-grid">
+      <article class="card">
+        <div class="meta">기초 문법 고민</div>
+        <h3>문법 적용이 어려워요</h3>
+        <p>규칙은 아는데 문장에 적용할 때 자꾸 헷갈립니다.</p>
+      </article>
+      <article class="card">
+        <div class="meta">독해 훈련 필요</div>
+        <h3>독해 속도가 너무 느려요</h3>
+        <p>문장을 읽는 데 시간이 오래 걸려 문제 풀이가 불안합니다.</p>
+      </article>
+      <article class="card">
+        <div class="meta">내신 대비</div>
+        <h3>내신 준비가 막막해요</h3>
+        <p>학교 시험에서 어떤 부분을 먼저 봐야 할지 정리가 필요합니다.</p>
+      </article>
+      <article class="card">
+        <div class="meta">습관 관리</div>
+        <h3>학습 습관이 흔들려요</h3>
+        <p>숙제와 복습을 꾸준히 이어가기 어려운 경우가 있습니다.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section id="section-3" class="section">
+  <div class="container">
+    <div class="section-head">
+      <div class="eyebrow">관리형 학습이 어떻게 이어지는지</div>
+      <h2>레벨 진단부터 피드백까지, 학습 흐름을 단계별로 안내합니다</h2>
+      <p class="description">한 번의 상담으로 끝나지 않고, 수업과 복습이 이어지는 구조로 관리합니다.</p>
+    </div>
+    <div class="workflow">
+      <article class="card step">
+        <div class="num">01</div>
+        <h3>레벨 진단</h3>
+        <p>현재 수준과 이해 속도를 확인합니다.</p>
+        <div class="chip">상담 시작</div>
+      </article>
+      <div class="connector" aria-hidden="true"></div>
+      <article class="card step">
+        <div class="num">02</div>
+        <h3>약점 분석</h3>
+        <p>문법, 독해, 어휘 중 필요한 부분을 구분합니다.</p>
+        <div class="chip">우선순위 정리</div>
+      </article>
+      <article class="card step">
+        <div class="num">03</div>
+        <h3>맞춤 수업</h3>
+        <p>학생에게 맞는 난이도와 속도로 수업합니다.</p>
+        <div class="chip">학습 연결</div>
+      </article>
+      <article class="card step">
+        <div class="num">04</div>
+        <h3>복습 관리</h3>
+        <p>수업 후 확인할 내용을 짧게 정리합니다.</p>
+        <div class="chip">기록 유지</div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section id="section-4" class="section">
+  <div class="container">
+    <div class="section-head">
+      <div class="eyebrow">실제로 다루는 학습 영역</div>
+      <h2>기초부터 내신까지, 필요한 영역을 차근차근 다룹니다</h2>
+      <p class="description">커리큘럼은 실제 운영 가능한 범위 안에서 구성합니다. 무리하게 많은 내용을 한 번에 넣기보다, 학생이 이해하고 따라갈 수 있는 순서로 수업을 이어갑니다.</p>
+    </div>
+    <div class="grid bento bento-grid">
+      <article class="card span-2">
+        <div class="meta">기초 다지기</div>
+        <h3>기초 문법 정리</h3>
+        <p>문장 구조와 기본 규칙을 다시 정리해 이해의 틀을 만듭니다.</p>
+        <div class="service-list">
+          <div class="service-item"><strong>문법</strong><span>문장 구조와 규칙을 차근차근 정리</span></div>
+          <div class="service-item"><strong>독해</strong><span>문장과 문단의 흐름을 읽는 힘을 연결</span></div>
+          <div class="service-item"><strong>어휘</strong><span>자주 나오는 표현을 반복 복습으로 관리</span></div>
+        </div>
+      </article>
+      <article class="card">
+        <div class="meta">읽기 연습</div>
+        <h3>독해 훈련</h3>
+        <p>문장과 문단의 흐름을 읽는 힘을 길러 문제 접근을 돕습니다.</p>
+      </article>
+      <article class="card">
+        <div class="meta">시험 준비</div>
+        <h3>내신 대비</h3>
+        <p>학교 시험 범위에 맞춰 필요한 문법과 독해를 연결합니다.</p>
+      </article>
+      <article class="card">
+        <div class="meta">단어 학습</div>
+        <h3>어휘 관리</h3>
+        <p>자주 나오는 단어와 표현을 꾸준히 익히도록 돕습니다.</p>
+      </article>
+      <article class="card span-2-row">
+        <div class="meta">습관 형성</div>
+        <h3>학습 습관</h3>
+        <p>복습과 숙제 흐름을 정리해 꾸준히 이어갈 수 있게 합니다.</p>
+        <ul class="list-check" style="margin-top:16px;padding:0;display:grid;gap:10px">
+          <li>문법과 독해를 따로 두지 않음</li>
+          <li>내신 준비를 무리 없이 연결</li>
+          <li>어휘는 반복 복습 중심</li>
+          <li>학습 습관을 함께 관리</li>
+        </ul>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section id="section-5" class="section">
+  <div class="container">
+    <div class="section-head">
+      <div class="eyebrow">수업 이후에도 이어지는 관리</div>
+      <h2>학습 리포트로 수업 내용과 복습 포인트를 정리해 드립니다</h2>
+      <p class="description">눈에 보이는 기록이 있으면 학생도 무엇을 복습해야 하는지 더 쉽게 알 수 있습니다.</p>
+    </div>
+    <div class="card dashboard-panel">
+      <div class="dashboard-inner">
+        <div class="panel">
+          <h3>학습 상태 카드</h3>
+          <div class="kpi-row">
+            <div class="kpi">
+              <div class="badge">문법 약점 기록</div>
+              <strong>핵심 규칙 점검</strong>
+              <span>헷갈린 부분을 간단히 남깁니다.</span>
+            </div>
+            <div class="kpi">
+              <div class="badge">복습 필요 표시</div>
+              <strong>수업 후 확인</strong>
+              <span>바로 볼 항목을 정리해 둡니다.</span>
+            </div>
+            <div class="kpi">
+              <div class="badge">독해 훈련 상태</div>
+              <strong>읽기 흐름 확인</strong>
+              <span>진행 상황을 상태 중심으로 보여줍니다.</span>
+            </div>
+            <div class="kpi">
+              <div class="badge">상담 피드백 정리</div>
+              <strong>다음 연결 준비</strong>
+              <span>다음 상담에서 참고할 내용을 남깁니다.</span>
+            </div>
+          </div>
+          <div class="bar" aria-hidden="true"><i></i></div>
+        </div>
+        <div class="panel">
+          <h3>운영 기준</h3>
+          <ul class="checklist">
+            <li>점수보다 상태 중심 기록</li>
+            <li>복습해야 할 항목을 명확히 표시</li>
+            <li>상담 피드백을 이어서 관리</li>
+            <li>학부모님이 확인하기 쉬운 형태</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="section-6" class="section">
+  <div class="container">
+    <div class="section-head">
+      <div class="eyebrow">상담부터 수업까지의 흐름</div>
+      <h2>상담 후에는 어떤 순서로 진행되는지 미리 안내해 드립니다</h2>
+      <p class="description">과정이 분명하면 처음 문의하실 때도 부담이 줄어듭니다.</p>
+    </div>
+    <div class="timeline">
+      <div class="entry">
+        <div class="time-pill">01</div>
+        <div class="card" style="padding:20px">
+          <h3>상담 신청</h3>
+          <p>간단한 정보와 요청 내용을 남겨 주시면 됩니다.</p>
+        </div>
+      </div>
+      <div class="entry">
+        <div class="time-pill">02</div>
+        <div class="card" style="padding:20px">
+          <h3>레벨 확인</h3>
+          <p>현재 학습 상태를 살펴보고 시작점을 정합니다.</p>
+        </div>
+      </div>
+      <div class="entry">
+        <div class="time-pill">03</div>
+        <div class="card" style="padding:20px">
+          <h3>방향 안내</h3>
+          <p>문법, 독해, 내신 중 우선순위를 안내합니다.</p>
+        </div>
+      </div>
+      <div class="entry">
+        <div class="time-pill">04</div>
+        <div class="card" style="padding:20px">
+          <h3>수업 시작</h3>
+          <p>학생에게 맞는 속도로 수업을 진행합니다.</p>
+        </div>
+      </div>
+      <div class="entry">
+        <div class="time-pill">05</div>
+        <div class="card" style="padding:20px">
+          <h3>피드백 관리</h3>
+          <p>수업 후 복습 포인트를 짧게 정리합니다.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="section-7" class="section">
+  <div class="container">
+    <div class="section-head">
+      <div class="eyebrow">자주 묻는 질문</div>
+      <h2>상담 전에 많이 궁금해하시는 내용을 정리했습니다</h2>
+      <p class="description">레벨 테스트, 기초 수준, 내신 대비, 복습 관리, 상담 준비물처럼 실제 자주 묻는 질문을 중심으로 답변을 정리했습니다.</p>
+    </div>
+    <div class="faq">
+      <details>
+        <summary>레벨 테스트는 어떻게 진행되나요?</summary>
+        <div class="answer">학생의 학년, 현재 이해도, 학습 습관을 함께 살펴보며 시작합니다. 부담 없는 상담 형태로 진행합니다.</div>
+      </details>
+      <details>
+        <summary>기초가 부족해도 시작할 수 있나요?</summary>
+        <div class="answer">네, 가능합니다. 기초 문법과 독해의 시작점을 먼저 확인한 뒤 학생에게 맞는 속도로 안내합니다.</div>
+      </details>
+      <details>
+        <summary>내신 대비는 어떤 방식으로 하나요?</summary>
+        <div class="answer">학교 시험 범위와 현재 학습 상태를 함께 보면서 필요한 문법과 독해를 연결해 준비합니다.</div>
+      </details>
+      <details>
+        <summary>피드백과 복습 관리는 어떻게 이뤄지나요?</summary>
+        <div class="answer">수업 후에 복습할 부분과 다음 수업 전 확인할 내용을 짧게 정리해 드립니다.</div>
+      </details>
+      <details>
+        <summary>상담 신청 후 준비할 것은 무엇인가요?</summary>
+        <div class="answer">이름 또는 브랜드명, 연락 가능한 방법, 요청 내용 정도만 알려 주시면 됩니다.</div>
+      </details>
+    </div>
+  </div>
+</section>
+
+<section id="section-8" class="section">
+  <div class="container">
+    <div class="section-head">
+      <div class="eyebrow">상담 신청</div>
+      <h2>브릿지온 영어학원 상담을 남겨 주시면 맞춤 안내를 드립니다</h2>
+      <p class="description">이름, 연락 가능한 방법, 요청 내용만 남겨 주셔도 됩니다.</p>
+    </div>
+    <div class="contact-grid">
+      <div class="contact form-panel">
+        <form>
+          <div class="field">
+            <label for="name">이름 또는 브랜드명</label>
+            <input id="name" type="text" required aria-required="true" />
+          </div>
+          <div class="field">
+            <label for="contact">연락 가능한 방법</label>
+            <input id="contact" type="text" required aria-required="true" />
+          </div>
+          <div class="field">
+            <label for="grade">자녀 학년</label>
+            <input id="grade" type="text" />
+          </div>
+          <div class="field">
+            <label for="concern">고민</label>
+            <textarea id="concern" aria-required="false"></textarea>
+          </div>
+          <div class="field">
+            <label for="request">요청 내용</label>
+            <textarea id="request" required aria-required="true"></textarea>
+          </div>
+          <button class="btn btn-primary" type="submit">상담 내용 보내기</button>
+          <p class="helper">남겨주신 내용을 바탕으로 필요한 정보를 먼저 확인합니다. 상담 전 현재 상황과 요청 범위를 정리합니다. 확인 후 적절한 진행 방향을 안내합니다.</p>
+        </form>
+      </div>
+      <div class="card next-steps">
+        <div class="badge dot" style="margin-bottom:14px">문의 후 다음 절차</div>
+        <h3 style="font-size:28px;line-height:1.1;margin-bottom:14px">남겨주신 내용을 바탕으로 필요한 정보를 먼저 확인합니다.</h3>
+        <ol>
+          <li>접수 확인: 남겨 주신 내용을 먼저 확인합니다.</li>
+          <li>상담 가능 시간 안내: 연락 가능한 시간을 맞춰 안내합니다.</li>
+          <li>맞춤 상담 진행: 학생 상황에 맞는 방향을 함께 살펴봅니다.</li>
+        </ol>
+      </div>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer class="footer">
+  <div class="container footer-inner">
+    <div>브릿지온 영어학원</div>
+    <div>레벨 진단 · 문법 · 독해 · 내신 · 어휘 · 상담 안내</div>
+  </div>
+</footer>
+</body>
+</html>
