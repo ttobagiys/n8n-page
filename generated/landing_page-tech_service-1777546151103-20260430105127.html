@@ -1,0 +1,1149 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>기틀 웹스튜디오</title>
+<meta name="description" content="단순한 홈페이지를 넘어, AI와 n8n 기반의 스마트한 자동화 시스템으로 고객과의 연결을 강화하고 비즈니스 성장을 가속화합니다.">
+<style>
+:root {
+  --color-bg: #07111F;
+  --color-bg-soft: #0B1627;
+  --color-surface: #0F1B2D;
+  --color-surface-2: #111827;
+  --color-card: rgba(255,255,255,0.075);
+  --color-card-strong: rgba(255,255,255,0.11);
+  --color-text: #F8FAFC;
+  --color-text-soft: #D8E0EE;
+  --color-muted: #A8B3C7;
+  --color-primary: #3B82F6;
+  --color-primary-dark: #1D4ED8;
+  --color-accent: #F59E0B;
+  --color-accent-soft: rgba(245,158,11,0.16);
+  --color-border: rgba(255,255,255,0.13);
+  --color-border-soft: rgba(255,255,255,0.08);
+  --color-shadow: rgba(0,0,0,0.36);
+  --color-glow: rgba(59,130,246,0.28);
+
+  --gradient-hero: radial-gradient(circle at 18% 18%, rgba(59,130,246,.28), transparent 32%), radial-gradient(circle at 85% 20%, rgba(245,158,11,.18), transparent 30%), linear-gradient(135deg, #07111F 0%, #0F1B2D 100%);
+  --gradient-card: linear-gradient(145deg, rgba(255,255,255,.12), rgba(255,255,255,.055));
+  --gradient-button: linear-gradient(135deg, #3B82F6, #2563EB);
+  --gradient-accent: linear-gradient(135deg, #F59E0B, #F97316);
+
+  --font-family: Inter, Pretendard, system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-size-h1: clamp(42px, 6vw, 78px);
+  --font-size-h2: clamp(30px, 4vw, 50px);
+  --font-size-h3: 22px;
+  --font-size-body: 16px;
+  --font-size-small: 13px;
+  --font-weight-title: 900;
+  --letter-spacing-title: -0.06em;
+
+  --max-width: 1120px;
+  --section-padding: 88px;
+  --section-padding-mobile: 56px;
+  --container-padding: 20px;
+  --gap: 24px;
+  --gap-large: 52px;
+  --hero-min-height: calc(100vh - 72px);
+
+  --radius-sm: 14px;
+  --radius-md: 20px;
+  --radius-lg: 28px;
+  --radius-xl: 36px;
+  --radius-pill: 999px;
+
+  --shadow-card: 0 24px 80px rgba(0,0,0,.26);
+  --shadow-hero: 0 36px 130px rgba(0,0,0,.42);
+  --shadow-button: 0 18px 42px rgba(59,130,246,.32);
+}
+
+* { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  margin: 0;
+  font-family: var(--font-family);
+  background: var(--color-bg);
+  color: var(--color-text);
+  word-break: keep-all;
+  overflow-wrap: break-word;
+}
+
+a { color: inherit; text-decoration: none; }
+img { max-width: 100%; }
+
+.container {
+  width: min(var(--max-width), calc(100% - 40px));
+  margin: 0 auto;
+}
+
+.container.narrow {
+  width: min(880px, calc(100% - 40px));
+}
+
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  background: color-mix(in srgb, var(--color-bg) 86%, transparent);
+  backdrop-filter: blur(18px);
+  border-bottom: 1px solid var(--color-border-soft);
+}
+
+.nav {
+  height: 74px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.logo {
+  font-size: 19px;
+  font-weight: 900;
+  letter-spacing: -0.04em;
+}
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 22px;
+}
+
+.nav-links a {
+  font-size: 14px;
+  color: var(--color-muted);
+  transition: 0.22s ease;
+}
+
+.nav-links a:hover { color: var(--color-text); }
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 52px;
+  padding: 0 22px;
+  border-radius: var(--radius-pill);
+  border: 1px solid transparent;
+  font-weight: 850;
+  font-size: 15px;
+  transition: 0.22s ease;
+  cursor: pointer;
+}
+
+.btn.primary {
+  background: var(--gradient-button);
+  color: #fff;
+  box-shadow: var(--shadow-button);
+}
+
+.btn.ghost {
+  background: var(--color-card);
+  border-color: var(--color-border);
+  color: var(--color-text);
+}
+
+.btn:hover { transform: translateY(-2px); }
+
+.hero {
+  position: relative;
+  padding: 104px 0 92px;
+  background: var(--gradient-hero);
+  overflow: hidden;
+}
+
+.hero-bg-orb {
+  position: absolute;
+  width: 360px;
+  height: 360px;
+  border-radius: 50%;
+  background: var(--color-glow);
+  filter: blur(90px);
+  opacity: .7;
+  pointer-events: none;
+}
+
+.orb-one { left: -80px; top: 12%; }
+.orb-two { right: -120px; bottom: 8%; background: var(--color-accent-soft); }
+
+.hero-grid {
+  position: relative;
+  display: grid;
+  grid-template-columns: 1.05fr .95fr;
+  gap: var(--gap-large);
+  align-items: center;
+}
+
+.hero-copy {
+  position: relative;
+  z-index: 1;
+}
+
+.eyebrow {
+  margin: 0 0 14px;
+  color: var(--color-accent);
+  font-size: 13px;
+  letter-spacing: .13em;
+  text-transform: uppercase;
+  font-weight: 900;
+}
+
+h1 {
+  margin: 0 0 22px;
+  font-size: var(--font-size-h1);
+  line-height: 1.02;
+  letter-spacing: var(--letter-spacing-title);
+  font-weight: var(--font-weight-title);
+}
+
+h2 {
+  margin: 0 0 14px;
+  font-size: var(--font-size-h2);
+  line-height: 1.12;
+  letter-spacing: -0.05em;
+  font-weight: var(--font-weight-title);
+}
+
+h3 {
+  margin: 0 0 10px;
+  font-size: var(--font-size-h3);
+  letter-spacing: -0.035em;
+}
+
+p {
+  color: var(--color-muted);
+  line-height: 1.76;
+}
+
+.hero-subtitle {
+  max-width: 620px;
+  font-size: 18px;
+  color: var(--color-text-soft);
+}
+
+.hero-actions {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-top: 30px;
+}
+
+.hero-actions.center { justify-content: center; }
+
+.hero-mini-grid,
+.trust-chips,
+.hero-points {
+  margin-top: 32px;
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.hero-mini-grid span,
+.trust-chips span,
+.contact-notes span,
+.mini-proof span {
+  display: inline-flex;
+  padding: 10px 14px;
+  border-radius: var(--radius-pill);
+  background: var(--color-card);
+  border: 1px solid var(--color-border);
+  color: var(--color-text-soft);
+  font-size: 14px;
+}
+
+.hero-centered { text-align: center; }
+
+.editorial-card {
+  display: grid;
+  grid-template-columns: 1fr .9fr;
+  gap: var(--gap-large);
+  align-items: center;
+  padding: 34px;
+  border-radius: var(--radius-xl);
+  background: var(--color-card);
+  border: 1px solid var(--color-border);
+  box-shadow: var(--shadow-hero);
+}
+
+.image-frame {
+  position: relative;
+  margin: 0;
+  border-radius: var(--radius-xl);
+  overflow: hidden;
+  border: 1px solid var(--color-border);
+  background: var(--color-surface);
+  box-shadow: var(--shadow-hero);
+}
+
+.image-frame img {
+  display: block;
+  width: 100%;
+  height: 440px;
+  object-fit: cover;
+}
+
+.image-credit {
+  position: absolute;
+  left: 14px;
+  bottom: 12px;
+  margin: 0;
+  padding: 7px 10px;
+  border-radius: var(--radius-pill);
+  background: color-mix(in srgb, var(--color-bg) 76%, transparent);
+  color: var(--color-text-soft);
+  font-size: 11px;
+  backdrop-filter: blur(10px);
+}
+
+.image-credit a {
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.visual-mockup,
+.dashboard-showcase {
+  border-radius: var(--radius-xl);
+  overflow: hidden;
+  border: 1px solid var(--color-border);
+  background: var(--gradient-card);
+  box-shadow: var(--shadow-hero);
+}
+
+.mockup-window,
+.dashboard-showcase {
+  min-height: 430px;
+}
+
+.mockup-bar,
+.dashboard-top {
+  height: 46px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 0 18px;
+  border-bottom: 1px solid var(--color-border-soft);
+}
+
+.mockup-bar span,
+.dashboard-top span {
+  width: 11px;
+  height: 11px;
+  border-radius: 50%;
+  background: var(--color-accent);
+}
+
+.mockup-content,
+.dashboard-body {
+  padding: 26px;
+}
+
+.mockup-line {
+  height: 16px;
+  border-radius: var(--radius-pill);
+  background: var(--color-card-strong);
+  margin-bottom: 12px;
+}
+
+.mockup-line.long { width: 86%; }
+.mockup-line.medium { width: 62%; }
+
+.mockup-grid,
+.dashboard-body {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+.mockup-grid b,
+.dash-card {
+  min-height: 120px;
+  border-radius: var(--radius-lg);
+  background: var(--color-card);
+  border: 1px solid var(--color-border);
+}
+
+.dash-card { padding: 22px; }
+.dash-card.wide { grid-column: span 2; }
+
+.dash-card small {
+  display: block;
+  color: var(--color-accent);
+  font-size: 12px;
+  letter-spacing: .12em;
+  margin-bottom: 10px;
+}
+
+.dash-card strong {
+  display: block;
+  font-size: 20px;
+  letter-spacing: -0.035em;
+}
+
+.dash-card.accent {
+  background: linear-gradient(135deg, color-mix(in srgb, var(--color-primary) 26%, transparent), var(--color-card));
+}
+
+.flow-line {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 8px;
+  margin-top: 20px;
+}
+
+.flow-line b {
+  height: 10px;
+  border-radius: var(--radius-pill);
+  background: var(--gradient-button);
+}
+
+.section {
+  position: relative;
+  padding: var(--section-padding) 0;
+  overflow: hidden;
+}
+
+.section-bg-label {
+  position: absolute;
+  right: 4vw;
+  top: 26px;
+  font-size: clamp(60px, 11vw, 150px);
+  font-weight: 950;
+  letter-spacing: -0.09em;
+  color: color-mix(in srgb, var(--color-text) 5%, transparent);
+  pointer-events: none;
+}
+
+.section-head {
+  max-width: 780px;
+  margin-bottom: 36px;
+}
+
+.section-head.center {
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+}
+
+.section-head p { font-size: 17px; }
+
+.services-section {
+  background:
+    linear-gradient(180deg, var(--color-bg) 0%, var(--color-bg-soft) 100%);
+}
+
+.process-section {
+  background:
+    radial-gradient(circle at 12% 20%, var(--color-accent-soft), transparent 28%),
+    linear-gradient(180deg, var(--color-bg-soft), var(--color-surface));
+}
+
+.trust-section {
+  background:
+    linear-gradient(135deg, var(--color-surface) 0%, var(--color-bg) 100%);
+}
+
+.faq-section {
+  background:
+    radial-gradient(circle at 86% 20%, var(--color-glow), transparent 24%),
+    linear-gradient(180deg, var(--color-bg), var(--color-bg-soft));
+}
+
+.contact-section {
+  background:
+    linear-gradient(135deg, var(--color-bg-soft), var(--color-bg));
+}
+
+.bento-grid {
+  display: grid;
+  grid-template-columns: 1.15fr .85fr;
+  gap: var(--gap);
+}
+
+.card {
+  padding: 28px;
+  border-radius: var(--radius-lg);
+  background: var(--gradient-card);
+  border: 1px solid var(--color-border);
+  box-shadow: var(--shadow-card);
+  transition: 0.25s ease;
+}
+
+.card:hover { transform: translateY(-4px); }
+.bento-card.large { min-height: 260px; }
+
+.card-index,
+.card-icon,
+.step-number {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 38px;
+  height: 38px;
+  padding: 0 10px;
+  margin-bottom: 18px;
+  border-radius: var(--radius-pill);
+  background: var(--color-accent-soft);
+  color: var(--color-accent);
+  font-weight: 900;
+}
+
+.image-card {
+  padding: 0;
+  overflow: hidden;
+}
+
+.image-card .image-frame {
+  height: 100%;
+  border: 0;
+  border-radius: 0;
+  box-shadow: none;
+}
+
+.three-grid,
+.numbered-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--gap);
+}
+
+.numbered-grid {
+  grid-template-columns: repeat(4, 1fr);
+}
+
+.split-grid,
+.trust-layout {
+  display: grid;
+  grid-template-columns: .9fr 1.1fr;
+  gap: var(--gap-large);
+  align-items: start;
+}
+
+.stacked-cards {
+  display: grid;
+  gap: 16px;
+}
+
+.stack-card {
+  display: grid;
+  grid-template-columns: 56px 1fr;
+  gap: 18px;
+  align-items: start;
+}
+
+.stack-card span {
+  color: var(--color-accent);
+  font-weight: 900;
+}
+
+.process-layout {
+  display: grid;
+  grid-template-columns: .82fr 1.18fr;
+  gap: var(--gap-large);
+  align-items: start;
+}
+
+.process-sticky {
+  position: sticky;
+  top: 110px;
+}
+
+.process-visual-panel {
+  margin-top: 26px;
+  padding: 24px;
+  border-radius: var(--radius-xl);
+  background: var(--gradient-card);
+  border: 1px solid var(--color-border);
+  box-shadow: var(--shadow-card);
+}
+
+.process-node {
+  padding: 14px 16px;
+  border-radius: var(--radius-md);
+  background: var(--color-card);
+  border: 1px solid var(--color-border);
+  font-weight: 850;
+}
+
+.process-node.active {
+  background: var(--gradient-button);
+  color: #fff;
+}
+
+.process-connector {
+  width: 2px;
+  height: 28px;
+  margin: 8px 0 8px 18px;
+  background: var(--color-border);
+}
+
+.timeline.vertical {
+  display: grid;
+  gap: 16px;
+}
+
+.step-card {
+  position: relative;
+  padding: 28px;
+  border-radius: var(--radius-lg);
+  background: var(--color-card);
+  border: 1px solid var(--color-border);
+}
+
+.material-grid {
+  display: grid;
+  gap: 16px;
+}
+
+.mini-proof,
+.contact-notes {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 24px;
+}
+
+.gallery-grid {
+  display: grid;
+  grid-template-columns: 1.1fr .9fr;
+  gap: var(--gap);
+}
+
+.gallery-side {
+  display: grid;
+  gap: 16px;
+}
+
+.faq-layout {
+  display: grid;
+  grid-template-columns: .78fr 1.22fr;
+  gap: var(--gap-large);
+  align-items: start;
+}
+
+.faq-list {
+  display: grid;
+  gap: 12px;
+}
+
+.faq-item {
+  padding: 20px 22px;
+  border-radius: var(--radius-md);
+  background: var(--color-card);
+  border: 1px solid var(--color-border);
+}
+
+.faq-item summary {
+  cursor: pointer;
+  font-weight: 850;
+  color: var(--color-text);
+}
+
+.faq-item p { margin-bottom: 0; }
+
+.contact-shell {
+  display: grid;
+  grid-template-columns: .9fr 1.1fr;
+  gap: var(--gap-large);
+  align-items: start;
+  padding: 38px;
+  border-radius: var(--radius-xl);
+  background:
+    radial-gradient(circle at 18% 18%, var(--color-glow), transparent 28%),
+    var(--gradient-card);
+  border: 1px solid var(--color-border);
+  box-shadow: var(--shadow-hero);
+}
+
+.contact-form {
+  padding: 30px;
+  border-radius: var(--radius-xl);
+  background: color-mix(in srgb, var(--color-bg) 42%, transparent);
+  border: 1px solid var(--color-border);
+  box-shadow: var(--shadow-card);
+}
+
+.contact-form label {
+  display: grid;
+  gap: 8px;
+  margin-bottom: 14px;
+  color: var(--color-text-soft);
+  font-size: 14px;
+  font-weight: 700;
+}
+
+input,
+textarea {
+  width: 100%;
+  padding: 15px 16px;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--color-border);
+  background: color-mix(in srgb, var(--color-surface) 76%, transparent);
+  color: var(--color-text);
+  font-family: inherit;
+  font-size: 15px;
+  outline: none;
+}
+
+textarea {
+  min-height: 120px;
+  resize: vertical;
+}
+
+input:focus,
+textarea:focus {
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 4px color-mix(in srgb, var(--color-primary) 18%, transparent);
+}
+
+button { width: 100%; }
+
+.success-message {
+  margin: 14px 0 0;
+  padding: 14px 16px;
+  border-radius: var(--radius-sm);
+  background: var(--color-accent-soft);
+  color: var(--color-text);
+  font-weight: 700;
+}
+
+.cta-panel {
+  display: grid;
+  grid-template-columns: .85fr 1.15fr;
+  gap: var(--gap-large);
+  padding: 40px;
+  border-radius: var(--radius-xl);
+  background:
+    radial-gradient(circle at 10% 10%, var(--color-glow), transparent 30%),
+    var(--gradient-card);
+  border: 1px solid var(--color-border);
+  box-shadow: var(--shadow-hero);
+}
+
+.site-footer {
+  padding: 36px 0;
+  color: var(--color-muted);
+  border-top: 1px solid var(--color-border-soft);
+  background: var(--color-bg);
+}
+
+.footer-inner {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+  font-size: 14px;
+}
+
+@media (max-width: 920px) {
+  .hero-grid,
+  .editorial-card,
+  .bento-grid,
+  .split-grid,
+  .trust-layout,
+  .gallery-grid,
+  .faq-layout,
+  .contact-shell,
+  .cta-panel,
+  .process-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .process-sticky {
+    position: static;
+  }
+
+  .timeline,
+  .numbered-grid,
+  .three-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .nav-links {
+    display: none;
+  }
+}
+
+@media (max-width: 640px) {
+  .container,
+  .container.narrow {
+    width: min(100% - 28px, var(--max-width));
+  }
+
+  .hero {
+    padding: 64px 0 58px;
+  }
+
+  .section {
+    padding: var(--section-padding-mobile) 0;
+  }
+
+  h1 {
+    font-size: 42px;
+  }
+
+  h2 {
+    font-size: 30px;
+  }
+
+  .hero-actions {
+    flex-direction: column;
+  }
+
+  .btn {
+    width: 100%;
+  }
+
+  .timeline,
+  .numbered-grid,
+  .three-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .image-frame img {
+    height: 300px;
+  }
+
+  .dashboard-body,
+  .mockup-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .dash-card.wide {
+    grid-column: span 1;
+  }
+
+  .contact-shell,
+  .cta-panel,
+  .editorial-card {
+    padding: 22px;
+  }
+
+  .footer-inner {
+    flex-direction: column;
+  }
+}
+</style>
+</head>
+<body>
+<header class="site-header">
+  <div class="container nav">
+    <a class="logo" href="#hero">기틀 웹스튜디오</a>
+    <nav class="nav-links" aria-label="주요 메뉴">
+      <a href="#services">서비스</a>
+      <a href="#process">과정</a>
+      <a href="#trust">신뢰</a>
+      <a href="#faq">FAQ</a>
+      <a href="#contact">문의</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  
+    <section id="hero" class="hero hero-dashboard">
+      <div class="hero-bg-orb orb-one"></div>
+      <div class="hero-bg-orb orb-two"></div>
+
+      <div class="container hero-grid">
+        <div class="hero-copy">
+          <p class="eyebrow">기틀 웹스튜디오</p>
+          <h1>문의와 전환을 만드는 AI 자동화 웹사이트, 기틀 웹스튜디오</h1>
+          <p class="hero-subtitle">단순한 홈페이지를 넘어, AI와 n8n 기반의 스마트한 자동화 시스템으로 고객과의 연결을 강화하고 비즈니스 성장을 가속화합니다.</p>
+          <div class="hero-actions">
+            <a class="btn primary" href="#contact">내 홈페이지 진단받기</a>
+            <a class="btn ghost" href="#process">제작 방식 보기</a>
+          </div>
+
+          <div class="hero-mini-grid">
+            <span>전환 구조</span><span>업무 자동화</span><span>디지털 상담 흐름</span>
+          </div>
+        </div>
+
+        <div class="dashboard-showcase">
+          <div class="dashboard-top">
+            <span></span><span></span><span></span>
+          </div>
+          <div class="dashboard-body">
+            <div class="dash-card wide">
+              <small>AI / IT / 자동화 / 웹제작</small>
+              <strong>문의 → 분류 → 저장 → 알림</strong>
+              <div class="flow-line">
+                <b></b><b></b><b></b><b></b>
+              </div>
+            </div>
+            <div class="dash-card">
+              <small>PRIMARY ACTION</small>
+              <strong>내 홈페이지 진단받기</strong>
+            </div>
+            <div class="dash-card">
+              <small>VISITOR PATH</small>
+              <strong>분석 · 설계</strong>
+            </div>
+            <div class="dash-card wide accent">
+              <small>BRAND FLOW</small>
+              <strong>기틀 웹스튜디오에 맞춘 화면 흐름</strong>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  
+  
+    <section id="services" class="section services-section bento-section">
+      <div class="section-bg-label">SERVICES</div>
+      <div class="container">
+        
+    <div class="section-head ">
+      <p class="eyebrow">OUR SERVICES</p>
+      <h2>고객 전환을 극대화하는 기틀 웹스튜디오의 7가지 서비스</h2>
+      <p>홈페이지를 넘어, 문의 유입부터 고객 관리까지 효율적인 비즈니스 시스템을 완성합니다.</p>
+    </div>
+  
+        <div class="bento-grid">
+          
+            <article class="card bento-card large">
+              <span class="card-index">01</span>
+              <h3>전환 중심 홈페이지 기획</h3>
+              <p>고객의 행동 패턴을 분석하여 문의와 구매로 이어지는 최적의 사용자 경험을 설계합니다.</p>
+            </article>
+          
+            <article class="card bento-card ">
+              <span class="card-index">02</span>
+              <h3>모바일 최적화 웹사이트 제작</h3>
+              <p>모든 기기에서 완벽하게 작동하는 반응형 웹사이트로 접근성과 편의성을 높입니다.</p>
+            </article>
+          
+            <article class="card bento-card ">
+              <span class="card-index">03</span>
+              <h3>AI 상담 챗봇 연결</h3>
+              <p>24시간 고객 응대가 가능한 AI 챗봇으로 문의 응대 효율을 극대화하고 만족도를 높입니다.</p>
+            </article>
+          
+            <article class="card bento-card ">
+              <span class="card-index">04</span>
+              <h3>n8n 기반 문의 자동화</h3>
+              <p>n8n 자동화 플랫폼을 활용하여 문의 접수부터 담당자 배정까지 효율적인 프로세스를 구축합니다.</p>
+            </article>
+          
+            <article class="card bento-card ">
+              <span class="card-index">05</span>
+              <h3>상담 내용 DB 저장</h3>
+              <p>모든 상담 내용을 체계적으로 데이터베이스에 저장하여 고객 관리의 기반을 마련합니다.</p>
+            </article>
+          
+            <article class="card bento-card ">
+              <span class="card-index">06</span>
+              <h3>고객 문의 알림 자동화</h3>
+              <p>새로운 문의 발생 시 담당자에게 즉시 알림이 전송되어 신속한 대응이 가능합니다.</p>
+            </article>
+          
+            <article class="card bento-card ">
+              <span class="card-index">07</span>
+              <h3>블로그/마케팅 콘텐츠 자동화 확장</h3>
+              <p>블로그 포스팅, 뉴스레터 발송 등 마케팅 활동을 자동화하여 지속적인 고객 유입을 지원합니다.</p>
+            </article>
+          
+          <article class="card image-card">
+            
+    <figure class="image-frame service-image">
+      <img src="https://images.unsplash.com/photo-1678845530864-18a666ca9762?crop=entropy&amp;cs=tinysrgb&amp;fit=max&amp;fm=jpg&amp;ixid=M3w5Mzg2NDB8MHwxfHNlYXJjaHwyfHxhYnN0cmFjdCUyMG5ldHdvcmslMjBjb25uZWN0aW9ucyUyQyUyMGRhdGElMjBmbG93JTJDJTIwc21hcnQlMjBhdXRvbWF0aW9ufGVufDF8MHx8fDE3Nzc1NDYyODZ8MA&amp;ixlib=rb-4.1.0&amp;q=80&amp;w=1080" alt="a large group of colorful balls floating in the air" loading="lazy">
+      
+    <p class="image-credit">
+      Photo by <a href="https://unsplash.com/@boliviainteligente" target="_blank" rel="noopener">BoliviaInteligente</a> on Unsplash
+    </p>
+  
+    </figure>
+  
+          </article>
+        </div>
+      </div>
+    </section>
+  
+  
+    <section id="process" class="section process-section">
+      <div class="container">
+        <div class="process-layout">
+          <div class="process-sticky">
+            
+    <div class="section-head ">
+      <p class="eyebrow">PROCESS</p>
+      <h2>고객 문의와 전환을 만드는 기틀 웹스튜디오의 제작 과정</h2>
+      <p>단순 제작을 넘어, 비즈니스 성장에 최적화된 시스템을 체계적인 단계로 구축해드립니다.</p>
+    </div>
+  
+            <div class="process-visual-panel">
+              
+                <div class="process-node active">분석</div>
+                <div class="process-connector"></div>
+              
+                <div class="process-node ">설계</div>
+                <div class="process-connector"></div>
+              
+                <div class="process-node ">구축</div>
+                <div class="process-connector"></div>
+              
+                <div class="process-node ">운영</div>
+                
+              
+            </div>
+          </div>
+          <div class="timeline vertical">
+            
+              <article class="step-card">
+                <span class="step-number">01</span>
+                <h3>1. 진단 및 컨설팅</h3>
+                <p>현재 비즈니스 목표와 고객 고민을 분석하여 최적의 웹 전략과 기능 요소를 함께 정의합니다.</p>
+              </article>
+            
+              <article class="step-card">
+                <span class="step-number">02</span>
+                <h3>2. 전환 중심 기획</h3>
+                <p>데이터 기반의 전환율 높은 홈페이지 구조와 고객을 설득하는 카피라이팅을 설계합니다.</p>
+              </article>
+            
+              <article class="step-card">
+                <span class="step-number">03</span>
+                <h3>3. AI 자동화 시스템 구축</h3>
+                <p>AI 챗봇, n8n 자동화, DB 저장 등 문의 관리 시스템을 통합 구현하여 효율을 극대화합니다.</p>
+              </article>
+            
+              <article class="step-card">
+                <span class="step-number">04</span>
+                <h3>4. 지속적인 성장 지원</h3>
+                <p>완성된 웹사이트 운영 가이드와 블로그, 마케팅 콘텐츠 자동화 확장을 지원합니다.</p>
+              </article>
+            
+          </div>
+        </div>
+      </div>
+    </section>
+  
+  
+    <section id="trust" class="section trust-section">
+      <div class="container trust-layout">
+        <div class="trust-copy">
+          
+    <div class="section-head ">
+      <p class="eyebrow">TRUST &amp; INNOVATION</p>
+      <h2>기틀 웹스튜디오가 드리는 비즈니스 성장의 신뢰</h2>
+      <p>단순히 만들고 끝나는 것이 아니라, 고객의 비즈니스 성장을 위한 견고한 시스템과 전문성을 제공합니다.</p>
+    </div>
+  
+          <div class="mini-proof">
+            <span>전환 구조</span><span>업무 자동화</span><span>디지털 상담 흐름</span>
+          </div>
+        </div>
+        <div class="material-grid">
+          
+            <article class="card material-card">
+              <span class="card-index">01</span>
+              <h3>체계적인 기획력</h3>
+              <p>고객 비즈니스에 최적화된 맞춤형 전략으로, 성공적인 웹사이트를 위한 로드맵을 제시합니다.</p>
+            </article>
+          
+            <article class="card material-card">
+              <span class="card-index">02</span>
+              <h3>자동화 기술 전문성</h3>
+              <p>AI와 n8n 기반의 최신 자동화 기술로 효율적인 고객 관리 및 응대 시스템을 구현합니다.</p>
+            </article>
+          
+            <article class="card material-card">
+              <span class="card-index">03</span>
+              <h3>지속 가능한 파트너십</h3>
+              <p>웹사이트 제작을 넘어, 장기적인 비즈니스 성장을 위한 기술 지원과 컨설팅을 제공합니다.</p>
+            </article>
+          
+        </div>
+      </div>
+    </section>
+  
+  
+    <section id="faq" class="section faq-section">
+      <div class="container faq-layout">
+        <div class="faq-intro">
+          
+    <div class="section-head ">
+      <p class="eyebrow">FAQ</p>
+      <h2>자주 묻는 질문</h2>
+      <p>기틀 웹스튜디오의 서비스에 대해 궁금한 점들을 정리했습니다. 더 자세한 문의는 상담을 통해 도와드립니다.</p>
+    </div>
+  
+        </div>
+        <div class="faq-list">
+          
+            <details class="faq-item">
+              <summary>홈페이지 제작 비용은 어떻게 되나요?</summary>
+              <p>서비스 범위와 기능 요구사항에 따라 맞춤 견적을 제공합니다. 상담을 통해 필요한 기능과 목표를 논의한 후 정확한 견적을 안내해 드립니다.</p>
+            </details>
+          
+            <details class="faq-item">
+              <summary>제작 기간은 얼마나 걸리나요?</summary>
+              <p>평균적으로 4주에서 8주 정도 소요됩니다. 기획 단계부터 완성까지 고객과의 긴밀한 소통을 통해 효율적으로 진행됩니다.</p>
+            </details>
+          
+            <details class="faq-item">
+              <summary>AI 챗봇과 n8n 자동화는 모든 웹사이트에 적용 가능한가요?</summary>
+              <p>네, 대부분의 웹사이트에 적용 가능하며, 고객님의 비즈니스 특성에 맞춰 최적의 솔루션을 제안해 드립니다.</p>
+            </details>
+          
+            <details class="faq-item">
+              <summary>제작 후 유지보수는 어떻게 되나요?</summary>
+              <p>기본적인 시스템 오류 지원과 업데이트를 제공하며, 필요에 따라 유료 유지보수 플랜을 선택하실 수 있습니다.</p>
+            </details>
+          
+            <details class="faq-item">
+              <summary>상담 문의 후 어떤 절차로 진행되나요?</summary>
+              <p>문의를 남겨주시면 담당자가 빠른 시일 내에 연락드려 현재 상황 진단 및 상세 상담을 진행합니다. 이후 맞춤 제안서와 견적을 제공해 드립니다.</p>
+            </details>
+          
+            <details class="faq-item">
+              <summary>기존 홈페이지를 리뉴얼할 수도 있나요?</summary>
+              <p>네, 기존 홈페이지의 문제점을 분석하고, 전환율 향상 및 자동화 시스템 도입을 위한 리뉴얼 서비스를 제공합니다.</p>
+            </details>
+          
+        </div>
+      </div>
+    </section>
+  
+  
+    <section id="contact" class="section contact-section">
+      <div class="container contact-shell">
+        <div class="contact-copy">
+          <p class="eyebrow">지금, 변화를 시작하세요</p>
+          <h2>당신의 비즈니스를 한 단계 업그레이드할 시간</h2>
+          <p>기틀 웹스튜디오와 함께라면 단순한 웹사이트를 넘어, 고객 문의와 전환을 극대화하는 자동화된 비즈니스 시스템을 구축할 수 있습니다. 지금 바로 내 홈페이지 진단을 신청하고, 비즈니스 성장의 기틀을 마련하세요.</p>
+          <div class="contact-notes">
+            <span>현재 사이트 진단</span><span>필요 기능 정리</span><span>제작 방향 제안</span>
+          </div>
+        </div>
+        <form class="contact-form" onsubmit="event.preventDefault(); this.querySelector('.success-message').style.display='block';">
+          <label>
+            <span>이름</span>
+            <input type="text" name="name" autocomplete="name" required>
+          </label>
+          <label>
+            <span>연락처</span>
+            <input type="text" name="contact" autocomplete="tel" required>
+          </label>
+          <label>
+            <span>요청사항</span>
+            <textarea name="message" required></textarea>
+          </label>
+          <button class="btn primary" type="submit">내 홈페이지 진단받기</button>
+          <p class="success-message" style="display:none;">문의가 접수되었습니다. 확인 후 안내드리겠습니다.</p>
+        </form>
+      </div>
+    </section>
+  
+</main>
+
+<footer class="site-footer">
+  <div class="container footer-inner">
+    <strong>기틀 웹스튜디오</strong>
+    <span>© 2026 기틀 웹스튜디오. All rights reserved.</span>
+  </div>
+</footer>
+</body>
+</html>
