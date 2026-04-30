@@ -1,0 +1,574 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>기틀 | 기틀의 방향을 한눈에 확인하세요</title>
+  <meta name="description" content="방문자가 필요한 정보를 쉽게 이해할 수 있도록 정리합니다.">
+  <style>
+    :root{
+      --bg:#0f1220;
+      --surface:#151a2f;
+      --text:#eef1ff;
+      --muted:#a7b0d6;
+      --primary:#7c8cff;
+      --accent:#66d9c8;
+      --border:rgba(255,255,255,.12);
+      --radius:20px;
+      --max-width:1180px;
+      --section-padding:88px;
+      --shadow:0 24px 70px rgba(0,0,0,.28);
+      --soft-shadow:0 12px 36px rgba(0,0,0,.18);
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0;
+      font-family:system-ui,-apple-system,BlinkMacSystemFont,"Pretendard",sans-serif;
+      background:
+        radial-gradient(900px 500px at 15% 10%, rgba(124,140,255,.22), transparent 60%),
+        radial-gradient(700px 380px at 85% 15%, rgba(102,217,200,.16), transparent 55%),
+        linear-gradient(180deg, #0b0e19 0%, var(--bg) 100%);
+      color:var(--text);
+      overflow-x:hidden;
+      word-break:keep-all;
+      line-height:1.6;
+      font-size:16px;
+    }
+    a{color:inherit;text-decoration:none}
+    img{max-width:100%;display:block}
+    button,input,textarea,select{font:inherit}
+    :focus-visible{outline:3px solid rgba(102,217,200,.9); outline-offset:3px}
+    .container{max-width:var(--max-width);margin:0 auto;padding:0 24px}
+    header{
+      position:sticky;top:0;z-index:20;
+      backdrop-filter:blur(18px);
+      background:rgba(10,13,24,.66);
+      border-bottom:1px solid rgba(255,255,255,.08);
+    }
+    .header-inner{
+      max-width:var(--max-width);margin:0 auto;padding:16px 24px;
+      display:flex;align-items:center;justify-content:space-between;gap:18px;
+    }
+    .brand{
+      display:flex;align-items:center;gap:12px;font-weight:800;letter-spacing:-.02em;
+    }
+    .brand-mark{
+      width:40px;height:40px;border-radius:14px;
+      background:linear-gradient(135deg,var(--primary),var(--accent));
+      box-shadow:var(--soft-shadow);
+      display:grid;place-items:center;color:#09101f;font-weight:900;
+    }
+    nav ul{list-style:none;display:flex;gap:18px;flex-wrap:wrap;padding:0;margin:0;align-items:center}
+    nav a{color:var(--muted);font-size:14px}
+    nav a:hover{color:var(--text)}
+    main section{padding:var(--section-padding) 0;border-top:1px solid rgba(255,255,255,.06)}
+    .eyebrow{
+      display:inline-flex;align-items:center;gap:8px;
+      padding:8px 12px;border:1px solid rgba(255,255,255,.12);
+      border-radius:999px;color:var(--accent);background:rgba(255,255,255,.03);
+      font-size:13px;font-weight:700;letter-spacing:.01em;
+    }
+    h1,h2,h3,p{margin:0}
+    h1{
+      font-size:clamp(2.4rem, 5vw, 4.9rem);
+      line-height:1.04;
+      letter-spacing:-.04em;
+      margin-top:16px;
+    }
+    h2{
+      font-size:clamp(1.7rem, 3vw, 2.5rem);
+      line-height:1.12;
+      letter-spacing:-.03em;
+      margin-bottom:14px;
+    }
+    .section-lead{color:var(--muted);font-size:1rem;max-width:64ch}
+    .hero-grid{
+      display:grid;grid-template-columns:1.08fr .92fr;gap:30px;align-items:center;
+    }
+    .hero-copy{padding:12px 0}
+    .cta-row{display:flex;gap:12px;flex-wrap:wrap;margin-top:28px}
+    .btn{
+      display:inline-flex;align-items:center;justify-content:center;
+      min-height:48px;padding:0 18px;border-radius:14px;font-weight:700;
+      border:1px solid transparent;transition:.2s ease;
+    }
+    .btn-primary{background:linear-gradient(135deg,var(--primary),#98a5ff);color:#0a1020;box-shadow:var(--soft-shadow)}
+    .btn-secondary{background:rgba(255,255,255,.03);border-color:rgba(255,255,255,.12);color:var(--text)}
+    .btn:hover{transform:translateY(-1px)}
+    .mockup{
+      border:1px solid rgba(255,255,255,.12);
+      background:
+        linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.03)),
+        rgba(14,18,33,.9);
+      border-radius:28px;
+      box-shadow:var(--shadow);
+      overflow:hidden;
+    }
+    .mockup-head{
+      display:flex;justify-content:space-between;align-items:center;gap:14px;
+      padding:18px 18px 14px;border-bottom:1px solid rgba(255,255,255,.08);
+    }
+    .dots{display:flex;gap:8px}
+    .dots span{width:10px;height:10px;border-radius:50%;background:rgba(255,255,255,.18)}
+    .status-pill{
+      padding:7px 10px;border-radius:999px;font-size:12px;font-weight:700;
+      background:rgba(102,217,200,.12);color:var(--accent);border:1px solid rgba(102,217,200,.22);
+    }
+    .mockup-body{padding:18px;display:grid;gap:14px}
+    .panel{
+      background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.1);
+      border-radius:22px;padding:16px;
+    }
+    .panel-title{font-weight:700;margin-bottom:8px}
+    .mini-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
+    .mini-card{
+      border-radius:18px;padding:14px;background:rgba(124,140,255,.08);
+      border:1px solid rgba(124,140,255,.18);
+    }
+    .mini-card strong{display:block;margin-bottom:6px}
+    .progress{
+      height:10px;border-radius:999px;background:rgba(255,255,255,.08);overflow:hidden;
+    }
+    .progress > span{
+      display:block;height:100%;width:68%;
+      background:linear-gradient(90deg,var(--primary),var(--accent));
+      border-radius:inherit;
+    }
+    .grid-2{display:grid;grid-template-columns:repeat(2,1fr);gap:18px}
+    .grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+    .grid-4{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+    .card{
+      background:rgba(255,255,255,.04);
+      border:1px solid rgba(255,255,255,.09);
+      border-radius:var(--radius);
+      padding:22px;
+      box-shadow:var(--soft-shadow);
+      transition:transform .18s ease,border-color .18s ease;
+    }
+    .card:hover{transform:translateY(-3px);border-color:rgba(124,140,255,.3)}
+    .card h3{font-size:1.06rem;margin-bottom:10px}
+    .card p,.card li{color:var(--muted)}
+    .tag{
+      display:inline-flex;padding:6px 10px;border-radius:999px;
+      background:rgba(124,140,255,.12);color:#dfe4ff;font-size:12px;font-weight:700;margin-bottom:12px
+    }
+    .list{margin:0;padding-left:18px;display:grid;gap:8px}
+    .split{
+      display:grid;grid-template-columns:1fr 1fr;gap:24px;align-items:start;
+    }
+    .timeline{display:grid;gap:14px}
+    .timeline-step{
+      display:grid;grid-template-columns:auto 1fr;gap:14px;align-items:start;
+      padding:18px;border-radius:20px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08)
+    }
+    .num{
+      width:36px;height:36px;border-radius:12px;display:grid;place-items:center;
+      background:linear-gradient(135deg,var(--primary),var(--accent));color:#07111f;font-weight:900
+    }
+    details{
+      background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.09);
+      border-radius:18px;padding:0 18px;overflow:hidden;
+    }
+    summary{
+      cursor:pointer;list-style:none;padding:18px 0;font-weight:700;
+    }
+    summary::-webkit-details-marker{display:none}
+    details p{padding:0 0 18px;color:var(--muted)}
+    .form-wrap{
+      display:grid;grid-template-columns:1fr .92fr;gap:24px;align-items:start;
+    }
+    form{
+      display:grid;gap:14px;
+      background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.09);
+      border-radius:26px;padding:24px;box-shadow:var(--soft-shadow);
+    }
+    label{display:grid;gap:8px;font-weight:700;color:#edf0ff}
+    input,textarea{
+      width:100%;border-radius:16px;border:1px solid rgba(255,255,255,.1);
+      background:rgba(8,10,18,.7);color:var(--text);padding:14px 15px;min-height:48px;
+    }
+    textarea{min-height:150px;resize:vertical}
+    .next-steps{display:grid;gap:12px}
+    .step-note{
+      display:flex;gap:12px;align-items:flex-start;
+      padding:14px 16px;border-radius:18px;background:rgba(102,217,200,.08);border:1px solid rgba(102,217,200,.16)
+    }
+    .badge{
+      display:inline-flex;align-items:center;justify-content:center;
+      min-width:26px;height:26px;border-radius:999px;background:rgba(255,255,255,.08);
+      color:var(--text);font-size:12px;font-weight:800;
+    }
+    .muted{color:var(--muted)}
+    footer{
+      padding:28px 0 40px;border-top:1px solid rgba(255,255,255,.08);
+      color:var(--muted);font-size:14px
+    }
+    .footer-inner{
+      max-width:var(--max-width);margin:0 auto;padding:0 24px;
+      display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;align-items:center;
+    }
+    .section-head{display:grid;gap:12px;margin-bottom:24px}
+    .bento{
+      display:grid;grid-template-columns:1.2fr .8fr;gap:18px;
+    }
+    .bento .wide{grid-column:1 / span 1}
+    .bento .tall{grid-row:span 2}
+    .accent-line{height:1px;background:linear-gradient(90deg,transparent,var(--accent),transparent);margin:18px 0}
+    .checklist{display:grid;gap:10px}
+    .check{
+      display:flex;gap:10px;align-items:flex-start;color:var(--muted)
+    }
+    .check:before{
+      content:"";width:20px;height:20px;border-radius:6px;flex:none;margin-top:2px;
+      background:linear-gradient(135deg,var(--primary),var(--accent));
+    }
+    @media (max-width: 900px){
+      :root{--section-padding:68px}
+      .hero-grid,.split,.form-wrap,.grid-4,.grid-3,.grid-2,.bento{grid-template-columns:1fr}
+      nav ul{gap:12px}
+      .header-inner{padding:14px 16px}
+      .container{padding:0 16px}
+      .mockup{order:2}
+    }
+    @media (max-width: 768px){
+      body{font-size:15px}
+      h1{font-size:clamp(2rem, 9vw, 3.2rem)}
+      h2{font-size:clamp(1.5rem, 7vw, 2.1rem)}
+      .cta-row,.grid-2,.grid-3,.grid-4{grid-template-columns:1fr}
+      .cta-row{display:grid}
+      .btn{width:100%}
+      nav{display:none}
+      .mini-grid{grid-template-columns:1fr}
+      .mockup-body,.card,form{padding:18px}
+      main section{padding:64px 0}
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="header-inner">
+      <div class="brand" aria-label="기틀">
+        <span class="brand-mark">기</span>
+        <span>기틀</span>
+      </div>
+      <nav aria-label="주요 메뉴">
+        <ul>
+          <li><a href="#section-1">홈</a></li>
+          <li><a href="#section-3">해결 방식</a></li>
+          <li><a href="#section-4">서비스 소개</a></li>
+          <li><a href="#section-6">진행 과정</a></li>
+          <li><a href="#section-7">FAQ</a></li>
+          <li><a href="#section-8">문의/상담</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section id="section-1">
+      <div class="container">
+        <div class="hero-grid">
+          <div class="hero-copy">
+            <span class="eyebrow">기틀</span>
+            <h1>기틀의 방향을 한눈에 확인하세요</h1>
+            <p class="section-lead" style="margin-top:18px;">방문자가 필요한 정보를 쉽게 이해할 수 있도록 정리합니다.</p>
+            <div class="cta-row">
+              <a class="btn btn-primary" href="#section-8">상담 방향 확인하기</a>
+              <a class="btn btn-secondary" href="#section-6">진행 과정 보기</a>
+            </div>
+          </div>
+          <div class="mockup" aria-label="상담 방향 확인 목업">
+            <div class="mockup-head">
+              <div>
+                <div class="tag">정리 중</div>
+                <div style="font-weight:800;font-size:1.05rem;">상담 방향 확인 패널</div>
+              </div>
+              <div class="dots" aria-hidden="true"><span></span><span></span><span></span></div>
+            </div>
+            <div class="mockup-body">
+              <div class="panel">
+                <div class="panel-title">현재 확인하는 항목</div>
+                <div class="mini-grid">
+                  <div class="mini-card"><strong>요청 범위</strong><span class="muted">필요한 섹션과 목적을 먼저 정리합니다.</span></div>
+                  <div class="mini-card"><strong>준비 자료</strong><span class="muted">보유한 소개 자료와 참고 방향을 함께 봅니다.</span></div>
+                  <div class="mini-card"><strong>진행 방식</strong><span class="muted">상담 후 적절한 구조로 안내합니다.</span></div>
+                  <div class="mini-card"><strong>확인 절차</strong><span class="muted">남겨주신 내용을 기준으로 먼저 확인합니다.</span></div>
+                </div>
+              </div>
+              <div class="panel">
+                <div class="panel-title">읽기 편한 구성</div>
+                <div class="progress" aria-hidden="true"><span></span></div>
+                <p class="muted" style="margin-top:10px;">핵심 정보부터 순서대로 확인할 수 있도록 구성합니다.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="section-2">
+      <div class="container">
+        <div class="section-head">
+          <span class="eyebrow">문제 제기</span>
+          <h2>문제 제기을 쉽게 확인하세요</h2>
+          <p class="section-lead">방문자가 필요한 정보를 쉽게 이해할 수 있도록 정리합니다.</p>
+        </div>
+        <div class="grid-3">
+          <article class="card">
+            <span class="tag">흐름 정리</span>
+            <h3>어디서부터 봐야 할지 막히는 경우</h3>
+            <p>메시지와 메뉴가 분산되면 방문자는 다음 행동을 바로 떠올리기 어렵습니다.</p>
+          </article>
+          <article class="card">
+            <span class="tag">정보 구조</span>
+            <h3>내용은 많지만 우선순위가 보이지 않는 경우</h3>
+            <p>핵심 설명, 서비스 항목, 진행 절차를 분리해 읽기 쉬운 흐름으로 정리합니다.</p>
+          </article>
+          <article class="card">
+            <span class="tag">문의 전환</span>
+            <h3>문의 전에 확인할 항목이 충분히 보이지 않는 경우</h3>
+            <p>문의 전 필요한 정보와 다음 절차를 함께 보여주면 이해가 쉬워집니다.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="section-3">
+      <div class="container">
+        <div class="split">
+          <div>
+            <div class="section-head">
+              <span class="eyebrow">해결 방식</span>
+              <h2>해결 방식을 쉽게 확인하세요</h2>
+              <p class="section-lead">방문자가 필요한 정보를 쉽게 이해할 수 있도록 정리합니다.</p>
+            </div>
+            <div class="timeline">
+              <div class="timeline-step">
+                <div class="num">1</div>
+                <div>
+                  <h3>먼저 현재 상황을 확인합니다</h3>
+                  <p class="muted">업종, 목적, 필요한 범위를 함께 정리해 출발점을 맞춥니다.</p>
+                </div>
+              </div>
+              <div class="timeline-step">
+                <div class="num">2</div>
+                <div>
+                  <h3>필요한 구성과 전달 순서를 정합니다</h3>
+                  <p class="muted">섹션별 역할을 나누어 읽기 쉬운 구조로 설계합니다.</p>
+                </div>
+              </div>
+              <div class="timeline-step">
+                <div class="num">3</div>
+                <div>
+                  <h3>확인 후 적절한 진행 방향을 안내합니다</h3>
+                  <p class="muted">남겨주신 내용을 바탕으로 다음 단계에 필요한 정보를 정리합니다.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="card">
+            <span class="tag">핵심 기준</span>
+            <h3>안내 중심의 구성</h3>
+            <ul class="list">
+              <li>한 번에 길게 읽기보다 단계적으로 이해할 수 있게 구성</li>
+              <li>상담 전 확인할 내용을 카드로 정리</li>
+              <li>모바일에서도 자연스럽게 1열로 읽히도록 설계</li>
+              <li>문구는 짧고 구체적으로 유지</li>
+            </ul>
+            <div class="accent-line"></div>
+            <div class="checklist">
+              <div class="check">방문자가 지금 확인해야 할 내용</div>
+              <div class="check">문의 전에 준비하면 좋은 정보</div>
+              <div class="check">상담 뒤 이어질 진행 흐름</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="section-4">
+      <div class="container">
+        <div class="section-head">
+          <span class="eyebrow">서비스 소개</span>
+          <h2>서비스 소개을 쉽게 확인하세요</h2>
+          <p class="section-lead">방문자가 필요한 정보를 쉽게 이해할 수 있도록 정리합니다.</p>
+        </div>
+        <div class="bento">
+          <article class="card wide">
+            <span class="tag">구성 안내</span>
+            <h3>필요한 내용을 먼저 읽히는 순서로 배치합니다</h3>
+            <p>헤드라인, 설명, 핵심 카드, 문의 연결을 순서대로 놓아 이해 부담을 줄입니다.</p>
+          </article>
+          <article class="card">
+            <span class="tag">콘텐츠</span>
+            <h3>핵심 메시지</h3>
+            <p>짧고 분명한 문장으로 방문 목적을 빠르게 전달합니다.</p>
+          </article>
+          <article class="card">
+            <span class="tag">시각화</span>
+            <h3>CSS 패널</h3>
+            <p>외부 이미지 없이 카드와 패널 중심으로 안정적인 인상을 만듭니다.</p>
+          </article>
+          <article class="card tall">
+            <span class="tag">정리 방식</span>
+            <h3>서비스 구성 요소</h3>
+            <ul class="list">
+              <li>소개 문구</li>
+              <li>주요 흐름</li>
+              <li>확인 포인트</li>
+              <li>문의 연결</li>
+            </ul>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="section-5">
+      <div class="container">
+        <div class="section-head">
+          <span class="eyebrow">신뢰 요소</span>
+          <h2>신뢰 요소을 쉽게 확인하세요</h2>
+          <p class="section-lead">방문자가 필요한 정보를 쉽게 이해할 수 있도록 정리합니다.</p>
+        </div>
+        <div class="grid-4">
+          <article class="card">
+            <h3>확인 기준</h3>
+            <p>상담 전에 어떤 내용을 먼저 볼지 기준을 나누어 안내합니다.</p>
+          </article>
+          <article class="card">
+            <h3>준비 자료</h3>
+            <p>보유한 소개 자료, 참고 방향, 전달하고 싶은 내용을 정리합니다.</p>
+          </article>
+          <article class="card">
+            <h3>운영 방식</h3>
+            <p>요청을 받은 뒤 흐름을 확인하고 적절한 진행 순서를 제시합니다.</p>
+          </article>
+          <article class="card">
+            <h3>안내 범위</h3>
+            <p>필요한 구성과 목적에 맞춰 전달 범위를 분명하게 정리합니다.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="section-6">
+      <div class="container">
+        <div class="section-head">
+          <span class="eyebrow">진행 과정</span>
+          <h2>진행 과정을 쉽게 확인하세요</h2>
+          <p class="section-lead">방문자가 필요한 정보를 쉽게 이해할 수 있도록 정리합니다.</p>
+        </div>
+        <div class="grid-3">
+          <article class="card">
+            <span class="tag">01</span>
+            <h3>문의 내용 확인</h3>
+            <p>남겨주신 내용을 바탕으로 현재 상황과 요청 범위를 먼저 살펴봅니다.</p>
+          </article>
+          <article class="card">
+            <span class="tag">02</span>
+            <h3>구성 방향 정리</h3>
+            <p>필요한 섹션과 문구 흐름을 정리해 이해하기 쉬운 구조를 맞춥니다.</p>
+          </article>
+          <article class="card">
+            <span class="tag">03</span>
+            <h3>다음 절차 안내</h3>
+            <p>확인 후 적절한 진행 방향과 준비할 내용을 안내합니다.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="section-7">
+      <div class="container">
+        <div class="section-head">
+          <span class="eyebrow">FAQ</span>
+          <h2>FAQ을 쉽게 확인하세요</h2>
+          <p class="section-lead">방문자가 필요한 정보를 쉽게 이해할 수 있도록 정리합니다.</p>
+        </div>
+        <div class="grid-2">
+          <details>
+            <summary>문의하면 바로 진행이 시작되나요?</summary>
+            <p>먼저 남겨주신 내용을 확인한 뒤, 현재 상황과 필요한 범위를 정리해 안내합니다.</p>
+          </details>
+          <details>
+            <summary>준비해야 할 자료가 있나요?</summary>
+            <p>업종과 목적에 따라 달라질 수 있습니다. 보유한 로고, 사진, 소개 자료, 참고 사이트가 있다면 도움이 됩니다.</p>
+          </details>
+          <details>
+            <summary>제작 범위는 어떻게 정해지나요?</summary>
+            <p>필요한 섹션, 기능, 자료 준비 상태를 확인한 뒤 적절한 진행 방향을 정합니다.</p>
+          </details>
+          <details>
+            <summary>모바일에서도 보기 좋게 만들 수 있나요?</summary>
+            <p>모바일에서는 1열 흐름, 큰 제목, 짧은 설명, 명확한 CTA를 기준으로 구성합니다.</p>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <section id="section-8">
+      <div class="container">
+        <div class="section-head">
+          <span class="eyebrow">문의/상담</span>
+          <h2>문의/상담을 쉽게 확인하세요</h2>
+          <p class="section-lead">방문자가 필요한 정보를 쉽게 이해할 수 있도록 정리합니다.</p>
+        </div>
+        <div class="form-wrap">
+          <form aria-label="문의 상담 양식">
+            <div>
+              <h3 style="font-size:1.3rem;margin-bottom:8px;">필요한 내용을 남겨주세요</h3>
+              <p class="muted">남겨주신 내용을 바탕으로 현재 상황과 필요한 구성을 먼저 확인합니다.</p>
+            </div>
+            <label>
+              이름 또는 브랜드명
+              <input type="text" name="name" required value="" aria-required="true" autocomplete="name">
+            </label>
+            <label>
+              연락 가능한 방법
+              <input type="text" name="contact" required value="" aria-required="true" autocomplete="tel">
+            </label>
+            <label>
+              요청 내용
+              <textarea name="message" required aria-required="true"></textarea>
+            </label>
+            <button type="submit" class="btn btn-primary" style="width:100%;">문의 내용 보내기</button>
+          </form>
+          <div class="next-steps">
+            <div class="card">
+              <span class="tag">다음 절차</span>
+              <div class="step-note">
+                <span class="badge">1</span>
+                <div>남겨주신 내용을 먼저 확인합니다.</div>
+              </div>
+              <div class="step-note" style="margin-top:10px;">
+                <span class="badge">2</span>
+                <div>현재 상황과 필요한 구성을 정리합니다.</div>
+              </div>
+              <div class="step-note" style="margin-top:10px;">
+                <span class="badge">3</span>
+                <div>확인 후 적절한 진행 방향을 안내합니다.</div>
+              </div>
+            </div>
+            <div class="card">
+              <h3>문의 전 확인하면 좋은 내용</h3>
+              <ul class="list">
+                <li>원하는 홈페이지 목적</li>
+                <li>참고하고 싶은 구성 방향</li>
+                <li>보유한 자료와 준비 상태</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+      <div>기틀</div>
+      <div>방문자가 필요한 정보를 쉽게 이해할 수 있도록 정리합니다.</div>
+    </div>
+  </footer>
+</body>
+</html>
