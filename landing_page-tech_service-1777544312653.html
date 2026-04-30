@@ -1,0 +1,1031 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>기틀 웹스튜디오</title>
+<meta name="description" content="기틀 웹스튜디오는 전환 중심 홈페이지 기획부터 AI 상담 챗봇, n8n 문의 자동화, 상담 DB 저장까지 연결해 고객 문의 흐름이 살아 있는 웹사이트를 만듭니다.">
+<style>
+:root {
+  --color-bg: #07111F;
+  --color-bg-soft: #0B1627;
+  --color-surface: #0F1B2D;
+  --color-surface-2: #111827;
+  --color-card: rgba(255,255,255,0.075);
+  --color-card-strong: rgba(255,255,255,0.11);
+  --color-text: #F8FAFC;
+  --color-text-soft: #D8E0EE;
+  --color-muted: #A8B3C7;
+  --color-primary: #3B82F6;
+  --color-primary-dark: #1D4ED8;
+  --color-accent: #F59E0B;
+  --color-accent-soft: rgba(245,158,11,0.16);
+  --color-border: rgba(255,255,255,0.13);
+  --color-border-soft: rgba(255,255,255,0.08);
+  --color-shadow: rgba(0,0,0,0.36);
+  --color-glow: rgba(59,130,246,0.28);
+
+  --gradient-hero: radial-gradient(circle at 18% 18%, rgba(59,130,246,.28), transparent 32%), radial-gradient(circle at 85% 20%, rgba(245,158,11,.18), transparent 30%), linear-gradient(135deg, #07111F 0%, #0F1B2D 100%);
+  --gradient-card: linear-gradient(145deg, rgba(255,255,255,.12), rgba(255,255,255,.055));
+  --gradient-button: linear-gradient(135deg, #3B82F6, #2563EB);
+  --gradient-accent: linear-gradient(135deg, #F59E0B, #F97316);
+
+  --font-family: Inter, Pretendard, system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-size-h1: clamp(42px, 6vw, 78px);
+  --font-size-h2: clamp(30px, 4vw, 50px);
+  --font-size-h3: 22px;
+  --font-size-body: 16px;
+  --font-size-small: 13px;
+  --font-weight-title: 900;
+  --letter-spacing-title: -0.06em;
+
+  --max-width: 1120px;
+  --section-padding: 88px;
+  --section-padding-mobile: 56px;
+  --container-padding: 20px;
+  --gap: 24px;
+  --gap-large: 52px;
+  --hero-min-height: calc(100vh - 72px);
+
+  --radius-sm: 14px;
+  --radius-md: 20px;
+  --radius-lg: 28px;
+  --radius-xl: 36px;
+  --radius-pill: 999px;
+
+  --shadow-card: 0 24px 80px rgba(0,0,0,.26);
+  --shadow-hero: 0 36px 130px rgba(0,0,0,.42);
+  --shadow-button: 0 18px 42px rgba(59,130,246,.32);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-family);
+  background: var(--color-bg);
+  color: var(--color-text);
+  word-break: keep-all;
+  overflow-wrap: break-word;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+img {
+  max-width: 100%;
+}
+
+.container {
+  width: min(var(--max-width), calc(100% - 40px));
+  margin: 0 auto;
+}
+
+.container.narrow {
+  width: min(860px, calc(100% - 40px));
+}
+
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  background: color-mix(in srgb, var(--color-bg) 86%, transparent);
+  backdrop-filter: blur(18px);
+  border-bottom: 1px solid var(--color-border-soft);
+}
+
+.nav {
+  height: 74px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.logo {
+  font-size: 19px;
+  font-weight: 900;
+  letter-spacing: -0.04em;
+}
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 22px;
+}
+
+.nav-links a {
+  font-size: 14px;
+  color: var(--color-muted);
+  transition: 0.22s ease;
+}
+
+.nav-links a:hover {
+  color: var(--color-text);
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 52px;
+  padding: 0 22px;
+  border-radius: var(--radius-pill);
+  border: 1px solid transparent;
+  font-weight: 850;
+  font-size: 15px;
+  transition: 0.22s ease;
+  cursor: pointer;
+}
+
+.btn.primary {
+  background: var(--gradient-button);
+  color: #fff;
+  box-shadow: var(--shadow-button);
+}
+
+.btn.ghost {
+  background: var(--color-card);
+  border-color: var(--color-border);
+  color: var(--color-text);
+}
+
+.btn:hover {
+  transform: translateY(-2px);
+}
+
+.hero {
+  position: relative;
+  padding: 96px 0 84px;
+  background: var(--gradient-hero);
+  overflow: hidden;
+}
+
+.hero::before {
+  content: "";
+  position: absolute;
+  inset: auto auto 8% 4%;
+  width: 340px;
+  height: 340px;
+  border-radius: 50%;
+  background: var(--color-glow);
+  filter: blur(90px);
+  opacity: .6;
+  pointer-events: none;
+}
+
+.hero-grid {
+  position: relative;
+  display: grid;
+  grid-template-columns: 1.05fr .95fr;
+  gap: var(--gap-large);
+  align-items: center;
+}
+
+.hero-copy {
+  position: relative;
+  z-index: 1;
+}
+
+.eyebrow {
+  margin: 0 0 14px;
+  color: var(--color-accent);
+  font-size: 13px;
+  letter-spacing: .13em;
+  text-transform: uppercase;
+  font-weight: 900;
+}
+
+h1 {
+  margin: 0 0 22px;
+  font-size: var(--font-size-h1);
+  line-height: 1.02;
+  letter-spacing: var(--letter-spacing-title);
+  font-weight: var(--font-weight-title);
+}
+
+h2 {
+  margin: 0 0 14px;
+  font-size: var(--font-size-h2);
+  line-height: 1.12;
+  letter-spacing: -0.05em;
+  font-weight: var(--font-weight-title);
+}
+
+h3 {
+  margin: 0 0 10px;
+  font-size: var(--font-size-h3);
+  letter-spacing: -0.035em;
+}
+
+p {
+  color: var(--color-muted);
+  line-height: 1.76;
+}
+
+.hero-subtitle {
+  max-width: 620px;
+  font-size: 18px;
+  color: var(--color-text-soft);
+}
+
+.hero-actions {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-top: 30px;
+}
+
+.hero-actions.center {
+  justify-content: center;
+}
+
+.hero-points {
+  margin-top: 32px;
+  display: grid;
+  gap: 12px;
+}
+
+.hero-points div {
+  padding: 16px 18px;
+  border-radius: var(--radius-md);
+  background: var(--color-card);
+  border: 1px solid var(--color-border);
+}
+
+.hero-points strong {
+  display: block;
+  margin-bottom: 5px;
+}
+
+.hero-points span {
+  display: block;
+  color: var(--color-muted);
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+.hero-centered {
+  text-align: center;
+}
+
+.trust-chips {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 34px;
+}
+
+.trust-chips span,
+.contact-notes span,
+.mini-proof span {
+  display: inline-flex;
+  padding: 10px 14px;
+  border-radius: var(--radius-pill);
+  background: var(--color-card);
+  border: 1px solid var(--color-border);
+  color: var(--color-text-soft);
+  font-size: 14px;
+}
+
+.editorial-card {
+  display: grid;
+  grid-template-columns: 1fr .9fr;
+  gap: var(--gap-large);
+  align-items: center;
+  padding: 32px;
+  border-radius: var(--radius-xl);
+  background: var(--color-card);
+  border: 1px solid var(--color-border);
+  box-shadow: var(--shadow-hero);
+}
+
+.image-frame {
+  position: relative;
+  margin: 0;
+  border-radius: var(--radius-xl);
+  overflow: hidden;
+  border: 1px solid var(--color-border);
+  background: var(--color-surface);
+  box-shadow: var(--shadow-hero);
+}
+
+.image-frame img {
+  display: block;
+  width: 100%;
+  height: 440px;
+  object-fit: cover;
+}
+
+.image-credit {
+  position: absolute;
+  left: 14px;
+  bottom: 12px;
+  margin: 0;
+  padding: 7px 10px;
+  border-radius: var(--radius-pill);
+  background: color-mix(in srgb, var(--color-bg) 76%, transparent);
+  color: var(--color-text-soft);
+  font-size: 11px;
+  backdrop-filter: blur(10px);
+}
+
+.image-credit a {
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.visual-mockup,
+.dashboard-showcase {
+  border-radius: var(--radius-xl);
+  overflow: hidden;
+  border: 1px solid var(--color-border);
+  background: var(--gradient-card);
+  box-shadow: var(--shadow-hero);
+}
+
+.mockup-window,
+.dashboard-showcase {
+  min-height: 420px;
+}
+
+.mockup-bar,
+.dashboard-top {
+  height: 46px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 0 18px;
+  border-bottom: 1px solid var(--color-border-soft);
+}
+
+.mockup-bar span,
+.dashboard-top span {
+  width: 11px;
+  height: 11px;
+  border-radius: 50%;
+  background: var(--color-accent);
+}
+
+.mockup-content,
+.dashboard-body {
+  padding: 26px;
+}
+
+.mockup-line {
+  height: 16px;
+  border-radius: var(--radius-pill);
+  background: var(--color-card-strong);
+  margin-bottom: 12px;
+}
+
+.mockup-line.long {
+  width: 86%;
+}
+
+.mockup-line.medium {
+  width: 62%;
+}
+
+.mockup-grid,
+.dashboard-body {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+.mockup-grid b,
+.dash-card {
+  min-height: 120px;
+  border-radius: var(--radius-lg);
+  background: var(--color-card);
+  border: 1px solid var(--color-border);
+}
+
+.dash-card {
+  padding: 22px;
+}
+
+.dash-card.wide {
+  grid-column: span 2;
+}
+
+.dash-card small {
+  display: block;
+  color: var(--color-accent);
+  font-size: 12px;
+  letter-spacing: .12em;
+  margin-bottom: 10px;
+}
+
+.dash-card strong {
+  display: block;
+  font-size: 20px;
+  letter-spacing: -0.035em;
+}
+
+.flow-line {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 8px;
+  margin-top: 20px;
+}
+
+.flow-line b {
+  height: 10px;
+  border-radius: var(--radius-pill);
+  background: var(--gradient-button);
+}
+
+.section {
+  padding: var(--section-padding) 0;
+  border-top: 1px solid var(--color-border-soft);
+}
+
+.section-head {
+  max-width: 780px;
+  margin-bottom: 34px;
+}
+
+.section-head p {
+  font-size: 17px;
+}
+
+.bento-grid {
+  display: grid;
+  grid-template-columns: 1.15fr .85fr;
+  gap: var(--gap);
+}
+
+.card {
+  padding: 28px;
+  border-radius: var(--radius-lg);
+  background: var(--gradient-card);
+  border: 1px solid var(--color-border);
+  box-shadow: var(--shadow-card);
+  transition: 0.25s ease;
+}
+
+.card:hover {
+  transform: translateY(-4px);
+}
+
+.bento-card.large {
+  min-height: 260px;
+}
+
+.card-index,
+.card-icon,
+.step-number {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 38px;
+  height: 38px;
+  padding: 0 10px;
+  margin-bottom: 18px;
+  border-radius: var(--radius-pill);
+  background: var(--color-accent-soft);
+  color: var(--color-accent);
+  font-weight: 900;
+}
+
+.image-card {
+  padding: 0;
+  overflow: hidden;
+}
+
+.image-card .image-frame {
+  height: 100%;
+  border: 0;
+  border-radius: 0;
+  box-shadow: none;
+}
+
+.three-grid,
+.numbered-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--gap);
+}
+
+.numbered-grid {
+  grid-template-columns: repeat(4, 1fr);
+}
+
+.split-grid {
+  display: grid;
+  grid-template-columns: .9fr 1.1fr;
+  gap: var(--gap-large);
+  align-items: start;
+}
+
+.stacked-cards {
+  display: grid;
+  gap: 16px;
+}
+
+.stack-card {
+  display: grid;
+  grid-template-columns: 56px 1fr;
+  gap: 18px;
+  align-items: start;
+}
+
+.stack-card span {
+  color: var(--color-accent);
+  font-weight: 900;
+}
+
+.timeline {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+}
+
+.step-card {
+  position: relative;
+  padding: 28px;
+  border-radius: var(--radius-lg);
+  background: var(--color-card);
+  border: 1px solid var(--color-border);
+}
+
+.material-grid {
+  display: grid;
+  gap: 16px;
+}
+
+.mini-proof,
+.contact-notes {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 24px;
+}
+
+.gallery-grid {
+  display: grid;
+  grid-template-columns: 1.1fr .9fr;
+  gap: var(--gap);
+}
+
+.gallery-side {
+  display: grid;
+  gap: 16px;
+}
+
+.faq-list {
+  display: grid;
+  gap: 12px;
+}
+
+.faq-item {
+  padding: 20px 22px;
+  border-radius: var(--radius-md);
+  background: var(--color-card);
+  border: 1px solid var(--color-border);
+}
+
+.faq-item summary {
+  cursor: pointer;
+  font-weight: 850;
+  color: var(--color-text);
+}
+
+.faq-item p {
+  margin-bottom: 0;
+}
+
+.contact-grid {
+  display: grid;
+  grid-template-columns: .9fr 1.1fr;
+  gap: var(--gap-large);
+  align-items: start;
+}
+
+.contact-form {
+  padding: 30px;
+  border-radius: var(--radius-xl);
+  background: var(--gradient-card);
+  border: 1px solid var(--color-border);
+  box-shadow: var(--shadow-card);
+}
+
+.contact-form label {
+  display: grid;
+  gap: 8px;
+  margin-bottom: 14px;
+  color: var(--color-text-soft);
+  font-size: 14px;
+  font-weight: 700;
+}
+
+input,
+textarea {
+  width: 100%;
+  padding: 15px 16px;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--color-border);
+  background: color-mix(in srgb, var(--color-surface) 76%, transparent);
+  color: var(--color-text);
+  font-family: inherit;
+  font-size: 15px;
+  outline: none;
+}
+
+textarea {
+  min-height: 120px;
+  resize: vertical;
+}
+
+input:focus,
+textarea:focus {
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 4px color-mix(in srgb, var(--color-primary) 18%, transparent);
+}
+
+button {
+  width: 100%;
+}
+
+.success-message {
+  margin: 14px 0 0;
+  padding: 14px 16px;
+  border-radius: var(--radius-sm);
+  background: var(--color-accent-soft);
+  color: var(--color-text);
+  font-weight: 700;
+}
+
+.cta-panel {
+  display: grid;
+  grid-template-columns: .85fr 1.15fr;
+  gap: var(--gap-large);
+  padding: 36px;
+  border-radius: var(--radius-xl);
+  background: var(--gradient-card);
+  border: 1px solid var(--color-border);
+  box-shadow: var(--shadow-hero);
+}
+
+.site-footer {
+  padding: 36px 0;
+  color: var(--color-muted);
+  border-top: 1px solid var(--color-border-soft);
+}
+
+.footer-inner {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+  font-size: 14px;
+}
+
+@media (max-width: 920px) {
+  .hero-grid,
+  .editorial-card,
+  .bento-grid,
+  .split-grid,
+  .gallery-grid,
+  .contact-grid,
+  .cta-panel {
+    grid-template-columns: 1fr;
+  }
+
+  .timeline,
+  .numbered-grid,
+  .three-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .nav-links {
+    display: none;
+  }
+}
+
+@media (max-width: 640px) {
+  .container,
+  .container.narrow {
+    width: min(100% - 28px, var(--max-width));
+  }
+
+  .hero {
+    padding: 62px 0 56px;
+  }
+
+  .section {
+    padding: var(--section-padding-mobile) 0;
+  }
+
+  h1 {
+    font-size: 42px;
+  }
+
+  h2 {
+    font-size: 30px;
+  }
+
+  .hero-actions {
+    flex-direction: column;
+  }
+
+  .btn {
+    width: 100%;
+  }
+
+  .timeline,
+  .numbered-grid,
+  .three-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .image-frame img {
+    height: 300px;
+  }
+
+  .dashboard-body,
+  .mockup-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .dash-card.wide {
+    grid-column: span 1;
+  }
+
+  .footer-inner {
+    flex-direction: column;
+  }
+}
+</style>
+</head>
+<body>
+<header class="site-header">
+  <div class="container nav">
+    <a class="logo" href="#hero">기틀 웹스튜디오</a>
+    <nav class="nav-links" aria-label="주요 메뉴">
+      <a href="#services">서비스</a>
+      <a href="#process">과정</a>
+      <a href="#trust">신뢰</a>
+      <a href="#faq">FAQ</a>
+      <a href="#contact">문의</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  
+    <section class="hero hero-dashboard" id="hero">
+      <div class="container hero-grid">
+        <div class="hero-copy">
+          <p class="eyebrow">AI WEB SYSTEM</p>
+          <h1>홈페이지를 소개 페이지가 아니라, 문의를 만드는 시스템으로 설계합니다</h1>
+          <p class="hero-subtitle">기틀 웹스튜디오는 전환 중심 홈페이지 기획부터 AI 상담 챗봇, n8n 문의 자동화, 상담 DB 저장까지 연결해 고객 문의 흐름이 살아 있는 웹사이트를 만듭니다.</p>
+          <div class="hero-actions">
+            <a class="btn primary" href="#contact">내 홈페이지 진단받기</a>
+            <a class="btn ghost" href="#process">제작 방식 보기</a>
+          </div>
+        </div>
+
+        <div class="dashboard-showcase">
+          <div class="dashboard-top">
+            <span></span><span></span><span></span>
+          </div>
+          <div class="dashboard-body">
+            <div class="dash-card wide">
+              <small>INQUIRY FLOW</small>
+              <strong>문의 → 분류 → 저장 → 알림</strong>
+              <div class="flow-line">
+                <b></b><b></b><b></b><b></b>
+              </div>
+            </div>
+            <div class="dash-card">
+              <small>CTA</small>
+              <strong>내 홈페이지 진단받기</strong>
+            </div>
+            <div class="dash-card">
+              <small>DB</small>
+              <strong>고객 정보 정리</strong>
+            </div>
+            <div class="dash-card wide accent">
+              <small>WEBSITE SYSTEM</small>
+              <strong>기틀 웹스튜디오 전용 제작 흐름</strong>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  
+  
+    <section id="services" class="section services bento-section">
+      <div class="container">
+        
+    <div class="section-head">
+      <p class="eyebrow">SERVICES</p>
+      <h2>홈페이지 제작과 운영을 함께 돕는 서비스</h2>
+      <p>단순 제작이 아니라, 상담 유입과 관리 효율까지 고려한 서비스 구성을 제공합니다. 필요한 기능을 분리해 설명하되, 실제 운영에서는 하나의 흐름으로 연결되도록 설계합니다.</p>
+    </div>
+  
+        <div class="bento-grid">
+          
+            <article class="card bento-card large">
+              <span class="card-index">01</span>
+              <h3>전환 중심 홈페이지 기획</h3>
+              <p>메시지 구조, CTA 배치, 문의 유도 흐름을 먼저 설계해 홈페이지의 목적이 분명해지도록 합니다.</p>
+            </article>
+          
+            <article class="card bento-card ">
+              <span class="card-index">02</span>
+              <h3>모바일 최적화 웹사이트 제작</h3>
+              <p>모바일에서 정보가 빠르게 읽히고 상담 버튼이 자연스럽게 보이도록 화면 구조를 조정합니다.</p>
+            </article>
+          
+            <article class="card bento-card ">
+              <span class="card-index">03</span>
+              <h3>AI 상담과 n8n 자동화 연결</h3>
+              <p>상담 챗봇, 문의 알림, DB 저장, 후속 응답 흐름을 자동화 중심으로 연결합니다.</p>
+            </article>
+          
+          <article class="card image-card">
+            
+    <figure class="image-frame service-image">
+      <img src="https://images.unsplash.com/photo-1763718528755-4bca23f82ac3?crop=entropy&amp;cs=tinysrgb&amp;fit=max&amp;fm=jpg&amp;ixid=M3w5Mzg2NDB8MHwxfHNlYXJjaHwxfHxhdXRvbWF0aW9uJTIwd29ya2Zsb3clMjBkYXNoYm9hcmQlMjB1aXxlbnwxfDB8fHwxNzc3NTQ0NTU1fDA&amp;ixlib=rb-4.1.0&amp;q=80&amp;w=1080" alt="Employer dashboard showing application trends and key metrics." loading="lazy">
+      
+    <p class="image-credit">
+      Photo by <a href="https://unsplash.com/@prashantbh13" target="_blank" rel="noopener">prashant hiremath</a> on Unsplash
+    </p>
+  
+    </figure>
+  
+          </article>
+        </div>
+      </div>
+    </section>
+  
+  
+    <section id="process" class="section process">
+      <div class="container">
+        
+    <div class="section-head">
+      <p class="eyebrow">PROCESS</p>
+      <h2>기획부터 자동화 연결까지의 제작 과정</h2>
+      <p>제작 과정은 디자인만 만드는 방식이 아니라, 문의가 쌓이고 관리가 쉬워지는 구조를 함께 만드는 방식으로 진행합니다. 각 단계마다 역할이 분명해 실제 운영을 염두에 둔 설계가 가능합니다.</p>
+    </div>
+  
+        <div class="timeline">
+          
+            <article class="step-card">
+              <span class="step-number">01</span>
+              <h3>1. 현황과 목표 정리</h3>
+              <p>현재 홈페이지의 문제, 상담 흐름, 필요한 자동화 범위를 먼저 정리합니다.</p>
+            </article>
+          
+            <article class="step-card">
+              <span class="step-number">02</span>
+              <h3>2. 구조와 메시지 설계</h3>
+              <p>방문자가 이해하기 쉬운 문구와 섹션 순서를 정리해 전환 흐름을 만듭니다.</p>
+            </article>
+          
+            <article class="step-card">
+              <span class="step-number">03</span>
+              <h3>3. 디자인과 컴포넌트 조합</h3>
+              <p>브랜드 톤에 맞는 프리미엄 스타일로 화면을 구성하고, 필요한 컴포넌트를 배치합니다.</p>
+            </article>
+          
+            <article class="step-card">
+              <span class="step-number">04</span>
+              <h3>4. 문의 자동화 연결</h3>
+              <p>상담 폼, 알림, 저장, 후속 응답이 이어지는 자동화 흐름을 연결해 운영 부담을 줄입니다.</p>
+            </article>
+          
+        </div>
+      </div>
+    </section>
+  
+  
+    <section id="trust" class="section trust">
+      <div class="container split-grid">
+        <div>
+          
+    <div class="section-head">
+      <p class="eyebrow">TRUST</p>
+      <h2>실제 운영을 고려한 신뢰 요소</h2>
+      <p>과장된 결과 대신, 어떤 방식으로 설계하고 어떤 구조를 제공하는지 투명하게 보여주는 것이 중요합니다. 기틀 웹스튜디오는 기능과 흐름을 명확히 설명하는 방식으로 신뢰를 만듭니다.</p>
+    </div>
+  
+          <div class="mini-proof">
+            <span>자료 기반 구성</span>
+            <span>명확한 진행 방식</span>
+            <span>문의 전 정보 제공</span>
+          </div>
+        </div>
+        <div class="material-grid">
+          
+            <article class="card material-card">
+              <span class="card-index">01</span>
+              <h3>상담 흐름을 먼저 설계</h3>
+              <p>예쁜 화면보다 문의가 어떻게 들어오고 어디에 저장되는지부터 정리합니다.</p>
+            </article>
+          
+            <article class="card material-card">
+              <span class="card-index">02</span>
+              <h3>자동화 범위를 명확히 안내</h3>
+              <p>어디까지 자동으로 처리되고, 어떤 부분은 사람이 확인해야 하는지 구분해 설명합니다.</p>
+            </article>
+          
+            <article class="card material-card">
+              <span class="card-index">03</span>
+              <h3>운영 확장성을 고려한 구조</h3>
+              <p>초기 홈페이지 제작 이후에도 블로그, 마케팅 콘텐츠, 추가 자동화로 확장할 수 있게 설계합니다.</p>
+            </article>
+          
+        </div>
+      </div>
+    </section>
+  
+  
+    <section id="faq" class="section faq">
+      <div class="container narrow">
+        
+    <div class="section-head">
+      <p class="eyebrow">FAQ</p>
+      <h2>자주 묻는 질문</h2>
+      <p>문의 전에 많이 확인하는 내용을 정리했습니다. 제작 범위와 자동화 연결 방식, 진행 순서를 미리 확인할 수 있습니다.</p>
+    </div>
+  
+        <div class="faq-list">
+          
+            <details class="faq-item">
+              <summary>기존 홈페이지가 있어도 다시 제작할 수 있나요?</summary>
+              <p>가능합니다. 현재 사이트의 구조를 검토한 뒤, 문의 흐름과 자동화 연결이 필요한 부분을 중심으로 재구성할 수 있습니다.</p>
+            </details>
+          
+            <details class="faq-item">
+              <summary>AI 상담 챗봇과 문의 폼을 함께 연결할 수 있나요?</summary>
+              <p>가능합니다. 상담 챗봇, 문의 폼, 알림, DB 저장이 하나의 흐름으로 이어지도록 설계할 수 있습니다.</p>
+            </details>
+          
+            <details class="faq-item">
+              <summary>n8n 자동화는 어떤 부분에 활용되나요?</summary>
+              <p>문의 접수 알림, 상담 내용 저장, 후속 응답, 콘텐츠 자동화 같은 반복 업무를 연결하는 데 활용할 수 있습니다.</p>
+            </details>
+          
+            <details class="faq-item">
+              <summary>제작 후 운영도 함께 고려해주나요?</summary>
+              <p>네. 단순 제작이 아니라 이후 문의 관리와 콘텐츠 확장까지 염두에 두고 구조를 설계합니다.</p>
+            </details>
+          
+        </div>
+      </div>
+    </section>
+  
+  
+    <section id="contact" class="section contact-section">
+      <div class="container contact-grid">
+        <div>
+          <p class="eyebrow">CONTACT</p>
+          <h2>홈페이지가 지금 어떤 구조로 바뀌어야 하는지 확인해보세요</h2>
+          <p>기틀 웹스튜디오는 상담 문의를 만드는 구조와 운영 효율을 함께 고려해 홈페이지를 설계합니다. 현재 사이트의 문제를 진단하고, 필요한 제작 방향을 함께 정리해드립니다.</p>
+          <div class="contact-notes">
+            <span>현재 상황 정리</span>
+            <span>필요 섹션 안내</span>
+            <span>제작 방향 제안</span>
+          </div>
+        </div>
+        <form class="contact-form" onsubmit="event.preventDefault(); this.querySelector('.success-message').style.display='block';">
+          <label>
+            <span>이름</span>
+            <input type="text" name="name" autocomplete="name" required>
+          </label>
+          <label>
+            <span>연락처</span>
+            <input type="text" name="contact" autocomplete="tel" required>
+          </label>
+          <label>
+            <span>요청사항</span>
+            <textarea name="message" required></textarea>
+          </label>
+          <button class="btn primary" type="submit">내 홈페이지 진단받기</button>
+          <p class="success-message" style="display:none;">문의가 접수되었습니다. 확인 후 안내드리겠습니다.</p>
+        </form>
+      </div>
+    </section>
+  
+</main>
+
+<footer class="site-footer">
+  <div class="container footer-inner">
+    <strong>기틀 웹스튜디오</strong>
+    <span>© 2026 기틀 웹스튜디오. All rights reserved.</span>
+  </div>
+</footer>
+</body>
+</html>
